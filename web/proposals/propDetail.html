@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>건의사항</h2>
+
+            <section class="row">
+              <table class="table-view">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col />
+                  <col style="width: 140px" />
+                  <col style="width: 15%" />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td th:text="${detailMap['prop'].propId}"></td>
+                    <td
+                      class="title"
+                      th:text="${detailMap['prop'].propTitle}"
+                    ></td>
+                    <td th:text="${detailMap['prop'].createNm}"></td>
+                    <td th:text="${detailMap['prop'].createDt}"></td>
+                  </tr>
+                  <tr th:if="${detailMap['fileList']} != null">
+                    <td>첨부 파일</td>
+                    <td colspan="3">
+                      <div
+                        th:each="file : ${detailMap['fileList']}"
+                        style="display: inline"
+                      >
+                        <button
+                          class="btn badge download c-699464"
+                          th:text="${file.realFileNm}"
+                          th:onclick="fileDownload([[${file.path}]])"
+                        ></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr th:if="${detailMap['fileList']} == null">
+                    <td>첨부 파일</td>
+                    <td colspan="3">
+                      <!-- 첨부 파일이 없을 경우 아무 것도 출력하지 않음 -->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-view" colspan="4">
+                      <div class="ckeditor">
+                        <div id="editor" class="ck-editor__editable-container">
+                          <div class="ck-editor__editable"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <div class="btn-page-group">
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-page"
+                onclick="location.href='/Proposals/page'"
+              >
+                목록
+              </button>
+              <button
+                id="propUpdateDispBtn"
+                type="button"
+                class="btn btn-dark btn-page"
+                th:onclick="|location.href='@{/Proposals/updateFormPage(propId=${detailMap['prop'].propId})}'|"
+              >
+                수정
+              </button>
+              <button
+                id="propDeleteBtn"
+                type="button"
+                class="btn btn-dark btn-page"
+              >
+                삭제
+              </button>
+              <button
+                id="reply-button"
+                type="button"
+                class="btn btn-dark btn-page"
+                th:if="${detailMap['prop'].commYn == 'N'}"
+              >
+                답변
+              </button>
+            </div>
+
+            <!-- 답변 등록 -->
+            <section id="reply-section" class="row">
+              <form id="commForm">
+                <div class="form-box">
+                  <table class="form-table">
+                    <colgroup>
+                      <col style="width: 140px" />
+                      <col style="width: 30%" />
+                      <col style="width: 140px" />
+                      <col />
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th colspan="4" class="title">답변</th>
+                      </tr>
+                      <tr>
+                        <td colspan="4">
+                          <div class="ckeditor">
+                            <div id="toolbar-container"></div>
+                            <div
+                              id="commEditor"
+                              class="ck-editor__editable-container"
+                            >
+                              <div class="ck-editor__editable"></div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>첨부 파일 <em class="sub-tip">(최대 50Mb)</em></th>
+                        <td colspan="3">
+                          <div class="inline-flex file-upload-container">
+                            <div class="btn-group">
+                              <span class="file-upload">
+                                <input
+                                  type="file"
+                                  id="uploadFile"
+                                  hidden
+                                  multiple="multiple"
+                                />
+                                <label
+                                  for="uploadFile"
+                                  class="btn btn-ico btn-add-file"
+                                  >첨부 파일</label
+                                >
+                              </span>
+                            </div>
+
+                            <ul class="file-list"></ul>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="flex">
+                    <button
+                      type="button"
+                      id="reply-cancel-btn"
+                      class="btn btn-outline-dark btn-page"
+                    >
+                      취소
+                    </button>
+                    <button
+                      id="commInsertBtn"
+                      type="button"
+                      class="btn btn-dark btn-page"
+                      th:if="${detailMap['prop'].commYn == 'N'}"
+                    >
+                      등록
+                    </button>
+                    <button
+                      id="commUpdateBtn"
+                      type="button"
+                      class="btn btn-dark btn-page"
+                      th:if="${detailMap['prop'].commYn == 'Y'}"
+                    >
+                      수정
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </section>
+            <!-- // 답변 등록 -->
+
+            <!-- 답변 후 -->
+            <section id="after-reply-section" class="row">
+              <table class="table-view table-anwser">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col />
+                  <col style="width: 140px" />
+                  <col style="width: 15%" />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <td><span class="badge c-33058d">답변</span></td>
+                    <td
+                      class="title"
+                      th:text="${detailMap['prop'].propTitle}"
+                    ></td>
+                    <td th:text="${detailMap['prop'].commCreateNm}"></td>
+                    <td th:text="${detailMap['prop'].commCreateDt}"></td>
+                  </tr>
+                  <tr>
+                    <td class="text-view white" colspan="4">
+                      <div class="ckeditor">
+                        <div
+                          id="commDetailEditor"
+                          class="ck-editor__editable-container"
+                        >
+                          <div class="ck-editor__editable"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr th:if="${detailMap['commFileList']} != null">
+                    <td>첨부 파일</td>
+                    <td colspan="3">
+                      <div
+                        th:each="file : ${detailMap['commFileList']}"
+                        style="display: inline"
+                      >
+                        <button
+                          class="btn badge download c-699464"
+                          th:text="${file.realFileNm}"
+                          th:onclick="fileDownload([[${file.path}]])"
+                        ></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr th:if="${detailMap['commFileList']} == null">
+                    <td>첨부 파일</td>
+                    <td colspan="3"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <div id="after-reply-btn" class="btn-page-group mt-0">
+              <button
+                id="commDeleteBtn"
+                type="button"
+                class="btn btn-dark btn-page"
+              >
+                삭제
+              </button>
+              <button
+                id="commDispBtn"
+                type="button"
+                class="btn btn-dark btn-page"
+              >
+                수정
+              </button>
+            </div>
+            <!-- // 답변 후 -->
+          </div>
+          <script src="/assets/js/plugins/ckeditor.js"></script>
+          <script th:inline="javascript"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

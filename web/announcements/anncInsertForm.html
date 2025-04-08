@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>공지사항 등록</h2>
+
+            <section class="row">
+              <form id="anncForm">
+                <div class="form-box">
+                  <table class="form-table">
+                    <colgroup>
+                      <col style="width: 140px" />
+                      <col />
+                      <!-- 0726 수정 -->
+                      <col style="width: 140px" />
+                      <col />
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th>제목</th>
+                        <td colspan="3">
+                          <div class="input-form" style="width: 468px">
+                            <div class="inner">
+                              <input
+                                id="anncTitle"
+                                name="anncTitle"
+                                type="text"
+                                placeholder="제목을 입력해 주세요"
+                                value=""
+                              />
+                            </div>
+                            <div class="error">제목을 입력해 주세요.</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>중요 여부</th>
+                        <td colspan="3">
+                          <span class="custom-radio">
+                            <input
+                              id="upshFxedY"
+                              name="upshFxedYn"
+                              type="radio"
+                              value="Y"
+                            />
+                            <label for="upshFxedY" class="button"> Y </label>
+                          </span>
+                          <span class="custom-radio">
+                            <input
+                              id="upshFxedN"
+                              name="upshFxedYn"
+                              type="radio"
+                              value="N"
+                              checked
+                            />
+                            <label for="upshFxedN" class="button"> N </label>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>게시 기간</th>
+                        <td colspan="3">
+                          <div class="datepicker-wrap">
+                            <button
+                              type="button"
+                              class="btn btn-datepicker"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#collapseDate"
+                              aria-expanded="false"
+                              aria-controls="collapseDate"
+                            >
+                              <span class="start" id="anncDispStartDt"></span
+                              >~<span class="end" id="anncDispEndDt"></span>
+                            </button>
+
+                            <!-- 달력 레이어 -->
+                            <div
+                              id="collapseDate"
+                              class="collapse layer-datepicker"
+                            >
+                              <div class="inner">
+                                <header>
+                                  <button type="button" class="close">
+                                    닫기
+                                  </button>
+                                </header>
+                                <div class="body">
+                                  <p class="sub">기간을 선택해 주세요</p>
+                                  <div class="date-box">
+                                    <div class="start-date">
+                                      <div
+                                        class="datetimepicker"
+                                        id="dispStartPicker"
+                                      ></div>
+                                    </div>
+                                    <div class="end-date">
+                                      <div
+                                        class="datetimepicker3"
+                                        id="dispEndPicker"
+                                      ></div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <footer>
+                                  <button
+                                    type="button"
+                                    class="btn btn-dark"
+                                    onclick="fnDateCheck(this);"
+                                  >
+                                    확인
+                                  </button>
+                                </footer>
+                              </div>
+                            </div>
+                            <!-- // 달력 레이어 -->
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>팝업 기간</th>
+                        <td colspan="3">
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="custom-radio">
+                                <input
+                                  id="popupY"
+                                  name="popupYn"
+                                  type="radio"
+                                  value="Y"
+                                />
+                                <label for="popupY" class="button">
+                                  사용
+                                </label>
+                              </span>
+                              <span class="custom-radio">
+                                <input
+                                  id="popupN"
+                                  name="popupYn"
+                                  type="radio"
+                                  value="N"
+                                  checked
+                                />
+                                <label for="popupN" class="button">
+                                  미사용
+                                </label>
+                              </span>
+                            </div>
+                            <div class="col-auto">
+                              <div class="datepicker-wrap">
+                                <button
+                                  id="popupDateBtn"
+                                  type="button"
+                                  class="btn btn-datepicker"
+                                  data-bs-toggle="collapse"
+                                  data-bs-target="#collapseDate2"
+                                  aria-expanded="false"
+                                  aria-controls="collapseDate2"
+                                >
+                                  <span
+                                    class="start"
+                                    id="anncPopupStartDt"
+                                  ></span
+                                  >~<span
+                                    class="end"
+                                    id="anncPopupEndDt"
+                                  ></span>
+                                </button>
+
+                                <!-- 달력 레이어 -->
+                                <div
+                                  id="collapseDate2"
+                                  class="collapse layer-datepicker"
+                                >
+                                  <div class="inner">
+                                    <header>
+                                      <button type="button" class="close">
+                                        닫기
+                                      </button>
+                                    </header>
+                                    <div class="body">
+                                      <p class="sub">기간을 선택해 주세요</p>
+                                      <div class="date-box">
+                                        <div class="start-date">
+                                          <div
+                                            class="datetimepicker"
+                                            id="popupStartPicker"
+                                          ></div>
+                                        </div>
+                                        <div class="end-date">
+                                          <div
+                                            class="datetimepicker3"
+                                            id="popupEndPicker"
+                                          ></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <footer>
+                                      <button
+                                        type="button"
+                                        class="btn btn-dark"
+                                        onclick="fnDateCheck(this);"
+                                      >
+                                        확인
+                                      </button>
+                                    </footer>
+                                  </div>
+                                </div>
+                                <!-- // 달력 레이어 -->
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="4">
+                          <div class="ckeditor">
+                            <div id="toolbar-container"></div>
+                            <div
+                              id="editor"
+                              class="ck-editor__editable-container"
+                            >
+                              <div class="ck-editor__editable"></div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>첨부 파일 <em class="sub-tip">(최대 50Mb)</em></th>
+                        <td colspan="3">
+                          <div class="inline-flex file-upload-container">
+                            <div class="btn-group">
+                              <span class="file-upload">
+                                <input
+                                  type="file"
+                                  id="uploadFile"
+                                  hidden
+                                  multiple="multiple"
+                                />
+                                <label
+                                  for="uploadFile"
+                                  class="btn btn-ico btn-add-file"
+                                >
+                                  첨부 파일
+                                </label>
+                              </span>
+                            </div>
+                            <ul class="file-list"></ul>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </section>
+            <div class="btn-page-group">
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-page"
+                onclick="location.href='/Announcements/page'"
+              >
+                목록
+              </button>
+              <button
+                id="insertBtn"
+                type="button"
+                class="btn btn-dark btn-page"
+              >
+                등록
+              </button>
+            </div>
+          </div>
+          <script src="/assets/js/plugins/ckeditor.js"></script>
+          <script></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>접속/API 성공 관리</h2>
+
+            <div class="tabs">
+              <ul class="nav nav-underline">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/web/apiLogMgmt/apiLogMgmt.html"
+                    >화면 접근 로그</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    href="/web/apiLogMgmt/apiLogMgmt.html"
+                    >외부 API 로그</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <section class="row">
+              <div class="form-box">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 140px" />
+                    <col />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th>조회 기간</th>
+                      <td>
+                        <div class="d-inline-flex align-items-center">
+                          <div class="col-auto">
+                            <div class="date-picker-group">
+                              <select
+                                id="type"
+                                class="formatSelector w-auto uiscroll"
+                              >
+                                <option value="day">일</option>
+                                <option value="month">월</option>
+                              </select>
+
+                              <div
+                                class="start-date1 input-group datepicker w-auto"
+                                data-target-input="nearest"
+                              >
+                                <input
+                                  id="startDt"
+                                  type="text"
+                                  class="form-control datetimepicker-input"
+                                  data-target=".start-date1"
+                                  placeholder="시작일"
+                                  readonly
+                                />
+                                <div
+                                  class="input-group-append"
+                                  data-target=".start-date1"
+                                  data-toggle="datetimepicker"
+                                >
+                                  <button class="input-group-text">
+                                    <img
+                                      src="/assets/images/common/icon_datepicker.png"
+                                      alt="달력 이미지"
+                                    />
+                                  </button>
+                                </div>
+                              </div>
+
+                              <div
+                                class="end-date1 input-group datepicker w-auto"
+                                data-target-input="nearest"
+                              >
+                                <input
+                                  id="endDt"
+                                  type="text"
+                                  class="form-control datetimepicker-input"
+                                  data-target=".end-date1"
+                                  placeholder="종료일"
+                                  readonly
+                                />
+                                <div
+                                  class="input-group-append"
+                                  data-target=".end-date1"
+                                  data-toggle="datetimepicker"
+                                >
+                                  <button class="input-group-text">
+                                    <img
+                                      src="/assets/images/common/icon_datepicker.png"
+                                      alt="달력 이미지"
+                                    />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-auto datepicker-tip">
+                            일 최대 31일, 월 최대 12개월 까지 조회가 돼요
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="flex">
+                  <button type="button" class="btn btn-ico btn-inquiry">
+                    조회
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <div class="data-menu-div">
+                <div class="col-auto">
+                  <h3>API 리스트</h3>
+                  <table class="datatable1 row-border hover static-data">
+                    <thead>
+                      <tr>
+                        <th>서비스</th>
+                        <th>API 명</th>
+                        <th>시도</th>
+                        <th>성공</th>
+                        <th>실패</th>
+                        <th>평균 응답 초</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border-b-none">NTOSS</td>
+                        <td class="sum">합계</td>
+                        <td class="sum">
+                          <button
+                            id="sumTotalCnt"
+                            type="button"
+                            class="data-num total"
+                            th:text="${list.totalCnt}"
+                          ></button>
+                        </td>
+                        <td class="sum">
+                          <button
+                            id="sumSuccessCnt"
+                            type="button"
+                            class="data-num success"
+                            th:text="${list.successCnt}"
+                          ></button>
+                        </td>
+                        <td class="sum">
+                          <button
+                            id="sumErrorCnt"
+                            type="button"
+                            class="data-num error"
+                            th:text="${list.errorCnt}"
+                          ></button>
+                        </td>
+                        <td class="sum">
+                          <span
+                            id="sumAvgResSec"
+                            th:text="${list.avgResSec}"
+                          ></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="row-merge">NTOSS</td>
+                        <td>고객CRM등급조회</td>
+                        <td>
+                          <button
+                            id="totalCnt"
+                            type="button"
+                            class="data-num total"
+                            th:text="${list.totalCnt}"
+                          ></button>
+                        </td>
+                        <td>
+                          <button
+                            id="successCnt"
+                            type="button"
+                            class="data-num success"
+                            th:text="${list.successCnt}"
+                          ></button>
+                        </td>
+                        <td>
+                          <button
+                            id="errorCnt"
+                            type="button"
+                            class="data-num error"
+                            th:text="${list.errorCnt}"
+                          ></button>
+                        </td>
+                        <td>
+                          <span
+                            id="avgResSec"
+                            th:text="${list.avgResSec}"
+                          ></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-auto">
+                  <h3 class="menu-title">API 상세</h3>
+                  <table class="datatable2 row-border">
+                    <thead>
+                      <tr>
+                        <th>가입 번호</th>
+                        <th>날짜/시간</th>
+                        <th>응답 초</th>
+                        <th>내용</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                  <table id="excelTable" style="display: none">
+                    <thead>
+                      <tr>
+                        <th id="entrNo" align="center">가입 번호</th>
+                        <th id="dateTime" align="center">날짜/시간</th>
+                        <th id="resSec" align="center">응답 초</th>
+                        <th id="result" align="left">내용</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <div
+              class="modal fade"
+              id="excelModal"
+              tabindex="-1"
+              aria-labelledby="excelModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-closed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                      onclick="excelModalClosed();"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="excelModalLabel">
+                      엑셀 다운로드
+                    </h1>
+
+                    <section class="row">
+                      <p class="excel-text">
+                        ‘외부 API 로그’를 엑셀파일로 저장합니다.<br />다운로드
+                        사유를 선택하세요.
+                      </p>
+                      <div class="excel-select">
+                        <select
+                          class="uiscroll"
+                          aria-label="엑셀 다운로드 선택"
+                          id="excelDown"
+                          name="excelDown"
+                        >
+                          <option value="">
+                            다운로드 사유를 선택해 주세요
+                          </option>
+                          <option
+                            th:each="arraysts : ${excelDown}"
+                            th:value="${arraysts.codeName}"
+                          >
+                            <th:block th:text="${arraysts.codeName}"></th:block>
+                          </option>
+                        </select>
+                      </div>
+                      <ul class="list-bullet">
+                        <li>다운로드된 파일은 3개월 이내 폐기되어야 합니다.</li>
+                        <li>
+                          xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로
+                          저장하여 보안사항 준수 바랍니다.
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button
+                        type="button"
+                        class="btn btn-dark"
+                        onclick="fnExcel();"
+                        id="excelButton"
+                        disabled
+                      >
+                        다운로드
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script th:inline="javascript"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

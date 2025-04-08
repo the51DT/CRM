@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>상담 관리</h2>
+
+            <div class="tabs">
+              <ul class="nav nav-underline">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/web/codeMgmt/codeMgmt.html"
+                    >고객 특이 사항 관리</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/web/vocLabMgmt/vocLabMgmt.html"
+                    >VOC LAB 제외 처리</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <section class="row">
+              <div class="form-box">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 140px" />
+                    <col />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th>조회 구분</th>
+                      <td>
+                        <div class="inline-flex">
+                          <div class="col-auto">
+                            <select
+                              id="type"
+                              class="uiscroll w200"
+                              aria-label="조회 구분 선택"
+                            >
+                              <option value="codeName">특이사항</option>
+                              <option value="code">코드</option>
+                            </select>
+                          </div>
+                          <div class="col-auto">
+                            <div class="input-form w400">
+                              <div class="inner">
+                                <input
+                                  id="typeInput"
+                                  type="text"
+                                  placeholder="조회 구분을 입력해 주세요."
+                                  value=""
+                                />
+                              </div>
+                              <div class="error">
+                                조회 구분을 입력해 주세요.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>등록자</th>
+                      <td>
+                        <div class="input-form w200">
+                          <div class="inner">
+                            <input
+                              id="createId"
+                              type="text"
+                              placeholder="등록자를 입력해 주세요"
+                              value=""
+                            />
+                          </div>
+                          <div class="error">등록자를 입력해 주세요.</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>사용 여부</th>
+                      <td colspan="3">
+                        <span class="custom-radio">
+                          <input
+                            id="all"
+                            name="searchUseYn"
+                            type="radio"
+                            value="all"
+                            checked
+                          />
+                          <label for="all" class="button"> 전체 </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="useY"
+                            name="searchUseYn"
+                            type="radio"
+                            value="Y"
+                          />
+                          <label for="useY" class="button"> Y </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="useN"
+                            name="searchUseYn"
+                            type="radio"
+                            value="N"
+                          />
+                          <label for="useN" class="button"> N </label>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="flex">
+                  <button
+                    type="button"
+                    id="searchBtn"
+                    class="btn btn-ico btn-inquiry"
+                  >
+                    조회
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <table class="datatable1 row-border hover">
+                <thead>
+                  <tr>
+                    <th>번호</th>
+                    <th>코드</th>
+                    <th>특이 사항</th>
+                    <th>설명</th>
+                    <th>사용 여부</th>
+                    <th>등록 일시</th>
+                    <th>등록자</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </section>
+            <div
+              class="modal fade"
+              id="insertModal"
+              tabindex="-1"
+              aria-labelledby="insertModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-closed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="insertModalTitleLabel">
+                      고객 특이 사항 등록
+                    </h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>특이 사항</th>
+                            <td>
+                              <div class="d-flex gap-08">
+                                <div class="col-auto">
+                                  <!-- error시 error 클래스 추가, 등록 가능시 success 클래스 추가 -->
+                                  <div
+                                    id="checkCodeDuplicateMsg"
+                                    class="input-form w200"
+                                  >
+                                    <div class="inner">
+                                      <input
+                                        id="insertCodeName"
+                                        type="text"
+                                        placeholder="최대 12자 등록"
+                                        value=""
+                                        maxlength="12"
+                                      />
+                                    </div>
+                                    <div class="error">
+                                      이미 등록된 코드명입니다
+                                    </div>
+                                    <div class="success">
+                                      등록 가능한 특이사항입니다
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-auto">
+                                  <button
+                                    id="checkCodeDuplicateBtn"
+                                    type="button"
+                                    class="btn btn-dark"
+                                  >
+                                    중복 검사
+                                  </button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>설명</th>
+                            <td>
+                              <!-- error시 error 클래스 추가 -->
+                              <div id="insertDescDiv" class="input-form">
+                                <textarea
+                                  id="insertDesc"
+                                  placeholder="설명을 입력해 주세요"
+                                  maxlength="500"
+                                ></textarea>
+                                <div class="counter">
+                                  <span id="insertDescCnt" class="current"
+                                    >0</span
+                                  >/
+                                  <span class="total">500</span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>사용 여부</th>
+                            <td>
+                              <span class="custom-radio">
+                                <input
+                                  id="insertModalUseY"
+                                  name="insertUseYn"
+                                  type="radio"
+                                  value="Y"
+                                  checked
+                                />
+                                <label for="insertModalUseY" class="button">
+                                  Y
+                                </label>
+                              </span>
+                              <span class="custom-radio">
+                                <input
+                                  id="insertModalUseN"
+                                  name="insertUseYn"
+                                  type="radio"
+                                  value="N"
+                                />
+                                <label for="insertModalUseN" class="button">
+                                  N
+                                </label>
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button
+                        id="insertModalBtn"
+                        type="button"
+                        class="btn btn-dark w100p"
+                      >
+                        확인
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="modal fade"
+              id="updateModal"
+              tabindex="-1"
+              aria-labelledby="updateModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-closed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="updateModalTitleLabel">
+                      고객 특이 사항 수정
+                    </h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>코드</th>
+                            <td id="detailCode"></td>
+                          </tr>
+                          <tr>
+                            <th>특이 사항</th>
+                            <td id="detailCodeName"></td>
+                          </tr>
+                          <tr>
+                            <th>설명</th>
+                            <td>
+                              <!-- error시 error 클래스 추가 -->
+                              <div id="updateDescDiv" class="input-form">
+                                <textarea
+                                  id="detailDesc"
+                                  placeholder="설명을 입력해 주세요"
+                                  maxlength="500"
+                                ></textarea>
+                                <div class="counter">
+                                  <span id="detailDescCnt" class="current"
+                                    >0</span
+                                  >/
+                                  <span class="total">500</span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>사용 여부</th>
+                            <td>
+                              <span class="custom-radio">
+                                <input
+                                  id="updateModalUseY"
+                                  name="updateUseYn"
+                                  type="radio"
+                                  value="Y"
+                                />
+                                <label for="updateModalUseY" class="button">
+                                  Y
+                                </label>
+                              </span>
+                              <span class="custom-radio">
+                                <input
+                                  id="updateModalUseN"
+                                  name="updateUseYn"
+                                  type="radio"
+                                  value="N"
+                                />
+                                <label for="updateModalUseN" class="button">
+                                  N
+                                </label>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>등록자</th>
+                            <td id="detailCreateName"></td>
+                          </tr>
+                          <tr>
+                            <th>등록 일시</th>
+                            <td id="detailCreateDt"></td>
+                          </tr>
+                          <tr>
+                            <th>수정자</th>
+                            <td id="detailUpdateName"></td>
+                          </tr>
+                          <tr>
+                            <th>수정 일시</th>
+                            <td id="detailUpdateDt"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button
+                        id="updateModalBtn"
+                        type="button"
+                        class="btn btn-dark w100p"
+                      >
+                        확인
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>Care 상세 현황</h2>
+
+            <section class="row">
+              <div class="form-box">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 140px" />
+                    <col style="width: 30%" />
+                    <col style="width: 140px" />
+                    <col />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th>가입 번호</th>
+                      <td colspan="3">
+                        <div class="input-form" style="width: 448px">
+                          <div class="inner">
+                            <input
+                              type="text"
+                              name="entrNo"
+                              placeholder="가입 번호를 입력해 주세요"
+                              value=""
+                              onkeydown="handleKeyDown(event)"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>대리점 구분</th>
+                      <td colspan="3">
+                        <div class="relative">
+                          <div class="inline-flex">
+                            <div class="col-auto">
+                              <button
+                                type="button"
+                                class="btn btn-ico btn-div lg"
+                                aria-expanded="false"
+                              >
+                                대분류
+                              </button>
+                            </div>
+                            <div class="col-auto">
+                              <button
+                                type="button"
+                                class="btn btn-ico btn-div md"
+                                aria-expanded="false"
+                              >
+                                중분류
+                              </button>
+                            </div>
+                            <div class="col-auto">
+                              <button
+                                type="button"
+                                class="btn btn-ico btn-div sm"
+                                aria-expanded="false"
+                              >
+                                소분류
+                              </button>
+                            </div>
+                          </div>
+
+                          <!-- 대리점 구분 레이어 -->
+                          <div
+                            id="collapseDiv"
+                            class="collapse layer-datepicker"
+                          >
+                            <div class="inner">
+                              <header>
+                                <button class="close">닫기</button>
+                              </header>
+                              <div class="body">
+                                <p class="sub">대리점을 선택해 주세요.</p>
+                                <div class="d-flex pt-4 gap-4" id="bizbrNm">
+                                  <div class="col">
+                                    <div class="cord-box lg uiscroll">
+                                      <p class="sub-title">대분류</p>
+                                      <ul class="list">
+                                        <li>
+                                          <button
+                                            type="button"
+                                            onclick="selectDivision(this, 'lg')"
+                                            data-value="ALL"
+                                          >
+                                            대분류 전체
+                                          </button>
+                                        </li>
+                                        <li
+                                          th:each="division : ${bizbrList}"
+                                          th:if="${division.bizbrLvl == '5'}"
+                                        >
+                                          <button
+                                            type="button"
+                                            th:text="${division.bizbrNm}"
+                                            th:data-value="${division.bizbrCd}"
+                                            th:onclick="'selectDivision(this, \'lg\')'"
+                                          ></button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="cord-box md uiscroll">
+                                      <p class="sub-title">중분류</p>
+                                      <ul class="list"></ul>
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="cord-box sm uiscroll">
+                                      <p class="sub-title">소분류</p>
+                                      <ul class="list"></ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <footer>
+                                <button
+                                  type="button"
+                                  class="btn btn-dark"
+                                  onclick="confirmSelection()"
+                                >
+                                  확인
+                                </button>
+                              </footer>
+                            </div>
+                          </div>
+                          <!-- // 대리점 구분 레이어 -->
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>조회 기간</th>
+                      <td colspan="3">
+                        <div class="datepicker-wrap">
+                          <button
+                            type="button"
+                            class="btn btn-datepicker"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseDate"
+                            aria-expanded="false"
+                            aria-controls="collapseDate"
+                          >
+                            <span class="start">2024-06-24</span>~<span
+                              class="end"
+                              >2025-06-23</span
+                            >
+                          </button>
+
+                          <!-- 달력 레이어 -->
+                          <div
+                            id="collapseDate"
+                            class="collapse layer-datepicker"
+                          >
+                            <div class="inner">
+                              <header>
+                                <button class="close">닫기</button>
+                              </header>
+                              <div class="body">
+                                <p class="sub">기간을 선택해 주세요</p>
+                                <div class="date-select">
+                                  <span class="custom-radio" data-range="7">
+                                    <input
+                                      id="_uid_100"
+                                      name="_uid_1"
+                                      type="radio"
+                                    />
+                                    <label for="_uid_100" class="button">
+                                      최근 1주일
+                                    </label>
+                                  </span>
+                                  <span class="custom-radio" data-range="30">
+                                    <input
+                                      id="_uid_101"
+                                      name="_uid_1"
+                                      type="radio"
+                                    />
+                                    <label for="_uid_101" class="button">
+                                      최근 30일
+                                    </label>
+                                  </span>
+                                  <span class="custom-radio" data-range="90">
+                                    <input
+                                      id="_uid_102"
+                                      name="_uid_1"
+                                      type="radio"
+                                    />
+                                    <label for="_uid_102" class="button">
+                                      최근 90일
+                                    </label>
+                                  </span>
+                                  <span class="custom-radio" data-range="365">
+                                    <input
+                                      id="_uid_103"
+                                      name="_uid_1"
+                                      type="radio"
+                                    />
+                                    <label for="_uid_103" class="button">
+                                      최근 1년
+                                    </label>
+                                  </span>
+                                  <span class="custom-radio">
+                                    <input
+                                      id="_uid_104"
+                                      name="_uid_1"
+                                      type="radio"
+                                    />
+                                    <label for="_uid_104" class="button">
+                                      직접 입력
+                                    </label>
+                                  </span>
+                                </div>
+                                <div class="date-box">
+                                  <div class="start-date">
+                                    <p class="title">
+                                      시작일 <em>2024-06-24</em>
+                                    </p>
+                                    <div
+                                      class="datetimepicker"
+                                      id="searchStartPicker"
+                                    ></div>
+                                  </div>
+                                  <div class="end-date">
+                                    <p class="title">
+                                      종료일 <em>2025-06-23</em>
+                                    </p>
+                                    <div
+                                      class="datetimepicker2"
+                                      id="searchEndPicker"
+                                    ></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <footer>
+                                <button
+                                  type="button"
+                                  class="btn btn-dark picker"
+                                >
+                                  확인
+                                </button>
+                              </footer>
+                            </div>
+                          </div>
+                          <!-- // 달력 레이어 -->
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>발생 지표</th>
+                      <td colspan="3" class="IndicatorNm">
+                        <select
+                          class="w300 uiscroll"
+                          aria-label="발생 지표 열기"
+                        >
+                          <option data-value="">분류선택</option>
+                          <option
+                            th:value="${Indicator.indicator_code}"
+                            th:each="Indicator : ${IndicatorNm}"
+                            th:text="${Indicator.indicatorcodename}"
+                          ></option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>결과 등록 여부</th>
+                      <td id="resultCheck">
+                        <span class="custom-radio">
+                          <input
+                            id="resultAll"
+                            name="resultYn"
+                            type="radio"
+                            value=""
+                            checked
+                          />
+                          <label for="resultAll" class="button"> 전체 </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="resultY"
+                            name="resultYn"
+                            type="radio"
+                            value="Y"
+                          />
+                          <label for="resultY" class="button"> Y </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="resultN"
+                            name="resultYn"
+                            type="radio"
+                            value="N"
+                          />
+                          <label for="resultN" class="button"> N </label>
+                        </span>
+                      </td>
+                      <th>구간 품질 측정 여부</th>
+                      <td id="qualityCheckYn">
+                        <span class="custom-radio">
+                          <input
+                            id="qualityCheckAll"
+                            name="qualityCheck"
+                            type="radio"
+                            value=""
+                            checked
+                          />
+                          <label for="qualityCheckAll" class="button">
+                            전체
+                          </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="qualityCheckY"
+                            name="qualityCheck"
+                            type="radio"
+                            value="Y"
+                          />
+                          <label for="qualityCheckY" class="button"> Y </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="qualityCheckN"
+                            name="qualityCheck"
+                            type="radio"
+                            value="N"
+                          />
+                          <label for="qualityCheckN" class="button"> N </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>중복 발생 여부</th>
+                      <td colspan="3" id="duplicationCheck">
+                        <span class="custom-radio">
+                          <input
+                            id="duplicationAll"
+                            name="duplicationYn"
+                            type="radio"
+                            value=""
+                            checked
+                          />
+                          <label for="duplicationAll" class="button">
+                            전체
+                          </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="duplicationY"
+                            name="duplicationYn"
+                            type="radio"
+                            value="Y"
+                          />
+                          <label for="duplicationY" class="button"> Y </label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="duplicationN"
+                            name="duplicationYn"
+                            type="radio"
+                            value="N"
+                          />
+                          <label for="duplicationN" class="button"> N </label>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="flex">
+                  <button type="button" class="btn btn-ico btn-reset">
+                    초기화
+                  </button>
+                  <button type="button" class="btn btn-ico btn-search">
+                    검색
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <input
+                id="monthExcelName"
+                type="hidden"
+                value="HSCRM_현황통계_CARE상세현황"
+              />
+              <table class="datatable1 nowrap row-border hover">
+                <thead>
+                  <tr>
+                    <th>기준일</th>
+                    <th>가입 번호</th>
+                    <th>대리점 코드</th>
+                    <th>대리점명</th>
+                    <th>서비스</th>
+                    <th>발생 지표</th>
+                    <th>고객 유형</th>
+                    <th>Care 활동</th>
+                    <th>중복 발생</th>
+                    <th>결과 등록</th>
+                    <th>기한 초과</th>
+                    <th>등록 기한</th>
+                    <th>방문 여부</th>
+                    <th>방문 일자</th>
+                    <th>방문 결과</th>
+                    <th>구간 품질 측정</th>
+                    <th>미 방문 사유</th>
+                    <th>Care 상세 사항</th>
+                    <th>미처리 사유</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <table id="excelTable" style="display: none">
+                <thead>
+                  <tr>
+                    <th id="taskIsueDt" align="center">기준일</th>
+                    <th id="entrNo" align="center">가입 번호</th>
+                    <th id="dlrCd" align="center">대리점 코드</th>
+                    <th id="dlrNm" align="center">대리점명</th>
+                    <th id="svcNm" align="center">서비스</th>
+                    <th id="indicatorCodeName" align="center">발생 지표</th>
+                    <th id="custCodeName" align="center">고객 유형</th>
+                    <th id="careCodeName" align="center">Care 활동</th>
+                    <th id="duplicationYn" align="center">중복 발생</th>
+                    <th id="resultYn" align="center">결과 등록</th>
+                    <th id="overDue" align="center">기한 초과</th>
+                    <th id="endDt" align="center">등록 기한</th>
+                    <th id="visitYn" align="center">방문 여부</th>
+                    <th id="visitDt" align="center">방문 일자</th>
+                    <th id="visitResult" align="center">방문 결과</th>
+                    <th id="qualityCheck" align="center">구간 품질 측정</th>
+                    <th id="nvisitReason" align="center">미 방문 사유</th>
+                    <th id="careDetails" align="center">Care 상세 사항</th>
+                    <th id="unprocessedReason" align="center">미처리 사유</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </section>
+            <!-- 엑셀 다운로드 사유 모달 -->
+            <div
+              class="modal fade"
+              id="excelModal"
+              tabindex="-1"
+              aria-labelledby="excelModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-closed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                      onclick="excelModalClosed();"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="excelModalLabel">
+                      엑셀 다운로드
+                    </h1>
+
+                    <section class="row">
+                      <p class="excel-text">
+                        ‘CARE 상세 현황’을 엑셀파일로 저장합니다.<br />다운로드
+                        사유를 선택하세요.
+                      </p>
+                      <div class="excel-select">
+                        <select
+                          class="uiscroll"
+                          aria-label="엑셀 다운로드 선택"
+                          id="excelDown"
+                          name="excelDown"
+                        >
+                          <option value="">
+                            다운로드 사유를 선택해 주세요
+                          </option>
+                          <option
+                            th:each="arraysts : ${excelDown}"
+                            th:value="${arraysts.codeName}"
+                          >
+                            <th:block th:text="${arraysts.codeName}"></th:block>
+                          </option>
+                        </select>
+                      </div>
+                      <ul class="list-bullet">
+                        <li>다운로드된 파일은 3개월 이내 폐기되어야 합니다.</li>
+                        <li>
+                          xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로
+                          저장하여 보안사항 준수 바랍니다.
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button
+                        type="button"
+                        class="btn btn-dark"
+                        onclick="fnExcel();"
+                        id="excelButton"
+                        disabled
+                      >
+                        다운로드
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 엑셀 다운로드 사유 모달 -->
+          </div>
+          <script></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

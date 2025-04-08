@@ -1,0 +1,393 @@
+/*
+** 가이드용
+*/
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+body {
+  background: #eee;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  color: var(--black);
+  background: var(--white);
+}
+#container {
+  margin-top: 0;
+  height: 100%;
+}
+
+.side-swiper {
+  width: 100%;
+  height: 100%;
+}
+.side-swiper .swiper-wrapper {
+  height: inherit;
+  min-height: calc(100vh - 4rem);
+}
+.side-swiper .swiper-slide {
+  text-align: center;
+  height: auto;
+}
+.side-swiper .swiper-slide .theme-text {
+  transition: 0.3s;
+  color: var(--black);
+}
+.side-swiper .menu {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 100px;
+  width: 70%;
+  max-width: 320px;
+  height: 100%;
+}
+.side-swiper .swiper-slide.swiper-slide-active + .content {
+  width: calc(100% - 32rem);
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+.side-swiper .swiper-header {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--black);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: #f5f5f5;
+}
+.side-swiper .menu-button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.side-swiper .menu-button .bar:nth-of-type(1) {
+  margin-top: 0;
+}
+.side-swiper .menu-button .bar:nth-of-type(3) {
+  margin-bottom: 0px;
+}
+.side-swiper .bar {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 5px auto;
+  background: var(--black);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.side-swiper .menu-button:hover .bar:nth-of-type(1) {
+  transform: translateY(1.5px) rotate(-4.5deg);
+}
+.side-swiper .menu-button:hover .bar:nth-of-type(2) {
+  opacity: 0.9;
+}
+.side-swiper .menu-button:hover .bar:nth-of-type(3) {
+  transform: translateY(-1.5px) rotate(4.5deg);
+}
+.side-swiper .cross .bar:nth-of-type(1) {
+  transform: translateY(7px) rotate(-45deg);
+}
+.side-swiper .cross .bar:nth-of-type(2) {
+  opacity: 0;
+}
+.side-swiper .cross .bar:nth-of-type(3) {
+  transform: translateY(-7px) rotate(45deg);
+}
+.side-swiper .cross:hover .bar:nth-of-type(1) {
+  transform: translateY(7px) rotate(-40.5deg);
+}
+.side-swiper .cross:hover .bar:nth-of-type(2) {
+  opacity: 0.1;
+}
+.side-swiper .cross:hover .bar:nth-of-type(3) {
+  transform: translateY(-7px) rotate(40.5deg);
+}
+
+.side-swiper .slidebar {
+  display: flex;
+  align-items: flex-start;
+  justify-items: flex-start;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+}
+.side-swiper .v-list {
+  width: 100%;
+}
+.side-swiper .v-list-item {
+  width: 100%;
+  text-decoration: none;
+  color: var(--black);
+  margin-bottom: 2rem;
+}
+.side-swiper .v-list-item .route {
+  width: 100%;
+  font-size: 1.8rem;
+  line-height: 21px;
+  padding: 14px 18px;
+  font-weight: 600;
+  color: var(--black);
+  text-align: left;
+  transition: 0.3s;
+}
+.side-swiper .v-list-item .route:hover,
+.side-swiper .v-list-item .route.active {
+  color: var(--white);
+  background: #017efa;
+}
+.side-swiper .slidebar .v-list-item.logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 22px 20px 30px 20px;
+}
+.side-swiper .slidebar .v-list-item .v-list-item__avatar {
+  width: 40px;
+  height: 40px;
+  background: #017efa;
+  border-radius: 8px;
+  margin: 0 14px 0 0;
+}
+.side-swiper .slidebar .v-list-item .v-list-item__title {
+  font-weight: 900;
+  font-size: 2.1rem;
+  margin: 0;
+  line-height: 28px;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+.side-swiper .slidebar .v-list-item .v-list-item__subtitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: left;
+}
+.side-swiper .swiper-content {
+  /* display: flex;
+  align-items: flex-start;
+  justify-items: flex-start; */
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.side-swiper .swiper-header .theme-switch {
+  position: absolute;
+  right: 0;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 1rem;
+  color: var(--black);
+}
+.side-swiper .swiper-header .theme-switch .theme-text {
+  font-size: 1.4rem;
+}
+.toggle_switch {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 20px;
+}
+.toggle_switch input[type="checkbox"] {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  font-size: initial;
+  clip: rect(0 0 0 0);
+}
+.toggle_switch .slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.toggle_switch input[type="checkbox"]:checked + .slider {
+  background-color: #007bff;
+}
+.toggle_switch .slider::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+.toggle_switch input[type="checkbox"]:checked + .slider::before {
+  transform: translateX(30px);
+}
+
+.section-guide .content:not(:first-child) {
+  margin: 4rem 0 0 0;
+}
+.section-guide h3 {
+  text-align: left;
+  margin: 0 0 1rem 0;
+}
+.section-guide h4 {
+  margin: 2rem 0 1rem;
+}
+.section-guide .ui-widget-header {
+  background: cadetblue;
+}
+
+.v-data-table {
+  border-radius: 4px;
+  line-height: 1.5;
+  max-width: 100%;
+  background: var(--white);
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+.v-data-table__wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.v-data-table > .v-data-table__wrapper > table {
+  width: 100%;
+  border-spacing: 0;
+}
+.v-data-table table thead th {
+  background: #eee;
+  border-bottom: 1px solid #eee;
+  user-select: none;
+  height: 48px;
+  text-align: left;
+  padding: 0 16px;
+}
+.v-data-table table tbody th {
+  user-select: none;
+  height: 48px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  padding: 0 16px;
+}
+.v-data-table table tbody td {
+  padding: 0 16px;
+  transition: height 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  height: 48px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+.v-data-table table tbody td[rowspan] {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.v-data-table table tbody tr:first-child td[rowspan] {
+  border-left: none;
+}
+.v-data-table table tbody tr:last-child td[rowspan] {
+  border-right: none;
+}
+.section-guide {
+  text-align: left;
+}
+.section-guide .ui-progressbar {
+  position: relative;
+  margin-top: 1rem;
+  border-color: cadetblue;
+}
+.section-guide .ui-progressbar .ui-progressbar-value {
+  margin-top: 0;
+}
+.section-guide .progress-label {
+  position: absolute;
+  left: 50%;
+  top: 4px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.project-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-top: 1rem;
+}
+.project-table thead tr th {
+  position: sticky;
+  top: 0;
+  background: rgba(25, 118, 210, 0.8);
+  backdrop-filter: blur(5px);
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.project-table thead tr th + th {
+  border-left: 1px solid #eee;
+}
+.project-table tbody.major ~ tbody.major {
+  border-top: 2px solid #666;
+}
+.project-table tbody tr td {
+  height: 43px;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.project-table tbody tr td {
+  border-left: 1px solid #eee;
+}
+.project-table tbody tr:first-child td:first-child {
+  border-left: none;
+}
+.project-table tbody tr td a:hover {
+  text-decoration: underline;
+}
+.project-table tbody tr td .modify {
+  color: #ff0080;
+}
+
+/*
+** dark mode
+*/
+body.dark-mode {
+  color: var(--white);
+  background: var(--black);
+}
+body.dark-mode #container {
+  background: var(--black);
+}
+body.dark-mode .side-swiper .slidebar {
+  background: #3d3d3d;
+}
+body.dark-mode .btn-dark-mode {
+  color: var(--white);
+}
+body.dark-mode .side-swiper .bar {
+  background: var(--black);
+}
+body.dark-mode .side-swiper .swiper-slide .theme-text {
+  color: var(--black);
+}
+body.dark-mode .side-swiper .menu {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+body.dark-mode .side-swiper .v-list-item,
+body.dark-mode .side-swiper .v-list-item > button {
+  color: var(--white);
+}
+body.dark-mode .v-data-table {
+  color: var(--black);
+}

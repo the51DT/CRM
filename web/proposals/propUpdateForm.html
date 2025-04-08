@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>건의사항 수정</h2>
+            <section class="row">
+              <form id="propForm">
+                <div class="form-box">
+                  <table class="form-table">
+                    <colgroup>
+                      <col style="width: 140px" />
+                      <col style="width: 30%" />
+                      <col style="width: 140px" />
+                      <col />
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <input
+                          type="hidden"
+                          id="propId"
+                          name="propId"
+                          th:value="${detailMap['prop'].propId}"
+                        />
+                        <th>제목</th>
+                        <td colspan="3">
+                          <div class="input-form" style="width: 468px">
+                            <div class="inner">
+                              <input
+                                type="text"
+                                id="propTitle"
+                                name="propTitle"
+                                placeholder="제목을 입력해주세요"
+                                th:value="${detailMap['prop'].propTitle}"
+                              />
+                            </div>
+                            <div class="error">제목을 입력해주세요.</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>공개 여부</th>
+                        <td colspan="3">
+                          <span class="custom-radio">
+                            <input
+                              id="privateY"
+                              name="privateYn"
+                              type="radio"
+                              value="Y"
+                              th:checked="${detailMap['prop'].privateYn == 'Y'}"
+                            />
+                            <label for="privateY" class="button">
+                              비공개
+                            </label>
+                          </span>
+                          <span class="custom-radio">
+                            <input
+                              id="privateN"
+                              name="privateYn"
+                              type="radio"
+                              value="N"
+                              th:checked="${detailMap['prop'].privateYn == 'N'}"
+                            />
+                            <label for="privateN" class="button"> 공개 </label>
+                          </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="4">
+                          <div class="ckeditor">
+                            <div id="toolbar-container"></div>
+                            <div
+                              id="editor"
+                              class="ck-editor__editable-container"
+                            >
+                              <div class="ck-editor__editable"></div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>첨부 파일 <em class="sub-tip">(최대 50Mb)</em></th>
+                        <td colspan="3">
+                          <div class="inline-flex file-upload-container">
+                            <div class="btn-group">
+                              <span class="file-upload">
+                                <input
+                                  type="file"
+                                  id="uploadFile"
+                                  hidden
+                                  multiple="multiple"
+                                />
+                                <label
+                                  for="uploadFile"
+                                  class="btn btn-ico btn-add-file"
+                                  >첨부 파일</label
+                                >
+                              </span>
+                            </div>
+
+                            <ul class="file-list"></ul>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </section>
+            <div class="btn-page-group">
+              <button
+                type="button"
+                class="btn btn-outline-dark btn-page"
+                onclick="location.href='/Proposals/page'"
+              >
+                목록
+              </button>
+              <button
+                id="updateBtn"
+                type="button"
+                class="btn btn-dark btn-page"
+              >
+                수정
+              </button>
+            </div>
+          </div>
+          <script src="/assets/js/plugins/ckeditor.js"></script>
+          <script th:inline="javascript"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

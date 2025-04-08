@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>권한 관리</h2>
+
+            <div class="tabs">
+              <ul class="nav nav-underline">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/web/userPermsMgmt/userPermsMgmt.html"
+                    >사용자 권한 관리</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    href="/web/pageRoleMgmt/pageRoleMgmt.html"
+                    >메뉴별 권한 관리</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <section class="row">
+              <div class="card-box pink">
+                <ul class="list-bullet">
+                  <li>
+                    공지사항/건의사항의 게시물에 대한 권한 범위는 작성자 본인의
+                    게시물로 한정합니다.
+                  </li>
+                  <li>
+                    단, 마스터의 경우 모든 게시물에 대한 편집 권한을 갖습니다.
+                  </li>
+                  <li>
+                    ‘가입 번호 노출’ 체크 선택 시, 마스킹 처리 없이 전체 가입
+                    번호가 노출됩니다.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mt-6">
+                <table class="datatable1 row-border hover static-data">
+                  <thead>
+                    <tr>
+                      <th rowspan="2">메뉴</th>
+                      <th rowspan="2">화면</th>
+                      <th rowspan="2">권한 범위</th>
+                      <th colspan="5" class="border-b-none">권한명</th>
+                    </tr>
+                    <tr>
+                      <th class="even-header">마스터</th>
+                      <th class="even-header">전체 관리자</th>
+                      <th class="even-header">현장 관리자</th>
+                      <th class="even-header">사용자</th>
+                      <th class="even-header">권한 없음</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="border-b-none">오늘의 할일</td>
+                      <td>오늘의 할일</td>
+                      <td></td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="ToDoList_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['ToDoList'].readYn == 'Y'}"
+                          />
+                          <label for="ToDoList_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['ToDoList'].readYn == 'Y'}"
+                          />
+                          <label for="ToDoList_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['ToDoList'].readYn == 'Y'}"
+                          />
+                          <label for="ToDoList_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="ToDoList_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="ToDoList_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">오늘의 할일</td>
+                      <td class="border-b-none">가입 번호 노출(마스킹 해제)</td>
+                      <td>조회</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_Master_makeviewYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="ToDoList_Master_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_AllManage_makeviewYn"
+                            type="checkbox"
+                            th:checked="${AllManage['ToDoList'].makeviewYn == 'Y'}"
+                          />
+                          <label for="ToDoList_AllManage_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_FieldManage_makeviewYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['ToDoList'].makeviewYn == 'Y'}"
+                          />
+                          <label for="ToDoList_FieldManage_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_User_makeviewYn"
+                            type="checkbox"
+                            th:checked="${User['ToDoList'].makeviewYn == 'Y'}"
+                          />
+                          <label for="ToDoList_User_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="ToDoList_Anonymous_makeviewYn"
+                            type="checkbox"
+                          />
+                          <label for="ToDoList_Anonymous_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">오늘의 할일</td>
+                      <td class="row-merge">가입 번호 노출(마스킹 해제)</td>
+                      <td>파일 다운로드</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_Master_makedownYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="ToDoList_Master_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_AllManage_makedownYn"
+                            type="checkbox"
+                            th:checked="${AllManage['ToDoList'].makedownYn == 'Y'}"
+                          />
+                          <label for="ToDoList_AllManage_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_FieldManage_makedownYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['ToDoList'].makedownYn == 'Y'}"
+                          />
+                          <label for="ToDoList_FieldManage_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="ToDoList_User_makedownYn"
+                            type="checkbox"
+                            th:checked="${User['ToDoList'].makedownYn == 'Y'}"
+                          />
+                          <label for="ToDoList_User_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="ToDoList_Anonymous_makedownYn"
+                            type="checkbox"
+                          />
+                          <label for="ToDoList_Anonymous_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="border-b-none">현황통계</td>
+                      <td>고객 유형 현황</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustTypeStats_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="CustTypeStats_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustTypeStats_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['CustTypeStats'].readYn == 'Y'}"
+                          />
+                          <label for="CustTypeStats_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustTypeStats_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['CustTypeStats'].readYn == 'Y'}"
+                          />
+                          <label for="CustTypeStats_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustTypeStats_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['CustTypeStats'].readYn == 'Y'}"
+                          />
+                          <label for="CustTypeStats_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="CustTypeStats_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="CustTypeStats_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">현황 통계</td>
+                      <td>Care 상세 현황</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CareDtlStats_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="CareDtlStats_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CareDtlStats_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['CareDtlStats'].readYn == 'Y'}"
+                          />
+                          <label for="CareDtlStats_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CareDtlStats_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['CareDtlStats'].readYn == 'Y'}"
+                          />
+                          <label for="CareDtlStats_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CareDtlStats_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['CareDtlStats'].readYn == 'Y'}"
+                          />
+                          <label for="CareDtlStats_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="CareDtlStats_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="CareDtlStats_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">현황 통계</td>
+                      <td>미처리 현황</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="UnhndldStats_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="UnhndldStats_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="UnhndldStats_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['UnhndldStats'].readYn == 'Y'}"
+                          />
+                          <label for="UnhndldStats_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="UnhndldStats_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['UnhndldStats'].readYn == 'Y'}"
+                          />
+                          <label for="UnhndldStats_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="UnhndldStats_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['UnhndldStats'].readYn == 'Y'}"
+                          />
+                          <label for="UnhndldStats_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="UnhndldStats_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="UnhndldStats_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">현황 통계</td>
+                      <td class="border-b-none">가입 번호 노출(마스킹 해제)</td>
+                      <td>조회</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_Master_makeviewYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="StsStats_Master_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_AllManage_makeviewYn"
+                            type="checkbox"
+                            th:checked="${AllManage['CustTypeStats'].makeviewYn == 'Y'}"
+                          />
+                          <label for="StsStats_AllManage_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_FieldManage_makeviewYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['CustTypeStats'].makeviewYn == 'Y'}"
+                          />
+                          <label for="StsStats_FieldManage_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_User_makeviewYn"
+                            type="checkbox"
+                            th:checked="${User['CustTypeStats'].makeviewYn == 'Y'}"
+                          />
+                          <label for="StsStats_User_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="StsStats_Anonymous_makeviewYn"
+                            type="checkbox"
+                          />
+                          <label for="StsStats_Anonymous_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">현황 통계</td>
+                      <td class="row-merge">가입 번호 노출(마스킹 해제)</td>
+                      <td>파일 다운로드</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_Master_makedownYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="StsStats_Master_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_AllManage_makedownYn"
+                            type="checkbox"
+                            th:checked="${AllManage['CustTypeStats'].makedownYn == 'Y'}"
+                          />
+                          <label for="StsStats_AllManage_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_FieldManage_makedownYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['CustTypeStats'].makedownYn == 'Y'}"
+                          />
+                          <label for="StsStats_FieldManage_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="StsStats_User_makedownYn"
+                            type="checkbox"
+                            th:checked="${User['CustTypeStats'].makedownYn == 'Y'}"
+                          />
+                          <label for="StsStats_User_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="StsStats_Anonymous_makedownYn"
+                            type="checkbox"
+                          />
+                          <label for="StsStats_Anonymous_makedownYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="border-b-none">고객 관리</td>
+                      <td>고객 정보 관리</td>
+                      <td></td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="CustInfoMgmt_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['CustInfoMgmt'].readYn == 'Y'}"
+                          />
+                          <label for="CustInfoMgmt_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['CustInfoMgmt'].readYn == 'Y'}"
+                          />
+                          <label for="CustInfoMgmt_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['CustInfoMgmt'].readYn == 'Y'}"
+                          />
+                          <label for="CustInfoMgmt_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="CustInfoMgmt_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="CustInfoMgmt_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">고객 관리</td>
+                      <td>고객 장애 통계</td>
+                      <td>&nbsp;</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustFltStats_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="CustFltStats_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustFltStats_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['CustFltStats'].readYn == 'Y'}"
+                          />
+                          <label for="CustFltStats_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustFltStats_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['CustFltStats'].readYn == 'Y'}"
+                          />
+                          <label for="CustFltStats_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustFltStats_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['CustFltStats'].readYn == 'Y'}"
+                          />
+                          <label for="CustFltStats_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="CustFltStats_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="CustFltStats_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">고객 관리</td>
+                      <td class="border-b-none">가입 번호 노출(마스킹 해제)</td>
+                      <td>조회</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_Master_makeviewYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="CustInfoMgmt_Master_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_AllManage_makeviewYn"
+                            type="checkbox"
+                            th:checked="${AllManage['CustInfoMgmt'].makeviewYn == 'Y'}"
+                          />
+                          <label for="CustInfoMgmt_AllManage_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_FieldManage_makeviewYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['CustInfoMgmt'].makeviewYn == 'Y'}"
+                          />
+                          <label for="CustInfoMgmt_FieldManage_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="CustInfoMgmt_User_makeviewYn"
+                            type="checkbox"
+                            th:checked="${User['CustInfoMgmt'].makeviewYn == 'Y'}"
+                          />
+                          <label for="CustInfoMgmt_User_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="CustInfoMgmt_Anonymous_makeviewYn"
+                            type="checkbox"
+                          />
+                          <label for="CustInfoMgmt_Anonymous_makeviewYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="border-b-none">공지/건의사항</td>
+                      <td class="border-b-none">공지사항</td>
+                      <td>읽기</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="Announcements_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['Announcements'].readYn == 'Y'}"
+                          />
+                          <label for="Announcements_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['Announcements'].readYn == 'Y'}"
+                          />
+                          <label for="Announcements_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['Announcements'].readYn == 'Y'}"
+                          />
+                          <label for="Announcements_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="Announcements_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="Announcements_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">공지/건의사항</td>
+                      <td class="row-merge">공지사항</td>
+                      <td>쓰기</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_Master_writeYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="Announcements_Master_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_AllManage_writeYn"
+                            type="checkbox"
+                            th:checked="${AllManage['Announcements'].writeYn == 'Y'}"
+                          />
+                          <label for="Announcements_AllManage_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_FieldManage_writeYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['Announcements'].writeYn == 'Y'}"
+                          />
+                          <label for="Announcements_FieldManage_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_User_writeYn"
+                            type="checkbox"
+                            th:checked="${User['Announcements'].writeYn == 'Y'}"
+                          />
+                          <label for="Announcements_User_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="Announcements_Anonymous_writeYn"
+                            type="checkbox"
+                          />
+                          <label for="Announcements_Anonymous_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">공지/건의사항</td>
+                      <td class="row-merge">공지사항</td>
+                      <td>수정</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_Master_updateYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="Announcements_Master_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_AllManage_updateYn"
+                            type="checkbox"
+                            th:checked="${AllManage['Announcements'].updateYn == 'Y'}"
+                          />
+                          <label for="Announcements_AllManage_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_FieldManage_updateYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['Announcements'].updateYn == 'Y'}"
+                          />
+                          <label for="Announcements_FieldManage_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Announcements_User_updateYn"
+                            type="checkbox"
+                            th:checked="${User['Announcements'].updateYn == 'Y'}"
+                          />
+                          <label for="Announcements_User_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="Announcements_Anonymous_updateYn"
+                            type="checkbox"
+                          />
+                          <label for="Announcements_Anonymous_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">공지/건의사항</td>
+                      <td class="border-b-none">건의사항</td>
+                      <td>읽기</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_Master_readYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="Proposals_Master_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_AllManage_readYn"
+                            type="checkbox"
+                            th:checked="${AllManage['Proposals'].readYn == 'Y'}"
+                          />
+                          <label for="Proposals_AllManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_FieldManage_readYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['Proposals'].readYn == 'Y'}"
+                          />
+                          <label for="Proposals_FieldManage_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_User_readYn"
+                            type="checkbox"
+                            th:checked="${User['Proposals'].readYn == 'Y'}"
+                          />
+                          <label for="Proposals_User_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="Proposals_Anonymous_readYn"
+                            type="checkbox"
+                          />
+                          <label for="Proposals_Anonymous_readYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">공지/건의사항</td>
+                      <td class="row-merge">건의사항</td>
+                      <td>쓰기</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_Master_writeYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="Proposals_Master_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_AllManage_writeYn"
+                            type="checkbox"
+                            th:checked="${AllManage['Proposals'].writeYn == 'Y'}"
+                          />
+                          <label for="Proposals_AllManage_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_FieldManage_writeYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['Proposals'].writeYn == 'Y'}"
+                          />
+                          <label for="Proposals_FieldManage_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_User_writeYn"
+                            type="checkbox"
+                            th:checked="${User['Proposals'].writeYn == 'Y'}"
+                          />
+                          <label for="Proposals_User_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="Proposals_Anonymous_writeYn"
+                            type="checkbox"
+                          />
+                          <label for="Proposals_Anonymous_writeYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="row-merge">공지/건의사항</td>
+                      <td class="row-merge">건의사항</td>
+                      <td>수정</td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_Master_updateYn"
+                            type="checkbox"
+                            disabled
+                          />
+                          <label for="Proposals_Master_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_AllManage_updateYn"
+                            type="checkbox"
+                            th:checked="${AllManage['Proposals'].updateYn == 'Y'}"
+                          />
+                          <label for="Proposals_AllManage_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_FieldManage_updateYn"
+                            type="checkbox"
+                            th:checked="${FieldManage['Proposals'].updateYn == 'Y'}"
+                          />
+                          <label for="Proposals_FieldManage_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox">
+                          <input
+                            id="Proposals_User_updateYn"
+                            type="checkbox"
+                            th:checked="${User['Proposals'].updateYn == 'Y'}"
+                          />
+                          <label for="Proposals_User_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                      <td>
+                        <span class="custom-checkbox indeterminate">
+                          <input
+                            id="Proposals_Anonymous_updateYn"
+                            type="checkbox"
+                          />
+                          <label for="Proposals_Anonymous_updateYn">
+                            <i class="icon"></i>
+                          </label>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <div class="btn-page-group">
+              <button id="saveBtn" type="button" class="btn btn-dark btn-page">
+                저장
+              </button>
+            </div>
+          </div>
+          <script></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

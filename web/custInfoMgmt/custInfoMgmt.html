@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>고객 정보 관리</h2>
+            <section class="row">
+              <div class="search-box">
+                <div class="col-auto label">
+                  <label for="entrNo" class="col-form-label">가입 번호</label>
+                </div>
+                <div class="col-auto">
+                  <div class="input-form w400">
+                    <div class="inner">
+                      <input
+                        id="entrNo"
+                        name="entrNo"
+                        type="text"
+                        placeholder="가입 번호를 입력해 주세요."
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <button
+                    id="searchBtn"
+                    type="button"
+                    class="btn btn-dark btn-sm"
+                  >
+                    조회
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <table class="table-data">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>가입 번호</th>
+                    <td id="searchEntrNo"></td>
+                  </tr>
+                  <tr>
+                    <th>고객 잠재 불만</th>
+                    <td id="ltntDstfGrd"></td>
+                  </tr>
+                  <tr>
+                    <th>상담 요약</th>
+                    <td id="prghSmryCntn"></td>
+                  </tr>
+                  <tr>
+                    <th>특이사항</th>
+                    <td>
+                      <div class="py-3">
+                        <button
+                          type="button"
+                          id="addBtn"
+                          class="btn btn-ico btn-add"
+                        >
+                          추가
+                        </button>
+                      </div>
+                      <div id="hashGroup" class="hash-group"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <!-- Modal source -->
+            <div
+              class="modal fade"
+              id="hashModal"
+              tabindex="-1"
+              aria-labelledby="hashModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      id="closeModal"
+                      type="button"
+                      class="btn-closed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="hashModalLabel">
+                      특이사항 선택
+                    </h1>
+
+                    <section class="row">
+                      <p class="datatable-length">
+                        최대 5건까지 선택 가능합니다.
+                      </p>
+
+                      <table class="datatable1 row-border hover">
+                        <thead>
+                          <tr>
+                            <th>특이사항</th>
+                            <th>설명</th>
+                            <th>선택</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:each="codeDto : ${generalCodeList}">
+                            <td th:text="${'#' + codeDto.codeName}">#코드명</td>
+                            <td>
+                              <button
+                                class="custom-tooltip w100"
+                                th:attr="data-bs-custom-class='custom-tooltip', data-bs-toggle='tooltip', data-bs-title=${codeDto.description}"
+                              >
+                                <span th:text="${codeDto.description}"
+                                  >설명</span
+                                >
+                              </button>
+                            </td>
+                            <td>
+                              <span class="custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  th:id="${codeDto.code}"
+                                  th:checked="${codeDto.checkYn == 'Y'}"
+                                />
+                                <label th:for="${codeDto.code}">
+                                  <i class="icon"></i>
+                                </label>
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button
+                        id="generalTextBtn"
+                        type="button"
+                        class="btn btn-dark"
+                      >
+                        확인
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script th:inline="javascript"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

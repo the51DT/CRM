@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="-15 0 85 85" fill="none">
+  <!-- Graph background -->
+  <path d="M28 7C39.5981 7 49 16.402 49 28C49 39.5981 39.5981 49 28 49C16.402 49 7 39.5981 7 28C7 16.402 16.402 7 28 7Z" 
+        stroke="#737378" stroke-width="6" stroke-linecap="round"/>
+  <!-- Animated part of the graph -->
+  <path d="M28 7C39.5981 7 49 16.402 49 28" stroke="#C5C5CD" stroke-width="6" stroke-linecap="round">
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 28 28" to="360 28 28" dur="1s" repeatCount="indefinite"/>
+  </path>
+  <!-- Text element -->
+  <text x="28" y="80" font-size="16" font-weight="bold" fill="#4D4D4D" text-anchor="middle">잠시만요!</text>
+</svg>

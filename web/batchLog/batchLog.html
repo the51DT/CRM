@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>배치 로그</h2>
+
+            <div class="tabs">
+              <ul class="nav nav-underline">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/web/batchLog/batchLog.html"
+                    >배치 로그</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/web/manualBatch/manualBatch.html"
+                    >배치 수동 실행</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <section class="row">
+              <div class="form-box">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 140px" />
+                    <col style="width: 30%" />
+                    <col style="width: 72px" />
+                    <col />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th>배치실행날짜</th>
+                      <td id="dayMonth">
+                        <div class="inline-flex align-items-center">
+                          <div class="col-auto">
+                            <div class="date-picker-group">
+                              <select
+                                class="formatSelector w-auto uiscroll"
+                                style="display: none"
+                              >
+                                <option value="day">일</option>
+                              </select>
+                              <div
+                                class="start-date1 input-group datepicker w-auto"
+                                data-target-input="nearest"
+                              >
+                                <input
+                                  type="text"
+                                  class="form-control datetimepicker-input"
+                                  id="startDt"
+                                  name="startDt"
+                                  data-target=".start-date1"
+                                  placeholder="시작일"
+                                />
+                                <div
+                                  class="input-group-append"
+                                  data-target=".start-date1"
+                                  data-toggle="datetimepicker"
+                                >
+                                  <button class="input-group-text">
+                                    <img
+                                      src="/assets/images/common/icon_datepicker.png"
+                                      alt="달력 이미지"
+                                    />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>배치 명</th>
+                      <td colspan="3">
+                        <span class="custom-radio">
+                          <input
+                            id="ALL"
+                            name="jobName"
+                            type="radio"
+                            value=""
+                            checked
+                          />
+                          <label for="ALL" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="dailyCustmoerTypeJob"
+                            name="jobName"
+                            type="radio"
+                            value="dailyCustomerTypeJob"
+                          />
+                          <label for="dailyCustmoerTypeJob" class="button"
+                            >고객유형 집계</label
+                          >
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="dailyDupIndicatorJob"
+                            name="jobName"
+                            type="radio"
+                            value="dailyDupIndicatorJob"
+                          />
+                          <label for="dailyDupIndicatorJob" class="button"
+                            >지표중복 삭제</label
+                          >
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="dailyMetaDataJob"
+                            name="jobName"
+                            type="radio"
+                            value="dailyMetaDataJob"
+                          />
+                          <label for="dailyMetaDataJob" class="button"
+                            >배치메타테이블 삭제</label
+                          >
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="dailyOlderYearJob"
+                            name="jobName"
+                            type="radio"
+                            value="dailyOlderYearJob"
+                          />
+                          <label for="dailyOlderYearJob" class="button"
+                            >1년이상 데이터 삭제</label
+                          >
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="dailyPartitionMgmtJob"
+                            name="jobName"
+                            type="radio"
+                            value="dailyPartitionMgmtJob"
+                          />
+                          <label for="dailyPartitionMgmtJob" class="button"
+                            >파티션테이블 생성 및 삭제</label
+                          >
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="threeMonthDupIndicatorJob"
+                            name="jobName"
+                            type="radio"
+                            value="threeMonthDupIndicatorJob"
+                          />
+                          <label for="threeMonthDupIndicatorJob" class="button"
+                            >90일 이내 지표 중복</label
+                          >
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="dailyTerminatedCustomerJob"
+                            name="jobName"
+                            type="radio"
+                            value="dailyTerminatedCustomerJob"
+                          />
+                          <label for="dailyTerminatedCustomerJob" class="button"
+                            >해지고객 삭제</label
+                          >
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="flex">
+                  <button type="button" class="btn btn-ico btn-inquiry">
+                    조회
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <table class="datatable1 row-border hover">
+                <thead>
+                  <tr>
+                    <th>배치명</th>
+                    <th>배치JOB실행시간</th>
+                    <!--<th>배치JOB종료시간</th>-->
+                    <th>JOB상태</th>
+                    <th>배치상세명</th>
+                    <th>Step실행시간</th>
+                    <!--<th>Step종료시간</th>-->
+                    <th>Step상태</th>
+                    <th>메시지</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 데이터가 동적으로 추가될 부분 -->
+                </tbody>
+              </table>
+            </section>
+          </div>
+          <script></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

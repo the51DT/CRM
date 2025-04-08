@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>배치 수동 실행</h2>
+
+            <div class="tabs">
+              <ul class="nav nav-underline">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    aria-current="page"
+                    href="/web/batchLog/batchLog.html"
+                    >배치 로그</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/web/manualBatch/manualBatch.html"
+                    >배치 수동 실행</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <section class="row" style="margin-bottom: 10px">
+              <div class="form-box">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 140px" />
+                    <col style="width: 30%" />
+                    <col style="width: 72px" />
+                    <col />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th>고객 유형 집계</th>
+                      <td>
+                        <div class="manualBatchDatePickerGroup">
+                          <div
+                            class="start-date1 input-group datepicker w-auto"
+                            data-target-input="nearest"
+                          >
+                            <input
+                              type="text"
+                              class="form-control datetimepicker-input"
+                              id="customerTypeDt"
+                              name="customerTypeDt"
+                              data-target=".start-date1"
+                              placeholder="날짜를 입력해 주세요."
+                            />
+                            <div
+                              class="input-group-append"
+                              data-target=".start-date1"
+                              data-toggle="datetimepicker"
+                            >
+                              <button class="input-group-text">
+                                <img
+                                  src="/assets/images/common/icon_datepicker.png"
+                                  alt="달력 이미지"
+                                />
+                              </button>
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            class="btn btn-dark btn-sm"
+                            name="customerTypeBtn"
+                            style="margin-left: 10px"
+                          >
+                            실행
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>설명</th>
+                      <td colspan="3">
+                        <span
+                          >고객유형집계 배치를 실행합니다. 입력일 1일전
+                          TASK_ISUE_DT로 고객집계를 수행합니다. <br />
+                          예시) 2024-09-04 배치가 수행되지 않아 2024-09-04
+                          날짜로 배치 수행 시 TASK_ISUE_DT는 2024-09-03 데이터를
+                          집계합니다.
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <div class="form-box" style="margin-bottom: 10px">
+              <table class="form-table">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col style="width: 30%" />
+                  <col style="width: 72px" />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>지표중복 삭제</th>
+                    <td>
+                      <div class="manualBatchDatePickerGroup">
+                        <div
+                          class="start-date2 input-group datepicker w-auto"
+                          data-target-input="nearest"
+                        >
+                          <input
+                            type="text"
+                            class="form-control datetimepicker-input"
+                            id="dupIndicatorDt"
+                            name="dupIndicatorDt"
+                            data-target=".start-date2"
+                            placeholder="날짜를 입력해 주세요."
+                          />
+                          <div
+                            class="input-group-append"
+                            data-target=".start-date2"
+                            data-toggle="datetimepicker"
+                          >
+                            <button class="input-group-text">
+                              <img
+                                src="/assets/images/common/icon_datepicker.png"
+                                alt="달력 이미지"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          name="dupIndicatorBtn"
+                          style="margin-left: 10px"
+                        >
+                          실행
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>설명</th>
+                    <td colspan="3">
+                      <span
+                        >지표중복 배치를 실행합니다. 입력일 1일전 TASK_ISUE_DT로
+                        중복되는 지표를 삭제합니다. <br />
+                        예시) 2024-09-04 배치가 수행되지 않아 2024-09-04 날짜로
+                        배치 수행 시 TASK_ISUE_DT는 2024-09-01 데이터를
+                        조회합니다.
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="form-box" style="margin-bottom: 10px">
+              <table class="form-table">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col style="width: 30%" />
+                  <col style="width: 72px" />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>배치메타테이블 삭제</th>
+                    <td>
+                      <div class="manualBatchDatePickerGroup">
+                        <div
+                          class="start-date3 input-group datepicker w-auto"
+                          data-target-input="nearest"
+                        >
+                          <input
+                            type="text"
+                            class="form-control datetimepicker-input"
+                            id="metaDataDt"
+                            name="metaDataDt"
+                            data-target=".start-date3"
+                            placeholder="날짜를 입력해 주세요."
+                          />
+                          <div
+                            class="input-group-append"
+                            data-target=".start-date3"
+                            data-toggle="datetimepicker"
+                          >
+                            <button class="input-group-text">
+                              <img
+                                src="/assets/images/common/icon_datepicker.png"
+                                alt="달력 이미지"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          name="metaDataBtn"
+                          style="margin-left: 10px"
+                        >
+                          실행
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>설명</th>
+                    <td colspan="3">
+                      <span
+                        >배치메타테이블 삭제 배치를 실행합니다. 입력일 기준
+                        1달이 지난 메타테이블 데이터를 삭제합니다.</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="form-box" style="margin-bottom: 10px">
+              <table class="form-table">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col style="width: 30%" />
+                  <col style="width: 72px" />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>1년이상 데이터 삭제</th>
+                    <td>
+                      <div class="manualBatchDatePickerGroup">
+                        <div
+                          class="start-date4 input-group datepicker w-auto"
+                          data-target-input="nearest"
+                        >
+                          <input
+                            type="text"
+                            class="form-control datetimepicker-input"
+                            id="olderYearDt"
+                            name="olderYearDt"
+                            data-target=".start-date4"
+                            placeholder="날짜를 입력해 주세요."
+                          />
+                          <div
+                            class="input-group-append"
+                            data-target=".start-date4"
+                            data-toggle="datetimepicker"
+                          >
+                            <button class="input-group-text">
+                              <img
+                                src="/assets/images/common/icon_datepicker.png"
+                                alt="달력 이미지"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          name="olderYearBtn"
+                          style="margin-left: 10px"
+                        >
+                          실행
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>설명</th>
+                    <td colspan="3">
+                      <span
+                        >1년이상 지난 데이터를 삭제하는 배치를 실행합니다.
+                        입력일 기준으로 1년 전 데이터를 삭제합니다. <br />
+                        삭제대상) 고객장애 통계 / API 호출로그 / 고객유형현황
+                        통계 / 오늘의 할일 / 오늘의 할일 결과 / 사용자 접속로그
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="form-box" style="margin-bottom: 10px">
+              <table class="form-table">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col style="width: 30%" />
+                  <col style="width: 72px" />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>파티션테이블 생성/삭제</th>
+                    <td>
+                      <div class="manualBatchDatePickerGroup">
+                        <div
+                          class="start-date5 input-group datepicker w-auto"
+                          data-target-input="nearest"
+                        >
+                          <input
+                            type="text"
+                            class="form-control datetimepicker-input"
+                            id="partitionMgmtDt"
+                            name="partitionMgmtDt"
+                            data-target=".start-date5"
+                            placeholder="날짜를 입력해 주세요."
+                          />
+                          <div
+                            class="input-group-append"
+                            data-target=".start-date5"
+                            data-toggle="datetimepicker"
+                          >
+                            <button class="input-group-text">
+                              <img
+                                src="/assets/images/common/icon_datepicker.png"
+                                alt="달력 이미지"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          name="partitionMgmtBtn"
+                          style="margin-left: 10px"
+                        >
+                          실행
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>설명</th>
+                    <td colspan="3">
+                      <span
+                        >파티션 테이블을 생성/삭제 하는 배치를 실행합니다. [
+                        30일 이후 파티션 생성 ] / [ 14일 이전 파티션 삭제 ]
+                        <br />
+                        생성 및 삭제 대상 테이블 ) 표출 잠재불만 정보 테이블 /
+                        비표출 잠재불만 정보 테이블
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="form-box">
+              <table class="form-table">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col style="width: 30%" />
+                  <col style="width: 72px" />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>90일 이내 지표 중복</th>
+                    <td>
+                      <div class="manualBatchDatePickerGroup">
+                        <div
+                          class="start-date6 input-group datepicker w-auto"
+                          data-target-input="nearest"
+                        >
+                          <input
+                            type="text"
+                            class="form-control datetimepicker-input"
+                            id="monthDupIndicatorDt"
+                            name="monthDupIndicatorDt"
+                            data-target=".start-date6"
+                            placeholder="날짜를 입력해 주세요."
+                          />
+                          <div
+                            class="input-group-append"
+                            data-target=".start-date6"
+                            data-toggle="datetimepicker"
+                          >
+                            <button class="input-group-text">
+                              <img
+                                src="/assets/images/common/icon_datepicker.png"
+                                alt="달력 이미지"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          name="monthDupIndicatorBtn"
+                          style="margin-left: 10px"
+                        >
+                          실행
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>설명</th>
+                    <td colspan="3">
+                      <span
+                        >90일 이내 지표 중복 건수 UPDATE 배치를 실행합니다.
+                        입력일 1일전 TASK_ISUE_DT로 지표중복 건수를 조회합니다.
+                        <br />
+                        예시) 2024-09-04 배치가 수행되지 않아 2024-09-04 날짜로
+                        배치 수행 시 TASK_ISUE_DT는 2024-09-03 데이터를
+                        조회합니다.
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="form-box">
+              <table class="form-table">
+                <colgroup>
+                  <col style="width: 140px" />
+                  <col style="width: 30%" />
+                  <col style="width: 72px" />
+                  <col />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>해지고객 삭제</th>
+                    <td>
+                      <div class="manualBatchDatePickerGroup">
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          name="terminatedCustomerBtn"
+                          style="margin-left: 10px"
+                        >
+                          실행
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>설명</th>
+                    <td colspan="3">
+                      <span
+                        >해지고객 정보가 있을 경우 고객정보 테이블의 데이터를
+                        삭제하는 배치를 실행합니다. 해지고객 정보테이블에
+                        데이터가 있을 경우 가입정보가 있는 모든 테이블 데이터를
+                        삭제합니다. <br />
+                        대상테이블 : 오늘의할일 / 오늘의할일 결과등록 /
+                        API요청로그 / 고객특이사항 / 표출잠재불만 고객정보 /
+                        비표출 잠재불만 고객정보
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <script></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

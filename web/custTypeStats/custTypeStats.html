@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>고객 유형 현황</h2>
+            <section class="row">
+              <div class="search-box">
+                <div class="col-auto label">
+                  <label class="col-form-label">조직 조회</label>
+                </div>
+                <div class="col-auto">
+                  <div class="relative">
+                    <button
+                      class="btn btn-select-search"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseSearch"
+                      aria-expanded="false"
+                      aria-controls="collapseSearch"
+                      id="GroupText"
+                    >
+                      <span
+                        th:if="${userRole == 'Master' or userRole == 'AllManage'}"
+                        >전체조직</span
+                      >
+                      <span
+                        th:if="${userRole == 'FieldManage' or userRole == 'User'}"
+                        th:text="${bizbrNm}"
+                      ></span>
+                    </button>
+
+                    <div class="collapse layer-collapse" id="collapseSearch">
+                      <div class="title">조회 조직을 선택해 주세요.</div>
+                      <div class="jstree uiscroll">
+                        <ul
+                          th:if="${userRole == 'Master' or userRole == 'AllManage'}"
+                        >
+                          <li>
+                            전체조직
+                            <ul>
+                              <li
+                                th:each="group1, depth1Stat : ${groupList}"
+                                th:if="${group1.bizbrLvl == '5'}"
+                              >
+                                <th:block
+                                  th:text="${group1.bizbrNm}"
+                                ></th:block>
+                                <ul>
+                                  <li
+                                    th:each="group2, depth2Stat : ${groupList}"
+                                    th:if="${group2.bizbrLvl}=='6' and ${group1.bizbrCd} == ${group2.parentBizbrCd}"
+                                  >
+                                    <th:block
+                                      th:text="${group2.bizbrNm}"
+                                    ></th:block>
+                                    <ul>
+                                      <li
+                                        th:each="group3, depth3Stat : ${groupList}"
+                                        th:if="${group3.bizbrLvl}=='7' and ${group2.bizbrCd} == ${group3.parentBizbrCd}"
+                                      >
+                                        <th:block
+                                          th:text="${group3.bizbrNm}"
+                                        ></th:block>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <ul
+                          th:if="${userRole == 'FieldManage' or userRole == 'User'}"
+                        >
+                          <li
+                            th:each="group1, depth1Stat : ${groupList}"
+                            th:if="${group1.bizbrLvl == '5'}"
+                          >
+                            <th:block th:text="${group1.bizbrNm}"></th:block>
+                            <ul>
+                              <li
+                                th:each="group2, depth2Stat : ${groupList}"
+                                th:if="${group2.bizbrLvl}=='6' and ${group1.bizbrCd} == ${group2.parentBizbrCd}"
+                              >
+                                <th:block
+                                  th:text="${group2.bizbrNm}"
+                                ></th:block>
+                                <ul>
+                                  <li
+                                    th:each="group3, depth3Stat : ${groupList}"
+                                    th:if="${group3.bizbrLvl}=='7' and ${group2.bizbrCd} == ${group3.parentBizbrCd}"
+                                  >
+                                    <th:block
+                                      th:text="${group3.bizbrNm}"
+                                    ></th:block>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                          <!-- 5레벨이 없고 6레벨이 바로 존재할 경우 -->
+                          <li
+                            th:each="group2, depth2Stat : ${groupList}"
+                            th:if="${group2.bizbrLvl}=='6' and ${#lists.isEmpty(groupList.?[bizbrLvl == '5'])}"
+                          >
+                            <th:block th:text="${group2.bizbrNm}"></th:block>
+                            <ul>
+                              <!-- 7레벨이 존재할 경우 -->
+                              <li
+                                th:each="group3, depth3Stat : ${groupList}"
+                                th:if="${group3.bizbrLvl}=='7' and ${group2.bizbrCd} == ${group3.parentBizbrCd}"
+                              >
+                                <th:block
+                                  th:text="${group3.bizbrNm}"
+                                ></th:block>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-auto" th:if="${userRole != 'User'}">
+                  <button
+                    type="button"
+                    id="groupSeach"
+                    class="btn btn-dark btn-sm"
+                  >
+                    조회
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <div class="data-info-box columns">
+                <div class="title-box">
+                  <div class="datepicker-wrap">
+                    <button
+                      type="button"
+                      class="btn btn-datepicker"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseDate"
+                      aria-expanded="false"
+                      aria-controls="collapseDate"
+                    >
+                      <span class="start"></span>~<span class="end"></span>
+                    </button>
+
+                    <!-- 달력 레이어 -->
+                    <div id="collapseDate" class="collapse layer-datepicker">
+                      <div class="inner">
+                        <header>
+                          <button class="close">닫기</button>
+                        </header>
+                        <div class="body">
+                          <p class="sub">기간을 선택해 주세요</p>
+                          <div class="date-select">
+                            <span class="custom-radio" data-range="7">
+                              <input id="_uid_100" name="_uid_1" type="radio" />
+                              <label for="_uid_100" class="button">
+                                최근 1주일
+                              </label>
+                            </span>
+                            <span class="custom-radio" data-range="30">
+                              <input id="_uid_101" name="_uid_1" type="radio" />
+                              <label for="_uid_101" class="button">
+                                최근 30일
+                              </label>
+                            </span>
+                            <span class="custom-radio" data-range="90">
+                              <input id="_uid_102" name="_uid_1" type="radio" />
+                              <label for="_uid_102" class="button">
+                                최근 90일
+                              </label>
+                            </span>
+                            <span class="custom-radio" data-range="365">
+                              <input id="_uid_103" name="_uid_1" type="radio" />
+                              <label for="_uid_103" class="button">
+                                최근 1년
+                              </label>
+                            </span>
+                            <span class="custom-radio">
+                              <input id="_uid_104" name="_uid_1" type="radio" />
+                              <label for="_uid_104" class="button">
+                                직접 입력
+                              </label>
+                            </span>
+                          </div>
+                          <div class="date-box">
+                            <div class="start-date">
+                              <p class="title">시작일 <em></em></p>
+                              <div
+                                class="datetimepicker"
+                                id="searchStartPicker"
+                              ></div>
+                            </div>
+                            <div class="end-date">
+                              <p class="title">종료일 <em></em></p>
+                              <div
+                                class="datetimepicker2"
+                                id="searchEndPicker"
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                        <footer>
+                          <button
+                            type="button"
+                            class="btn btn-dark"
+                            id="datePicker"
+                          >
+                            확인
+                          </button>
+                        </footer>
+                      </div>
+                    </div>
+                    <!-- // 달력 레이어 -->
+                  </div>
+                </div>
+                <div class="data-info-box align-items-start">
+                  <div class="col-auto label mx-0">
+                    <label>최근 <span id="totalMonths"></span>개월 평균</label>
+                  </div>
+                  <div class="data-info-box__columns">
+                    <div class="data-box">
+                      <div class="col-auto">
+                        <dl>
+                          <dt>해지 고위험</dt>
+                          <dd></dd>
+                        </dl>
+                      </div>
+                      <div class="col-auto">
+                        <dl>
+                          <dt>중복 장애</dt>
+                          <dd></dd>
+                        </dl>
+                      </div>
+                      <div class="col-auto">
+                        <dl>
+                          <dt>표출 불만</dt>
+                          <dd></dd>
+                        </dl>
+                      </div>
+                      <div class="col-auto">
+                        <dl>
+                          <dt>잠재 불만</dt>
+                          <dd></dd>
+                        </dl>
+                      </div>
+                      <div class="col-auto right">
+                        <span class="date">조치율 35%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="charts mt-6">
+                <canvas id="monthChart" height="100"></canvas>
+                <p class="tip">
+                  월을 선택하시면, 하단에 해당 월의 일별 고객 유형 및 추이를
+                  확인할 수 있어요.
+                </p>
+              </div>
+            </section>
+
+            <section class="row">
+              <input
+                id="monthExcelName"
+                type="hidden"
+                value="HSCRM_현황통계_고객유형현황_월별"
+              />
+              <table class="datatable1 nowrap row-border hover">
+                <thead>
+                  <tr>
+                    <th>유형</th>
+                    <th>상세</th>
+                    <th>월평균</th>
+                    <th>23년7월</th>
+                    <th>23년8월</th>
+                    <th>23년9월</th>
+                    <th>23년10월</th>
+                    <th>23년11월</th>
+                    <th>23년12월</th>
+                    <th>24년1월</th>
+                    <th>24년2월</th>
+                    <th>24년3월</th>
+                    <th>24년4월</th>
+                    <th>24년5월</th>
+                    <th>24년6월</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <table id="excelMonthTable" style="display: none">
+                <thead>
+                  <tr></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </section>
+
+            <section class="row">
+              <h3>일별 고객 유형 현황 및 추이</h3>
+              <div class="dashboard">
+                <div class="dashboard__item">
+                  <p class="title" id="title_entire">6월 누적 인입</p>
+                  <p class="price" id="total_monthentireCnt">87,958</p>
+                  <p class="compare">
+                    전월대비
+                    <span class="up">36.8%</span>
+                  </p>
+                </div>
+                <div class="dashboard__item">
+                  <p class="title" id="title_finish">6월 누적 결과 등록</p>
+                  <p class="price" id="total_monthfinishCnt">125,625</p>
+                  <p class="compare">
+                    전월대비
+                    <span class="down">14.3%</span>
+                  </p>
+                </div>
+                <div class="dashboard__item">
+                  <p class="title" id="title_faild">6월 누적 미처리</p>
+                  <p class="price" id="total_monthfaildCnt">84,958</p>
+                  <p class="compare">
+                    전월대비
+                    <span class="down">22.8%</span>
+                  </p>
+                </div>
+                <div class="dashboard__item">
+                  <p class="title" id="title_issue">6월 누적 조치율</p>
+                  <p class="price" id="total_averageIssueCnt">54,625</p>
+                  <p class="compare">
+                    전월대비
+                    <span class="up">25.2%</span>
+                  </p>
+                </div>
+              </div>
+              <div class="charts mt-6">
+                <canvas id="dayChart" height="100"></canvas>
+              </div>
+            </section>
+
+            <section class="row">
+              <input
+                id="dayExcelName"
+                type="hidden"
+                value="HSCRM_현황통계_고객유형현황_일별"
+              />
+              <table class="datatable2 nowrap row-border hover">
+                <thead>
+                  <tr>
+                    <th>유형</th>
+                    <th>상세</th>
+                    <th>월평균</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <table id="excelDayTable" style="display: none">
+                <thead>
+                  <tr></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </section>
+            <!-- 엑셀 다운로드 사유 모달 -->
+            <div
+              class="modal fade"
+              id="excelModal"
+              tabindex="-1"
+              aria-labelledby="excelModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-closed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                      onclick="excelModalClosed();"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="excelModalLabel">
+                      엑셀 다운로드
+                    </h1>
+
+                    <section class="row">
+                      <p class="excel-text">
+                        ‘고객 유형 현황<span></span>’를 엑셀파일로
+                        저장합니다.<br />다운로드 사유를 선택하세요.
+                      </p>
+                      <div class="excel-select">
+                        <select
+                          class="uiscroll"
+                          aria-label="엑셀 다운로드 선택"
+                          id="excelDown"
+                          name="excelDown"
+                        >
+                          <option value="">
+                            다운로드 사유를 선택해 주세요
+                          </option>
+                          <option
+                            th:each="arraysts : ${excelDown}"
+                            th:value="${arraysts.codeName}"
+                          >
+                            <th:block th:text="${arraysts.codeName}"></th:block>
+                          </option>
+                        </select>
+                      </div>
+                      <ul class="list-bullet">
+                        <li>다운로드된 파일은 3개월 이내 폐기되어야 합니다.</li>
+                        <li>
+                          xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로
+                          저장하여 보안사항 준수 바랍니다.
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button
+                        type="button"
+                        class="btn btn-dark"
+                        onclick="fnExcel();"
+                        id="excelButton"
+                        disabled
+                      >
+                        다운로드
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 엑셀 다운로드 사유 모달 -->
+          </div>
+          <script th:inline="javascript"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

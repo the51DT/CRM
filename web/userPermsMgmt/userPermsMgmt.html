@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>권한 관리</h2>
+
+            <div class="tabs">
+              <ul class="nav nav-underline">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/web/userPermsMgmt/userPermsMgmt.html"
+                    >사용자 권한 관리</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/web/pageRoleMgmt/pageRoleMgmt.html"
+                    >메뉴별 권한 관리</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <section class="row">
+              <div class="form-box">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 140px" />
+                    <col style="width: 30%" />
+                    <col style="width: 72px" />
+                    <col />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th>이름</th>
+                      <td>
+                        <div class="input-form w300">
+                          <div class="inner">
+                            <input
+                              type="text"
+                              name="userName"
+                              placeholder="이름을 입력해 주세요"
+                              value=""
+                              onkeydown="handleKeyDown(event)"
+                            />
+                          </div>
+                          <div class="error">이름을 입력해 주세요.</div>
+                        </div>
+                      </td>
+                      <th>마당</th>
+                      <td>
+                        <div class="input-form w300">
+                          <div class="inner">
+                            <input
+                              type="text"
+                              name="userId"
+                              placeholder="마당ID를 입력해 주세요"
+                              value=""
+                              onkeydown="handleKeyDown(event)"
+                            />
+                          </div>
+                          <div class="error">마당ID를 입력해 주세요.</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>직원 구분</th>
+                      <td class="employeeType">
+                        <select
+                          class="uiscroll w300"
+                          aria-label="직원 구분 선택"
+                        >
+                          <option data-value="">
+                            직원 구분을 선택해 주세요
+                          </option>
+                          <option
+                            th:each="arraysts : ${emploType}"
+                            th:value="${arraysts.codeName}"
+                          >
+                            <th:block th:text="${arraysts.codeName}"></th:block>
+                          </option>
+                        </select>
+                      </td>
+                      <th>소속</th>
+                      <td>
+                        <div class="input-form w300">
+                          <div class="inner">
+                            <input
+                              type="text"
+                              name="userDeptName"
+                              placeholder="소속을 입력해 주세요"
+                              value=""
+                              onkeydown="handleKeyDown(event)"
+                            />
+                          </div>
+                          <div class="error">소속을 입력해 주세요.</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>사용자 권한</th>
+                      <td colspan="3">
+                        <span class="custom-radio">
+                          <input
+                            id="ALL"
+                            name="roleGroupId"
+                            type="radio"
+                            value=""
+                            checked
+                          />
+                          <label
+                            for="ALL"
+                            class="button"
+                            th:text="'전체 (' + ${roleCount[0].count} + ')'"
+                          />
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="Master"
+                            name="roleGroupId"
+                            type="radio"
+                            value="Master"
+                          />
+                          <label
+                            for="Master"
+                            class="button"
+                            th:text="'마스터 (' + ${roleCount[3].count} + ')'"
+                          />
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="AllManage"
+                            name="roleGroupId"
+                            type="radio"
+                            value="AllManage"
+                          />
+                          <label
+                            for="AllManage"
+                            class="button"
+                            th:text="'전체 관리자 (' + ${roleCount[1].count} + ')'"
+                          />
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="FieldManage"
+                            name="roleGroupId"
+                            type="radio"
+                            value="FieldManage"
+                          />
+                          <label
+                            for="FieldManage"
+                            class="button"
+                            th:text="'현장 관리자 (' + ${roleCount[2].count} + ')'"
+                          />
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="User"
+                            name="roleGroupId"
+                            type="radio"
+                            value="User"
+                          />
+                          <label
+                            for="User"
+                            class="button"
+                            th:text="'사용자 (' + ${roleCount[5].count} + ')'"
+                          />
+                        </span>
+                        <span class="custom-radio">
+                          <input
+                            id="NonRole"
+                            name="roleGroupId"
+                            type="radio"
+                            value="NonRole"
+                          />
+                          <label
+                            for="NonRole"
+                            class="button"
+                            th:text="'권한 없음 (' + ${roleCount[4].count} + ')'"
+                          />
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="flex">
+                  <button type="button" class="btn btn-ico btn-inquiry">
+                    조회
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <table class="datatable1 row-border hover">
+                <thead>
+                  <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>마당 ID</th>
+                    <th>직원 구분</th>
+                    <th>소속</th>
+                    <th>권한</th>
+                    <th>등록일</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </section>
+            <!-- 신규 등록 모달 -->
+            <div
+              class="modal fade"
+              id="inputUser"
+              tabindex="-1"
+              aria-labelledby="inputUserLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-closed"
+                      id="inputClosed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="inputUserLabel">
+                      사용자 권한 등록
+                    </h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <input
+                          type="hidden"
+                          name="inputDeptCd"
+                          id="inputDeptCd"
+                          readonly
+                          placeholder=""
+                          value=""
+                        />
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>마당 ID</th>
+                            <td>
+                              <div class="d-flex gap-08">
+                                <div class="col-auto">
+                                  <div id="madangid" class="input-form w-auto">
+                                    <div class="inner">
+                                      <input
+                                        type="text"
+                                        placeholder="마당 ID를 입력해 주세요."
+                                        value=""
+                                        id="inputUserId"
+                                        name="inputUserId"
+                                        onkeydown="handleKeyDown2(event)"
+                                      />
+                                    </div>
+                                    <div
+                                      class="error"
+                                      id="errorAlreadyRegistered"
+                                    >
+                                      이미 등록된 사용자입니다
+                                    </div>
+                                    <div class="error" id="errorNotFound">
+                                      일치하는 ID를 찾을 수 없습니다.
+                                    </div>
+                                    <div class="success" id="successId">
+                                      등록 가능한 사용자입니다.
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-auto">
+                                  <button
+                                    type="button"
+                                    class="btn btn-dark userSearch"
+                                  >
+                                    검색
+                                  </button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>이름</th>
+                            <td>
+                              <div class="input-form w-auto">
+                                <input
+                                  type="text"
+                                  name="inputUserName"
+                                  id="inputUserName"
+                                  readonly
+                                  placeholder=""
+                                  value=""
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>직원 구분</th>
+                            <td id="inputEmployeeType">
+                              <select
+                                id="inputEmployee"
+                                class="uiscroll"
+                                aria-label="직원 구분 선택"
+                                style="width: 230px"
+                              >
+                                <option data-value="">
+                                  직원 구분을 선택해 주세요
+                                </option>
+                                <option
+                                  th:each="arraysts : ${emploType}"
+                                  th:value="${arraysts.codeName}"
+                                >
+                                  <th:block
+                                    th:text="${arraysts.codeName}"
+                                  ></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>소속</th>
+                            <td>
+                              <div class="input-form w-auto">
+                                <input
+                                  type="text"
+                                  name="inputUserDeptName"
+                                  id="inputUserDeptName"
+                                  readonly
+                                  placeholder=""
+                                  value=""
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>권한 선택</th>
+                            <td id="inputRoleGroupId">
+                              <select
+                                id="inputRole"
+                                class="uiscroll"
+                                aria-label="권한 선택"
+                                style="width: 230px"
+                              >
+                                <option data-value="">
+                                  권한을 선택해 주세요
+                                </option>
+                                <option
+                                  th:each="arraysts : ${roleList}"
+                                  th:value="${arraysts.roleGroupId}"
+                                >
+                                  <th:block
+                                    th:text="${arraysts.roleGroupName}"
+                                  ></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button
+                        type="button"
+                        class="btn btn-dark inputBtn"
+                        disabled
+                      >
+                        확인
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 신규 등록 모달 -->
+            <!-- 권한 수정 모달 -->
+            <div
+              class="modal fade"
+              id="updateUser"
+              tabindex="-1"
+              aria-labelledby="updateUserLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button
+                      type="button"
+                      class="btn-closed"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="updateUserLabel">
+                      사용자 권한 보기/수정
+                    </h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>마당 ID</th>
+                            <td id="userId"></td>
+                          </tr>
+                          <tr>
+                            <th>이름</th>
+                            <td id="userName"></td>
+                          </tr>
+                          <tr>
+                            <th>직원 구분</th>
+                            <td id="employeeType">
+                              <select
+                                class="uiscroll"
+                                aria-label="직원 구분 선택"
+                                style="width: 230px"
+                              >
+                                <option data-value="">
+                                  직원 구분을 선택해 주세요
+                                </option>
+                                <option
+                                  th:each="arraysts : ${emploType}"
+                                  th:value="${arraysts.codeName}"
+                                >
+                                  <th:block
+                                    th:text="${arraysts.codeName}"
+                                  ></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>소속</th>
+                            <td id="userDeptName">홈서비스 프로세스 관리팀</td>
+                          </tr>
+                          <tr>
+                            <th>권한 선택</th>
+                            <td id="roleGroupId">
+                              <select
+                                class="uiscroll"
+                                aria-label="권한 선택"
+                                style="width: 230px"
+                              >
+                                <option data-value="">
+                                  권한을 선택해 주세요
+                                </option>
+                                <option
+                                  th:each="arraysts : ${roleList}"
+                                  th:value="${arraysts.roleGroupId}"
+                                >
+                                  <th:block
+                                    th:text="${arraysts.roleGroupName}"
+                                  ></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-flex gap-08">
+                      <div class="col-auto">
+                        <button
+                          type="button"
+                          class="btn btn-outline-dark NonRole"
+                        >
+                          권한 회수
+                        </button>
+                      </div>
+                      <div class="col">
+                        <button
+                          type="button"
+                          class="btn btn-dark w100p updateBtn"
+                        >
+                          확인
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 권한 수정 모달 -->
+          </div>
+          <style>
+            .user-link {
+              cursor: pointer;
+              text-decoration: underline;
+              color: #1f1f1f;
+            }
+          </style>
+          <script></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>

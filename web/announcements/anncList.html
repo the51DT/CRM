@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <div class="contents__inner">
+            <h2>공지사항</h2>
+            <section class="row">
+              <div class="form-box">
+                <table class="form-table">
+                  <colgroup>
+                    <col style="width: 140px" />
+                    <col style="width: 30%" />
+                    <col style="width: 140px" />
+                    <col />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <th>제목</th>
+                      <td colspan="3">
+                        <div class="input-form" style="width: 468px">
+                          <div class="inner">
+                            <input
+                              type="text"
+                              id="anncTitle"
+                              name="anncTitle"
+                              placeholder="제목을 입력해 주세요"
+                              value=""
+                            />
+                          </div>
+                          <div class="error">제목을 입력해주세요.</div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>등록자</th>
+                      <td>
+                        <div class="input-form w-auto">
+                          <div class="inner">
+                            <input
+                              type="text"
+                              id="createNm"
+                              name="createNm"
+                              placeholder="등록자를 입력해 주세요"
+                              value=""
+                            />
+                          </div>
+                          <div class="error">이미 등록된 사용자입니다.</div>
+                        </div>
+                      </td>
+                      <th>조회 기간</th>
+                      <td>
+                        <div class="datepicker-wrap">
+                          <button
+                            type="button"
+                            class="btn btn-datepicker"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseDate"
+                            aria-expanded="false"
+                            aria-controls="collapseDate"
+                          >
+                            <span class="start" id="searchStartDt"></span>~<span
+                              class="end"
+                              id="searchEndDt"
+                            ></span>
+                          </button>
+
+                          <!-- 달력 레이어 -->
+                          <div
+                            id="collapseDate"
+                            class="collapse layer-datepicker"
+                          >
+                            <div class="inner">
+                              <header>
+                                <button class="close">닫기</button>
+                              </header>
+                              <div class="body">
+                                <p class="sub">기간을 선택해 주세요</p>
+                                <div class="date-box">
+                                  <div class="start-date">
+                                    <div
+                                      class="datetimepicker"
+                                      id="searchStartPicker"
+                                    ></div>
+                                  </div>
+                                  <div class="end-date">
+                                    <div
+                                      class="datetimepicker2"
+                                      id="searchEndPicker"
+                                    ></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <footer>
+                                <button type="button" class="btn btn-dark">
+                                  확인
+                                </button>
+                              </footer>
+                            </div>
+                          </div>
+                          <!-- // 달력 레이어 -->
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="flex">
+                  <button
+                    type="button"
+                    id="searchBtn"
+                    class="btn btn-ico btn-search"
+                  >
+                    검색
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row">
+              <table id="anncTable" class="datatable1 row-border hover">
+                <thead>
+                  <tr>
+                    <th style="width: 8%">번호</th>
+                    <th style="width: 8%">첨부 파일</th>
+                    <th>제목</th>
+                    <th style="width: 8%">게시여부</th>
+                    <th style="width: 15%">게시기간</th>
+                    <th style="width: 15%">등록 일시</th>
+                    <th style="width: 8%">등록자</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </section>
+          </div>
+          <script th:inline="javascript"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
+</html>
