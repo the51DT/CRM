@@ -1,42 +1,51 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layouts/common :: common}"></head>
+<html lang="en">
+  <div data-include-path="/fragments/head.html"></div>
   <body>
     <div id="root">
-        <!-- header include -->
-        <header id="header"></header>
-        <!-- container -->
-        <div id="container">
-            <!-- lnb include -->
-            <nav id="lnb" th:replace="layouts/lnb :: lnb"></nav>
-            <!-- contents -->
-            <div id="contents">
-                <div class="contents__inner">
-                    <h2>샘플 페이지</h2>
-                    <div>
-                        <div>
-                            막대 그래프
-                        </div>
-                        <div><canvas id="myAreaChart1" width="100%" height="30"></canvas></div>
-                        <div>
-                            도넛 그래프
-                        </div>
-                        <div><canvas id="myAreaChart2" width="600" height="600"></canvas></div>
-                        <div>
-                            가로 그래프
-                        </div>
-                        <div><canvas id="myAreaChart3"></canvas></div>
-                        <div><canvas id="myAreaChart4"></canvas></div>
-                        <div>
-                            꺽은 선 그래프
-                        </div>
-                        <div><canvas id="myAreaChart5"></canvas></div>
-                    </div>
-                </div>
-            </div>
+      <!-- header include -->
+      <header id="header">
+        <div data-include-path="/fragments/header.html"></div>
+      </header>
+      <!-- container -->
+      <div id="container">
+        <!-- lnb include -->
+        <nav id="lnb">
+          <div data-include-path="/fragments/lnb.html"></div>
+        </nav>
+        <!-- contents -->
+        <div id="contents">
+          <th:block layout:fragment="content"></th:block>
         </div>
+      </div>
     </div>
-<script type="text/javascript">
-</script>
   </body>
+  <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/plugins/moment-with-locales.min.js"></script>
+  <script src="/assets/js/plugins/tempusdominus-bootstrap-4.js"></script>
+  <script src="/assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="/assets/js/plugins/dataTables.min.js"></script>
+  <script src="/assets/js/plugins/jstree.min.js"></script>
+  <script src="/assets/js/common.js"></script>
+  <script src="/js/common2.js"></script>
+  <script src="/js/chart.umd.js"></script>
+  <script>
+    window.addEventListener('load', function () {
+      var allElements = document.getElementsByTagName('*');
+      Array.prototype.forEach.call(allElements, function (el) {
+        var includePath = el.dataset.includePath;
+        if (includePath) {
+          var HTTP = new XMLHttpRequest();
+          HTTP.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              el.outerHTML = this.responseText;
+            }
+          };
+          HTTP.open('GET', includePath, true);
+          HTTP.send();
+        }
+      });
+    });
+  </script>
 </html>
