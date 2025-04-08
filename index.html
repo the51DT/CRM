@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layouts/common :: common}"></head>
+  <body>
+    <div id="root">
+        <!-- header include -->
+        <header id="header"></header>
+        <!-- container -->
+        <div id="container">
+            <!-- lnb include -->
+            <nav id="lnb" th:replace="layouts/lnb :: lnb"></nav>
+            <!-- contents -->
+            <div id="contents">
+                <div class="contents__inner">
+                    <h2>샘플 페이지</h2>
+                    <div>
+                        <div>
+                            막대 그래프
+                        </div>
+                        <div><canvas id="myAreaChart1" width="100%" height="30"></canvas></div>
+                        <div>
+                            도넛 그래프
+                        </div>
+                        <div><canvas id="myAreaChart2" width="600" height="600"></canvas></div>
+                        <div>
+                            가로 그래프
+                        </div>
+                        <div><canvas id="myAreaChart3"></canvas></div>
+                        <div><canvas id="myAreaChart4"></canvas></div>
+                        <div>
+                            꺽은 선 그래프
+                        </div>
+                        <div><canvas id="myAreaChart5"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+</script>
+  </body>
+</html>

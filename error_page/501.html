@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}"></head>
+  <body>
+    <div id="root">
+      <!-- header include -->
+      <header id="header">
+        <th:block th:replace="~{fragments/header :: header}"></th:block>
+      </header>
+
+      <!-- container -->
+      <div id="container">
+        <div class="crm-noti-wrap">
+          <div class="inner">
+            <p class="img">
+              <img
+                src="/assets/images/common/icon_system_stop.svg"
+                alt="시스템 사용 중지 아이콘"
+              />
+            </p>
+            <p class="title">홈개통AS CRM 시스템 사용이 중지되었습니다.</p>
+            <p class="tit-info">
+              <span th:text="${UserInfo.userName}">홍길동</span>님은
+              <span th:text="${UserInfo.updateDt}">2024-12-12 12:23</span>에<br />
+              시스템 사용 권한이 중지되었습니다.
+            </p>
+            <p class="tit-notice">이메일에 아래 정보를 기재하여 권한 중지 해소를 요청해 주세요.</p>
+            <dl class="info-box">
+              <div>
+                <dt>기재 항목</dt>
+                <dd>이름, 마당 ID, 사용 목적, 요청 권한(마스터, 전체관리자, 현장관리자, 사용자)</dd>
+              </div>
+              <div>
+                <dt>이메일</dt>
+                <dd>homeascrm@lguplus.co.kr</dd>
+              </div>
+            </dl>
+            <div class="btn-page">
+              <button class="btn btn-close" onclick="closeWindow()">닫기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    </script>
+  </body>
+</html>
