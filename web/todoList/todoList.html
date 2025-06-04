@@ -33,47 +33,30 @@
                       aria-controls="collapseSearch"
                       id="GroupText"
                     >
-                      <span
-                        th:if="${userRole == 'Master' or userRole == 'AllManage'}"
-                        >전체조직</span
-                      >
-                      <span
-                        th:if="${userRole == 'FieldManage' or userRole == 'User'}"
-                        th:text="${bizbrNm}"
-                      ></span>
+                      <span th:if="${userRole == 'Master' or userRole == 'AllManage'}">전체조직</span>
+                      <span th:if="${userRole == 'FieldManage' or userRole == 'User'}" th:text="${bizbrNm}"></span>
                     </button>
                     <div class="collapse layer-collapse" id="collapseSearch">
                       <div class="title">조회 조직을 선택해 주세요.</div>
                       <div class="jstree uiscroll">
-                        <ul
-                          th:if="${userRole == 'Master' or userRole == 'AllManage'}"
-                        >
+                        <ul th:if="${userRole == 'Master' or userRole == 'AllManage'}">
                           <li>
                             전체조직
                             <ul>
-                              <li
-                                th:each="group1, depth1Stat : ${groupList}"
-                                th:if="${group1.bizbrLvl == '5'}"
-                              >
-                                <th:block
-                                  th:text="${group1.bizbrNm}"
-                                ></th:block>
+                              <li th:each="group1, depth1Stat : ${groupList}" th:if="${group1.bizbrLvl == '5'}">
+                                <th:block th:text="${group1.bizbrNm}"></th:block>
                                 <ul>
                                   <li
                                     th:each="group2, depth2Stat : ${groupList}"
                                     th:if="${group2.bizbrLvl}=='6' and ${group1.bizbrCd} == ${group2.parentBizbrCd}"
                                   >
-                                    <th:block
-                                      th:text="${group2.bizbrNm}"
-                                    ></th:block>
+                                    <th:block th:text="${group2.bizbrNm}"></th:block>
                                     <ul>
                                       <li
                                         th:each="group3, depth3Stat : ${groupList}"
                                         th:if="${group3.bizbrLvl}=='7' and ${group2.bizbrCd} == ${group3.parentBizbrCd}"
                                       >
-                                        <th:block
-                                          th:text="${group3.bizbrNm}"
-                                        ></th:block>
+                                        <th:block th:text="${group3.bizbrNm}"></th:block>
                                       </li>
                                     </ul>
                                   </li>
@@ -82,50 +65,30 @@
                             </ul>
                           </li>
                         </ul>
-                        <ul
-                          th:if="${userRole == 'FieldManage' or userRole == 'User'}"
-                        >
-                          <li
-                            th:each="group1, depth1Stat : ${groupList}"
-                            th:if="${group1.bizbrLvl == '5'}"
-                          >
+                        <ul th:if="${userRole == 'FieldManage' or userRole == 'User'}">
+                          <li th:each="group1, depth1Stat : ${groupList}" th:if="${group1.bizbrLvl == '5'}">
                             <th:block th:text="${group1.bizbrNm}"></th:block>
                             <ul>
-                              <li
-                                th:each="group2, depth2Stat : ${groupList}"
-                                th:if="${group2.bizbrLvl}=='6' and ${group1.bizbrCd} == ${group2.parentBizbrCd}"
-                              >
-                                <th:block
-                                  th:text="${group2.bizbrNm}"
-                                ></th:block>
+                              <li th:each="group2, depth2Stat : ${groupList}" th:if="${group2.bizbrLvl}=='6' and ${group1.bizbrCd} == ${group2.parentBizbrCd}">
+                                <th:block th:text="${group2.bizbrNm}"></th:block>
                                 <ul>
                                   <li
                                     th:each="group3, depth3Stat : ${groupList}"
                                     th:if="${group3.bizbrLvl}=='7' and ${group2.bizbrCd} == ${group3.parentBizbrCd}"
                                   >
-                                    <th:block
-                                      th:text="${group3.bizbrNm}"
-                                    ></th:block>
+                                    <th:block th:text="${group3.bizbrNm}"></th:block>
                                   </li>
                                 </ul>
                               </li>
                             </ul>
                           </li>
                           <!-- 5레벨이 없고 6레벨이 바로 존재할 경우 -->
-                          <li
-                            th:each="group2, depth2Stat : ${groupList}"
-                            th:if="${group2.bizbrLvl}=='6' and ${#lists.isEmpty(groupList.?[bizbrLvl == '5'])}"
-                          >
+                          <li th:each="group2, depth2Stat : ${groupList}" th:if="${group2.bizbrLvl}=='6' and ${#lists.isEmpty(groupList.?[bizbrLvl == '5'])}">
                             <th:block th:text="${group2.bizbrNm}"></th:block>
                             <ul>
                               <!-- 7레벨이 존재할 경우 -->
-                              <li
-                                th:each="group3, depth3Stat : ${groupList}"
-                                th:if="${group3.bizbrLvl}=='7' and ${group2.bizbrCd} == ${group3.parentBizbrCd}"
-                              >
-                                <th:block
-                                  th:text="${group3.bizbrNm}"
-                                ></th:block>
+                              <li th:each="group3, depth3Stat : ${groupList}" th:if="${group3.bizbrLvl}=='7' and ${group2.bizbrCd} == ${group3.parentBizbrCd}">
+                                <th:block th:text="${group3.bizbrNm}"></th:block>
                               </li>
                             </ul>
                           </li>
@@ -135,13 +98,7 @@
                   </div>
                 </div>
                 <div class="col-auto" th:if="${userRole != 'User'}">
-                  <button
-                    type="button"
-                    id="groupSeach"
-                    class="btn btn-dark btn-sm"
-                  >
-                    조회
-                  </button>
+                  <button type="button" id="groupSeach" class="btn btn-dark btn-sm">조회</button>
                 </div>
               </div>
             </section>
@@ -176,7 +133,7 @@
                   </dl>
                 </div>
                 <div class="col-auto right">
-                  <span class="date" id="currentDate"></span>
+                  <span class="date" id="currentDate">2025-06-04 13:22:19</span>
                   <button type="button" class="btn btn-ico btn-refresh">
                     <span class="is-blind">새로고침</span>
                   </button>
@@ -184,8 +141,8 @@
               </div>
             </section>
 
-            <section class="row">
-              <table class="datatable1 row-border hover">
+            <section class="row" style="display: none;">
+              <table class="dataTable row-border hover">
                 <thead>
                   <tr>
                     <th>번호</th>
@@ -207,7 +164,7 @@
                 <tbody></tbody>
               </table>
             </section>
-            <section>
+            <section class="row" style="display: none;">
               <table id="excelTable" style="display: none">
                 <thead>
                   <tr>
@@ -228,7 +185,7 @@
               </table>
             </section>
 
-            <section class="row">
+            <section class="row" style="display: none;">
               <div class="d-flex gap-4">
                 <div class="col-6">
                   <div class="data-info-box purple sm">
@@ -319,25 +276,16 @@
               </div>
             </section>
 
-            <section class="row">
+            <section class="row" style="display: none;">
               <div class="notice-info-news">
                 <dl class="text">
                   <dt>공지 사항</dt>
                   <dd>
                     <div class="swiper notice-info-swiper">
                       <div class="swiper-wrapper">
-                        <div
-                          class="swiper-slide"
-                          th:each="announcement : ${AnncList}"
-                        >
-                          <a
-                            th:href="|/Announcements/detailPage?anncId=${announcement.anncId}|"
-                            th:text="${announcement.anncTitle}"
-                          >
-                            <span
-                              class="date"
-                              th:text="${announcement.createDt}"
-                            ></span
+                        <div class="swiper-slide" th:each="announcement : ${AnncList}">
+                          <a th:href="|/Announcements/detailPage?anncId=${announcement.anncId}|" th:text="${announcement.anncTitle}">
+                            <span class="date" th:text="${announcement.createDt}"></span
                           ></a>
                         </div>
                       </div>
@@ -350,6 +298,88 @@
               </div>
             </section>
 
+            <!-- 2025-05 신규 추가 기능  -->
+            <section class="row mt-6">
+              <div class="search-box transparent-bg-box">
+                <div class="col-auto">
+                  <select id="pageSizeSelect" class="uiscroll w100" aria-label="페이지당 표시 개수 선택">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                  </select>
+                </div>
+                <div class="col-auto d-flex">
+                  <span class="custom-radio">
+                    <input id="filterAll" name="todoStatusFilter" type="radio" value="all" checked />
+                    <label for="filterAll" class="button"> 전체(420) </label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterNotRegistered" name="todoStatusFilter" type="radio" value="notRegistered" />
+                    <label for="filterNotRegistered" class="button"> 미등록(750) </label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterContactRegistered" name="todoStatusFilter" type="radio" value="contactRegistered" />
+                    <label for="filterContactRegistered" class="button"> 컨택 등록(55) </label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterResultRegistered" name="todoStatusFilter" type="radio" value="resultRegistered" />
+                    <label for="filterResultRegistered" class="button"> 결과 등록(78) </label>
+                  </span>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-ico btn-notification" id="unprocessedStatusBtn">
+                    <span>미처리현황 <i>25</i>건</span>
+                  </button>
+                </div>
+                <div class="col-auto right">
+                  <button type="button" class="btn btn-ico btn-download" id="downloadBtn">다운로드</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row mt-4">
+              <table class="dataTable row-border hover">
+                <thead>
+                  <tr>
+                    <th>가준일</th>
+                    <th>가입 번호</th>
+                    <th>대리점 코드</th>
+                    <th>대리점명</th>
+                    <th>서비스</th>
+                    <th>발생 지표</th>
+                    <th>고객 유형</th>
+                    <th>Care 활동</th>
+                    <th>중복 발생</th>
+                    <th>결과 등록</th>
+                    <th>등록 기한</th>
+                    <th>조회</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2024-03-25</td>
+                    <td>5000123122</td>
+                    <td>22233344</td>
+                    <td>김포(협동조합)</td>
+                    <td>인터넷</td>
+                    <td>60일 내 3회 중복 장애</td>
+                    <td>중복 장애</td>
+                    <td>Ai Task 발행</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>2024-04-02</td>
+                    <td>
+                      <div class="col-auto d-flex justify-content-center gap-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm">유선 CEM</button>
+                        <button type="button" class="btn btn-dark btn-sm">컨택 등록</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm disabled">결과 등록</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <!-- // 2025-05 신규 추가 기능  -->
+
             <!-- 팝업 공지 모달 -->
             <div
               class="modal fade modal-notice"
@@ -359,17 +389,10 @@
               data-bs-backdrop="static"
               data-bs-keyboard="false"
             >
-              <div
-                class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-              >
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <script th:inline="javascript">
                     /* <![CDATA[ */
@@ -377,17 +400,11 @@
                     /* ]]> */
                   </script>
                   <div class="modal-body uiscroll" th:if="${AnncPopup != null}">
-                    <h1
-                      class="modal-title"
-                      th:text="${AnncPopup.anncTitle}"
-                    ></h1>
+                    <h1 class="modal-title" th:text="${AnncPopup.anncTitle}"></h1>
                     <section class="row mt-5">
                       <div class="notice-text">
                         <div class="ckeditor">
-                          <div
-                            id="editor"
-                            class="ck-editor__editable-container"
-                          >
+                          <div id="editor" class="ck-editor__editable-container">
                             <div class="ck-editor__editable"></div>
                           </div>
                         </div>
@@ -406,9 +423,7 @@
                         </span>
                       </div>
                       <div class="col-auto">
-                        <button type="button" class="btn btn-today">
-                          확인
-                        </button>
+                        <button type="button" class="btn btn-today">확인</button>
                       </div>
                     </div>
                   </div>
@@ -429,62 +444,30 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                      onclick="excelModalClosed();"
-                    ></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="excelModalClosed();"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="excelModalLabel">
-                      엑셀 다운로드
-                    </h1>
+                    <h1 class="modal-title" id="excelModalLabel">엑셀 다운로드</h1>
 
                     <section class="row">
-                      <p class="excel-text">
-                        ‘오늘의 할 일’을 엑셀파일로 저장합니다.<br />다운로드
-                        사유를 선택하세요.
-                      </p>
+                      <p class="excel-text">‘오늘의 할 일’을 엑셀파일로 저장합니다.<br />다운로드 사유를 선택하세요.</p>
                       <div class="excel-select">
-                        <select
-                          class="uiscroll"
-                          aria-label="엑셀 다운로드 선택"
-                          id="excelDown"
-                          name="excelDown"
-                        >
-                          <option value="">
-                            다운로드 사유를 선택해 주세요
-                          </option>
-                          <option
-                            th:each="arraysts : ${excelDown}"
-                            th:value="${arraysts.codeName}"
-                          >
+                        <select class="uiscroll" aria-label="엑셀 다운로드 선택" id="excelDown" name="excelDown">
+                          <option value="">다운로드 사유를 선택해 주세요</option>
+                          <option th:each="arraysts : ${excelDown}" th:value="${arraysts.codeName}">
                             <th:block th:text="${arraysts.codeName}"></th:block>
                           </option>
                         </select>
                       </div>
                       <ul class="list-bullet">
                         <li>다운로드된 파일은 3개월 이내 폐기되어야 합니다.</li>
-                        <li>
-                          xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로
-                          저장하여 보안사항 준수 바랍니다.
-                        </li>
+                        <li>xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로 저장하여 보안사항 준수 바랍니다.</li>
                       </ul>
                     </section>
                   </div>
                   <div class="modal-footer">
                     <div class="d-grid">
-                      <button
-                        type="button"
-                        class="btn btn-dark"
-                        onclick="fnExcel();"
-                        id="excelButton"
-                        disabled
-                      >
-                        다운로드
-                      </button>
+                      <button type="button" class="btn btn-dark" onclick="fnExcel();" id="excelButton" disabled>다운로드</button>
                     </div>
                   </div>
                 </div>
@@ -504,27 +487,13 @@
               <div class="modal-dialog modal-dialog-scrollable modal-xlg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                      onclick="resetModalFields();"
-                    ></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="TodoInsertLabel">
-                      홈개통AS 결과 등록
-                    </h1>
+                    <h1 class="modal-title" id="TodoInsertLabel">홈개통AS 결과 등록</h1>
                     <section class="row">
                       <table class="form-table" id="TodoResultForm">
-                        <input
-                          type="hidden"
-                          id="taskSeqInput"
-                          name="taskSeq"
-                          disabled
-                          value=""
-                        />
+                        <input type="hidden" id="taskSeqInput" name="taskSeq" disabled value="" />
                         <colgroup>
                           <col style="width: 110px" />
                           <col />
@@ -534,13 +503,7 @@
                             <th>Care 활동</th>
                             <td>
                               <div class="input-form w-auto">
-                                <input
-                                  type="text"
-                                  id="careCodeNameInput"
-                                  name="careCodeName"
-                                  disabled
-                                  value=""
-                                />
+                                <input type="text" id="careCodeNameInput" name="careCodeName" disabled value="" />
                               </div>
                             </td>
                           </tr>
@@ -548,27 +511,12 @@
                             <th>방문 여부</th>
                             <td id="visit_radio">
                               <span class="custom-radio">
-                                <input
-                                  id="visitRadioY"
-                                  name="visitRadio"
-                                  type="radio"
-                                  value="Y"
-                                  checked
-                                />
-                                <label for="visitRadioY" class="button">
-                                  Y
-                                </label>
+                                <input id="visitRadioY" name="visitRadio" type="radio" value="Y" checked />
+                                <label for="visitRadioY" class="button"> Y </label>
                               </span>
                               <span class="custom-radio">
-                                <input
-                                  id="visitRadioN"
-                                  name="visitRadio"
-                                  type="radio"
-                                  value="N"
-                                />
-                                <label for="visitRadioN" class="button">
-                                  N
-                                </label>
+                                <input id="visitRadioN" name="visitRadio" type="radio" value="N" />
+                                <label for="visitRadioN" class="button"> N </label>
                               </span>
                             </td>
                           </tr>
@@ -578,10 +526,7 @@
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
-                                    <div
-                                      class="start-date1 input-group datepicker w-auto"
-                                      data-target-input="nearest"
-                                    >
+                                    <div class="start-date1 input-group datepicker w-auto" data-target-input="nearest">
                                       <input
                                         type="text"
                                         class="form-control datetimepicker-input"
@@ -590,26 +535,16 @@
                                         id="visitDtInput"
                                         name="visitDt"
                                       />
-                                      <div
-                                        class="input-group-append"
-                                        data-target=".start-date1"
-                                        data-toggle="datetimepicker"
-                                      >
+                                      <div class="input-group-append" data-target=".start-date1" data-toggle="datetimepicker">
                                         <button class="input-group-text">
-                                          <img
-                                            src="/assets/images/common/icon_datepicker.png"
-                                            alt="달력 이미지"
-                                          />
+                                          <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                         </button>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="col-auto px-3 visitHourInput">
-                                  <select
-                                    class="w-auto uiscroll"
-                                    aria-label="시간 선택"
-                                  >
+                                  <select class="w-auto uiscroll" aria-label="시간 선택">
                                     <option value="0">0시</option>
                                     <option value="1">1시</option>
                                     <option value="2">2시</option>
@@ -642,13 +577,8 @@
                           <tr>
                             <th>방문 결과</th>
                             <td class="visitResultInput disabledY">
-                              <select
-                                class="w300 uiscroll"
-                                aria-label="방문 결과 선택"
-                              >
-                                <option value="1">
-                                  단말 및 부수 자재 교체
-                                </option>
+                              <select class="w300 uiscroll" aria-label="방문 결과 선택">
+                                <option value="1">단말 및 부수 자재 교체</option>
                                 <option value="2">구내배선 교체</option>
                                 <option value="3">댁내배선 교체</option>
                                 <option value="4">NW 장애</option>
@@ -662,37 +592,19 @@
                             <th>구간 품질 측정</th>
                             <td>
                               <span class="custom-radio">
-                                <input
-                                  id="qualityRadioY"
-                                  name="qualityRadio"
-                                  type="radio"
-                                  value="Y"
-                                  checked
-                                />
-                                <label for="qualityRadioY" class="button">
-                                  Y
-                                </label>
+                                <input id="qualityRadioY" name="qualityRadio" type="radio" value="Y" checked />
+                                <label for="qualityRadioY" class="button"> Y </label>
                               </span>
                               <span class="custom-radio">
-                                <input
-                                  id="qualityRadioN"
-                                  name="qualityRadio"
-                                  value="N"
-                                  type="radio"
-                                />
-                                <label for="qualityRadioN" class="button">
-                                  N
-                                </label>
+                                <input id="qualityRadioN" name="qualityRadio" value="N" type="radio" />
+                                <label for="qualityRadioN" class="button"> N </label>
                               </span>
                             </td>
                           </tr>
                           <tr>
                             <th>미 방문 사유</th>
                             <td class="disabledN no-click">
-                              <select
-                                class="w-auto uiscroll nvisitReasonInput"
-                                aria-label="미 방문 사유 선택"
-                              >
+                              <select class="w-auto uiscroll nvisitReasonInput" aria-label="미 방문 사유 선택">
                                 <option value="1">고객부재</option>
                                 <option value="2">방문거부</option>
                                 <option value="3">클린콜 완료</option>
@@ -706,32 +618,16 @@
                             <td>
                               <!-- error 경우 error 클래스 추가 -->
                               <div class="input-form">
-                                <textarea
-                                  id="careDetailsInput"
-                                  name="careDetails"
-                                  placeholder="Care 상세 사항을 입력해 주세요"
-                                  maxlength="500"
-                                ></textarea>
-                                <div class="counter">
-                                  <span class="current">0</span>/500
-                                </div>
+                                <textarea id="careDetailsInput" name="careDetails" placeholder="Care 상세 사항을 입력해 주세요" maxlength="500"></textarea>
+                                <div class="counter"><span class="current">0</span>/500</div>
                               </div>
                             </td>
                           </tr>
                           <tr>
                             <th>고객 특이사항</th>
                             <td>
-                              <button
-                                type="button"
-                                id="hashModalOn"
-                                class="btn btn-ico btn-add"
-                              >
-                                추가
-                              </button>
-                              <ul
-                                id="hashGroup"
-                                class="d-flex flex-column gap-3 pt-3"
-                              ></ul>
+                              <button type="button" id="hashModalOn" class="btn btn-ico btn-add">추가</button>
+                              <ul id="hashGroup" class="d-flex flex-column gap-3 pt-3"></ul>
                             </td>
                           </tr>
                           <tr class="UpdateFormId">
@@ -748,22 +644,8 @@
                   </div>
                   <div class="modal-footer">
                     <div class="d-grid">
-                      <button
-                        type="button"
-                        class="btn btn-dark"
-                        id="insertBtn"
-                        onclick="insertBtn()"
-                      >
-                        확인
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-dark"
-                        id="updateBtn"
-                        onclick="updateBtn()"
-                      >
-                        확인
-                      </button>
+                      <button type="button" class="btn btn-dark" id="insertBtn" onclick="insertBtn()">확인</button>
+                      <button type="button" class="btn btn-dark" id="updateBtn" onclick="updateBtn()">확인</button>
                     </div>
                   </div>
                 </div>
@@ -771,34 +653,17 @@
             </div>
             <!-- // 오늘의 할일 결과 등록 모달 -->
             <!-- 특이사항 등록 모달 -->
-            <div
-              class="modal fade"
-              id="hashModal"
-              tabindex="-1"
-              aria-labelledby="hashModalLabel"
-              aria-hidden="true"
-              data-bs-keyboard="false"
-            >
+            <div class="modal fade" id="hashModal" tabindex="-1" aria-labelledby="hashModalLabel" aria-hidden="true" data-bs-keyboard="false">
               <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      id="closeModal"
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button id="closeModal" type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="hashModalLabel">
-                      특이사항 선택
-                    </h1>
+                    <h1 class="modal-title" id="hashModalLabel">특이사항 선택</h1>
 
                     <section class="row">
-                      <p class="datatable-length">
-                        최대 5건까지 선택 가능합니다.
-                      </p>
+                      <p class="datatable-length">최대 5건까지 선택 가능합니다.</p>
 
                       <table class="datatable3 row-border hover">
                         <thead>
@@ -816,18 +681,12 @@
                                 class="custom-tooltip w100"
                                 th:attr="data-bs-custom-class='custom-tooltip', data-bs-toggle='tooltip', data-bs-title=${codeDto.description}"
                               >
-                                <span th:text="${codeDto.description}"
-                                  >설명</span
-                                >
+                                <span th:text="${codeDto.description}">설명</span>
                               </button>
                             </td>
                             <td>
                               <span class="custom-checkbox">
-                                <input
-                                  type="checkbox"
-                                  th:id="${codeDto.code}"
-                                  th:checked="${codeDto.checkYn == 'Y'}"
-                                />
+                                <input type="checkbox" th:id="${codeDto.code}" th:checked="${codeDto.checkYn == 'Y'}" />
                                 <label th:for="${codeDto.code}">
                                   <i class="icon"></i>
                                 </label>
@@ -840,13 +699,7 @@
                   </div>
                   <div class="modal-footer">
                     <div class="d-grid">
-                      <button
-                        id="generalTextBtn"
-                        type="button"
-                        class="btn btn-dark"
-                      >
-                        확인
-                      </button>
+                      <button id="generalTextBtn" type="button" class="btn btn-dark">확인</button>
                     </div>
                   </div>
                 </div>
@@ -866,18 +719,10 @@
               <div class="modal-dialog modal-dialog-scrollable modal-xlg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      id="TodoListResultClose"
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button id="TodoListResultClose" type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="TodoResultLabel">
-                      홈개통AS 결과 조회
-                    </h1>
+                    <h1 class="modal-title" id="TodoResultLabel">홈개통AS 결과 조회</h1>
 
                     <section class="row">
                       <table class="form-table">
@@ -917,10 +762,7 @@
                           <tr>
                             <th>고객 특이사항</th>
                             <td>
-                              <ul
-                                class="d-flex flex-column gap-3"
-                                id="GeneralText"
-                              ></ul>
+                              <ul class="d-flex flex-column gap-3" id="GeneralText"></ul>
                             </td>
                           </tr>
                           <tr>
@@ -937,9 +779,7 @@
                   </div>
                   <div class="modal-footer notice-style">
                     <div class="d-grid">
-                      <button type="button" id="TodoResultClose" class="btn">
-                        확인
-                      </button>
+                      <button type="button" id="TodoResultClose" class="btn">확인</button>
                     </div>
                   </div>
                 </div>
@@ -952,10 +792,7 @@
             .no-click {
               pointer-events: none;
             }
-            .no-click
-              .custom-select-wrapper
-              .custom-select
-              .custom-select-trigger {
+            .no-click .custom-select-wrapper .custom-select .custom-select-trigger {
               background-color: #d3d3d3;
               color: #a9a9a9;
               cursor: not-allowed;
@@ -1006,8 +843,8 @@
   <script src="/js/common2.js"></script>
   <script src="/js/chart.umd.js"></script>
   <script>
-    window.addEventListener('load', function () {
-      var allElements = document.getElementsByTagName('*');
+    window.addEventListener("load", function () {
+      var allElements = document.getElementsByTagName("*");
       Array.prototype.forEach.call(allElements, function (el) {
         var includePath = el.dataset.includePath;
         if (includePath) {
@@ -1017,7 +854,7 @@
               el.outerHTML = this.responseText;
             }
           };
-          HTTP.open('GET', includePath, true);
+          HTTP.open("GET", includePath, true);
           HTTP.send();
         }
       });
