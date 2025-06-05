@@ -1,0 +1,245 @@
+
+  const fileList = [
+  {
+    "name": "todoList.html",
+    "path": "/web/todoList/todoList.html",
+    "depth1": "오늘의 할 일",
+    "depth2": "오늘의 할 일",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.2",
+    "state": "진행",
+    "remark": "수정/추가"
+  },
+  {
+    "name": "custTypeStats.html",
+    "path": "/web/custTypeStats/custTypeStats.html",
+    "depth1": "현황 통계",
+    "depth2": "고객 유형 현황",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "careDtlStats.html",
+    "path": "/web/careDtlStats/careDtlStats.html",
+    "depth1": "현황 통계",
+    "depth2": "Care 상세 현황",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.2",
+    "state": "진행",
+    "remark": "수정/추가"
+  },
+  {
+    "name": "unhndldStats.html",
+    "path": "/web/unhndldStats/unhndldStats.html",
+    "depth1": "현황 통계",
+    "depth2": "미처리 현황",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "custFltStats.html",
+    "path": "/web/custFltStats/custFltStats.html",
+    "depth1": "고객 관리",
+    "depth2": "고객 장애 통계",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "custInfoMgmt.html",
+    "path": "/web/custInfoMgmt/custInfoMgmt.html",
+    "depth1": "고객 관리",
+    "depth2": "고객 정보 관리",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.2",
+    "state": "진행",
+    "remark": "수정/추가"
+  },
+  {
+    "name": "anncList.html",
+    "path": "/web/announcements/anncList.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "공지사항 목록",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "anncDetail.html",
+    "path": "/web/announcements/anncDetail.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "공지사항 상세",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "anncInsertForm.html",
+    "path": "/web/announcements/anncInsertForm.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "공지사항 등록",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "anncUpdateForm.html",
+    "path": "/web/announcements/anncUpdateForm.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "공지사항 수정",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "propList.html",
+    "path": "/web/proposals/propList.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "건의사항 목록",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "propDetail.html",
+    "path": "/web/proposals/propDetail.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "건의사항 상세",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "propInsertForm.html",
+    "path": "/web/proposals/propInsertForm.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "건의사항 등록",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "propUpdateForm.html",
+    "path": "/web/proposals/propUpdateForm.html",
+    "depth1": "공지/건의 사항",
+    "depth2": "건의사항 수정",
+    "depth3": "",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "userPermsMgmt.html",
+    "path": "/web/userPermsMgmt/userPermsMgmt.html",
+    "depth1": "관리자",
+    "depth2": "권한 관리",
+    "depth3": "사용자 권한 관리",
+    "lastModified": "2025-06-04",
+    "version": "1.2",
+    "state": "진행",
+    "remark": "수정/추가"
+  },
+  {
+    "name": "pageRoleMgmt.html",
+    "path": "/web/pageRoleMgmt/pageRoleMgmt.html",
+    "depth1": "관리자",
+    "depth2": "권한 관리",
+    "depth3": "메뉴별 권한 관리",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "codeMgmt.html",
+    "path": "/web/codeMgmt/codeMgmt.html",
+    "depth1": "관리자",
+    "depth2": "상담 관리",
+    "depth3": "고객 특이 사항 관리",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "vocLabMgmt.html",
+    "path": "/web/vocLabMgmt/vocLabMgmt.html",
+    "depth1": "관리자",
+    "depth2": "상담 관리",
+    "depth3": "VOC LAB 제외 처리",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "logMgmt.html",
+    "path": "/web/logMgmt/logMgmt.html",
+    "depth1": "관리자",
+    "depth2": "접속/API 성공 관리",
+    "depth3": "화면 접근 로그",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "apiLogMgmt.html",
+    "path": "/web/apiLogMgmt/apiLogMgmt.html",
+    "depth1": "관리자",
+    "depth2": "접속/API 성공 관리",
+    "depth3": "외부 API 로그",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "batchLog.html",
+    "path": "/web/batchLog/batchLog.html",
+    "depth1": "관리자",
+    "depth2": "배치 로그",
+    "depth3": "배치 로그",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  },
+  {
+    "name": "manualBatch.html",
+    "path": "/web/manualBatch/manualBatch.html",
+    "depth1": "관리자",
+    "depth2": "배치 로그",
+    "depth3": "배치 수동 실행",
+    "lastModified": "2025-06-04",
+    "version": "1.1",
+    "state": "완료",
+    "remark": ""
+  }
+];

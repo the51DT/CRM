@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>CRM IA</title>
+    <!-- css -->
+    <link rel="stylesheet" href="../assets/css/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/plugins/datatables.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+
+  <style>
+    caption {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    #container,
+    #contents {
+      min-width: 100%;
+    }
+    .pub-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pub-link::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      background-image: url("../assets/images/common/icon_actions.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+    }
+    [class*="btn-pub-"] {
+      position: relative;
+      height: 28px;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 7px 15px;
+      background-color: #eee;
+      text-decoration: none !important;
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      margin: 0 auto;
+    }
+    .btn-pub-fin {
+      background-color: #ff0080;
+      color: #fff;
+    }
+    .btn-pub-ing {
+      background-color: #198754;
+      color: #fff;
+    }
+    .btn-pub-wait {
+      background-color: #cbcbcb;
+      color: #5a5a5a;
+    }
+
+    [class*="badge-pub-"] {
+      height: auto;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 16px;
+      line-height: 20px;
+      background: #555;
+      color: #fff;
+    }
+    .badge-pub-v2 {
+      background-color: #8a0050;
+    }
+    .text-align-left {
+      text-align: left !important;
+    }
+
+    .btn-search:hover::before,
+    .btn-search::before {
+      background: url(../assets/images/common/icon_search.svg) no-repeat 0 0;
+    }
+
+    .count {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .count strong {
+      color: #ff0080;
+    }
+    .pub-title {
+      font-weight: 700;
+      font-size: 24px;
+      color: #000;
+    }
+  </style>
+
+  <body>
+    <div id="root">
+      <!-- container -->
+      <div id="container">
+        <!-- contents -->
+        <div id="contents">
+          <!-- visual banner -->
+          <div class="main-vban-wrap">
+            <div class="inner">
+              <div class="main-top-sch">
+                <h1 class="pub-title">CRM IA</h1>
+                <div class="col-auto d-flex mt-6" style="gap: 12px">
+                  <div class="input-form">
+                    <input type="text" id="search-input" placeholder="검색어를 입력하세요" value="" title="검색어 입력" />
+                  </div>
+                  <button type="button" id="search-button" class="btn btn-ico btn-search" style="flex-shrink: 0">검색</button>
+                </div>
+                <div class="col-auto d-flex mt-4">
+                  <span class="custom-radio">
+                    <input id="filterWord0" name="searchFilter" type="radio" value="" checked />
+                    <label for="filterWord0" class="button filter-word">전체</label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterWord1" name="searchFilter" type="radio" value="1.1" />
+                    <label for="filterWord1" class="button filter-word">버전 1.1</label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterWord2" name="searchFilter" type="radio" value="1.2" />
+                    <label for="filterWord2" class="button filter-word">버전 1.2</label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterWord3" name="searchFilter" type="radio" value="완료" />
+                    <label for="filterWord3" class="button filter-word">완료</label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterWord4" name="searchFilter" type="radio" value="진행" />
+                    <label for="filterWord4" class="button filter-word">진행</label>
+                  </span>
+                  <span class="custom-radio">
+                    <input id="filterWord5" name="searchFilter" type="radio" value="대기" />
+                    <label for="filterWord5" class="button filter-word">대기</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- //visual banner -->
+          <!-- 컨텐츠 영역 -->
+          <div class="inner mt-6">
+            <span class="count"></span>
+            <!-- dataTable -->
+            <div class="row">
+              <table class="dataTable row-border hover">
+                <caption>
+                  퍼블 리스트
+                </caption>
+                <colgroup>
+                  <col style="width: auto" />
+                  <col style="width: auto" />
+                  <col style="width: auto" />
+                  <col style="width: auto" />
+                  <col style="width: auto" />
+                  <col style="width: auto" />
+                  <col style="width: auto" />
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">Depth1</th>
+                    <th scope="col">Depth2</th>
+                    <th scope="col">Depth3</th>
+                    <th scope="col">링크</th>
+                    <th scope="col">버전</th>
+                    <th scope="col">최종수정</th>
+                    <th scope="col">상태</th>
+                    <th scope="col">비고</th>
+                  </tr>
+                </thead>
+                <tbody id="pattern-list"></tbody>
+              </table>
+            </div>
+            <!-- //dataTable -->
+          </div>
+          <!-- //컨텐츠 영역 -->
+        </div>
+        <!-- //contents -->
+      </div>
+      <!-- //container -->
+
+      <script src="fileList.js"></script>
+      <script>
+        // renderPattern
+        const patternList = document.getElementById("pattern-list");
+        const renderPatterns = (patterns) => {
+          let row = [];
+          patterns.forEach((pattern) => {
+            row.push(`
+              <tr class="${pattern.state}">
+                <td class="text-align-left">${pattern.depth1}</td>
+                <td class="text-align-left">${pattern.depth2}</td>
+                <td class="text-align-left">${pattern.depth3}</td>
+                <td class="text-align-left">
+                  <a href="${pattern.path}" target="_blank" class="pub-link">
+                    ${pattern.name}
+                  </a>
+                </td>
+                <td>
+                  ${
+                    pattern.version === "1.1"
+                      ? `<span class="badge-pub-v1">1.1</span>`
+                      : pattern.version === "1.2"
+                      ? `<span class="badge-pub-v2">1.2</span>`
+                      : "-"
+                  }
+                </td>
+                <td>${pattern.lastModified}</td>
+                <td>
+                  ${
+                    pattern.state === "완료"
+                      ? `<button type="button" class="btn-pub-fin">완료</button>`
+                      : pattern.state === "대기"
+                      ? `<button type="button" class="btn-pub-wait">대기</button>`
+                      : pattern.state === "진행"
+                      ? `<button type="button" class="btn-pub-ing">진행</button>`
+                      : "-"
+                  }
+                </td>
+                <td>${pattern.remark}</td>
+              </tr>
+            `);
+          });
+          patternList.innerHTML = row.join("");
+        };
+
+        // filterPatterns
+        const filterPatterns = () => {
+          const query = document.getElementById("search-input").value.toLowerCase();
+          const filteredPatterns = fileList.filter(
+            (pattern) =>
+              (pattern.name && pattern.name.toLowerCase().includes(query)) ||
+              (pattern.path && pattern.path.toLowerCase().includes(query)) ||
+              (pattern.depth1 && pattern.depth1.toLowerCase().includes(query)) ||
+              (pattern.depth2 && pattern.depth3.toLowerCase().includes(query)) ||
+              (pattern.depth3 && pattern.depth3.toLowerCase().includes(query)) ||
+              (pattern.lastModified && pattern.version.toLowerCase().includes(query)) ||
+              (pattern.version && pattern.version.toLowerCase().includes(query)) ||
+              (pattern.state && pattern.state.toLowerCase().includes(query)) ||
+              (pattern.remark && pattern.remark.toLowerCase().includes(query))
+          );
+          renderPatterns(filteredPatterns);
+          count();
+        };
+
+        // filterPatternsByEx
+        const filterPatternsByEx = () => {
+          document.querySelectorAll(".filter-word").forEach((badge) => {
+            const query = document.getElementById("search-input");
+            badge.addEventListener("click", () => {
+              const badgeText = badge.previousElementSibling.value;
+              query.value = badgeText;
+              filterPatterns();
+            });
+          });
+        };
+
+        document.getElementById("search-button").addEventListener("click", filterPatterns);
+        document.getElementById("search-input").addEventListener("keyup", filterPatterns);
+        renderPatterns(fileList);
+        filterPatternsByEx();
+
+        // count
+        const count = () => {
+          const countView = document.querySelector(".count");
+          const num = patternList.querySelectorAll("tbody > tr").length;
+          countView.innerHTML = `총 <strong>${num}</strong>건의 내용이 있습니다.`;
+        };
+        count();
+      </script>
+    </div>
+  </body>
+</html>
