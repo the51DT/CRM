@@ -2,7 +2,7 @@
   <div class="lnb-wrap">
     <div class="custom-box">
       <div class="custom-box__avatar">
-        <img src="/assets/images/temp/avatar.png" alt="회원 아바타 이미지" />
+        <img src="./assets/images/temp/avatar.png" alt="회원 아바타 이미지" />
       </div>
       <div class="custom-box__info">
         <p class="greetings" th:text="|${userName}님 안녕하세요!|"></p>
@@ -16,7 +16,7 @@
     <nav class="nav-lnb">
       <ul>
         <li>
-          <a href="/web/todoList/todoList.html" class="depth1-link today"
+          <a href="./web/todoList/todoList.html" class="depth1-link today"
             >오늘의 할 일</a
           >
         </li>
@@ -24,13 +24,13 @@
           <a href="#" class="depth1-link stats">현황 통계</a>
           <ul class="depth2">
             <li>
-              <a href="/web/custTypeStats/custTypeStats.html">고객 유형 현황</a>
+              <a href="./web/custTypeStats/custTypeStats.html">고객 유형 현황</a>
             </li>
             <li>
-              <a href="/web/careDtlStats/careDtlStats.html">Care 상세 현황</a>
+              <a href="./web/careDtlStats/careDtlStats.html">Care 상세 현황</a>
             </li>
             <li>
-              <a href="/web/unhndldStats/unhndldStats.html">미처리 현황</a>
+              <a href="./web/unhndldStats/unhndldStats.html">미처리 현황</a>
             </li>
           </ul>
         </li>
@@ -38,40 +38,40 @@
           <a href="#" class="depth1-link client">고객 관리</a>
           <ul class="depth2">
             <li>
-              <a href="/web/custInfoMgmt/custInfoMgmt.html">고객정보 관리</a>
+              <a href="./web/custInfoMgmt/custInfoMgmt.html">고객정보 관리</a>
             </li>
             <li>
-              <a href="/web/custFltStats/custFltStats.html">고객장애 통계</a>
+              <a href="./web/custFltStats/custFltStats.html">고객장애 통계</a>
             </li>
           </ul>
         </li>
         <li>
           <a href="#" class="depth1-link notices">공지/건의 사항</a>
           <ul class="depth2">
-            <li><a href="/web/announcements/anncList.html">공지사항</a></li>
-            <li><a href="/web/proposals/propList.html">건의사항</a></li>
+            <li><a href="./web/announcements/anncList.html">공지사항</a></li>
+            <li><a href="./web/proposals/propList.html">건의사항</a></li>
           </ul>
         </li>
         <li th:if="${userRole} == 'Master'">
           <a href="#" class="depth1-link manager">관리자</a>
           <ul class="depth2">
             <li>
-              <a href="/web/userPermsMgmt/userPermsMgmt.html" class="navClick"
+              <a href="./web/userPermsMgmt/userPermsMgmt.html" class="navClick"
                 >권한 관리</a
               >
             </li>
             <li>
-              <a href="/web/codeMgmt/codeMgmt.html" class="navClick"
+              <a href="./web/codeMgmt/codeMgmt.html" class="navClick"
                 >상담 관리</a
               >
             </li>
             <li>
-              <a href="/web/logMgmt/logMgmt.html" class="navClick"
+              <a href="./web/logMgmt/logMgmt.html" class="navClick"
                 >접속/API 성공 관리</a
               >
             </li>
             <li>
-              <a href="/web/batchLog/batchLog.html" class="navClick"
+              <a href="./web/batchLog/batchLog.html" class="navClick"
                 >배치 로그</a
               >
             </li>
