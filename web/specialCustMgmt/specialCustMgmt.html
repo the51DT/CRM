@@ -21,98 +21,144 @@
             <div class="tabs">
               <ul class="nav nav-underline">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/web/codeMgmt/codeMgmt.html">고객 특이 사항 관리</a>
+                  <a class="nav-link" href="/web/codeMgmt/codeMgmt.html">고객 특이 사항 관리</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/web/vocLabMgmt/vocLabMgmt.html">VOC LAB 제외 처리</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/web/specialCustMgmt/specialCustMgmt.html">특별 고객 관리</a>
+                  <a class="nav-link active" aria-current="page" href="/web/specialCustMgmt/specialCustMgmt.html">특별 고객 관리</a>
                 </li>
               </ul>
             </div>
 
+            <!-- 2025-05 신규 수정/추가 -->
             <section class="row">
               <div class="form-box">
                 <table class="form-table">
                   <colgroup>
                     <col style="width: 140px" />
+                    <col style="width: 30%" />
+                    <col style="width: 72px" />
                     <col />
                   </colgroup>
                   <tbody>
                     <tr>
-                      <th>조회 구분</th>
+                      <th>가입 번호</th>
                       <td>
-                        <div class="inline-flex">
-                          <div class="col-auto">
-                            <select id="type" class="uiscroll w200" aria-label="조회 구분 선택">
-                              <option value="codeName">특이사항</option>
-                              <option value="code">코드</option>
-                            </select>
+                        <div class="input-form w300">
+                          <div class="inner">
+                            <input type="text" name="subscriberNo" placeholder="가입 번호를 입력해 주세요" value="" onkeydown="" />
                           </div>
-                          <div class="col-auto">
-                            <div class="input-form w400">
-                              <div class="inner">
-                                <input id="typeInput" type="text" placeholder="조회 구분을 입력해 주세요." value="" />
-                              </div>
-                              <div class="error">조회 구분을 입력해 주세요.</div>
-                            </div>
-                          </div>
+                          <div class="error">가입 번호를 입력해 주세요.</div>
                         </div>
                       </td>
-                    </tr>
-                    <tr>
-                      <th>등록자</th>
+                      <th>대리점 코드</th>
                       <td>
-                        <div class="input-form w200">
+                        <div class="input-form w300">
                           <div class="inner">
-                            <input id="createId" type="text" placeholder="등록자를 입력해 주세요" value="" />
+                            <input type="text" name="agencyCode" placeholder="대리점 코드를 입력해 주세요" value="" onkeydown="" />
                           </div>
-                          <div class="error">등록자를 입력해 주세요.</div>
+                          <div class="error">대리점 코드를 입력해 주세요.</div>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <th>사용 여부</th>
-                      <td colspan="3">
+                      <td colspan="3" id="useYnCheck">
                         <span class="custom-radio">
-                          <input id="all" name="searchUseYn" type="radio" value="all" checked />
-                          <label for="all" class="button"> 전체 </label>
+                          <input id="useYnAll" name="useYn" type="radio" value="" checked />
+                          <label for="useYnAll" class="button">전체</label>
                         </span>
                         <span class="custom-radio">
-                          <input id="useY" name="searchUseYn" type="radio" value="Y" />
-                          <label for="useY" class="button"> Y </label>
+                          <input id="useYnY" name="useYn" type="radio" value="Y" />
+                          <label for="useYnY" class="button">Y</label>
                         </span>
                         <span class="custom-radio">
-                          <input id="useN" name="searchUseYn" type="radio" value="N" />
-                          <label for="useN" class="button"> N </label>
+                          <input id="useYnN" name="useYn" type="radio" value="N" />
+                          <label for="useYnN" class="button">N</label>
                         </span>
                       </td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="flex">
-                  <button type="button" id="searchBtn" class="btn btn-ico btn-inquiry">조회</button>
+                  <button type="button" class="btn btn-ico btn-reset">초기화</button>
+                  <button type="button" class="btn btn-ico btn-inquiry">조회</button>
                 </div>
               </div>
             </section>
 
-            <section class="row">
-              <table class="datatable1 row-border hover">
+            <section class="row mt-6">
+              <div class="search-box transparent-bg-box gap-2">
+                <div class="col-auto d-flex align-items-center gap-2">
+                  <span class="list-count">총 2,245건</span>
+                  <select id="pageSizeSelect" class="uiscroll w100" aria-label="페이지당 표시 개수 선택">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                  </select>
+                </div>
+                <div class="col-auto d-flex right gap-2">
+                  <button type="button" class="btn btn-ico btn-download" id="downloadBtn">다운로드</button>
+                  <button type="button" class="btn btn-ico btn-new-write" id="addUserBtn">신규등록</button>
+                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn">선택삭제</button>
+                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn" disabled>선택삭제</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row mt-4">
+              <table class="dataTable row-border hover">
+                <colgroup>
+                  <col style="width: 100px" />
+                </colgroup>
                 <thead>
                   <tr>
+                    <th>
+                      <span class="custom-checkbox">
+                        <input type="checkbox" id="select-all" />
+                        <label for="select-all">
+                          <i class="icon"></i>
+                        </label>
+                      </span>
+                    </th>
                     <th>번호</th>
-                    <th>코드</th>
-                    <th>특이 사항</th>
-                    <th>설명</th>
-                    <th>사용 여부</th>
-                    <th>등록 일시</th>
-                    <th>등록자</th>
+                    <th>가입 번호</th>
+                    <th>고객명</th>
+                    <th>조직 코드</th>
+                    <th>조직 코드명</th>
+                    <th>등록 사유</th>
+                    <th>비고</th>
+                    <th>조회</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="custom-checkbox">
+                        <input id="userPerms_check" type="checkbox" />
+                        <label for="userPerms_check">
+                          <i class="icon"></i>
+                        </label>
+                      </span>
+                    </td>
+                    <td>1</td>
+                    <td>1234567890123</td>
+                    <td>홍길동</td>
+                    <td>HS001</td>
+                    <td>VIP고객지원팀</td>
+                    <td>난개통 지역 고객으로 지원센터 Care...</td>
+                    <td>난개통 지역으로 특수 배선 점검...</td>
+                    <td>
+                      <!-- 작은 버튼 임시 -->
+                      <button type="button" class="btn btn-outline-secondary btn-sm">조회</button>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </section>
+            <!-- //2025-05 신규 수정/추가 -->
+
             <div
               class="modal fade"
               id="insertModal"

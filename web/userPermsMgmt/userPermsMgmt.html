@@ -21,17 +21,10 @@
             <div class="tabs">
               <ul class="nav nav-underline">
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="/web/userPermsMgmt/userPermsMgmt.html"
-                    >사용자 권한 관리</a
-                  >
+                  <a class="nav-link active" aria-current="page" href="/web/userPermsMgmt/userPermsMgmt.html">사용자 권한 관리</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/web/pageRoleMgmt/pageRoleMgmt.html"
-                    >메뉴별 권한 관리</a
-                  >
+                  <a class="nav-link" href="/web/pageRoleMgmt/pageRoleMgmt.html">메뉴별 권한 관리</a>
                 </li>
               </ul>
             </div>
@@ -51,28 +44,16 @@
                       <td>
                         <div class="input-form w300">
                           <div class="inner">
-                            <input
-                              type="text"
-                              name="userName"
-                              placeholder="이름을 입력해 주세요"
-                              value=""
-                              onkeydown="handleKeyDown(event)"
-                            />
+                            <input type="text" name="userName" placeholder="이름을 입력해 주세요" value="" onkeydown="handleKeyDown(event)" />
                           </div>
                           <div class="error">이름을 입력해 주세요.</div>
                         </div>
                       </td>
-                      <th>마당</th>
+                      <th>마당 ID</th>
                       <td>
                         <div class="input-form w300">
                           <div class="inner">
-                            <input
-                              type="text"
-                              name="userId"
-                              placeholder="마당ID를 입력해 주세요"
-                              value=""
-                              onkeydown="handleKeyDown(event)"
-                            />
+                            <input type="text" name="userId" placeholder="마당ID를 입력해 주세요" value="" onkeydown="handleKeyDown(event)" />
                           </div>
                           <div class="error">마당ID를 입력해 주세요.</div>
                         </div>
@@ -81,32 +62,16 @@
                     <tr>
                       <th>직원 구분</th>
                       <td class="employeeType">
-                        <select
-                          class="uiscroll w300"
-                          aria-label="직원 구분 선택"
-                        >
-                          <option data-value="">
-                            직원 구분을 선택해 주세요
-                          </option>
-                          <option
-                            th:each="arraysts : ${emploType}"
-                            th:value="${arraysts.codeName}"
-                          >
-                            <th:block th:text="${arraysts.codeName}"></th:block>
-                          </option>
+                        <select class="uiscroll w300" aria-label="직원 구분 선택">
+                          <option data-value="">직원 구분을 선택해 주세요</option>
+                          <option data-value="">option1</option>
                         </select>
                       </td>
                       <th>소속</th>
                       <td>
                         <div class="input-form w300">
                           <div class="inner">
-                            <input
-                              type="text"
-                              name="userDeptName"
-                              placeholder="소속을 입력해 주세요"
-                              value=""
-                              onkeydown="handleKeyDown(event)"
-                            />
+                            <input type="text" name="userDeptName" placeholder="소속을 입력해 주세요" value="" onkeydown="handleKeyDown(event)" />
                           </div>
                           <div class="error">소속을 입력해 주세요.</div>
                         </div>
@@ -116,100 +81,73 @@
                       <th>사용자 권한</th>
                       <td colspan="3">
                         <span class="custom-radio">
-                          <input
-                            id="ALL"
-                            name="roleGroupId"
-                            type="radio"
-                            value=""
-                            checked
-                          />
-                          <label
-                            for="ALL"
-                            class="button"
-                            th:text="'전체 (' + ${roleCount[0].count} + ')'"
-                          />
+                          <input id="ALL" name="roleGroupId" type="radio" value="" checked />
+                          <label for="ALL" class="button">전체(420)</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="Master"
-                            name="roleGroupId"
-                            type="radio"
-                            value="Master"
-                          />
-                          <label
-                            for="Master"
-                            class="button"
-                            th:text="'마스터 (' + ${roleCount[3].count} + ')'"
-                          />
+                          <input id="Master" name="roleGroupId" type="radio" value="Master" />
+                          <label for="Master" class="button">마스터(420)</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="AllManage"
-                            name="roleGroupId"
-                            type="radio"
-                            value="AllManage"
-                          />
-                          <label
-                            for="AllManage"
-                            class="button"
-                            th:text="'전체 관리자 (' + ${roleCount[1].count} + ')'"
-                          />
+                          <input id="AllManage" name="roleGroupId" type="radio" value="AllManage" />
+                          <label for="AllManage" class="button">전체 관리자(420)</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="FieldManage"
-                            name="roleGroupId"
-                            type="radio"
-                            value="FieldManage"
-                          />
-                          <label
-                            for="FieldManage"
-                            class="button"
-                            th:text="'현장 관리자 (' + ${roleCount[2].count} + ')'"
-                          />
+                          <input id="FieldManage" name="roleGroupId" type="radio" value="FieldManage" />
+                          <label for="FieldManage" class="button">현장 관리자(420)</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="User"
-                            name="roleGroupId"
-                            type="radio"
-                            value="User"
-                          />
-                          <label
-                            for="User"
-                            class="button"
-                            th:text="'사용자 (' + ${roleCount[5].count} + ')'"
-                          />
+                          <input id="User" name="roleGroupId" type="radio" value="User" />
+                          <label for="User" class="button">사용자(420)</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="NonRole"
-                            name="roleGroupId"
-                            type="radio"
-                            value="NonRole"
-                          />
-                          <label
-                            for="NonRole"
-                            class="button"
-                            th:text="'권한 없음 (' + ${roleCount[4].count} + ')'"
-                          />
+                          <input id="NonRole" name="roleGroupId" type="radio" value="NonRole" />
+                          <label for="NonRole" class="button">권한없음(420)</label>
                         </span>
                       </td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="flex">
-                  <button type="button" class="btn btn-ico btn-inquiry">
-                    조회
-                  </button>
+                  <button type="button" class="btn btn-ico btn-reset">초기화</button>
+                  <button type="button" class="btn btn-ico btn-inquiry">조회</button>
                 </div>
               </div>
             </section>
 
-            <section class="row">
-              <table class="datatable1 row-border hover">
+            <!-- 2025-05 신규 수정/추가 -->
+            <section class="row mt-6">
+              <div class="search-box transparent-bg-box gap-2">
+                <div class="col-auto d-flex align-items-center gap-2">
+                  <span class="list-count">총 2,245건</span>
+                  <select id="pageSizeSelect" class="uiscroll w100" aria-label="페이지당 표시 개수 선택">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                  </select>
+                </div>
+                <div class="col-auto d-flex right gap-2">
+                  <button type="button" class="btn btn-ico btn-new-write" id="addUserBtn">신규등록</button>
+                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn">선택삭제</button>
+                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn" disabled>선택삭제</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="row mt-4">
+              <table class="dataTable row-border hover">
+                <colgroup>
+                  <col style="width: 100px" />
+                </colgroup>
                 <thead>
                   <tr>
+                    <th>
+                      <span class="custom-checkbox">
+                        <input type="checkbox" id="select-all" />
+                        <label for="select-all">
+                          <i class="icon"></i>
+                        </label>
+                      </span>
+                    </th>
                     <th>번호</th>
                     <th>이름</th>
                     <th>마당 ID</th>
@@ -219,9 +157,31 @@
                     <th>등록일</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="custom-checkbox">
+                        <input id="userPerms_check" type="checkbox" />
+                        <label for="userPerms_check">
+                          <i class="icon"></i>
+                        </label>
+                      </span>
+                    </td>
+                    <td>1</td>
+                    <td>홍길동</td>
+                    <td>
+                      <button type="button">lguplusmadangid</button>
+                    </td>
+                    <td>CS 팀장</td>
+                    <td>강남 홈서비스 고객만족 실행팀</td>
+                    <td>현장 관리자</td>
+                    <td>2025-05-01 12:00</td>
+                  </tr>
+                </tbody>
               </table>
             </section>
+            <!-- 2025-05 신규 수정/추가 -->
+
             <!-- 신규 등록 모달 -->
             <div
               class="modal fade"
@@ -235,29 +195,14 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      id="inputClosed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-closed" id="inputClosed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="inputUserLabel">
-                      사용자 권한 등록
-                    </h1>
+                    <h1 class="modal-title" id="inputUserLabel">사용자 권한 등록</h1>
 
                     <section class="row">
                       <table class="form-table">
-                        <input
-                          type="hidden"
-                          name="inputDeptCd"
-                          id="inputDeptCd"
-                          readonly
-                          placeholder=""
-                          value=""
-                        />
+                        <input type="hidden" name="inputDeptCd" id="inputDeptCd" readonly placeholder="" value="" />
                         <colgroup>
                           <col style="width: 110px" />
                           <col />
@@ -279,27 +224,13 @@
                                         onkeydown="handleKeyDown2(event)"
                                       />
                                     </div>
-                                    <div
-                                      class="error"
-                                      id="errorAlreadyRegistered"
-                                    >
-                                      이미 등록된 사용자입니다
-                                    </div>
-                                    <div class="error" id="errorNotFound">
-                                      일치하는 ID를 찾을 수 없습니다.
-                                    </div>
-                                    <div class="success" id="successId">
-                                      등록 가능한 사용자입니다.
-                                    </div>
+                                    <div class="error" id="errorAlreadyRegistered">이미 등록된 사용자입니다</div>
+                                    <div class="error" id="errorNotFound">일치하는 ID를 찾을 수 없습니다.</div>
+                                    <div class="success" id="successId">등록 가능한 사용자입니다.</div>
                                   </div>
                                 </div>
                                 <div class="col-auto">
-                                  <button
-                                    type="button"
-                                    class="btn btn-dark userSearch"
-                                  >
-                                    검색
-                                  </button>
+                                  <button type="button" class="btn btn-dark userSearch">검색</button>
                                 </div>
                               </div>
                             </td>
@@ -308,36 +239,17 @@
                             <th>이름</th>
                             <td>
                               <div class="input-form w-auto">
-                                <input
-                                  type="text"
-                                  name="inputUserName"
-                                  id="inputUserName"
-                                  readonly
-                                  placeholder=""
-                                  value=""
-                                />
+                                <input type="text" name="inputUserName" id="inputUserName" readonly placeholder="" value="" />
                               </div>
                             </td>
                           </tr>
                           <tr>
                             <th>직원 구분</th>
                             <td id="inputEmployeeType">
-                              <select
-                                id="inputEmployee"
-                                class="uiscroll"
-                                aria-label="직원 구분 선택"
-                                style="width: 230px"
-                              >
-                                <option data-value="">
-                                  직원 구분을 선택해 주세요
-                                </option>
-                                <option
-                                  th:each="arraysts : ${emploType}"
-                                  th:value="${arraysts.codeName}"
-                                >
-                                  <th:block
-                                    th:text="${arraysts.codeName}"
-                                  ></th:block>
+                              <select id="inputEmployee" class="uiscroll" aria-label="직원 구분 선택" style="width: 230px">
+                                <option data-value="">직원 구분을 선택해 주세요</option>
+                                <option th:each="arraysts : ${emploType}" th:value="${arraysts.codeName}">
+                                  <th:block th:text="${arraysts.codeName}"></th:block>
                                 </option>
                               </select>
                             </td>
@@ -346,36 +258,17 @@
                             <th>소속</th>
                             <td>
                               <div class="input-form w-auto">
-                                <input
-                                  type="text"
-                                  name="inputUserDeptName"
-                                  id="inputUserDeptName"
-                                  readonly
-                                  placeholder=""
-                                  value=""
-                                />
+                                <input type="text" name="inputUserDeptName" id="inputUserDeptName" readonly placeholder="" value="" />
                               </div>
                             </td>
                           </tr>
                           <tr>
                             <th>권한 선택</th>
                             <td id="inputRoleGroupId">
-                              <select
-                                id="inputRole"
-                                class="uiscroll"
-                                aria-label="권한 선택"
-                                style="width: 230px"
-                              >
-                                <option data-value="">
-                                  권한을 선택해 주세요
-                                </option>
-                                <option
-                                  th:each="arraysts : ${roleList}"
-                                  th:value="${arraysts.roleGroupId}"
-                                >
-                                  <th:block
-                                    th:text="${arraysts.roleGroupName}"
-                                  ></th:block>
+                              <select id="inputRole" class="uiscroll" aria-label="권한 선택" style="width: 230px">
+                                <option data-value="">권한을 선택해 주세요</option>
+                                <option th:each="arraysts : ${roleList}" th:value="${arraysts.roleGroupId}">
+                                  <th:block th:text="${arraysts.roleGroupName}"></th:block>
                                 </option>
                               </select>
                             </td>
@@ -386,13 +279,7 @@
                   </div>
                   <div class="modal-footer">
                     <div class="d-grid">
-                      <button
-                        type="button"
-                        class="btn btn-dark inputBtn"
-                        disabled
-                      >
-                        확인
-                      </button>
+                      <button type="button" class="btn btn-dark inputBtn" disabled>확인</button>
                     </div>
                   </div>
                 </div>
@@ -412,17 +299,10 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="updateUserLabel">
-                      사용자 권한 보기/수정
-                    </h1>
+                    <h1 class="modal-title" id="updateUserLabel">사용자 권한 보기/수정</h1>
 
                     <section class="row">
                       <table class="form-table">
@@ -442,21 +322,10 @@
                           <tr>
                             <th>직원 구분</th>
                             <td id="employeeType">
-                              <select
-                                class="uiscroll"
-                                aria-label="직원 구분 선택"
-                                style="width: 230px"
-                              >
-                                <option data-value="">
-                                  직원 구분을 선택해 주세요
-                                </option>
-                                <option
-                                  th:each="arraysts : ${emploType}"
-                                  th:value="${arraysts.codeName}"
-                                >
-                                  <th:block
-                                    th:text="${arraysts.codeName}"
-                                  ></th:block>
+                              <select class="uiscroll" aria-label="직원 구분 선택" style="width: 230px">
+                                <option data-value="">직원 구분을 선택해 주세요</option>
+                                <option th:each="arraysts : ${emploType}" th:value="${arraysts.codeName}">
+                                  <th:block th:text="${arraysts.codeName}"></th:block>
                                 </option>
                               </select>
                             </td>
@@ -468,21 +337,10 @@
                           <tr>
                             <th>권한 선택</th>
                             <td id="roleGroupId">
-                              <select
-                                class="uiscroll"
-                                aria-label="권한 선택"
-                                style="width: 230px"
-                              >
-                                <option data-value="">
-                                  권한을 선택해 주세요
-                                </option>
-                                <option
-                                  th:each="arraysts : ${roleList}"
-                                  th:value="${arraysts.roleGroupId}"
-                                >
-                                  <th:block
-                                    th:text="${arraysts.roleGroupName}"
-                                  ></th:block>
+                              <select class="uiscroll" aria-label="권한 선택" style="width: 230px">
+                                <option data-value="">권한을 선택해 주세요</option>
+                                <option th:each="arraysts : ${roleList}" th:value="${arraysts.roleGroupId}">
+                                  <th:block th:text="${arraysts.roleGroupName}"></th:block>
                                 </option>
                               </select>
                             </td>
@@ -494,20 +352,10 @@
                   <div class="modal-footer">
                     <div class="d-flex gap-08">
                       <div class="col-auto">
-                        <button
-                          type="button"
-                          class="btn btn-outline-dark NonRole"
-                        >
-                          권한 회수
-                        </button>
+                        <button type="button" class="btn btn-outline-dark NonRole">권한 회수</button>
                       </div>
                       <div class="col">
-                        <button
-                          type="button"
-                          class="btn btn-dark w100p updateBtn"
-                        >
-                          확인
-                        </button>
+                        <button type="button" class="btn btn-dark w100p updateBtn">확인</button>
                       </div>
                     </div>
                   </div>
@@ -539,8 +387,8 @@
   <script src="/js/common2.js"></script>
   <script src="/js/chart.umd.js"></script>
   <script>
-    window.addEventListener('load', function () {
-      var allElements = document.getElementsByTagName('*');
+    window.addEventListener("load", function () {
+      var allElements = document.getElementsByTagName("*");
       Array.prototype.forEach.call(allElements, function (el) {
         var includePath = el.dataset.includePath;
         if (includePath) {
@@ -550,7 +398,7 @@
               el.outerHTML = this.responseText;
             }
           };
-          HTTP.open('GET', includePath, true);
+          HTTP.open("GET", includePath, true);
           HTTP.send();
         }
       });

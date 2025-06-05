@@ -18,71 +18,47 @@
           <div class="contents__inner">
             <h2>Care 상세 현황</h2>
 
+            <!-- 2025-05 신규 수정/추가 -->
             <section class="row">
               <div class="form-box">
                 <table class="form-table">
                   <colgroup>
                     <col style="width: 140px" />
-                    <col style="width: 30%" />
+                    <col style="width: auto" />
                     <col style="width: 140px" />
-                    <col />
+                    <col style="width: auto" />
+                    <col style="width: 140px" />
+                    <col style="width: auto" />
                   </colgroup>
                   <tbody>
                     <tr>
                       <th>가입 번호</th>
-                      <td colspan="3">
+                      <td colspan="5">
                         <div class="input-form" style="width: 448px">
                           <div class="inner">
-                            <input
-                              type="text"
-                              name="entrNo"
-                              placeholder="가입 번호를 입력해 주세요"
-                              value=""
-                              onkeydown="handleKeyDown(event)"
-                            />
+                            <input type="text" name="entrNo" placeholder="가입 번호를 입력해 주세요" value="" onkeydown="handleKeyDown(event)" />
                           </div>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <th>대리점 구분</th>
-                      <td colspan="3">
+                      <td colspan="5">
                         <div class="relative">
                           <div class="inline-flex">
                             <div class="col-auto">
-                              <button
-                                type="button"
-                                class="btn btn-ico btn-div lg"
-                                aria-expanded="false"
-                              >
-                                대분류
-                              </button>
+                              <button type="button" class="btn btn-ico btn-div lg" aria-expanded="false">대분류</button>
                             </div>
                             <div class="col-auto">
-                              <button
-                                type="button"
-                                class="btn btn-ico btn-div md"
-                                aria-expanded="false"
-                              >
-                                중분류
-                              </button>
+                              <button type="button" class="btn btn-ico btn-div md" aria-expanded="false">중분류</button>
                             </div>
                             <div class="col-auto">
-                              <button
-                                type="button"
-                                class="btn btn-ico btn-div sm"
-                                aria-expanded="false"
-                              >
-                                소분류
-                              </button>
+                              <button type="button" class="btn btn-ico btn-div sm" aria-expanded="false">소분류</button>
                             </div>
                           </div>
 
                           <!-- 대리점 구분 레이어 -->
-                          <div
-                            id="collapseDiv"
-                            class="collapse layer-datepicker"
-                          >
+                          <div id="collapseDiv" class="collapse layer-datepicker">
                             <div class="inner">
                               <header>
                                 <button class="close">닫기</button>
@@ -95,18 +71,9 @@
                                       <p class="sub-title">대분류</p>
                                       <ul class="list">
                                         <li>
-                                          <button
-                                            type="button"
-                                            onclick="selectDivision(this, 'lg')"
-                                            data-value="ALL"
-                                          >
-                                            대분류 전체
-                                          </button>
+                                          <button type="button" onclick="selectDivision(this, 'lg')" data-value="ALL">대분류 전체</button>
                                         </li>
-                                        <li
-                                          th:each="division : ${bizbrList}"
-                                          th:if="${division.bizbrLvl == '5'}"
-                                        >
+                                        <li th:each="division : ${bizbrList}" th:if="${division.bizbrLvl == '5'}">
                                           <button
                                             type="button"
                                             th:text="${division.bizbrNm}"
@@ -132,13 +99,7 @@
                                 </div>
                               </div>
                               <footer>
-                                <button
-                                  type="button"
-                                  class="btn btn-dark"
-                                  onclick="confirmSelection()"
-                                >
-                                  확인
-                                </button>
+                                <button type="button" class="btn btn-dark" onclick="confirmSelection()">확인</button>
                               </footer>
                             </div>
                           </div>
@@ -148,7 +109,7 @@
                     </tr>
                     <tr>
                       <th>조회 기간</th>
-                      <td colspan="3">
+                      <td colspan="5">
                         <div class="datepicker-wrap">
                           <button
                             type="button"
@@ -158,17 +119,11 @@
                             aria-expanded="false"
                             aria-controls="collapseDate"
                           >
-                            <span class="start">2024-06-24</span>~<span
-                              class="end"
-                              >2025-06-23</span
-                            >
+                            <span class="start">2024-06-24</span>~<span class="end">2025-06-23</span>
                           </button>
 
                           <!-- 달력 레이어 -->
-                          <div
-                            id="collapseDate"
-                            class="collapse layer-datepicker"
-                          >
+                          <div id="collapseDate" class="collapse layer-datepicker">
                             <div class="inner">
                               <header>
                                 <button class="close">닫기</button>
@@ -177,84 +132,39 @@
                                 <p class="sub">기간을 선택해 주세요</p>
                                 <div class="date-select">
                                   <span class="custom-radio" data-range="7">
-                                    <input
-                                      id="_uid_100"
-                                      name="_uid_1"
-                                      type="radio"
-                                    />
-                                    <label for="_uid_100" class="button">
-                                      최근 1주일
-                                    </label>
+                                    <input id="_uid_100" name="_uid_1" type="radio" />
+                                    <label for="_uid_100" class="button"> 최근 1주일 </label>
                                   </span>
                                   <span class="custom-radio" data-range="30">
-                                    <input
-                                      id="_uid_101"
-                                      name="_uid_1"
-                                      type="radio"
-                                    />
-                                    <label for="_uid_101" class="button">
-                                      최근 30일
-                                    </label>
+                                    <input id="_uid_101" name="_uid_1" type="radio" />
+                                    <label for="_uid_101" class="button"> 최근 30일 </label>
                                   </span>
                                   <span class="custom-radio" data-range="90">
-                                    <input
-                                      id="_uid_102"
-                                      name="_uid_1"
-                                      type="radio"
-                                    />
-                                    <label for="_uid_102" class="button">
-                                      최근 90일
-                                    </label>
+                                    <input id="_uid_102" name="_uid_1" type="radio" />
+                                    <label for="_uid_102" class="button"> 최근 90일 </label>
                                   </span>
                                   <span class="custom-radio" data-range="365">
-                                    <input
-                                      id="_uid_103"
-                                      name="_uid_1"
-                                      type="radio"
-                                    />
-                                    <label for="_uid_103" class="button">
-                                      최근 1년
-                                    </label>
+                                    <input id="_uid_103" name="_uid_1" type="radio" />
+                                    <label for="_uid_103" class="button"> 최근 1년 </label>
                                   </span>
                                   <span class="custom-radio">
-                                    <input
-                                      id="_uid_104"
-                                      name="_uid_1"
-                                      type="radio"
-                                    />
-                                    <label for="_uid_104" class="button">
-                                      직접 입력
-                                    </label>
+                                    <input id="_uid_104" name="_uid_1" type="radio" />
+                                    <label for="_uid_104" class="button"> 직접 입력 </label>
                                   </span>
                                 </div>
                                 <div class="date-box">
                                   <div class="start-date">
-                                    <p class="title">
-                                      시작일 <em>2024-06-24</em>
-                                    </p>
-                                    <div
-                                      class="datetimepicker"
-                                      id="searchStartPicker"
-                                    ></div>
+                                    <p class="title">시작일 <em>2024-06-24</em></p>
+                                    <div class="datetimepicker" id="searchStartPicker"></div>
                                   </div>
                                   <div class="end-date">
-                                    <p class="title">
-                                      종료일 <em>2025-06-23</em>
-                                    </p>
-                                    <div
-                                      class="datetimepicker2"
-                                      id="searchEndPicker"
-                                    ></div>
+                                    <p class="title">종료일 <em>2025-06-23</em></p>
+                                    <div class="datetimepicker2" id="searchEndPicker"></div>
                                   </div>
                                 </div>
                               </div>
                               <footer>
-                                <button
-                                  type="button"
-                                  class="btn btn-dark picker"
-                                >
-                                  확인
-                                </button>
+                                <button type="button" class="btn btn-dark picker">확인</button>
                               </footer>
                             </div>
                           </div>
@@ -264,141 +174,199 @@
                     </tr>
                     <tr>
                       <th>발생 지표</th>
-                      <td colspan="3" class="IndicatorNm">
-                        <select
-                          class="w300 uiscroll"
-                          aria-label="발생 지표 열기"
-                        >
+                      <td colspan="5">
+                        <select class="w300 uiscroll" aria-label="발생 지표 열기">
                           <option data-value="">분류선택</option>
-                          <option
-                            th:value="${Indicator.indicator_code}"
-                            th:each="Indicator : ${IndicatorNm}"
-                            th:text="${Indicator.indicatorcodename}"
-                          ></option>
+                          <option th:value="${Indicator.indicator_code}" th:each="Indicator : ${IndicatorNm}" th:text="${Indicator.indicatorcodename}"></option>
                         </select>
                       </td>
                     </tr>
                     <tr>
+                      <th>유선 CEM 조회</th>
+                      <td id="cemCheck">
+                        <span class="custom-radio">
+                          <input id="cemAll" name="cemYn" type="radio" value="" checked />
+                          <label for="cemAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="cemY" name="cemYn" type="radio" value="Y" />
+                          <label for="cemY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="cemN" name="cemYn" type="radio" value="N" />
+                          <label for="cemN" class="button">N</label>
+                        </span>
+                      </td>
+                      <th>컨택 등록 여부</th>
+                      <td id="contactCheck">
+                        <span class="custom-radio">
+                          <input id="contactAll" name="contactYn" type="radio" value="" checked />
+                          <label for="contactAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="contactY" name="contactYn" type="radio" value="Y" />
+                          <label for="contactY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="contactN" name="contactYn" type="radio" value="N" />
+                          <label for="contactN" class="button">N</label>
+                        </span>
+                      </td>
                       <th>결과 등록 여부</th>
                       <td id="resultCheck">
                         <span class="custom-radio">
-                          <input
-                            id="resultAll"
-                            name="resultYn"
-                            type="radio"
-                            value=""
-                            checked
-                          />
-                          <label for="resultAll" class="button"> 전체 </label>
+                          <input id="resultAll" name="resultYn" type="radio" value="" checked />
+                          <label for="resultAll" class="button">전체</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="resultY"
-                            name="resultYn"
-                            type="radio"
-                            value="Y"
-                          />
-                          <label for="resultY" class="button"> Y </label>
+                          <input id="resultY" name="resultYn" type="radio" value="Y" />
+                          <label for="resultY" class="button">Y</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="resultN"
-                            name="resultYn"
-                            type="radio"
-                            value="N"
-                          />
-                          <label for="resultN" class="button"> N </label>
-                        </span>
-                      </td>
-                      <th>구간 품질 측정 여부</th>
-                      <td id="qualityCheckYn">
-                        <span class="custom-radio">
-                          <input
-                            id="qualityCheckAll"
-                            name="qualityCheck"
-                            type="radio"
-                            value=""
-                            checked
-                          />
-                          <label for="qualityCheckAll" class="button">
-                            전체
-                          </label>
-                        </span>
-                        <span class="custom-radio">
-                          <input
-                            id="qualityCheckY"
-                            name="qualityCheck"
-                            type="radio"
-                            value="Y"
-                          />
-                          <label for="qualityCheckY" class="button"> Y </label>
-                        </span>
-                        <span class="custom-radio">
-                          <input
-                            id="qualityCheckN"
-                            name="qualityCheck"
-                            type="radio"
-                            value="N"
-                          />
-                          <label for="qualityCheckN" class="button"> N </label>
+                          <input id="resultN" name="resultYn" type="radio" value="N" />
+                          <label for="resultN" class="button">N</label>
                         </span>
                       </td>
                     </tr>
                     <tr>
-                      <th>중복 발생 여부</th>
-                      <td colspan="3" id="duplicationCheck">
+                      <th>미처리 여부</th>
+                      <td colspan="5" id="unprocessedCheck">
                         <span class="custom-radio">
-                          <input
-                            id="duplicationAll"
-                            name="duplicationYn"
-                            type="radio"
-                            value=""
-                            checked
-                          />
-                          <label for="duplicationAll" class="button">
-                            전체
-                          </label>
+                          <input id="unprocessedAll" name="unprocessedYn" type="radio" value="" checked />
+                          <label for="unprocessedAll" class="button">전체</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="duplicationY"
-                            name="duplicationYn"
-                            type="radio"
-                            value="Y"
-                          />
-                          <label for="duplicationY" class="button"> Y </label>
+                          <input id="unprocessedY" name="unprocessedYn" type="radio" value="Y" />
+                          <label for="unprocessedY" class="button">Y</label>
                         </span>
                         <span class="custom-radio">
-                          <input
-                            id="duplicationN"
-                            name="duplicationYn"
-                            type="radio"
-                            value="N"
-                          />
-                          <label for="duplicationN" class="button"> N </label>
+                          <input id="unprocessedN" name="unprocessedYn" type="radio" value="N" />
+                          <label for="unprocessedN" class="button">N</label>
                         </span>
                       </td>
                     </tr>
                   </tbody>
+                  <!-- 토글 되는 영역 -->
+                  <tbody id="toggleOptions" style="display: none" aria-hidden="true" aria-labelledby="toggleDetailBtn">
+                    <tr>
+                      <th>유선 CEM 이상</th>
+                      <td id="wiredCemAbnormalCheck">
+                        <span class="custom-radio">
+                          <input id="wiredCemAbnormalAll" name="wiredCemAbnormalYn" type="radio" value="" checked />
+                          <label for="wiredCemAbnormalAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="wiredCemAbnormalY" name="wiredCemAbnormalYn" type="radio" value="Y" />
+                          <label for="wiredCemAbnormalY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="wiredCemAbnormalN" name="wiredCemAbnormalYn" type="radio" value="N" />
+                          <label for="wiredCemAbnormalN" class="button">N</label>
+                        </span>
+                      </td>
+                      <th>고객 연결</th>
+                      <td id="customerConnectCheck">
+                        <span class="custom-radio">
+                          <input id="customerConnectAll" name="customerConnectYn" type="radio" value="" checked />
+                          <label for="customerConnectAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="customerConnectY" name="customerConnectYn" type="radio" value="Y" />
+                          <label for="customerConnectY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="customerConnectN" name="customerConnectYn" type="radio" value="N" />
+                          <label for="customerConnectN" class="button">N</label>
+                        </span>
+                      </td>
+                      <th>고객 장애 인지</th>
+                      <td id="customerFaultAwareCheck">
+                        <span class="custom-radio">
+                          <input id="customerFaultAwareAll" name="customerFaultAwareYn" type="radio" value="" checked />
+                          <label for="customerFaultAwareAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="customerFaultAwareY" name="customerFaultAwareYn" type="radio" value="Y" />
+                          <label for="customerFaultAwareY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="customerFaultAwareN" name="customerFaultAwareYn" type="radio" value="N" />
+                          <label for="customerFaultAwareN" class="button">N</label>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>추가 방문 요청</th>
+                      <td id="additionalVisitRequestCheck">
+                        <span class="custom-radio">
+                          <input id="additionalVisitRequestAll" name="additionalVisitRequestYn" type="radio" value="" checked />
+                          <label for="additionalVisitRequestAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="additionalVisitRequestY" name="additionalVisitRequestYn" type="radio" value="Y" />
+                          <label for="additionalVisitRequestY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="additionalVisitRequestN" name="additionalVisitRequestYn" type="radio" value="N" />
+                          <label for="additionalVisitRequestN" class="button">N</label>
+                        </span>
+                      </td>
+                      <th>추가 방문</th>
+                      <td id="additionalVisitCheck">
+                        <span class="custom-radio">
+                          <input id="additionalVisitAll" name="additionalVisitYn" type="radio" value="" checked />
+                          <label for="additionalVisitAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="additionalVisitY" name="additionalVisitYn" type="radio" value="Y" />
+                          <label for="additionalVisitY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="additionalVisitN" name="additionalVisitYn" type="radio" value="N" />
+                          <label for="additionalVisitN" class="button">N</label>
+                        </span>
+                      </td>
+                      <th>장애 증상</th>
+                      <td id="faultSymptomCheck">
+                        <span class="custom-radio">
+                          <input id="faultSymptomAll" name="faultSymptomYn" type="radio" value="" checked />
+                          <label for="faultSymptomAll" class="button">전체</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="faultSymptomY" name="faultSymptomYn" type="radio" value="Y" />
+                          <label for="faultSymptomY" class="button">Y</label>
+                        </span>
+                        <span class="custom-radio">
+                          <input id="faultSymptomN" name="faultSymptomYn" type="radio" value="N" />
+                          <label for="faultSymptomN" class="button">N</label>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <!-- //토글 되는 영역 -->
                 </table>
+                <div class="toggle-box-right">
+                  <button
+                    type="button"
+                    id="toggleDetailBtn"
+                    class="btn-toggle-arrow"
+                    aria-controls="toggleOptions"
+                    aria-expanded="false"
+                    onclick="toggleDetail()"
+                  >
+                    상세보기
+                  </button>
+                </div>
                 <div class="flex">
-                  <button type="button" class="btn btn-ico btn-reset">
-                    초기화
-                  </button>
-                  <button type="button" class="btn btn-ico btn-search">
-                    검색
-                  </button>
+                  <button type="button" class="btn btn-ico btn-reset">초기화</button>
+                  <button type="button" class="btn btn-ico btn-search">검색</button>
                 </div>
               </div>
             </section>
+            <!-- //2025-05 신규 수정/추가 -->
 
             <section class="row">
-              <input
-                id="monthExcelName"
-                type="hidden"
-                value="HSCRM_현황통계_CARE상세현황"
-              />
-              <table class="datatable1 nowrap row-border hover">
+              <table class="dataTable nowrap row-border hover">
                 <thead>
                   <tr>
                     <th>기준일</th>
@@ -422,35 +390,33 @@
                     <th>미처리 사유</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
-              </table>
-              <table id="excelTable" style="display: none">
-                <thead>
+                <tbody>
                   <tr>
-                    <th id="taskIsueDt" align="center">기준일</th>
-                    <th id="entrNo" align="center">가입 번호</th>
-                    <th id="dlrCd" align="center">대리점 코드</th>
-                    <th id="dlrNm" align="center">대리점명</th>
-                    <th id="svcNm" align="center">서비스</th>
-                    <th id="indicatorCodeName" align="center">발생 지표</th>
-                    <th id="custCodeName" align="center">고객 유형</th>
-                    <th id="careCodeName" align="center">Care 활동</th>
-                    <th id="duplicationYn" align="center">중복 발생</th>
-                    <th id="resultYn" align="center">결과 등록</th>
-                    <th id="overDue" align="center">기한 초과</th>
-                    <th id="endDt" align="center">등록 기한</th>
-                    <th id="visitYn" align="center">방문 여부</th>
-                    <th id="visitDt" align="center">방문 일자</th>
-                    <th id="visitResult" align="center">방문 결과</th>
-                    <th id="qualityCheck" align="center">구간 품질 측정</th>
-                    <th id="nvisitReason" align="center">미 방문 사유</th>
-                    <th id="careDetails" align="center">Care 상세 사항</th>
-                    <th id="unprocessedReason" align="center">미처리 사유</th>
+                    <td>2024-06-24</td>
+                    <td>1234567890</td>
+                    <td>001</td>
+                    <td>대리점 A</td>
+                    <td>스마트기가_1G</td>
+                    <td>서비스 품질 불만</td>
+                    <td>일반 고객</td>
+                    <td>방문 상담</td>
+                    <td>Y</td>
+                    <td>N</td>
+                    <td>N</td>
+                    <td>2024-07-01</td>
+                    <td>N</td>
+                    <td></td>
+                    <td></td>
+                    <td>N/A</td>
+                    <td></td>
+                    <td>상담 완료, 추가 조치 필요 없음</td>
+                    <td></td>
                   </tr>
-                </thead>
-                <tbody></tbody>
+                  <!-- 추가 데이터 행은 여기에 삽입 -->
+                </tbody>
               </table>
             </section>
+
             <!-- 엑셀 다운로드 사유 모달 -->
             <div
               class="modal fade"
@@ -464,62 +430,30 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                      onclick="excelModalClosed();"
-                    ></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="excelModalClosed();"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="excelModalLabel">
-                      엑셀 다운로드
-                    </h1>
+                    <h1 class="modal-title" id="excelModalLabel">엑셀 다운로드</h1>
 
                     <section class="row">
-                      <p class="excel-text">
-                        ‘CARE 상세 현황’을 엑셀파일로 저장합니다.<br />다운로드
-                        사유를 선택하세요.
-                      </p>
+                      <p class="excel-text">‘CARE 상세 현황’을 엑셀파일로 저장합니다.<br />다운로드 사유를 선택하세요.</p>
                       <div class="excel-select">
-                        <select
-                          class="uiscroll"
-                          aria-label="엑셀 다운로드 선택"
-                          id="excelDown"
-                          name="excelDown"
-                        >
-                          <option value="">
-                            다운로드 사유를 선택해 주세요
-                          </option>
-                          <option
-                            th:each="arraysts : ${excelDown}"
-                            th:value="${arraysts.codeName}"
-                          >
+                        <select class="uiscroll" aria-label="엑셀 다운로드 선택" id="excelDown" name="excelDown">
+                          <option value="">다운로드 사유를 선택해 주세요</option>
+                          <option th:each="arraysts : ${excelDown}" th:value="${arraysts.codeName}">
                             <th:block th:text="${arraysts.codeName}"></th:block>
                           </option>
                         </select>
                       </div>
                       <ul class="list-bullet">
                         <li>다운로드된 파일은 3개월 이내 폐기되어야 합니다.</li>
-                        <li>
-                          xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로
-                          저장하여 보안사항 준수 바랍니다.
-                        </li>
+                        <li>xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로 저장하여 보안사항 준수 바랍니다.</li>
                       </ul>
                     </section>
                   </div>
                   <div class="modal-footer">
                     <div class="d-grid">
-                      <button
-                        type="button"
-                        class="btn btn-dark"
-                        onclick="fnExcel();"
-                        id="excelButton"
-                        disabled
-                      >
-                        다운로드
-                      </button>
+                      <button type="button" class="btn btn-dark" onclick="fnExcel();" id="excelButton" disabled>다운로드</button>
                     </div>
                   </div>
                 </div>
@@ -543,8 +477,8 @@
   <script src="/js/common2.js"></script>
   <script src="/js/chart.umd.js"></script>
   <script>
-    window.addEventListener('load', function () {
-      var allElements = document.getElementsByTagName('*');
+    window.addEventListener("load", function () {
+      var allElements = document.getElementsByTagName("*");
       Array.prototype.forEach.call(allElements, function (el) {
         var includePath = el.dataset.includePath;
         if (includePath) {
@@ -554,10 +488,21 @@
               el.outerHTML = this.responseText;
             }
           };
-          HTTP.open('GET', includePath, true);
+          HTTP.open("GET", includePath, true);
           HTTP.send();
         }
       });
     });
+  </script>
+  <script>
+    function toggleDetail() {
+      const btn = document.getElementById("toggleDetailBtn");
+      const addOptions = document.getElementById("toggleOptions");
+      const isHidden = addOptions?.style.display === "none";
+      addOptions.style.display = isHidden ? "" : "none";
+      addOptions.setAttribute("aria-hidden", isHidden ? "false" : "true");
+      btn.textContent = isHidden ? "간단히보기" : "상세보기";
+      btn.setAttribute("aria-expanded", isHidden ? "true" : "false");
+    }
   </script>
 </html>

@@ -69,7 +69,7 @@ const fileNames = {
     depth3: "",
     lastModified: "-",
     version: "1.2",
-    state: "대기",
+    state: "진행",
     remark: "신규",
   },
   // 고객 관리
@@ -207,7 +207,7 @@ const fileNames = {
     depth3: "특별 고객 관리",
     lastModified: "-",
     version: "1.2",
-    state: "대기",
+    state: "진행",
     remark: "신규",
   },
   "logMgmt.html": {

@@ -21,19 +21,13 @@
             <div class="tabs">
               <ul class="nav nav-underline">
                 <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    aria-current="page"
-                    href="/web/codeMgmt/codeMgmt.html"
-                    >고객 특이 사항 관리</a
-                  >
+                  <a class="nav-link" aria-current="page" href="/web/codeMgmt/codeMgmt.html">고객 특이 사항 관리</a>
                 </li>
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    href="/web/vocLabMgmt/vocLabMgmt.html"
-                    >VOC LAB 제외 처리</a
-                  >
+                  <a class="nav-link active" href="/web/vocLabMgmt/vocLabMgmt.html">VOC LAB 제외 처리</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/web/specialCustMgmt/specialCustMgmt.html">특별 고객 관리</a>
                 </li>
               </ul>
             </div>
@@ -51,11 +45,7 @@
                       <td>
                         <div class="inline-flex">
                           <div class="col-auto">
-                            <select
-                              class="uiscroll w200"
-                              id="type"
-                              aria-label="조회 구분 선택"
-                            >
+                            <select class="uiscroll w200" id="type" aria-label="조회 구분 선택">
                               <option value="codeName">제외단어</option>
                               <option value="code">코드</option>
                             </select>
@@ -63,16 +53,9 @@
                           <div class="col-auto">
                             <div class="input-form w400">
                               <div class="inner">
-                                <input
-                                  id="typeInput"
-                                  type="text"
-                                  placeholder="조회 구분을 입력해 주세요."
-                                  value=""
-                                />
+                                <input id="typeInput" type="text" placeholder="조회 구분을 입력해 주세요." value="" />
                               </div>
-                              <div class="error">
-                                조회 구분을 입력해 주세요.
-                              </div>
+                              <div class="error">조회 구분을 입력해 주세요.</div>
                             </div>
                           </div>
                         </div>
@@ -83,12 +66,7 @@
                       <td>
                         <div class="input-form w200">
                           <div class="inner">
-                            <input
-                              id="createId"
-                              type="text"
-                              placeholder="등록자를 입력해 주세요"
-                              value=""
-                            />
+                            <input id="createId" type="text" placeholder="등록자를 입력해 주세요" value="" />
                           </div>
                           <div class="error">등록자를 입력해 주세요.</div>
                         </div>
@@ -97,19 +75,13 @@
                   </tbody>
                 </table>
                 <div class="flex">
-                  <button
-                    type="button"
-                    id="searchBtn"
-                    class="btn btn-ico btn-inquiry"
-                  >
-                    조회
-                  </button>
+                  <button type="button" id="searchBtn" class="btn btn-ico btn-inquiry">조회</button>
                 </div>
               </div>
             </section>
 
             <section class="row">
-              <table class="datatable1 row-border hover fixed">
+              <table class="dataTable row-border hover fixed">
                 <thead>
                   <tr>
                     <th>
@@ -142,24 +114,15 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="vocLabvModalLabel">
-                      제외 단어 등록
-                    </h1>
+                    <h1 class="modal-title" id="vocLabvModalLabel">제외 단어 등록</h1>
 
                     <section class="row">
                       <p class="excel-text">
-                        , (콤마)를 사용하여 다수의 제외 단어를 한꺼번에 등록할
-                        수 있어요.<br />
-                        신규 추가하려는 제외 단어가 이미 등록된 경우에는 제외 후
-                        등록합니다.
+                        , (콤마)를 사용하여 다수의 제외 단어를 한꺼번에 등록할 수 있어요.<br />
+                        신규 추가하려는 제외 단어가 이미 등록된 경우에는 제외 후 등록합니다.
                       </p>
 
                       <table class="form-table mt-4">
@@ -173,15 +136,9 @@
                             <td>
                               <!-- error시 클래스 error 추가 -->
                               <div id="stopWordsDiv" class="input-form">
-                                <textarea
-                                  id="stopWords"
-                                  placeholder="제외 단어를 입력해 주세요"
-                                  maxlength="2000"
-                                ></textarea>
+                                <textarea id="stopWords" placeholder="제외 단어를 입력해 주세요" maxlength="2000"></textarea>
                                 <div class="counter">
-                                  <span id="stopWordsCnt" class="current"
-                                    >0</span
-                                  >/
+                                  <span id="stopWordsCnt" class="current">0</span>/
                                   <span class="total">2,000</span>
                                 </div>
                               </div>
@@ -193,13 +150,7 @@
                   </div>
                   <div class="modal-footer">
                     <div class="d-grid">
-                      <button
-                        id="vocLabModalBtn"
-                        type="button"
-                        class="btn btn-dark"
-                      >
-                        확인
-                      </button>
+                      <button id="vocLabModalBtn" type="button" class="btn btn-dark">확인</button>
                     </div>
                   </div>
                 </div>
@@ -222,8 +173,8 @@
   <script src="/js/common2.js"></script>
   <script src="/js/chart.umd.js"></script>
   <script>
-    window.addEventListener('load', function () {
-      var allElements = document.getElementsByTagName('*');
+    window.addEventListener("load", function () {
+      var allElements = document.getElementsByTagName("*");
       Array.prototype.forEach.call(allElements, function (el) {
         var includePath = el.dataset.includePath;
         if (includePath) {
@@ -233,7 +184,7 @@
               el.outerHTML = this.responseText;
             }
           };
-          HTTP.open('GET', includePath, true);
+          HTTP.open("GET", includePath, true);
           HTTP.send();
         }
       });

@@ -6,7 +6,7 @@
     "depth1": "오늘의 할 일",
     "depth2": "오늘의 할 일",
     "depth3": "",
-    "lastModified": "2025-06-04",
+    "lastModified": "2025-06-05",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -28,7 +28,7 @@
     "depth1": "현황 통계",
     "depth2": "Care 상세 현황",
     "depth3": "",
-    "lastModified": "2025-06-04",
+    "lastModified": "2025-06-05",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -39,10 +39,21 @@
     "depth1": "현황 통계",
     "depth2": "미처리 현황",
     "depth3": "",
-    "lastModified": "2025-06-04",
+    "lastModified": "2025-06-05",
     "version": "1.1",
     "state": "완료",
     "remark": ""
+  },
+  {
+    "name": "reportStats.html",
+    "path": "/web/reportStats/reportStats.html",
+    "depth1": "현황 통계",
+    "depth2": "현황 레포트",
+    "depth3": "",
+    "lastModified": "2025-06-05",
+    "version": "1.2",
+    "state": "진행",
+    "remark": "신규"
   },
   {
     "name": "custFltStats.html",
@@ -61,7 +72,7 @@
     "depth1": "고객 관리",
     "depth2": "고객 정보 관리",
     "depth3": "",
-    "lastModified": "2025-06-04",
+    "lastModified": "2025-06-05",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -160,7 +171,7 @@
     "depth1": "관리자",
     "depth2": "권한 관리",
     "depth3": "사용자 권한 관리",
-    "lastModified": "2025-06-04",
+    "lastModified": "2025-06-05",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -182,7 +193,7 @@
     "depth1": "관리자",
     "depth2": "상담 관리",
     "depth3": "고객 특이 사항 관리",
-    "lastModified": "2025-06-04",
+    "lastModified": "2025-06-05",
     "version": "1.1",
     "state": "완료",
     "remark": ""
@@ -193,10 +204,21 @@
     "depth1": "관리자",
     "depth2": "상담 관리",
     "depth3": "VOC LAB 제외 처리",
-    "lastModified": "2025-06-04",
+    "lastModified": "2025-06-05",
     "version": "1.1",
     "state": "완료",
     "remark": ""
+  },
+  {
+    "name": "specialCustMgmt.html",
+    "path": "/web/specialCustMgmt/specialCustMgmt.html",
+    "depth1": "관리자",
+    "depth2": "상담 관리",
+    "depth3": "특별 고객 관리",
+    "lastModified": "2025-06-05",
+    "version": "1.2",
+    "state": "진행",
+    "remark": "신규"
   },
   {
     "name": "logMgmt.html",

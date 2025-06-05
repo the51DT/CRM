@@ -2838,7 +2838,7 @@ button:focus {
 }
 
 
-/* 2025-05 신규 추가 기능 */
+/* 2025-05 신규 수정/추가 */
 /* alert-icon-type */
 [class*="alert-icon"] .alert-inner .alert-body::before {
   content: "";
@@ -2884,9 +2884,58 @@ button:focus {
   border-radius: calc(var(--border-radius) / 2);
 }
 
+/* form-box 토글버튼 */
+.toggle-box-right {
+  margin: 2rem 0;
+}
+.toggle-box-right .btn-toggle-arrow {
+  margin-left: auto;
+  padding: 1.6rem 3.3rem;
+  /* justify-content: flex-end; */
+}
+.toggle-box-right + .flex {
+  margin-top: 0;
+}
+.btn-toggle-arrow {
+  font-size: 14px;
+  font-weight: var(--fontweight-bold);
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn-toggle-arrow::after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-image: url("/assets/images/common/icon_arrow_down.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.3s;
+}
+.btn-toggle-arrow[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+/* summary-table */
+.summary-table tbody tr.total-row td {
+  background-color: var(--whitey) !important;
+}
+.summary-table tbody tr td {
+  background-color: var(--secondary) !important;
+}
+
+/* 글 목록 개수 dt-length */
+.list-count {
+  color: #1f1f1f;
+  font-size: var(--font-large);
+  font-weight: var(--fontweight-bold);
+}
+
 /* gap */
 .gap-2 {
   gap: 0.8rem !important;
 }
 
-/* // 2025-05 신규 추가 기능 */
+/* // 2025-05 신규 수정/추가 */
