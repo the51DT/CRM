@@ -1,28 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-
-// 폴더명과 한글 파일명을 매칭하는 객체 정의 : 사용 안 함함
-const folderNames = {
-  "todoList": "오늘의 할 일",
-  "custTypeStats": "현황 통계", // 고객 유형 현황
-  "careDtlStats": "현황 통계", // Care 상세 현황
-  "unhndldStats": "현황 통계", // 미처리 현황
-  "reportStats": "현황 통계", // 현황 레포트
-  "custFltStats": "고객 관리", // 고객 장애 통계
-  "custInfoMgmt": "고객 관리", // 고객 정보 관리
-  "announcements": "공지/건의 사항", // 공지 사항
-  "proposals": "공지/건의 사항", // 건의 사항
-  "userPermsMgmt": "관리자", // 권한 관리 -  사용자 권한 관리
-  "pageRoleMgmt": "관리자", // 권한 관리 - 메뉴별 권한 관리
-  "codeMgmt": "관리자", // 상담 관리 - 고객 특이 사항 관리
-  "vocLabMgmt": "관리자", // 상담 관리 - VOC LAB 제외 처리
-  "specialCustMgmt": "관리자", // 상담 관리 - 특별 고객 관리
-  "logMgmt": "관리자", // 접속/API 성공 관리 - 화면 접근 로그
-  "apiLogMgmt": "관리자", // 접속/API 성공 관리 - 외부 API 로그
-  "batchLog": "관리자", // 배치 로그 - 배치 로그
-  "manualBatch": "관리자", // 배치 로그 - 배치 수동 실행
-};
-
+const { execSync } = require('child_process');
+const { DOMParser } = require('xmldom');
 
 const fileNames = {
   // 오늘의 할 일
@@ -248,64 +227,74 @@ const fileNames = {
   },
 };
 
-// // const stats = fs.statSync('web/manualBatch/manualBatch.html');
-// // console.log(stats.mtime); // 파일의 마지막 수정 시간 출력
-
-// // 파일의 실제 수정일을 설정
-// for (const file in fileNames) {
-//   const filePath = path.join(__dirname, 'web', file); // 'web' 디렉토리에 파일이 위치한다고 가정
-//   try {
-//     const fileStats = fs.statSync(filePath);
-//     fileNames[file].lastModified = fileStats.mtime.toISOString();
-//   } catch (err) {
-//     console.error(`파일을 찾을 수 없습니다: ${filePath}`);
-//     fileNames[file].lastModified = "-";
-//   }
-// }
-
-// 1. web 디렉토리 내의 모든 HTML 파일 경로 수집
-function getAllHtmlFiles(dirPath) {
-  let htmlFiles = [];
-
-  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const fullPath = path.join(dirPath, entry.name);
-
-    if (entry.isDirectory()) {
-      htmlFiles = htmlFiles.concat(getAllHtmlFiles(fullPath));
-    } else if (entry.isFile() && path.extname(entry.name) === '.html') {
-      htmlFiles.push(fullPath);
-    }
-  }
-
-  return htmlFiles;
-}
-
-// 2. 수집된 파일 경로를 기반으로 lastModified 정보 업데이트
-const webDir = path.join(__dirname, '../web');
-const htmlFilePaths = getAllHtmlFiles(webDir);
-
-for (const filePath of htmlFilePaths) {
-  const fileName = path.basename(filePath);
-
-  if (fileNames[fileName]) {
-    try {
-      const fileStats = fs.statSync(filePath);
-      fileNames[fileName].lastModified = fileStats.mtime.toISOString().split('T')[0];;
-    } catch (err) {
-      console.error(`파일 정보를 가져올 수 없습니다: ${filePath}`);
-      fileNames[fileName].lastModified = "-";
-    }
+// git에서 마지막 커밋 날짜
+function getGitLastModified(filePath) {
+  try {
+    // Git 명령어로 마지막 커밋 날짜를 가장 최근 한 개만 얻기
+    const command = `git log --follow --format=%cd -n 1 -- ${filePath}`;
+    // const command = `git log --follow --format=%cd -- ${filePath}`;
+    const lastModified = execSync(command).toString().trim(); // 커밋 날짜 반환
+    // 날짜를 ISO 형식으로 변환
+    const date = new Date(lastModified);
+    return date.toISOString().split('T')[0]; // YYYY-MM-DD 형식으로 반환
+  } catch (error) {
+    console.error(`Error fetching git commit date for ${filePath}:`, error);
+    return null;
   }
 }
 
-// 전체 .html 파일 개수를 저장할 변수
+// SVG 속성 추출
+function getSvgSize(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const doc = new DOMParser().parseFromString(content, 'image/svg+xml');
+    const svg = doc.getElementsByTagName('svg')[0];
+
+    const width = svg.getAttribute('width') || null;
+    const height = svg.getAttribute('height') || null;
+
+    return { width, height };
+  } catch (error) {
+    console.error(`SVG size 파싱 오류: ${filePath}`, error);
+    return { width: null, height: null };
+  }
+}
+function getSvgStrokeColors(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf8');
+    const doc = new DOMParser().parseFromString(content, 'image/svg+xml');
+
+    // stroke 속성 가진 요소들을 모음
+    const elements = Array.from(doc.getElementsByTagName('*'));
+    // const strokeColors = [];
+    // elements.forEach(el => {
+    //   const stroke = el.getAttribute('stroke');
+    //   if (stroke && !strokeColors.includes(stroke)) {
+    //     strokeColors.push(stroke);
+    //   }
+    // });
+    // return strokeColors;
+    for (const el of elements) {
+      const stroke = el.getAttribute('stroke');
+      if (stroke) {
+        return stroke; // 첫 번째 stroke 값 반환
+      }
+    }
+    return null;
+  } catch (error) {
+    console.error(`stroke 추출 실패: ${filePath}`, error);
+    return null;
+  }
+}
+
+// 파일 개수 저장
 let htmlFileCount = 0;
+let svgFileCount = 0;
 
 // 지정된 디렉토리에서 모든 파일을 재귀적으로 읽어오는 함수
 function getFilesFromDir(dirPath) {
-  let fileArray = [];
+  let htmlList = [];
+  let svgList = [];
 
   const files = fs.readdirSync(dirPath);
 
@@ -314,72 +303,84 @@ function getFilesFromDir(dirPath) {
     const stats = fs.statSync(fullPath);
 
     if (stats.isDirectory()) {
-      // 디렉토리인 경우 재귀 호출
-      fileArray = fileArray.concat(getFilesFromDir(fullPath));
+      // 디렉토리 재귀 탐색
+      // htmlList = htmlList.concat(getFilesFromDir(fullPath));
+      const { htmlList: childHtmlList, svgList: childSvgList } = getFilesFromDir(fullPath);
+      htmlList = htmlList.concat(childHtmlList);
+      svgList = svgList.concat(childSvgList);
     } else {
-      // 파일인 경우 정보 추가
-      // const folderName = path.basename(path.dirname(fullPath));
-      // const depth1 = folderNames[folderName] || folderName; 
-      // const depth2 = fileNames[file] || file;
-      // const fileName = fileNames[file] || file; 
-      // const fileLabel = fileNames[fileName] || fileName;
-      // 하이픈과 공백을 기준으로 분리
-      // const parts = fileLabel.split(/\s*-\s*/);
-      // const depth1 = parts[0] || '';
-      // const depth2 = parts[1] || '';
-      // const depth3 = parts[2] || '';
-      
-      htmlFileCount++; // .html 파일 개수 증가
+      // 파일 확장자
+      const fileExtension = path.extname(file).toLowerCase();
 
-      const fileInfo = fileNames[file] || {
-        depth1: "",
-        depth2: "",
-        depth3: "",
-        lastModified: "",
-        version: "",
-        state: "",
-        remark: "",
-      };
+      // .html 파일 처리 
+      if (fileExtension === '.html') {
+        htmlFileCount++;
+        const gitLastModified = getGitLastModified(fullPath);
+        const fileInfo = fileNames[file] || {
+          depth1: "",
+          depth2: "",
+          depth3: "",
+          lastModified: "",
+          version: "",
+          state: "",
+          remark: "",
+        };
+        htmlList.push({
+          name: file,
+          path: '/' + path.relative(path.join(__dirname, '../'), fullPath).replace(/\\/g, '/'),
+          depth1: fileInfo.depth1,
+          depth2: fileInfo.depth2,
+          depth3: fileInfo.depth3,
+          lastModified: gitLastModified || stats.mtime.toISOString().split('T')[0],
+          version: fileInfo.version,
+          state: fileInfo.state,
+          remark: fileInfo.remark,
+        });
+      }
 
-      fileArray.push({
-        name: file,
-        path: '/' + path.relative(path.join(__dirname, '../'), fullPath).replace(/\\/g, '/'), // '/web/...' 형태로 변환
-        depth1: fileInfo.depth1,
-        depth2: fileInfo.depth2,
-        depth3: fileInfo.depth3,
-        lastModified: fileInfo.lastModified,
-        version: fileInfo.version,
-        state: fileInfo.state,
-        remark: fileInfo.remark,
-      });
+      // SVG 파일만 처리
+      if (fileExtension === '.svg') {
+        svgFileCount++;
+        const gitLastModified = getGitLastModified(fullPath);
+        const { width, height } = getSvgSize(fullPath);
+        const strokeColor = getSvgStrokeColors(fullPath);
+        svgList.push({
+          name: file,
+          path: '/' + path.relative(path.join(__dirname, '../'), fullPath).replace(/\\/g, '/'),
+          width,
+          height,
+          stroke: strokeColor || '',
+          lastModified: gitLastModified || stats.mtime.toISOString().split('T')[0],
+        });
+      }
     }
   });
 
-  return fileArray;
+  return { htmlList, svgList };
 }
 
-// 'web' 폴더 내의 모든 파일 정보 가져오기
-const files = getFilesFromDir(path.join(__dirname, '../web'));
-
-// fileNames의 키 순서를 기준으로 files 배열 정렬
+// '/web' 폴더 내의 모든 파일 정보 가져오기
+const { htmlList: webFiles } = getFilesFromDir(path.join(__dirname, '../web'));
+// 정렬
 const fileOrder = Object.keys(fileNames);
-files.sort((a, b) => {
+webFiles.sort((a, b) => {
   const indexA = fileOrder.indexOf(a.name);
   const indexB = fileOrder.indexOf(b.name);
   return indexA - indexB;
 });
 
-// 전체 .html 파일 개수 출력
-console.log(`📄 전체 .html 파일 개수: ${htmlFileCount}개`);
+// '/assets/images/common' 폴더 내의 모든 파일 정보 가져오기
+const { svgList: svgFiles } = getFilesFromDir(path.join(__dirname, '../assets/images/common'));
 
 // 결과를 JavaScript 객체 배열 형식으로 변환하여 파일에 저장
-const jsContent = `
-  const fileList = ${JSON.stringify(files, null, 2)};
-`;
+const htmlContent = `const fileList = ${JSON.stringify(webFiles, null, 2)};`;
+fs.writeFileSync(path.join(__dirname, 'fileList.js'), htmlContent, 'utf8');
+const svgContent = `const svgList = ${JSON.stringify(svgFiles, null, 2)};`;
+fs.writeFileSync(path.join(__dirname, 'svgList.js'), svgContent, 'utf8');
 
-fs.writeFileSync(path.join(__dirname, 'fileList.js'), jsContent, 'utf8');
-
-console.log("파일 목록이 'fileList.js'에 저장되었습니다.");
+// 결과 메세지
+console.log(`전체 .html 파일 개수: ${htmlFileCount}개, 파일 목록이 'fileList.js'에 저장되었습니다.`);
+console.log(`전체 .svg 파일 개수: ${svgFileCount}개, 파일 목록이 'svgList.js'에 저장되었습니다.`);
 
 
 // node ./pub/generateFileList.js

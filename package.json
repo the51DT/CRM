@@ -1,0 +1,15 @@
+{
+  "name": "crm",
+  "version": "1.0.0",
+  "description": "crm html guide",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts": "node ./pub/generateFileList.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "xmldom": "^0.6.0"
+  }
+}

@@ -29,6 +29,7 @@
                 </li>
               </ul>
             </div>
+            <!-- //tabs -->
 
             <!-- select -->
             <section class="row">
@@ -43,6 +44,7 @@
                 </select>
               </div>
             </section>
+            <!-- //select -->
 
             <!-- alert -->
             <section class="row">
@@ -56,6 +58,7 @@
                 </div>
               </div>
             </section>
+            <!-- //alert -->
 
             <!-- modal -->
             <section class="row">
@@ -124,9 +127,50 @@
                   >
                     hashModal
                   </button>
+                  <button
+                    type="button"
+                    class="btn btn-ico btn-write"
+                    data-bs-toggle="modal"
+                    data-bs-target="#inputUser"
+                    aria-expanded="false"
+                    aria-controls="inputUser"
+                  >
+                    inputUser
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-ico btn-write"
+                    data-bs-toggle="modal"
+                    data-bs-target="#updateUser"
+                    aria-expanded="false"
+                    aria-controls="updateUser"
+                  >
+                    updateUser
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-ico btn-write"
+                    data-bs-toggle="modal"
+                    data-bs-target="#vocLabModal"
+                    aria-expanded="false"
+                    aria-controls="vocLabModal"
+                  >
+                    vocLabModal
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-ico btn-write"
+                    data-bs-toggle="modal"
+                    data-bs-target="#insertModal"
+                    aria-expanded="false"
+                    aria-controls="insertModal"
+                  >
+                    insertModal
+                  </button>
                 </div>
               </div>
             </section>
+            <!-- //modal -->
 
             <!-- 공통 모달 -->
             <div
@@ -147,27 +191,18 @@
                     <h1 class="modal-title" id="commonModalLabel">공지사항</h1>
                     <section class="row mt-5">
                       <div class="notice-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, architecto dolor ad expedita ab dicta asperiores hic perferendis sit voluptatibus ducimus praesentium labore, eos rerum delectus alias. Sunt, at molestias.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, architecto dolor ad expedita ab dicta asperiores hic perferendis sit
+                        voluptatibus ducimus praesentium labore, eos rerum delectus alias. Sunt, at molestias.
                       </div>
                     </section>
                   </div>
                   <div class="modal-footer">
                     <div class="d-flex gap-08">
                       <div class="col-6">
-                        <button
-                          type="button"
-                          class="btn btn-outline-dark w100p"
-                        >
-                          button
-                        </button>
+                        <button type="button" class="btn btn-outline-dark w100p">button</button>
                       </div>
                       <div class="col-6">
-                        <button
-                          type="button"
-                          class="btn btn-dark w100p"
-                        >
-                          button
-                        </button>
+                        <button type="button" class="btn btn-dark w100p">button</button>
                       </div>
                     </div>
                   </div>
@@ -193,8 +228,7 @@
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="noticeModalLabel">공지사항</h1>
                     <section class="row mt-5">
-                      <div class="notice-text">
-                      </div>
+                      <div class="notice-text"></div>
                     </section>
                   </div>
                   <div class="modal-footer">
@@ -572,6 +606,499 @@
               </div>
             </div>
             <!-- // 특이사항 등록 모달 -->
+
+            <div
+              class="modal fade"
+              id="insertModal"
+              tabindex="-1"
+              aria-labelledby="insertModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="insertModalTitleLabel">고객 특이 사항 등록</h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>특이 사항</th>
+                            <td>
+                              <div class="d-flex gap-08">
+                                <div class="col-auto">
+                                  <!-- error시 error 클래스 추가, 등록 가능시 success 클래스 추가 -->
+                                  <div id="checkCodeDuplicateMsg" class="input-form w200">
+                                    <div class="inner">
+                                      <input id="insertCodeName" type="text" placeholder="최대 12자 등록" value="" maxlength="12" />
+                                    </div>
+                                    <div class="error">이미 등록된 코드명입니다</div>
+                                    <div class="success">등록 가능한 특이사항입니다</div>
+                                  </div>
+                                </div>
+                                <div class="col-auto">
+                                  <button id="checkCodeDuplicateBtn" type="button" class="btn btn-dark">중복 검사</button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>설명</th>
+                            <td>
+                              <!-- error시 error 클래스 추가 -->
+                              <div id="insertDescDiv" class="input-form">
+                                <textarea id="insertDesc" placeholder="설명을 입력해 주세요" maxlength="500"></textarea>
+                                <div class="counter">
+                                  <span id="insertDescCnt" class="current">0</span>/
+                                  <span class="total">500</span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>사용 여부</th>
+                            <td>
+                              <span class="custom-radio">
+                                <input id="insertModalUseY" name="insertUseYn" type="radio" value="Y" checked />
+                                <label for="insertModalUseY" class="button"> Y </label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="insertModalUseN" name="insertUseYn" type="radio" value="N" />
+                                <label for="insertModalUseN" class="button"> N </label>
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button id="insertModalBtn" type="button" class="btn btn-dark w100p">확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="modal fade"
+              id="updateModal"
+              tabindex="-1"
+              aria-labelledby="updateModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="updateModalTitleLabel">고객 특이 사항 수정</h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>코드</th>
+                            <td id="detailCode"></td>
+                          </tr>
+                          <tr>
+                            <th>특이 사항</th>
+                            <td id="detailCodeName"></td>
+                          </tr>
+                          <tr>
+                            <th>설명</th>
+                            <td>
+                              <!-- error시 error 클래스 추가 -->
+                              <div id="updateDescDiv" class="input-form">
+                                <textarea id="detailDesc" placeholder="설명을 입력해 주세요" maxlength="500"></textarea>
+                                <div class="counter">
+                                  <span id="detailDescCnt" class="current">0</span>/
+                                  <span class="total">500</span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>사용 여부</th>
+                            <td>
+                              <span class="custom-radio">
+                                <input id="updateModalUseY" name="updateUseYn" type="radio" value="Y" />
+                                <label for="updateModalUseY" class="button"> Y </label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="updateModalUseN" name="updateUseYn" type="radio" value="N" />
+                                <label for="updateModalUseN" class="button"> N </label>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>등록자</th>
+                            <td id="detailCreateName"></td>
+                          </tr>
+                          <tr>
+                            <th>등록 일시</th>
+                            <td id="detailCreateDt"></td>
+                          </tr>
+                          <tr>
+                            <th>수정자</th>
+                            <td id="detailUpdateName"></td>
+                          </tr>
+                          <tr>
+                            <th>수정 일시</th>
+                            <td id="detailUpdateDt"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button id="updateModalBtn" type="button" class="btn btn-dark w100p">확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="modal fade"
+              id="updateModal"
+              tabindex="-1"
+              aria-labelledby="updateModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="updateModalTitleLabel">고객 특이 사항 수정</h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>코드</th>
+                            <td id="detailCode"></td>
+                          </tr>
+                          <tr>
+                            <th>특이 사항</th>
+                            <td id="detailCodeName"></td>
+                          </tr>
+                          <tr>
+                            <th>설명</th>
+                            <td>
+                              <!-- error시 error 클래스 추가 -->
+                              <div id="updateDescDiv" class="input-form">
+                                <textarea id="detailDesc" placeholder="설명을 입력해 주세요" maxlength="500"></textarea>
+                                <div class="counter">
+                                  <span id="detailDescCnt" class="current">0</span>/
+                                  <span class="total">500</span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>사용 여부</th>
+                            <td>
+                              <span class="custom-radio">
+                                <input id="updateModalUseY" name="updateUseYn" type="radio" value="Y" />
+                                <label for="updateModalUseY" class="button"> Y </label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="updateModalUseN" name="updateUseYn" type="radio" value="N" />
+                                <label for="updateModalUseN" class="button"> N </label>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>등록자</th>
+                            <td id="detailCreateName"></td>
+                          </tr>
+                          <tr>
+                            <th>등록 일시</th>
+                            <td id="detailCreateDt"></td>
+                          </tr>
+                          <tr>
+                            <th>수정자</th>
+                            <td id="detailUpdateName"></td>
+                          </tr>
+                          <tr>
+                            <th>수정 일시</th>
+                            <td id="detailUpdateDt"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button id="updateModalBtn" type="button" class="btn btn-dark w100p">확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 신규 등록 모달 -->
+            <div
+              class="modal fade"
+              id="inputUser"
+              tabindex="-1"
+              aria-labelledby="inputUserLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" id="inputClosed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="inputUserLabel">사용자 권한 등록</h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <input type="hidden" name="inputDeptCd" id="inputDeptCd" readonly placeholder="" value="" />
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>마당 ID</th>
+                            <td>
+                              <div class="d-flex gap-08">
+                                <div class="col-auto">
+                                  <div id="madangid" class="input-form w-auto">
+                                    <div class="inner">
+                                      <input
+                                        type="text"
+                                        placeholder="마당 ID를 입력해 주세요."
+                                        value=""
+                                        id="inputUserId"
+                                        name="inputUserId"
+                                        onkeydown="handleKeyDown2(event)"
+                                      />
+                                    </div>
+                                    <div class="error" id="errorAlreadyRegistered">이미 등록된 사용자입니다</div>
+                                    <div class="error" id="errorNotFound">일치하는 ID를 찾을 수 없습니다.</div>
+                                    <div class="success" id="successId">등록 가능한 사용자입니다.</div>
+                                  </div>
+                                </div>
+                                <div class="col-auto">
+                                  <button type="button" class="btn btn-dark userSearch">검색</button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>이름</th>
+                            <td>
+                              <div class="input-form w-auto">
+                                <input type="text" name="inputUserName" id="inputUserName" readonly placeholder="" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>직원 구분</th>
+                            <td id="inputEmployeeType">
+                              <select id="inputEmployee" class="uiscroll" aria-label="직원 구분 선택" style="width: 230px">
+                                <option data-value="">직원 구분을 선택해 주세요</option>
+                                <option th:each="arraysts : ${emploType}" th:value="${arraysts.codeName}">
+                                  <th:block th:text="${arraysts.codeName}"></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>소속</th>
+                            <td>
+                              <div class="input-form w-auto">
+                                <input type="text" name="inputUserDeptName" id="inputUserDeptName" readonly placeholder="" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>권한 선택</th>
+                            <td id="inputRoleGroupId">
+                              <select id="inputRole" class="uiscroll" aria-label="권한 선택" style="width: 230px">
+                                <option data-value="">권한을 선택해 주세요</option>
+                                <option th:each="arraysts : ${roleList}" th:value="${arraysts.roleGroupId}">
+                                  <th:block th:text="${arraysts.roleGroupName}"></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-dark inputBtn" disabled>확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 신규 등록 모달 -->
+            <!-- 권한 수정 모달 -->
+            <div
+              class="modal fade"
+              id="updateUser"
+              tabindex="-1"
+              aria-labelledby="updateUserLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="updateUserLabel">사용자 권한 보기/수정</h1>
+
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>마당 ID</th>
+                            <td id="userId"></td>
+                          </tr>
+                          <tr>
+                            <th>이름</th>
+                            <td id="userName"></td>
+                          </tr>
+                          <tr>
+                            <th>직원 구분</th>
+                            <td id="employeeType">
+                              <select class="uiscroll" aria-label="직원 구분 선택" style="width: 230px">
+                                <option data-value="">직원 구분을 선택해 주세요</option>
+                                <option th:each="arraysts : ${emploType}" th:value="${arraysts.codeName}">
+                                  <th:block th:text="${arraysts.codeName}"></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>소속</th>
+                            <td id="userDeptName">홈서비스 프로세스 관리팀</td>
+                          </tr>
+                          <tr>
+                            <th>권한 선택</th>
+                            <td id="roleGroupId">
+                              <select class="uiscroll" aria-label="권한 선택" style="width: 230px">
+                                <option data-value="">권한을 선택해 주세요</option>
+                                <option th:each="arraysts : ${roleList}" th:value="${arraysts.roleGroupId}">
+                                  <th:block th:text="${arraysts.roleGroupName}"></th:block>
+                                </option>
+                              </select>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-flex gap-08">
+                      <div class="col-auto">
+                        <button type="button" class="btn btn-outline-dark NonRole">권한 회수</button>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-dark w100p updateBtn">확인</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 권한 수정 모달 -->
+            <div
+              class="modal fade"
+              id="vocLabModal"
+              tabindex="-1"
+              aria-labelledby="vocLabModalLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="vocLabvModalLabel">제외 단어 등록</h1>
+
+                    <section class="row">
+                      <p class="excel-text">
+                        , (콤마)를 사용하여 다수의 제외 단어를 한꺼번에 등록할 수 있어요.<br />
+                        신규 추가하려는 제외 단어가 이미 등록된 경우에는 제외 후 등록합니다.
+                      </p>
+
+                      <table class="form-table mt-4">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>제외 단어</th>
+                            <td>
+                              <!-- error시 클래스 error 추가 -->
+                              <div id="stopWordsDiv" class="input-form">
+                                <textarea id="stopWords" placeholder="제외 단어를 입력해 주세요" maxlength="2000"></textarea>
+                                <div class="counter">
+                                  <span id="stopWordsCnt" class="current">0</span>/
+                                  <span class="total">2,000</span>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button id="vocLabModalBtn" type="button" class="btn btn-dark">확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <script src="/assets/js/plugins/ckeditor.js"></script>
           <script th:inline="javascript"></script>

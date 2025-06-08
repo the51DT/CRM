@@ -23,14 +23,14 @@
           <!-- 상단 -->
           <div class="col-auto d-flex align-items-center">
             <h1 class="pub-title">CRM IA</h1>
-            <a class="pub-link-page" href="./svgList.html">이미지리스트</a>
+            <a class="pub-link-page" href="./pubList.html">퍼블리스트</a>
           </div>
           <!-- //상단 -->
           <!-- 검색 -->
           <div class="top-search">
             <div class="col-auto d-flex mt-6" style="gap: 18px">
               <div class="input-form">
-                <input type="text" id="search-input" placeholder="검색어를 입력하세요" value="1.2" title="검색어 입력" />
+                <input type="text" id="search-input" placeholder="검색어를 입력하세요" value="" title="검색어 입력" />
               </div>
               <button type="button" id="search-button" class="btn btn-ico btn-search" style="flex-shrink: 0">검색</button>
             </div>
@@ -38,26 +38,6 @@
               <span class="custom-radio">
                 <input id="filterWord0" name="searchFilter" type="radio" value="" />
                 <label for="filterWord0" class="button filter-word">전체</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterWord1" name="searchFilter" type="radio" value="1.1" />
-                <label for="filterWord1" class="button filter-word">버전 1.1</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterWord2" name="searchFilter" type="radio" value="1.2" checked />
-                <label for="filterWord2" class="button filter-word">버전 1.2</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterWord3" name="searchFilter" type="radio" value="완료" />
-                <label for="filterWord3" class="button filter-word">완료</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterWord4" name="searchFilter" type="radio" value="진행" />
-                <label for="filterWord4" class="button filter-word">진행</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterWord5" name="searchFilter" type="radio" value="대기" />
-                <label for="filterWord5" class="button filter-word">대기</label>
               </span>
             </div>
           </div>
@@ -77,19 +57,14 @@
                   <col style="width: auto" />
                   <col style="width: auto" />
                   <col style="width: auto" />
-                  <col style="width: auto" />
-                  <col style="width: auto" />
                 </colgroup>
                 <thead>
                   <tr>
-                    <th scope="col">Depth1</th>
-                    <th scope="col">Depth2</th>
-                    <th scope="col">Depth3</th>
-                    <th scope="col">링크</th>
-                    <th scope="col">버전</th>
+                    <th scope="col">이미지</th>
+                    <th scope="col">사이즈</th>
+                    <th scope="col">파일명</th>
+                    <th scope="col">경로</th>
                     <th scope="col">최종수정</th>
-                    <th scope="col">상태</th>
-                    <th scope="col">비고</th>
                   </tr>
                 </thead>
                 <tbody id="pattern-list"></tbody>
@@ -103,7 +78,7 @@
       </div>
       <!-- //container -->
 
-      <script src="fileList.js"></script>
+      <script src="svgList.js"></script>
       <script>
         // renderPattern
         const patternList = document.getElementById("pattern-list");
@@ -111,37 +86,24 @@
           let row = [];
           patterns.forEach((pattern) => {
             row.push(`
-              <tr class="${pattern.state}">
-                <td class="text-align-left">${pattern.depth1}</td>
-                <td class="text-align-left">${pattern.depth2}</td>
-                <td class="text-align-left">${pattern.depth3 ? pattern.depth3 : "-"}</td>
+              <tr>
+                <td class="${
+                  pattern.stroke === "white"
+                    ? "reverse"
+                    : pattern.stroke === "#E1E1E1"
+                    ? "reverse"
+                    : ""
+                }">
+                  <img src="..${pattern.path}" alt="${pattern.name}" style="width: ${pattern.width} height: ${pattern.height}; object-fit: cover;" />
+                </td>
+                <td>${pattern.width} x ${pattern.height}</td>
                 <td class="text-align-left">
                   <a href="..${pattern.path}" target="_blank" class="pub-link">
                     ${pattern.name}
                   </a>
                 </td>
-                <td>
-                  ${
-                    pattern.version === "1.1"
-                      ? `<span class="badge-pub-v1">1.1</span>`
-                      : pattern.version === "1.2"
-                      ? `<span class="badge-pub-v2">1.2</span>`
-                      : "-"
-                  }
-                </td>
+                <td class="text-align-left">${pattern.path}</td>
                 <td>${pattern.lastModified}</td>
-                <td>
-                  ${
-                    pattern.state === "완료"
-                      ? `<span class="state-pub-fin">완료</span>`
-                      : pattern.state === "대기"
-                      ? `<span class="state-pub-wait">대기</span>`
-                      : pattern.state === "진행"
-                      ? `<span class="state-pub-ing">진행</span>`
-                      : "-"
-                  }
-                </td>
-                <td>${pattern.remark}</td>
               </tr>
             `);
           });
@@ -151,17 +113,11 @@
         // filterPatterns
         const filterPatterns = () => {
           const query = document.getElementById("search-input").value.toLowerCase();
-          const filteredPatterns = fileList.filter(
+          const filteredPatterns = svgList.filter(
             (pattern) =>
               (pattern.name && pattern.name.toLowerCase().includes(query)) ||
               (pattern.path && pattern.path.toLowerCase().includes(query)) ||
-              (pattern.depth1 && pattern.depth1.toLowerCase().includes(query)) ||
-              (pattern.depth2 && pattern.depth2.toLowerCase().includes(query)) ||
-              (pattern.depth3 && pattern.depth3.toLowerCase().includes(query)) ||
-              (pattern.lastModified && pattern.lastModified.toLowerCase().includes(query)) ||
-              (pattern.version && pattern.version.toLowerCase().includes(query)) ||
-              (pattern.state && pattern.state.toLowerCase().includes(query)) ||
-              (pattern.remark && pattern.remark.toLowerCase().includes(query))
+              (pattern.lastModified && pattern.lastModified.toLowerCase().includes(query))
           );
           renderPatterns(filteredPatterns);
           count();
@@ -176,11 +132,6 @@
               radio.checked = false;
             }
           });
-
-          // 검색어가 어떤 라디오 값과도 일치하지 않으면 전체(첫번째) 선택
-          // if (!matched) {
-          //   filterWords[0].checked = true;
-          // }
         };
 
         // filterPatternsByEx
@@ -197,7 +148,7 @@
 
         document.getElementById("search-button").addEventListener("click", filterPatterns);
         document.getElementById("search-input").addEventListener("keyup", filterPatterns);
-        renderPatterns(fileList);
+        renderPatterns(svgList);
         filterPatternsByEx();
 
         // count
@@ -207,9 +158,6 @@
           countView.innerHTML = `총 <strong>${num}</strong>건의 내용이 있습니다.`;
         };
         count();
-
-        // 초기 필터링 고정을 위해 호출
-        filterPatterns();
       </script>
     </div>
   </body>
