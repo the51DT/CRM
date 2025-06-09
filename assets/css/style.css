@@ -2839,21 +2839,6 @@ button:focus {
 
 
 /* 2025-05 신규 수정/추가 */
-/* alert-icon-type */
-[class*="alert-icon"] .alert-inner .alert-body::before {
-  content: "";
-  display: inline-block;
-  width: 4.8rem;
-  height: 4.8rem;
-  margin-bottom: 2.4rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-}
-.alert-icon-info .alert-inner .alert-body::before {
-  background-image: url("/assets/images/common/icon_info.svg");
-}
-
 /* btn-ico btn-notification */
 .btn-notification i {
   font-style: normal;
@@ -2933,9 +2918,59 @@ button:focus {
   font-weight: var(--fontweight-bold);
 }
 
+/* sms-symbol-list */
+.sms-symbol-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+.sms-symbol-list .symbol-btn {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.3rem 0.4rem;
+  border-radius: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-size: var(--font-basic); */
+  font-size: 16px;
+  font-weight: var(--fontweight-bold);
+}
+.sms-symbol-list .symbol-btn:active,
+.sms-symbol-list .symbol-btn.selected {
+  border: 0.1rem solid var(--black);
+}
+
+/* 컨택 메모 이력 */
+.memo-history, 
+.memo-history li {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  color: #737373;
+  font-weight: var(--fontweight-semi-bold);
+}
+.memo-history > li {
+  gap: 0.4rem;
+}
+.memo-history > li strong {
+  color: var(--black);
+}
+
+/* modal 크기 추가 */
+.modal-dialog.modal-xxlg {
+  max-width: 108rem;
+}
+
+/* width */
+.w220 {
+  width: 22rem !important;
+}
+
 /* gap */
 .gap-2 {
   gap: 0.8rem !important;
 }
-
 /* // 2025-05 신규 수정/추가 */

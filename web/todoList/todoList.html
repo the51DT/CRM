@@ -141,7 +141,7 @@
               </div>
             </section>
 
-            <section class="row" style="display: none;">
+            <section class="row" style="display: none">
               <table class="dataTable row-border hover">
                 <thead>
                   <tr>
@@ -164,7 +164,7 @@
                 <tbody></tbody>
               </table>
             </section>
-            <section class="row" style="display: none;">
+            <section class="row" style="display: none">
               <table id="excelTable" style="display: none">
                 <thead>
                   <tr>
@@ -184,8 +184,7 @@
                 <tbody></tbody>
               </table>
             </section>
-
-            <section class="row" style="display: none;">
+            <section class="row" style="display: none">
               <div class="d-flex gap-4">
                 <div class="col-6">
                   <div class="data-info-box purple sm">
@@ -275,8 +274,7 @@
                 </div>
               </div>
             </section>
-
-            <section class="row" style="display: none;">
+            <section class="row" style="display: none">
               <div class="notice-info-news">
                 <dl class="text">
                   <dt>공지 사항</dt>
@@ -340,7 +338,7 @@
               <table class="dataTable row-border hover">
                 <thead>
                   <tr>
-                    <th>가준일</th>
+                    <th>기준일</th>
                     <th>가입 번호</th>
                     <th>대리점 코드</th>
                     <th>대리점명</th>
@@ -371,8 +369,68 @@
                       <!-- 작은 버튼 임시 -->
                       <div class="col-auto d-flex justify-content-center gap-2">
                         <button type="button" class="btn btn-outline-secondary btn-sm">유선 CEM</button>
-                        <button type="button" class="btn btn-dark btn-sm">컨택 등록</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm disabled">컨택 등록</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm disabled">결과 등록</button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2024-03-25</td>
+                    <td>5000123122</td>
+                    <td>22233344</td>
+                    <td>김포(협동조합)</td>
+                    <td>인터넷</td>
+                    <td>60일 내 3회 중복 장애</td>
+                    <td>중복 장애</td>
+                    <td>Ai Task 발행</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>2024-04-02</td>
+                    <td>
+                      <!-- 작은 버튼 임시 -->
+                      <div class="col-auto d-flex justify-content-center gap-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm">유선 CEM</button>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          data-bs-toggle="modal"
+                          data-bs-target="#contactRegister"
+                          aria-expanded="false"
+                          aria-controls="contactRegister"
+                        >
+                          컨택 등록
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-dark btn-sm"
+                          data-bs-toggle="modal"
+                          data-bs-target="#resultRegister"
+                          aria-expanded="false"
+                          aria-controls="resultRegister"
+                        >
+                          결과 등록
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>2024-03-25</td>
+                    <td>5000123122</td>
+                    <td>22233344</td>
+                    <td>김포(협동조합)</td>
+                    <td>인터넷</td>
+                    <td>60일 내 3회 중복 장애</td>
+                    <td>중복 장애</td>
+                    <td>Ai Task 발행</td>
+                    <td>Y</td>
+                    <td>Y</td>
+                    <td>2024-04-02</td>
+                    <td>
+                      <!-- 작은 버튼 임시 -->
+                      <div class="col-auto d-flex justify-content-center gap-2">
+                        <button type="button" class="btn btn-outline-secondary btn-sm">유선 CEM</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm">컨택 조회</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm">결과 조회</button>
                       </div>
                     </td>
                   </tr>
@@ -381,106 +439,26 @@
             </section>
             <!-- // 2025-05 신규 수정/추가 -->
 
-            <!-- 팝업 공지 모달 -->
-            <div
-              class="modal fade modal-notice"
-              tabindex="-1"
-              aria-labelledby="modalLabel"
-              aria-hidden="false"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
+            <button type="button" class="btn btn-ico" data-bs-toggle="modal" data-bs-target="#smsSend" aria-expanded="false" aria-controls="smsSend">
+              SMS 발송
+            </button>
+            <button
+              type="button"
+              class="btn btn-ico"
+              data-bs-toggle="modal"
+              data-bs-target="#processHistory"
+              aria-expanded="false"
+              aria-controls="processHistory"
             >
-              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <script th:inline="javascript">
-                    /* <![CDATA[ */
-                    var isAnncPopupAvailable = /*[[${AnncPopup != null}]]*/ false;
-                    /* ]]> */
-                  </script>
-                  <div class="modal-body uiscroll" th:if="${AnncPopup != null}">
-                    <h1 class="modal-title" th:text="${AnncPopup.anncTitle}"></h1>
-                    <section class="row mt-5">
-                      <div class="notice-text">
-                        <div class="ckeditor">
-                          <div id="editor" class="ck-editor__editable-container">
-                            <div class="ck-editor__editable"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                  <div class="modal-footer">
-                    <div class="row today-check">
-                      <div class="col-4">
-                        <span class="custom-checkbox">
-                          <input id="_uid_227" type="checkbox" />
-                          <label for="_uid_227">
-                            <i class="icon"></i>
-                            오늘 다시 보지 않기
-                          </label>
-                        </span>
-                      </div>
-                      <div class="col-auto">
-                        <button type="button" class="btn btn-today">확인</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- // 팝업 공지 모달 -->
-            <!-- 엑셀 다운로드 사유 모달 -->
-            <div
-              class="modal fade"
-              id="excelModal"
-              tabindex="-1"
-              aria-labelledby="excelModalLabel"
-              aria-hidden="true"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-            >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="excelModalClosed();"></button>
-                  </div>
-                  <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="excelModalLabel">엑셀 다운로드</h1>
+              중간 처리 이력
+            </button>
 
-                    <section class="row">
-                      <p class="excel-text">‘오늘의 할 일’을 엑셀파일로 저장합니다.<br />다운로드 사유를 선택하세요.</p>
-                      <div class="excel-select">
-                        <select class="uiscroll" aria-label="엑셀 다운로드 선택" id="excelDown" name="excelDown">
-                          <option value="">다운로드 사유를 선택해 주세요</option>
-                          <option th:each="arraysts : ${excelDown}" th:value="${arraysts.codeName}">
-                            <th:block th:text="${arraysts.codeName}"></th:block>
-                          </option>
-                        </select>
-                      </div>
-                      <ul class="list-bullet">
-                        <li>다운로드된 파일은 3개월 이내 폐기되어야 합니다.</li>
-                        <li>xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로 저장하여 보안사항 준수 바랍니다.</li>
-                      </ul>
-                    </section>
-                  </div>
-                  <div class="modal-footer">
-                    <div class="d-grid">
-                      <button type="button" class="btn btn-dark" onclick="fnExcel();" id="excelButton" disabled>다운로드</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- // 엑셀 다운로드 사유 모달 -->
-            <!-- 오늘의 할일 결과 등록 모달 -->
+            <!-- 컨택 등록 모달 -->
             <div
               class="modal fade"
-              id="TodoInsert"
+              id="contactRegister"
               tabindex="-1"
-              aria-labelledby="TodoInsertLabel"
+              aria-labelledby="contactRegisterLabel"
               aria-hidden="true"
               data-bs-backdrop="static"
               data-bs-keyboard="false"
@@ -491,52 +469,54 @@
                     <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="TodoInsertLabel">홈개통AS 결과 등록</h1>
+                    <h1 class="modal-title" id="contactRegisterLabel">컨택 등록</h1>
                     <section class="row">
-                      <table class="form-table" id="TodoResultForm">
-                        <input type="hidden" id="taskSeqInput" name="taskSeq" disabled value="" />
+                      <table class="form-table">
                         <colgroup>
-                          <col style="width: 110px" />
+                          <col style="width: 120px" />
                           <col />
                         </colgroup>
                         <tbody>
                           <tr>
                             <th>Care 활동</th>
                             <td>
-                              <div class="input-form w-auto">
-                                <input type="text" id="careCodeNameInput" name="careCodeName" disabled value="" />
-                              </div>
+                              <select class="w300 uiscroll" aria-label="서비스 선택">
+                                <option value="">care 활동을 선택해 주세요</option>
+                                <option value="">AI TASK</option>
+                                <option value="">상담톡</option>
+                                <option value="">클린콜</option>
+                              </select>
                             </td>
                           </tr>
                           <tr>
-                            <th>방문 여부</th>
-                            <td id="visit_radio">
+                            <th>유선 CEM 이상 유무</th>
+                            <td id="cemAbnormal">
                               <span class="custom-radio">
-                                <input id="visitRadioY" name="visitRadio" type="radio" value="Y" checked />
-                                <label for="visitRadioY" class="button"> Y </label>
+                                <input id="cemAbnormalRadioY" name="cemAbnormalRadio" type="radio" value="Y" checked />
+                                <label for="cemAbnormalRadioY" class="button"> Y </label>
                               </span>
                               <span class="custom-radio">
-                                <input id="visitRadioN" name="visitRadio" type="radio" value="N" />
-                                <label for="visitRadioN" class="button"> N </label>
+                                <input id="cemAbnormalRadioN" name="cemAbnormalRadio" type="radio" value="N" />
+                                <label for="cemAbnormalRadioN" class="button"> N </label>
                               </span>
                             </td>
                           </tr>
                           <tr>
-                            <th>방문 일시</th>
-                            <td class="disabledY">
+                            <th>마지막 컨택일</th>
+                            <td>
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
-                                    <div class="start-date1 input-group datepicker w-auto" data-target-input="nearest">
+                                    <div class="start-date1 input-group datepicker w-auto datepicker-last-contact" data-target-input="nearest">
                                       <input
                                         type="text"
                                         class="form-control datetimepicker-input"
-                                        data-target=".start-date1"
+                                        data-target=".datepicker-last-contact"
                                         placeholder="날짜"
-                                        id="visitDtInput"
-                                        name="visitDt"
+                                        id="lastContactDateInput"
+                                        name="lastContactDate"
                                       />
-                                      <div class="input-group-append" data-target=".start-date1" data-toggle="datetimepicker">
+                                      <div class="input-group-append" data-target=".datepicker-last-contact" data-toggle="datetimepicker">
                                         <button class="input-group-text">
                                           <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                         </button>
@@ -576,122 +556,150 @@
                             </td>
                           </tr>
                           <tr>
-                            <th>방문 결과</th>
-                            <td class="visitResultInput disabledY">
-                              <select class="w300 uiscroll" aria-label="방문 결과 선택">
-                                <option value="1">단말 및 부수 자재 교체</option>
-                                <option value="2">구내배선 교체</option>
-                                <option value="3">댁내배선 교체</option>
-                                <option value="4">NW 장애</option>
-                                <option value="5">사용법 설명</option>
-                                <option value="6">단순조치</option>
-                                <option value="7">기타</option>
+                            <th>컨택 방법</th>
+                            <td>
+                              <select class="w300 uiscroll" aria-label="서비스 선택">
+                                <option value="">컨택 방법을 선택해 주세요</option>
+                                <option value="">전화</option>
+                                <option value="">SMS</option>
                               </select>
                             </td>
                           </tr>
                           <tr>
-                            <th>구간 품질 측정</th>
-                            <td>
+                            <th>고객 연결 여부</th>
+                            <td id="customerConnect">
                               <span class="custom-radio">
-                                <input id="qualityRadioY" name="qualityRadio" type="radio" value="Y" checked />
-                                <label for="qualityRadioY" class="button"> Y </label>
+                                <input id="customerConnectRadioY" name="customerConnectRadio" type="radio" value="Y" checked />
+                                <label for="customerConnectRadioY" class="button">Y</label>
                               </span>
                               <span class="custom-radio">
-                                <input id="qualityRadioN" name="qualityRadio" value="N" type="radio" />
-                                <label for="qualityRadioN" class="button"> N </label>
+                                <input id="customerConnectRadioN" name="customerConnectRadio" type="radio" value="N" />
+                                <label for="customerConnectRadioN" class="button">N</label>
                               </span>
                             </td>
                           </tr>
                           <tr>
-                            <th>미 방문 사유</th>
-                            <td class="disabledN no-click">
-                              <select class="w-auto uiscroll nvisitReasonInput" aria-label="미 방문 사유 선택">
-                                <option value="1">고객부재</option>
-                                <option value="2">방문거부</option>
-                                <option value="3">클린콜 완료</option>
-                                <option value="4">상담톡 완료</option>
-                                <option value="5">기타</option>
+                            <th>고객 장애 인지</th>
+                            <td id="faultAwareness">
+                              <span class="custom-radio">
+                                <input id="faultAwarenessRadioY" name="faultAwarenessRadio" type="radio" value="Y" checked />
+                                <label for="faultAwarenessRadioY" class="button">Y</label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="faultAwarenessRadioN" name="faultAwarenessRadio" type="radio" value="N" />
+                                <label for="faultAwarenessRadioN" class="button">N</label>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>고객 장애 상세</th>
+                            <td>
+                              <select class="w300 uiscroll" aria-label="서비스 선택">
+                                <option value="">고객 장애 상세를 선택해 주세요</option>
+                                <option value="">화면 깨짐</option>
+                                <option value="">화면 끊김</option>
+                                <option value="">기타</option>
                               </select>
                             </td>
                           </tr>
                           <tr>
-                            <th>CARE 상세 사항</th>
+                            <th>추가 방문 요청</th>
+                            <td id="additionalVisitRequest">
+                              <span class="custom-radio">
+                                <input id="additionalVisitRequestRadioY" name="additionalVisitRequestRadio" type="radio" value="Y" checked />
+                                <label for="additionalVisitRequestRadioY" class="button">Y</label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="additionalVisitRequestRadioN" name="additionalVisitRequestRadio" type="radio" value="N" />
+                                <label for="additionalVisitRequestRadioN" class="button">N</label>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>미방문 사유</th>
                             <td>
-                              <!-- error 경우 error 클래스 추가 -->
-                              <div class="input-form">
-                                <textarea id="careDetailsInput" name="careDetails" placeholder="Care 상세 사항을 입력해 주세요" maxlength="500"></textarea>
-                                <div class="counter"><span class="current">0</span>/500</div>
+                              <div class="input-form w300">
+                                <input type="text" id="noVisitReasonInput" name="noVisitReason" placeholder="미방문 사유를 입력해 주세요" value="" />
                               </div>
                             </td>
                           </tr>
                           <tr>
-                            <th>고객 특이사항</th>
+                            <th>방문 예정일</th>
                             <td>
-                              <button type="button" id="hashModalOn" class="btn btn-ico btn-add">추가</button>
-                              <ul id="hashGroup" class="d-flex flex-column gap-3 pt-3"></ul>
+                              <div class="row">
+                                <div class="col-auto">
+                                  <div class="date-picker-group w200">
+                                    <div class="start-date1 input-group datepicker w-auto datepicker-visit-plan" data-target-input="nearest">
+                                      <input
+                                        type="text"
+                                        class="form-control datetimepicker-input"
+                                        data-target=".datepicker-visit-plan"
+                                        placeholder="날짜"
+                                        id="visitPlanDateInput"
+                                        name="visitPlanDate"
+                                      />
+                                      <div class="input-group-append" data-target=".datepicker-visit-plan" data-toggle="datetimepicker">
+                                        <button class="input-group-text">
+                                          <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-auto px-3 visitHourInput">
+                                  <select class="w-auto uiscroll" aria-label="시간 선택">
+                                    <option value="0">0시</option>
+                                    <option value="1">1시</option>
+                                    <option value="2">2시</option>
+                                    <option value="3">3시</option>
+                                    <option value="4">4시</option>
+                                    <option value="5">5시</option>
+                                    <option value="6">6시</option>
+                                    <option value="7">7시</option>
+                                    <option value="8">8시</option>
+                                    <option value="9">9시</option>
+                                    <option value="10">10시</option>
+                                    <option value="11">11시</option>
+                                    <option value="12">12시</option>
+                                    <option value="13">13시</option>
+                                    <option value="14">14시</option>
+                                    <option value="15">15시</option>
+                                    <option value="16">16시</option>
+                                    <option value="17">17시</option>
+                                    <option value="18">18시</option>
+                                    <option value="19">19시</option>
+                                    <option value="20">20시</option>
+                                    <option value="21">21시</option>
+                                    <option value="22">22시</option>
+                                    <option value="23">23시</option>
+                                  </select>
+                                </div>
+                              </div>
                             </td>
                           </tr>
-                          <tr class="UpdateFormId">
-                            <th>등록자</th>
-                            <td id="UpdateId"></td>
-                          </tr>
-                          <tr class="UpdateFormDt">
-                            <th>등록일시</th>
-                            <td id="UpdateDt"></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                  </div>
-                  <div class="modal-footer">
-                    <div class="d-grid">
-                      <button type="button" class="btn btn-dark" id="insertBtn" onclick="insertBtn()">확인</button>
-                      <button type="button" class="btn btn-dark" id="updateBtn" onclick="updateBtn()">확인</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- // 오늘의 할일 결과 등록 모달 -->
-            <!-- 특이사항 등록 모달 -->
-            <div class="modal fade" id="hashModal" tabindex="-1" aria-labelledby="hashModalLabel" aria-hidden="true" data-bs-keyboard="false">
-              <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button id="closeModal" type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="hashModalLabel">특이사항 선택</h1>
-
-                    <section class="row">
-                      <p class="datatable-length">최대 5건까지 선택 가능합니다.</p>
-
-                      <table class="datatable3 row-border hover">
-                        <thead>
                           <tr>
-                            <th>특이사항</th>
-                            <th>설명</th>
-                            <th>선택</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr th:each="codeDto : ${generalCodeList}">
-                            <td th:text="${'#' + codeDto.codeName}">#코드명</td>
+                            <th>컨택 메모</th>
                             <td>
-                              <button
-                                class="custom-tooltip w100"
-                                th:attr="data-bs-custom-class='custom-tooltip', data-bs-toggle='tooltip', data-bs-title=${codeDto.description}"
-                              >
-                                <span th:text="${codeDto.description}">설명</span>
-                              </button>
+                              <!-- error 경우 error 클래스 추가 -->
+                              <div class="input-form">
+                                <textarea id="contactInput" name="contact" placeholder="컨택 메모를 입력해 주세요" maxlength="500"></textarea>
+                                <div class="counter"><span class="current">0</span>/200</div>
+                              </div>
                             </td>
+                          </tr>
+                          <tr>
+                            <th>컨택 메모 이력</th>
                             <td>
-                              <span class="custom-checkbox">
-                                <input type="checkbox" th:id="${codeDto.code}" th:checked="${codeDto.checkYn == 'Y'}" />
-                                <label th:for="${codeDto.code}">
-                                  <i class="icon"></i>
-                                </label>
-                              </span>
+                              <ul class="memo-history">
+                                <li>
+                                  <span>2025-04-01 12:59</span>
+                                  <strong>AS 발행</strong>
+                                </li>
+                                <li>
+                                  <span>2025-04-01 12:59</span>
+                                  <strong>AS 발행</strong>
+                                </li>
+                              </ul>
                             </td>
                           </tr>
                         </tbody>
@@ -699,20 +707,28 @@
                     </section>
                   </div>
                   <div class="modal-footer">
-                    <div class="d-grid">
-                      <button id="generalTextBtn" type="button" class="btn btn-dark">확인</button>
+                    <div class="modal-footer">
+                      <div class="d-flex gap-08">
+                        <div class="col-auto">
+                          <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
+                        </div>
+                        <div class="col">
+                          <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- // 특이사항 등록 모달 -->
-            <!-- 오늘의 할일 결과 조회 모달 -->
+            <!-- // 컨택 등록 모달 -->
+
+            <!-- 결과 등록 모달 -->
             <div
               class="modal fade"
-              id="TodoResult"
+              id="resultRegister"
               tabindex="-1"
-              aria-labelledby="TodoResultLabel"
+              aria-labelledby="resultRegisterLabel"
               aria-hidden="true"
               data-bs-backdrop="static"
               data-bs-keyboard="false"
@@ -720,59 +736,347 @@
               <div class="modal-dialog modal-dialog-scrollable modal-xlg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button id="TodoListResultClose" type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="TodoResultLabel">홈개통AS 결과 조회</h1>
-
+                    <h1 class="modal-title" id="resultRegisterLabel">결과 등록</h1>
                     <section class="row">
                       <table class="form-table">
                         <colgroup>
-                          <col style="width: 110px" />
+                          <col style="width: 120px" />
                           <col />
                         </colgroup>
                         <tbody>
                           <tr>
                             <th>Care 활동</th>
-                            <td id="CareName"></td>
-                          </tr>
-                          <tr>
-                            <th>방문 여부</th>
-                            <td id="VisitYn"></td>
-                          </tr>
-                          <tr>
-                            <th>방문 일시</th>
-                            <td id="VisitDt"></td>
-                          </tr>
-                          <tr>
-                            <th>방문 결과</th>
-                            <td id="VisitResult"></td>
-                          </tr>
-                          <tr>
-                            <th>구간 품질 측정</th>
-                            <td id="QualityCheck"></td>
-                          </tr>
-                          <tr>
-                            <th>미 방문 사유</th>
-                            <td id="NvisitReason"></td>
-                          </tr>
-                          <tr>
-                            <th>CARE 상세 사항</th>
-                            <td id="CareDetails"></td>
-                          </tr>
-                          <tr>
-                            <th>고객 특이사항</th>
                             <td>
-                              <ul class="d-flex flex-column gap-3" id="GeneralText"></ul>
+                              <select class="w300 uiscroll" aria-label="서비스 선택">
+                                <option value="">care 활동을 선택해 주세요</option>
+                                <option value="">AI TASK</option>
+                                <option value="">상담톡</option>
+                                <option value="">클린콜</option>
+                              </select>
                             </td>
                           </tr>
                           <tr>
-                            <th>등록자</th>
-                            <td id="CreateId"></td>
+                            <th>추가 방문 여부</th>
+                            <td id="additionalVisitYn">
+                              <span class="custom-radio">
+                                <input id="additionalVisitYnRadioY" name="additionalVisitYnRadio" type="radio" value="Y" checked />
+                                <label for="additionalVisitYnRadioY" class="button">Y</label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="additionalVisitYnRadioN" name="additionalVisitYnRadio" type="radio" value="N" />
+                                <label for="additionalVisitYnRadioN" class="button">N</label>
+                              </span>
+                            </td>
                           </tr>
                           <tr>
-                            <th>등록 일시</th>
-                            <td id="CreateDt"></td>
+                            <th>추가 방문 일자</th>
+                            <td>
+                              <div class="row">
+                                <div class="col-auto">
+                                  <div class="date-picker-group w200">
+                                    <div class="start-date1 input-group datepicker w-auto datepicker-visit-date" data-target-input="nearest">
+                                      <input
+                                        type="text"
+                                        class="form-control datetimepicker-input"
+                                        data-target=".datepicker-visit-date"
+                                        placeholder="날짜"
+                                        id="additionalVisitDateInput"
+                                        name="additionalVisitDate"
+                                      />
+                                      <div class="input-group-append" data-target=".datepicker-visit-date" data-toggle="datetimepicker">
+                                        <button class="input-group-text">
+                                          <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-auto px-3 visitHourInput">
+                                  <select class="w-auto uiscroll" aria-label="시간 선택">
+                                    <option value="0">0시</option>
+                                    <option value="1">1시</option>
+                                    <option value="2">2시</option>
+                                    <option value="3">3시</option>
+                                    <option value="4">4시</option>
+                                    <option value="5">5시</option>
+                                    <option value="6">6시</option>
+                                    <option value="7">7시</option>
+                                    <option value="8">8시</option>
+                                    <option value="9">9시</option>
+                                    <option value="10">10시</option>
+                                    <option value="11">11시</option>
+                                    <option value="12">12시</option>
+                                    <option value="13">13시</option>
+                                    <option value="14">14시</option>
+                                    <option value="15">15시</option>
+                                    <option value="16">16시</option>
+                                    <option value="17">17시</option>
+                                    <option value="18">18시</option>
+                                    <option value="19">19시</option>
+                                    <option value="20">20시</option>
+                                    <option value="21">21시</option>
+                                    <option value="22">22시</option>
+                                    <option value="23">23시</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>컨택 방법</th>
+                            <td>
+                              <select class="w300 uiscroll" aria-label="서비스 선택">
+                                <option value="">컨택 방법을 선택해 주세요</option>
+                                <option value="">전화</option>
+                                <option value="">SMS</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>장애 증상 여부</th>
+                            <td id="faultSymptom">
+                              <span class="custom-radio">
+                                <input id="faultSymptomRadioY" name="faultSymptomRadio" type="radio" value="Y" checked />
+                                <label for="faultSymptomRadioY" class="button">Y</label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="faultSymptomRadioN" name="faultSymptomRadio" type="radio" value="N" />
+                                <label for="faultSymptomRadioN" class="button">N</label>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>장애 증상 상세</th>
+                            <td class="disabledN no-click">
+                              <select class="w300 uiscroll" aria-label="장애 증상 상세 선택">
+                                <option value="">고객 장애 상세를 선택해 주세요</option>
+                                <option value="" selected>화면 깨짐</option>
+                                <option value="">화면 끊김</option>
+                                <option value="">기타</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>추가 방문 결과</th>
+                            <td>
+                              <select class="w300 uiscroll" aria-label="추가 방문 결과 선택">
+                                <option value="">추가 방문 결과를 선택해 주세요</option>
+                                <option value="">단말 및 부수 자재 교체</option>
+                                <option value="">구내 배선 교체</option>
+                                <option value="">댁내 배선 교체</option>
+                                <option value="">NW 장애</option>
+                                <option value="">사용법 설명</option>
+                                <option value="">기타</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>구간 품질 측정</th>
+                            <td id="sectionQuality">
+                              <span class="custom-radio">
+                                <input id="sectionQualityRadioY" name="sectionQualityRadio" type="radio" value="Y" checked />
+                                <label for="sectionQualityRadioY" class="button">Y</label>
+                              </span>
+                              <span class="custom-radio">
+                                <input id="sectionQualityRadioN" name="sectionQualityRadio" type="radio" value="N" />
+                                <label for="sectionQualityRadioN" class="button">N</label>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>미방문 사유</th>
+                            <td>
+                              <select class="w300 uiscroll" aria-label="미방문 사유 선택">
+                                <option value="">미방문 사유를 선택해 주세요</option>
+                                <option value="">고객 부재</option>
+                                <option value="">방문 거부</option>
+                                <option value="">그 외</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>추가 방문 TASK 번호</th>
+                            <td>
+                              <div class="input-form w300">
+                                <input type="text" id="taskNumberInput" name="taskNumber" placeholder="숫자만 입력해 주세요" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>Care 상세 현황</th>
+                            <td>
+                              <!-- error 경우 error 클래스 추가 -->
+                              <div class="input-form">
+                                <textarea id="careDetailsInput" name="careDetails" placeholder="Care 상세 현황을 입력해 주세요" maxlength="500"></textarea>
+                                <div class="counter"><span class="current">0</span>/500</div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>특이사항</th>
+                            <td>
+                              <button type="button" class="btn btn-ico btn-add">추가</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="modal-footer">
+                      <div class="d-flex gap-08">
+                        <div class="col-auto">
+                          <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
+                        </div>
+                        <div class="col">
+                          <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 결과 등록 모달 -->
+
+            <!-- SMS 발송 모달 -->
+            <div
+              class="modal fade"
+              id="smsSend"
+              tabindex="-1"
+              aria-labelledby="smsSendLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="smsSendLabel">SMS 발송</h1>
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 80px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>내용 입력</th>
+                            <td>
+                              <!-- error 경우 error 클래스 추가 -->
+                              <div class="input-form">
+                                <textarea id="smsContentInput" name="smsContent" placeholder="SMS 발송 내용을 입력해 주세요" maxlength="2000"></textarea>
+                                <div class="counter"><span class="current">0</span>/2,000</div>
+                              </div>
+
+                              <!-- 특수문자 입력 영역 -->
+                              <div class="sms-symbol-list">
+                                <button type="button" class="symbol-btn">&#x00B1;</button>
+                                <button type="button" class="symbol-btn">&#x2260;</button>
+                                <button type="button" class="symbol-btn">&#x2264;</button>
+                                <button type="button" class="symbol-btn">&#x2265;</button>
+                                <button type="button" class="symbol-btn">&#x221E;</button>
+                                <button type="button" class="symbol-btn">&#x2642;</button>
+                                <button type="button" class="symbol-btn">&#x2640;</button>
+                                <button type="button" class="symbol-btn">&#x221A;</button>
+                                <button type="button" class="symbol-btn">&#x21D4;</button>
+                                <button type="button" class="symbol-btn">&#xFF05;</button>
+                                <button type="button" class="symbol-btn">&#xFF04;</button>
+                                <button type="button" class="symbol-btn">&#xFFE6;</button>
+                                <button type="button" class="symbol-btn">&#xFFE1;</button>
+                                <button type="button" class="symbol-btn">&#xFFE5;</button>
+                                <button type="button" class="symbol-btn">&#x0040;</button>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>수신 번호</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="receiverNumberInput" name="receiverNumber" placeholder="숫자만 입력해 주세요" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>발신 번호</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="senderNumberInput" name="senderNumber" placeholder="숫자만 입력해 주세요" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="modal-footer">
+                      <div class="d-flex gap-08">
+                        <div class="col-auto">
+                          <button type="button" class="btn btn-outline-dark NonRole">취소</button>
+                        </div>
+                        <div class="col">
+                          <button type="button" class="btn btn-dark w100p updateBtn">발송</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // SMS 발송 모달 -->
+
+            <!-- 중간 처리 이력 모달 -->
+            <div
+              class="modal fade"
+              id="processHistory"
+              tabindex="-1"
+              aria-labelledby="processHistoryLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable modal-xxlg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="processHistoryLabel">중간 처리 이력</h1>
+                    <section class="row">
+                      <table class="dataTable row-border hover">
+                        <thead>
+                          <tr>
+                            <th>택배/매</th>
+                            <th>디스크 번호</th>
+                            <th>디스크 구분</th>
+                            <th>상태</th>
+                            <th>작업명</th>
+                            <th>상품명</th>
+                            <th>서비스명</th>
+                            <th>대리점명</th>
+                            <th>담당기사</th>
+                            <th>요청일시</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>택배</td>
+                            <td>123456789</td>
+                            <td>가입자개통타스크</td>
+                            <td>처리 중</td>
+                            <td>상품 변경</td>
+                            <td>스마트기가_1G</td>
+                            <td>U+인터넷</td>
+                            <td>복구_개통-A지점</td>
+                            <td>홍길동</td>
+                            <td>2025-05-02 13:50</td>
                           </tr>
                         </tbody>
                       </table>
@@ -780,55 +1084,14 @@
                   </div>
                   <div class="modal-footer notice-style">
                     <div class="d-grid">
-                      <button type="button" id="TodoResultClose" class="btn">확인</button>
+                      <button type="button" class="btn" id="">확인</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- // 오늘의 할일 결과 조회 모달 -->
+            <!-- // 중간 처리 이력 모달 -->
           </div>
-          <style>
-            /* 클릭을 비활성화하는 클래스 */
-            .no-click {
-              pointer-events: none;
-            }
-            .no-click .custom-select-wrapper .custom-select .custom-select-trigger {
-              background-color: #d3d3d3;
-              color: #a9a9a9;
-              cursor: not-allowed;
-              opacity: 0.6;
-            }
-            .no-click .start-date1 {
-              background-color: #d3d3d3;
-              color: #a9a9a9;
-              cursor: not-allowed;
-              opacity: 0.6;
-            }
-            .no-click .start-date1 .datetimepicker-input {
-              background-color: #d3d3d3;
-              color: #a9a9a9;
-              cursor: not-allowed;
-              opacity: 0.6;
-            }
-            .ck-content .image-style-align-left,
-            .ck-content .image-style-align-right,
-            .ck-content .image-style-align-center {
-              float: left;
-              margin-right: 0px;
-            }
-            .ckeditor .ck-editor {
-              border: none;
-              height: 300px;
-            }
-
-            figure img {
-              width: 414px;
-              height: auto;
-            }
-          </style>
-          <script src="/assets/js/plugins/ckeditor.js"></script>
-          <script th:inline="javascript"></script>
         </div>
       </div>
     </div>
@@ -858,6 +1121,31 @@
           HTTP.open("GET", includePath, true);
           HTTP.send();
         }
+      });
+    });
+
+    // 퍼블테스트
+    document.querySelectorAll(".sms-symbol-list .symbol-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var textarea = document.getElementById("smsContentInput");
+        var symbol = btn.textContent;
+        if (document.selection) {
+          textarea.focus();
+          var sel = document.selection.createRange();
+          sel.text = symbol;
+        } else if (textarea.selectionStart || textarea.selectionStart === 0) {
+          var start = textarea.selectionStart;
+          var end = textarea.selectionEnd;
+          var value = textarea.value;
+          textarea.value = value.substring(0, start) + symbol + value.substring(end);
+          textarea.selectionStart = textarea.selectionEnd = start + symbol.length;
+          textarea.focus();
+        } else {
+          textarea.value += symbol;
+          textarea.focus();
+        }
+        var counter = textarea.parentElement.querySelector(".counter .current");
+        if (counter) counter.textContent = textarea.value.length;
       });
     });
   </script>

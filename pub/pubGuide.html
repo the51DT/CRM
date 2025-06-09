@@ -42,6 +42,20 @@
                   <option data-value="">option1</option>
                   <option data-value="">option2</option>
                 </select>
+
+                <select class="w300 uiscroll" aria-label="장애 증상 상세 선택">
+                  <option data-value="">옵션을 선택해 주세요</option>
+                  <option data-value="" selected>option1</option>
+                  <option data-value="">option2</option>
+                </select>
+
+                <div class="disabledN no-click">
+                  <select class="w300 uiscroll" aria-label="장애 증상 상세 선택">
+                    <option data-value="">옵션을 선택해 주세요</option>
+                    <option data-value="" selected>option1</option>
+                    <option data-value="">option2</option>
+                  </select>
+                </div>
               </div>
             </section>
             <!-- //select -->
@@ -167,6 +181,38 @@
                   >
                     insertModal
                   </button>
+                  <button
+                    type="button"
+                    class="btn btn-ico btn-write"
+                    data-bs-toggle="modal"
+                    data-bs-target="#updateModal"
+                    aria-expanded="false"
+                    aria-controls="updateModal"
+                  >
+                    updateModal
+                  </button>
+                  <div class="col-auto my-2">
+                    <button
+                      type="button"
+                      class="btn btn-ico"
+                      data-bs-toggle="modal"
+                      data-bs-target="#specialCustInsert"
+                      aria-expanded="false"
+                      aria-controls="specialCustInsert"
+                    >
+                      특별고객등록
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-ico"
+                      data-bs-toggle="modal"
+                      data-bs-target="#specialCustView"
+                      aria-expanded="false"
+                      aria-controls="specialCustView"
+                    >
+                      특별고객조회
+                    </button>
+                  </div>
                 </div>
               </div>
             </section>
@@ -342,7 +388,7 @@
                           </tr>
                           <tr>
                             <th>방문 일시</th>
-                            <td class="disabledY">
+                            <td>
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
@@ -396,7 +442,7 @@
                           </tr>
                           <tr>
                             <th>방문 결과</th>
-                            <td class="visitResultInput disabledY">
+                            <td>
                               <select class="w300 uiscroll" aria-label="방문 결과 선택">
                                 <option value="1">단말 및 부수 자재 교체</option>
                                 <option value="2">구내배선 교체</option>
@@ -1099,12 +1145,229 @@
                 </div>
               </div>
             </div>
+
+            <!-- 신규 모달 -->
+
+            <!-- 특별 고객 등록 모달 -->
+            <div
+              id="specialCustInsert"
+              class="modal fade"
+              tabindex="-1"
+              aria-labelledby="specialCustInsertLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="specialCustInsertLabel">특별 고객 등록</h1>
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>가입 번호</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="entrNoInput" name="entrNo" placeholder="가입 번호를 입력해 주세요" value="" maxlength="12" />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>서비스</th>
+                            <td>
+                              <select class="w220 uiscroll" aria-label="서비스 선택">
+                                <option value="">서비스를 선택해 주세요</option>
+                                <option value="">인터넷</option>
+                                <option value="">TV</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>조직 코드</th>
+                            <td>
+                              <div class="d-flex gap-08">
+                                <div class="col-auto">
+                                  <!-- error시 error 클래스 추가, 등록 가능시 success 클래스 추가 -->
+                                  <div id="checkCodeDuplicateMsg" class="input-form w220">
+                                    <div class="inner">
+                                      <input id="orgCodeInput" type="text" placeholder="조직 코드를 입력해 주세요" value="" />
+                                    </div>
+                                    <div class="error">해당 조직이 존재하지 않습니다</div>
+                                    <div class="success">등록 가능한 조직 코드입니다</div>
+                                  </div>
+                                </div>
+                                <div class="col-auto">
+                                  <button id="checkOrgCodeBtn" type="button" class="btn btn-dark" onclick="alertPubTest();">조회</button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>조직명</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="orgNameInput" name="orgName" placeholder="" value="VIP고객지원팀" disabled />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>등록 사유</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="regReasonInput" name="regReason" placeholder="등록 사유를 입력해 주세요" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>비고</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="remarkInput" name="remark" placeholder="비고를 입력해 주세요" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-grid">
+                      <button type="button" class="btn btn-dark" id="insertBtn" onclick="insertBtn()">등록</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 특별 고객 등록 모달 -->
+
+            <!-- 특별 고객 조회 모달 -->
+            <div
+              id="specialCustView"
+              class="modal fade"
+              tabindex="-1"
+              aria-labelledby="specialCustViewLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="specialCustViewLabel">특별 고객 조회</h1>
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 110px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>가입 번호</th>
+                            <td>123456789112</td>
+                          </tr>
+                          <tr>
+                            <th>서비스</th>
+                            <td>TV</td>
+                          </tr>
+                          <tr>
+                            <th>조직 코드</th>
+                            <td>TS25145</td>
+                          </tr>
+                          <tr>
+                            <th>조직명</th>
+                            <td>VIP고객지원팀</td>
+                          </tr>
+                          <tr>
+                            <th>등록 사유</th>
+                            <td>강성 민원 고객으로 별도 Care</td>
+                          </tr>
+                          <tr>
+                            <th>비고</th>
+                            <td>강성민원 3회 이상 발생고객</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-flex gap-08">
+                      <div class="col-auto">
+                        <button
+                          type="button"
+                          class="btn btn-outline-dark NonRole"
+                          data-bs-toggle="modal"
+                          data-bs-target="#SpecialCustUpdate"
+                          aria-expanded="false"
+                          aria-controls="SpecialCustUpdate"
+                        >
+                          수정
+                        </button>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-dark w100p updateBtn">확인</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 특별 고객 조회 모달 -->
           </div>
-          <script src="/assets/js/plugins/ckeditor.js"></script>
-          <script th:inline="javascript"></script>
         </div>
       </div>
     </div>
+    <!-- 임시 -->
+    <style>
+      /* 클릭을 비활성화하는 클래스 */
+      .no-click {
+        pointer-events: none;
+      }
+      .no-click .custom-select-wrapper .custom-select .custom-select-trigger {
+        background-color: #d3d3d3;
+        color: #a9a9a9;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      .no-click .start-date1 {
+        background-color: #d3d3d3;
+        color: #a9a9a9;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      .no-click .start-date1 .datetimepicker-input {
+        background-color: #d3d3d3;
+        color: #a9a9a9;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      .ck-content .image-style-align-left,
+      .ck-content .image-style-align-right,
+      .ck-content .image-style-align-center {
+        float: left;
+        margin-right: 0px;
+      }
+      .ckeditor .ck-editor {
+        border: none;
+        height: 300px;
+      }
+
+      figure img {
+        width: 414px;
+        height: auto;
+      }
+    </style>
+    <!-- //임시 -->
   </body>
   <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
   <script src="/assets/js/plugins/bootstrap.bundle.min.js"></script>
