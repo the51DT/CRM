@@ -2853,6 +2853,32 @@ button:focus {
   background: url("/assets/images/common/icon_notification.svg") no-repeat 0 0;
 }
 
+/* 아이콘 버튼 추가 */
+.btn-search-list:hover::before,
+.btn-search-list::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: url("/assets/images/common/icon_search_list.svg") no-repeat 0 0;
+}
+.btn-sms-send:hover::before,
+.btn-sms-send::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: url("/assets/images/common/icon_sms_send.svg") no-repeat 0 0;
+}
+.btn-receipt:hover::before,
+.btn-receipt::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: url("/assets/images/common/icon_receipt.svg") no-repeat 0 0;
+}
+
 /* search-box transparent-bg-box */
 .search-box.transparent-bg-box {
   padding: 0;
@@ -2903,6 +2929,24 @@ button:focus {
   transform: rotate(180deg);
 }
 
+.hash-group-column {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* 모달 상단 버튼 영역 */
+.trigger-box {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.6rem;
+  background-color: var(--secondary);
+  margin-bottom: 2.4rem;
+  border-radius: 0.8rem;
+}
+
 /* summary-table */
 .summary-table tbody tr.total-row td {
   background-color: var(--whitey) !important;
@@ -2934,9 +2978,7 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-size: var(--font-basic); */
-  font-size: 16px;
-  font-weight: var(--fontweight-bold);
+  font-size: var(--font-basic);
 }
 .sms-symbol-list .symbol-btn:active,
 .sms-symbol-list .symbol-btn.selected {

@@ -17,6 +17,7 @@
         <div id="contents">
           <div class="contents__inner">
             <h2>오늘의 할 일</h2>
+
             <section class="row">
               <div class="search-box">
                 <div class="col-auto label">
@@ -141,161 +142,6 @@
               </div>
             </section>
 
-            <section class="row" style="display: none">
-              <table class="dataTable row-border hover">
-                <thead>
-                  <tr>
-                    <th>번호</th>
-                    <th>가입 번호2</th>
-                    <th>기준일</th>
-                    <th>가입 번호</th>
-                    <th>대리점 코드</th>
-                    <th>대리점명</th>
-                    <th>서비스</th>
-                    <th>발생 지표</th>
-                    <th>고객 유형</th>
-                    <th>Care 활동</th>
-                    <th>중복 발생</th>
-                    <th>결과 등록</th>
-                    <th>등록 기한</th>
-                    <th>등록/조회</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </section>
-            <section class="row" style="display: none">
-              <table id="excelTable" style="display: none">
-                <thead>
-                  <tr>
-                    <th id="taskIsueDt" align="center">기준일</th>
-                    <th id="entrNo" align="center">가입 번호</th>
-                    <th id="dlrCd" align="center">대리점 코드</th>
-                    <th id="dlrNm" align="center">대리점명</th>
-                    <th id="svcNm" align="center">서비스</th>
-                    <th id="indicatorCodeName" align="center">발생 지표</th>
-                    <th id="custCodeName" align="center">고객 유형</th>
-                    <th id="careCodeName" align="center">Care 활동</th>
-                    <th id="duplicationYn" align="center">중복 발생</th>
-                    <th id="resultYn" align="center">결과 등록</th>
-                    <th id="endDt" align="center">등록 기한</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </section>
-            <section class="row" style="display: none">
-              <div class="d-flex gap-4">
-                <div class="col-6">
-                  <div class="data-info-box purple sm">
-                    <div class="col-auto label">
-                      <label id="date-label">오늘</label>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>전체</dt>
-                        <dd id="totalCnt">0</dd>
-                      </dl>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>결과 등록</dt>
-                        <dd id="resultYCnt">0</dd>
-                      </dl>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>미처리</dt>
-                        <dd id="resultNCnt">0</dd>
-                      </dl>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>처리율</dt>
-                        <dd id="resultYPercent">0%</dd>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="data-info-box purple sm">
-                    <div class="col-auto label">
-                      <label id="dateLabel2"></label>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>전체</dt>
-                        <dd id="monthTotalCnt"></dd>
-                      </dl>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>결과 등록</dt>
-                        <dd id="monthResultYCnt"></dd>
-                      </dl>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>미처리</dt>
-                        <dd id="monthResultNCnt"></dd>
-                      </dl>
-                    </div>
-                    <div class="col-auto">
-                      <dl>
-                        <dt>처리율</dt>
-                        <dd id="monthResultYPercent"></dd>
-                      </dl>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="result-inquery">
-                <div class="datetimepicker inline" id="datetimepicker"></div>
-                <div class="result-table">
-                  <table class="datatable2 row-border hover nowrap">
-                    <thead>
-                      <tr>
-                        <th>발생일</th>
-                        <th>가입 번호</th>
-                        <th>결과 등록</th>
-                        <th>Care 활동</th>
-                        <th>중복 발생</th>
-                        <th>방문 여부</th>
-                        <th>방문 일자</th>
-                        <th>방문 결과</th>
-                        <th>구간 품질 측정</th>
-                        <th>미 방문 사유</th>
-                        <th>CARE 상세사항</th>
-                      </tr>
-                    </thead>
-                    <tbody></tbody>
-                  </table>
-                </div>
-              </div>
-            </section>
-            <section class="row" style="display: none">
-              <div class="notice-info-news">
-                <dl class="text">
-                  <dt>공지 사항</dt>
-                  <dd>
-                    <div class="swiper notice-info-swiper">
-                      <div class="swiper-wrapper">
-                        <div class="swiper-slide" th:each="announcement : ${AnncList}">
-                          <a th:href="|/Announcements/detailPage?anncId=${announcement.anncId}|" th:text="${announcement.anncTitle}">
-                            <span class="date" th:text="${announcement.createDt}"></span
-                          ></a>
-                        </div>
-                      </div>
-                    </div>
-                  </dd>
-                </dl>
-                <p class="link">
-                  <a href="/Announcements/page">공지사항 전체보기</a>
-                </p>
-              </div>
-            </section>
-
             <!-- 2025-05 신규 수정/추가 -->
             <section class="row mt-6">
               <div class="search-box transparent-bg-box">
@@ -390,26 +236,8 @@
                       <!-- 작은 버튼 임시 -->
                       <div class="col-auto d-flex justify-content-center gap-2">
                         <button type="button" class="btn btn-outline-secondary btn-sm">유선 CEM</button>
-                        <button
-                          type="button"
-                          class="btn btn-dark btn-sm"
-                          data-bs-toggle="modal"
-                          data-bs-target="#contactRegister"
-                          aria-expanded="false"
-                          aria-controls="contactRegister"
-                        >
-                          컨택 등록
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-dark btn-sm"
-                          data-bs-toggle="modal"
-                          data-bs-target="#resultRegister"
-                          aria-expanded="false"
-                          aria-controls="resultRegister"
-                        >
-                          결과 등록
-                        </button>
+                        <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#contactRegister">컨택 등록</button>
+                        <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#resultRegister">결과 등록</button>
                       </div>
                     </td>
                   </tr>
@@ -429,8 +257,8 @@
                       <!-- 작은 버튼 임시 -->
                       <div class="col-auto d-flex justify-content-center gap-2">
                         <button type="button" class="btn btn-outline-secondary btn-sm">유선 CEM</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm">컨택 조회</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm">결과 조회</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#contactView">컨택 조회</button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#resultView">결과 조회</button>
                       </div>
                     </td>
                   </tr>
@@ -438,20 +266,6 @@
               </table>
             </section>
             <!-- // 2025-05 신규 수정/추가 -->
-
-            <button type="button" class="btn btn-ico" data-bs-toggle="modal" data-bs-target="#smsSend" aria-expanded="false" aria-controls="smsSend">
-              SMS 발송
-            </button>
-            <button
-              type="button"
-              class="btn btn-ico"
-              data-bs-toggle="modal"
-              data-bs-target="#processHistory"
-              aria-expanded="false"
-              aria-controls="processHistory"
-            >
-              중간 처리 이력
-            </button>
 
             <!-- 컨택 등록 모달 -->
             <div
@@ -466,11 +280,18 @@
               <div class="modal-dialog modal-dialog-scrollable modal-xlg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="contactRegisterLabel">컨택 등록</h1>
                     <section class="row">
+                      <div class="trigger-box">
+                        <button type="button" class="btn btn-ico btn-search-list" data-bs-toggle="modal" data-bs-target="#processHistory">
+                          중간 처리 이력
+                        </button>
+                        <button type="button" class="btn btn-ico btn-sms-send" data-bs-toggle="modal" data-bs-target="#smsSend">SMS 발송</button>
+                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish">AS 발행</button>
+                      </div>
                       <table class="form-table">
                         <colgroup>
                           <col style="width: 120px" />
@@ -493,11 +314,11 @@
                             <td id="cemAbnormal">
                               <span class="custom-radio">
                                 <input id="cemAbnormalRadioY" name="cemAbnormalRadio" type="radio" value="Y" checked />
-                                <label for="cemAbnormalRadioY" class="button"> Y </label>
+                                <label for="cemAbnormalRadioY" class="button">Y</label>
                               </span>
                               <span class="custom-radio">
                                 <input id="cemAbnormalRadioN" name="cemAbnormalRadio" type="radio" value="N" />
-                                <label for="cemAbnormalRadioN" class="button"> N </label>
+                                <label for="cemAbnormalRadioN" class="button">N</label>
                               </span>
                             </td>
                           </tr>
@@ -507,16 +328,16 @@
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
-                                    <div class="start-date1 input-group datepicker w-auto datepicker-last-contact" data-target-input="nearest">
+                                    <div class="start-date1 input-group datepicker w-auto" data-target-input="nearest">
                                       <input
                                         type="text"
                                         class="form-control datetimepicker-input"
-                                        data-target=".datepicker-last-contact"
+                                        data-target=".start-date1"
                                         placeholder="날짜"
                                         id="lastContactDateInput"
                                         name="lastContactDate"
                                       />
-                                      <div class="input-group-append" data-target=".datepicker-last-contact" data-toggle="datetimepicker">
+                                      <div class="input-group-append" data-target=".start-date1" data-toggle="datetimepicker">
                                         <button class="input-group-text">
                                           <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                         </button>
@@ -629,16 +450,16 @@
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
-                                    <div class="start-date1 input-group datepicker w-auto datepicker-visit-plan" data-target-input="nearest">
+                                    <div class="start-date2 input-group datepicker w-auto" data-target-input="nearest">
                                       <input
                                         type="text"
                                         class="form-control datetimepicker-input"
-                                        data-target=".datepicker-visit-plan"
+                                        data-target=".start-date2"
                                         placeholder="날짜"
                                         id="visitPlanDateInput"
                                         name="visitPlanDate"
                                       />
-                                      <div class="input-group-append" data-target=".datepicker-visit-plan" data-toggle="datetimepicker">
+                                      <div class="input-group-append" data-target=".start-date2" data-toggle="datetimepicker">
                                         <button class="input-group-text">
                                           <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                         </button>
@@ -680,10 +501,17 @@
                           <tr>
                             <th>컨택 메모</th>
                             <td>
-                              <!-- error 경우 error 클래스 추가 -->
-                              <div class="input-form">
-                                <textarea id="contactInput" name="contact" placeholder="컨택 메모를 입력해 주세요" maxlength="500"></textarea>
-                                <div class="counter"><span class="current">0</span>/200</div>
+                              <div class="d-flex gap-2">
+                                <div class="col-9">
+                                  <!-- error 경우 error 클래스 추가 -->
+                                  <div class="input-form">
+                                    <textarea id="contactMemo" name="contactMemo" placeholder="컨택 메모를 입력해 주세요" maxlength="500"></textarea>
+                                    <div class="counter"><span class="current">0</span>/200</div>
+                                  </div>
+                                </div>
+                                <div class="col-3">
+                                  <button type="button" class="btn btn-dark" onclick="alertPubTest()">저장</button>
+                                </div>
                               </div>
                             </td>
                           </tr>
@@ -707,14 +535,12 @@
                     </section>
                   </div>
                   <div class="modal-footer">
-                    <div class="modal-footer">
-                      <div class="d-flex gap-08">
-                        <div class="col-auto">
-                          <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
-                        </div>
-                        <div class="col">
-                          <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
-                        </div>
+                    <div class="d-flex gap-08">
+                      <div class="col-auto">
+                        <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
                       </div>
                     </div>
                   </div>
@@ -722,6 +548,123 @@
               </div>
             </div>
             <!-- // 컨택 등록 모달 -->
+
+            <!-- 컨택 조회 모달 -->
+            <div
+              class="modal fade"
+              id="contactView"
+              tabindex="-1"
+              aria-labelledby="contactViewLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable modal-xlg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="contactViewLabel">컨택 조회</h1>
+                    <section class="row">
+                      <div class="trigger-box">
+                        <button type="button" class="btn btn-ico btn-search-list" data-bs-toggle="modal" data-bs-target="#processHistory">
+                          중간 처리 이력
+                        </button>
+                        <button type="button" class="btn btn-ico btn-sms-send" onclick="alertPubTest2()">SMS 발송</button>
+                        <button type="button" class="btn btn-ico btn-receipt disabled" data-bs-toggle="modal" data-bs-target="#asPublish">AS 발행</button>
+                      </div>
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 120px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>Care 활동</th>
+                            <td>상담톡</td>
+                          </tr>
+                          <tr>
+                            <th>유선 CEM 이상 유무</th>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <th>마지막 컨택일</th>
+                            <td>2025-04-01 12:59</td>
+                          </tr>
+                          <tr>
+                            <th>컨택 방법</th>
+                            <td>전화</td>
+                          </tr>
+                          <tr>
+                            <th>고객 연결 여부</th>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <th>고객 장애 인지</th>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <th>고객 장애 상세</th>
+                            <td>화면 깨짐</td>
+                          </tr>
+                          <tr>
+                            <th>추가 방문 요청</th>
+                            <td>N</td>
+                          </tr>
+                          <tr>
+                            <th>미방문 사유</th>
+                            <td>고객 부재</td>
+                          </tr>
+                          <tr>
+                            <th>방문 예정일</th>
+                            <td>2025-04-01 12:59</td>
+                          </tr>
+                          <tr>
+                            <th>컨택 메모</th>
+                            <td>
+                              <div class="d-flex gap-2">
+                                <div class="col-9">
+                                  <!-- error 경우 error 클래스 추가 -->
+                                  <div class="input-form">
+                                    <textarea id="contactMemoView" name="contactMemo" placeholder="컨택 메모를 입력해 주세요" maxlength="500"></textarea>
+                                    <div class="counter"><span class="current">0</span>/200</div>
+                                  </div>
+                                </div>
+                                <div class="col-3">
+                                  <button type="button" class="btn btn-dark" onclick="alertPubTest()">저장</button>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>컨택 메모 이력</th>
+                            <td>
+                              <ul class="memo-history">
+                                <li>
+                                  <span>2025-04-01 12:59</span>
+                                  <strong>AS 발행</strong>
+                                </li>
+                                <li>
+                                  <span>2025-04-01 12:59</span>
+                                  <strong>AS 발행</strong>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer notice-style">
+                    <div class="d-grid">
+                      <button type="button" class="btn" id="">확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 컨택 조회 모달 -->
 
             <!-- 결과 등록 모달 -->
             <div
@@ -736,7 +679,7 @@
               <div class="modal-dialog modal-dialog-scrollable modal-xlg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="resultRegisterLabel">결과 등록</h1>
@@ -777,16 +720,16 @@
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
-                                    <div class="start-date1 input-group datepicker w-auto datepicker-visit-date" data-target-input="nearest">
+                                    <div class="start-date3 input-group datepicker w-auto" data-target-input="nearest">
                                       <input
                                         type="text"
                                         class="form-control datetimepicker-input"
-                                        data-target=".datepicker-visit-date"
+                                        data-target=".start-date3"
                                         placeholder="날짜"
                                         id="additionalVisitDateInput"
                                         name="additionalVisitDate"
                                       />
-                                      <div class="input-group-append" data-target=".datepicker-visit-date" data-toggle="datetimepicker">
+                                      <div class="input-group-append" data-target=".start-date3" data-toggle="datetimepicker">
                                         <button class="input-group-text">
                                           <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                         </button>
@@ -823,16 +766,6 @@
                                   </select>
                                 </div>
                               </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th>컨택 방법</th>
-                            <td>
-                              <select class="w300 uiscroll" aria-label="서비스 선택">
-                                <option value="">컨택 방법을 선택해 주세요</option>
-                                <option value="">전화</option>
-                                <option value="">SMS</option>
-                              </select>
                             </td>
                           </tr>
                           <tr>
@@ -926,14 +859,12 @@
                     </section>
                   </div>
                   <div class="modal-footer">
-                    <div class="modal-footer">
-                      <div class="d-flex gap-08">
-                        <div class="col-auto">
-                          <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
-                        </div>
-                        <div class="col">
-                          <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
-                        </div>
+                    <div class="d-flex gap-08">
+                      <div class="col-auto">
+                        <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
                       </div>
                     </div>
                   </div>
@@ -942,72 +873,82 @@
             </div>
             <!-- // 결과 등록 모달 -->
 
-            <!-- SMS 발송 모달 -->
+            <!-- 결과 조회 모달 -->
             <div
               class="modal fade"
-              id="smsSend"
+              id="resultView"
               tabindex="-1"
-              aria-labelledby="smsSendLabel"
+              aria-labelledby="resultViewLabel"
               aria-hidden="true"
               data-bs-backdrop="static"
               data-bs-keyboard="false"
             >
-              <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-dialog modal-dialog-scrollable modal-xlg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="smsSendLabel">SMS 발송</h1>
+                    <h1 class="modal-title" id="resultViewLabel">결과 조회</h1>
                     <section class="row">
                       <table class="form-table">
                         <colgroup>
-                          <col style="width: 80px" />
+                          <col style="width: 120px" />
                           <col />
                         </colgroup>
                         <tbody>
                           <tr>
-                            <th>내용 입력</th>
-                            <td>
-                              <!-- error 경우 error 클래스 추가 -->
-                              <div class="input-form">
-                                <textarea id="smsContentInput" name="smsContent" placeholder="SMS 발송 내용을 입력해 주세요" maxlength="2000"></textarea>
-                                <div class="counter"><span class="current">0</span>/2,000</div>
-                              </div>
-
-                              <!-- 특수문자 입력 영역 -->
-                              <div class="sms-symbol-list">
-                                <button type="button" class="symbol-btn">&#x00B1;</button>
-                                <button type="button" class="symbol-btn">&#x2260;</button>
-                                <button type="button" class="symbol-btn">&#x2264;</button>
-                                <button type="button" class="symbol-btn">&#x2265;</button>
-                                <button type="button" class="symbol-btn">&#x221E;</button>
-                                <button type="button" class="symbol-btn">&#x2642;</button>
-                                <button type="button" class="symbol-btn">&#x2640;</button>
-                                <button type="button" class="symbol-btn">&#x221A;</button>
-                                <button type="button" class="symbol-btn">&#x21D4;</button>
-                                <button type="button" class="symbol-btn">&#xFF05;</button>
-                                <button type="button" class="symbol-btn">&#xFF04;</button>
-                                <button type="button" class="symbol-btn">&#xFFE6;</button>
-                                <button type="button" class="symbol-btn">&#xFFE1;</button>
-                                <button type="button" class="symbol-btn">&#xFFE5;</button>
-                                <button type="button" class="symbol-btn">&#x0040;</button>
-                              </div>
-                            </td>
+                            <th>Care 활동</th>
+                            <td>상담톡</td>
                           </tr>
                           <tr>
-                            <th>수신 번호</th>
-                            <td>
-                              <div class="input-form w220">
-                                <input type="text" id="receiverNumberInput" name="receiverNumber" placeholder="숫자만 입력해 주세요" value="" />
-                              </div>
-                            </td>
+                            <th>추가 방문 여부</th>
+                            <td>Y</td>
                           </tr>
                           <tr>
-                            <th>발신 번호</th>
+                            <th>추가 방문 일자</th>
+                            <td>2025-04-01 12:59</td>
+                          </tr>
+                          <tr>
+                            <th>장애 증상 여부</th>
+                            <td>Y</td>
+                          </tr>
+                          <tr>
+                            <th>장애 증상 상세</th>
+                            <td>화면 깨짐</td>
+                          </tr>
+                          <tr>
+                            <th>추가 방문 결과</th>
+                            <td>단말 및 부수 자재 교체</td>
+                          </tr>
+                          <tr>
+                            <th>구간 품질 측정</th>
+                            <td>N</td>
+                          </tr>
+                          <tr>
+                            <th>미방문 사유</th>
+                            <td>고객 부재</td>
+                          </tr>
+                          <tr>
+                            <th>추가 방문 TASK 번호</th>
+                            <td>12345678910</td>
+                          </tr>
+                          <tr>
+                            <th>Care 상세 현황</th>
+                            <td>최근 한 달 내 2건의 동일 장애 발생으로 인한 무상 AS 진행 하였습니다.</td>
+                          </tr>
+                          <tr>
+                            <th>특이사항</th>
                             <td>
-                              <div class="input-form w220">
-                                <input type="text" id="senderNumberInput" name="senderNumber" placeholder="숫자만 입력해 주세요" value="" />
+                              <div id="hashGroup" class="hash-group-column">
+                                <div class="hash">
+                                  <span>#일이삼사오육칠팔구</span>
+                                  <button type="button" class="btn-close"></button>
+                                </div>
+                                <div class="hash lavender">
+                                  <span>#담배냄새민감</span>
+                                  <button type="button" class="btn-close"></button>
+                                </div>
                               </div>
                             </td>
                           </tr>
@@ -1015,22 +956,15 @@
                       </table>
                     </section>
                   </div>
-                  <div class="modal-footer">
-                    <div class="modal-footer">
-                      <div class="d-flex gap-08">
-                        <div class="col-auto">
-                          <button type="button" class="btn btn-outline-dark NonRole">취소</button>
-                        </div>
-                        <div class="col">
-                          <button type="button" class="btn btn-dark w100p updateBtn">발송</button>
-                        </div>
-                      </div>
+                  <div class="modal-footer notice-style">
+                    <div class="d-grid">
+                      <button type="button" class="btn" id="">확인</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- // SMS 발송 모달 -->
+            <!-- // 결과 조회 모달 -->
 
             <!-- 중간 처리 이력 모달 -->
             <div
@@ -1045,7 +979,7 @@
               <div class="modal-dialog modal-dialog-scrollable modal-xxlg">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="processHistoryLabel">중간 처리 이력</h1>
@@ -1091,6 +1025,169 @@
               </div>
             </div>
             <!-- // 중간 처리 이력 모달 -->
+
+            <!-- SMS 발송 모달 -->
+            <div
+              class="modal fade"
+              id="smsSend"
+              tabindex="-1"
+              aria-labelledby="smsSendLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="smsSendLabel">SMS 발송</h1>
+                    <section class="row">
+                      <table class="form-table">
+                        <colgroup>
+                          <col style="width: 80px" />
+                          <col />
+                        </colgroup>
+                        <tbody>
+                          <tr>
+                            <th>내용 입력</th>
+                            <td>
+                              <!-- error 경우 error 클래스 추가 -->
+                              <div class="input-form">
+                                <textarea id="smsContentInput" name="smsContent" placeholder="SMS 발송 내용을 입력해 주세요" maxlength="2000"></textarea>
+                                <div class="counter"><span class="current">0</span>/2,000</div>
+                              </div>
+
+                              <!-- 특수문자 입력 영역 -->
+                              <div class="sms-symbol-list">
+                                <!-- 1줄 -->
+                                <button class="symbol-btn">&#x00B1;</button>
+                                <button class="symbol-btn">&#x2260;</button>
+                                <button class="symbol-btn">&#x2264;</button>
+                                <button class="symbol-btn">&#x2265;</button>
+                                <button class="symbol-btn">&#x221E;</button>
+                                <button class="symbol-btn">&#x2642;</button>
+                                <button class="symbol-btn">&#x2640;</button>
+                                <button class="symbol-btn">&#x221A;</button>
+                                <button class="symbol-btn">&#x21D4;</button>
+                                <button class="symbol-btn">&#x0025;</button>
+                                <button class="symbol-btn">&#x0024;</button>
+                                <button class="symbol-btn">&#x20A9;</button>
+                                <button class="symbol-btn">&#x00A3;</button>
+                                <button class="symbol-btn">&#x00A5;</button>
+                                <!-- 2줄 -->
+                                <button class="symbol-btn">&#x0040;</button>
+                                <button class="symbol-btn">&#x0023;</button>
+                                <button class="symbol-btn">&#x0026;</button>
+                                <button class="symbol-btn">&#x203B;</button>
+                                <button class="symbol-btn">&#x2732;</button>
+                                <button class="symbol-btn">&#x2606;</button>
+                                <button class="symbol-btn">&#x2605;</button>
+                                <button class="symbol-btn">&#x25CB;</button>
+                                <button class="symbol-btn">&#x25CF;</button>
+                                <button class="symbol-btn">&#x25CE;</button>
+                                <button class="symbol-btn">&#x25C7;</button>
+                                <button class="symbol-btn">&#x25C6;</button>
+                                <button class="symbol-btn">&#x25A1;</button>
+                                <button class="symbol-btn">&#x25A0;</button>
+                                <!-- 3줄 -->
+                                <button class="symbol-btn">&#x25B3;</button>
+                                <button class="symbol-btn">&#x25B2;</button>
+                                <button class="symbol-btn">&#x25BD;</button>
+                                <button class="symbol-btn">&#x25BC;</button>
+                                <button class="symbol-btn">&#x25C1;</button>
+                                <button class="symbol-btn">&#x25C0;</button>
+                                <button class="symbol-btn">&#x25B7;</button>
+                                <button class="symbol-btn">&#x25B6;</button>
+                                <button class="symbol-btn">&#x2192;</button>
+                                <button class="symbol-btn">&#x2190;</button>
+                                <button class="symbol-btn">&#x2191;</button>
+                                <button class="symbol-btn">&#x2193;</button>
+                                <button class="symbol-btn">&#x2194;</button>
+                                <button class="symbol-btn">&#x2195;</button>
+                                <!-- 4줄 -->
+                                <button class="symbol-btn">&#x2664;</button>
+                                <button class="symbol-btn">&#x2660;</button>
+                                <button class="symbol-btn">&#x2661;</button>
+                                <button class="symbol-btn">&#x2665;</button>
+                                <button class="symbol-btn">&#x300A;</button>
+                                <button class="symbol-btn">&#x300B;</button>
+                                <button class="symbol-btn">&#x266D;</button>
+                                <button class="symbol-btn">&#x261C;</button>
+                                <button class="symbol-btn">&#x261E;</button>
+                                <button class="symbol-btn">&#x266C;</button>
+                                <button class="symbol-btn">&#x327F;</button>
+                                <button class="symbol-btn">&#x321C;</button>
+                                <button class="symbol-btn">&#x260E;</button>
+                                <button class="symbol-btn">&#x2668;</button>
+                              </div>
+                              <!-- //특수문자 입력 영역 -->
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>수신 번호</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="receiverNumberInput" name="receiverNumber" placeholder="숫자만 입력해 주세요" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>발신 번호</th>
+                            <td>
+                              <div class="input-form w220">
+                                <input type="text" id="senderNumberInput" name="senderNumber" placeholder="숫자만 입력해 주세요" value="" />
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="d-flex gap-08">
+                      <div class="col-auto">
+                        <button type="button" class="btn btn-outline-dark NonRole">취소</button>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-dark w100p updateBtn">발송</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // SMS 발송 모달 -->
+
+            <!-- AS 발행 모달 -->
+            <div
+              class="modal fade"
+              id="asPublish"
+              tabindex="-1"
+              aria-labelledby="asPublishLabel"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="asPublishLabel">AS 발행</h1>
+                    <section class="row"></section>
+                  </div>
+                  <div class="modal-footer notice-style">
+                    <div class="d-grid">
+                      <button type="button" class="btn" id="">확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // AS 발행 모달 -->
           </div>
         </div>
       </div>
@@ -1125,6 +1222,38 @@
     });
 
     // 퍼블테스트
+    // UI.inputDatePicker();
+    $(".start-date2").datetimepicker("destroy");
+    $(".start-date2").datetimepicker({
+      widgetPositioning: {
+        horizontal: "right", // "left" 또는 "right"
+        vertical: "top", // "top" 또는 "bottom"
+      },
+    });
+    window.alertPubTest = () => {
+      var btn = event.target;
+      var parent = btn.closest(".d-flex");
+      var memoInput = parent ? parent.querySelector('[name="contactMemo"]') : null;
+      if (memoInput && memoInput.value.trim() === "") {
+        memoInput.focus();
+        showAlert({
+          image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
+          message: "컨택 메모를 입력해 주세요.",
+          oneButton: true,
+        });
+      } else {
+        showAlert({
+          image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
+          message: "컨택 메모를 저장하시겠습니까?",
+        });
+      }
+    };
+    window.alertPubTest2 = () => {
+      showAlert({
+        image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
+        message: "SMS은 최대 5회까지만<br>발송 가능합니다",
+      });
+    };
     document.querySelectorAll(".sms-symbol-list .symbol-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var textarea = document.getElementById("smsContentInput");

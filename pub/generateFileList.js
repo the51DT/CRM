@@ -234,6 +234,9 @@ function getGitLastModified(filePath) {
     const command = `git log --follow --format=%cd -n 1 -- ${filePath}`;
     // const command = `git log --follow --format=%cd -- ${filePath}`;
     const lastModified = execSync(command).toString().trim(); // 커밋 날짜 반환
+
+    if (!lastModified) return null;
+
     // 날짜를 ISO 형식으로 변환
     const date = new Date(lastModified);
     return date.toISOString().split('T')[0]; // YYYY-MM-DD 형식으로 반환
@@ -371,6 +374,12 @@ webFiles.sort((a, b) => {
 
 // '/assets/images/common' 폴더 내의 모든 파일 정보 가져오기
 const { svgList: svgFiles } = getFilesFromDir(path.join(__dirname, '../assets/images/common'));
+// 정렬
+svgFiles.sort((a, b) => {
+  if (a.lastModified > b.lastModified) return -1;
+  if (a.lastModified < b.lastModified) return 1;
+  return a.name.localeCompare(b.name);
+});
 
 // 결과를 JavaScript 객체 배열 형식으로 변환하여 파일에 저장
 const htmlContent = `const fileList = ${JSON.stringify(webFiles, null, 2)};`;

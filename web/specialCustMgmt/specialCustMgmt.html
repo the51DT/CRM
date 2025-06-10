@@ -99,15 +99,7 @@
                 </div>
                 <div class="col-auto d-flex right gap-2">
                   <button type="button" class="btn btn-ico btn-download" id="downloadBtn">다운로드</button>
-                  <button
-                    type="button"
-                    class="btn btn-ico btn-new-write"
-                    id="addUserBtn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#specialCustInsert"
-                    aria-expanded="false"
-                    aria-controls="specialCustInsert"
-                  >
+                  <button type="button" class="btn btn-ico btn-new-write" id="addUserBtn" data-bs-toggle="modal" data-bs-target="#specialCustInsert">
                     신규등록
                   </button>
                   <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn">선택삭제</button>
@@ -160,22 +152,14 @@
                     <td>난개통 지역으로 특수 배선 점검...</td>
                     <td>
                       <!-- 작은 버튼 임시 -->
-                      <button
-                        type="button"
-                        class="btn btn-outline-secondary btn-sm"
-                        data-bs-toggle="modal"
-                        data-bs-target="#specialCustView"
-                        aria-expanded="false"
-                        aria-controls="specialCustView"
-                      >
-                        조회
-                      </button>
+                      <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#specialCustView">조회</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </section>
 
+            </div>
             <!-- 특별 고객 등록 모달 -->
             <div
               id="specialCustInsert"
@@ -189,7 +173,7 @@
               <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="specialCustInsertLabel">특별 고객 등록</h1>
@@ -289,7 +273,7 @@
               <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="specialCustUpdateLabel">특별 고객 수정</h1>
@@ -395,7 +379,7 @@
               <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="resetModalFields();"></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="specialCustViewLabel">특별 고객 조회</h1>
@@ -437,16 +421,7 @@
                   <div class="modal-footer">
                     <div class="d-flex gap-08">
                       <div class="col-auto">
-                        <button
-                          type="button"
-                          class="btn btn-outline-dark NonRole"
-                          data-bs-toggle="modal"
-                          data-bs-target="#specialCustUpdate"
-                          aria-expanded="false"
-                          aria-controls="specialCustUpdate"
-                        >
-                          수정
-                        </button>
+                        <button type="button" class="btn btn-outline-dark NonRole" data-bs-toggle="modal" data-bs-target="#specialCustUpdate">수정</button>
                       </div>
                       <div class="col">
                         <button type="button" class="btn btn-dark w100p updateBtn">확인</button>
@@ -458,7 +433,6 @@
             </div>
             <!-- // 특별 고객 조회 모달 -->
           </div>
-          <script></script>
         </div>
       </div>
     </div>

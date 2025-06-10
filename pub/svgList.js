@@ -1,5 +1,29 @@
 const svgList = [
   {
+    "name": "icon_receipt.svg",
+    "path": "/assets/images/common/icon_receipt.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-06-10"
+  },
+  {
+    "name": "Icon_search_list.svg",
+    "path": "/assets/images/common/Icon_search_list.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "",
+    "lastModified": "2025-06-10"
+  },
+  {
+    "name": "icon_sms_send.svg",
+    "path": "/assets/images/common/icon_sms_send.svg",
+    "width": "20",
+    "height": "17",
+    "stroke": "black",
+    "lastModified": "2025-06-10"
+  },
+  {
     "name": "btn-input-close.svg",
     "path": "/assets/images/common/btn-input-close.svg",
     "width": "20",
@@ -16,14 +40,6 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
-    "name": "icon_add.svg",
-    "path": "/assets/images/common/icon_add.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
     "name": "icon_add_file.svg",
     "path": "/assets/images/common/icon_add_file.svg",
     "width": "20",
@@ -32,16 +48,16 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
-    "name": "icon_arrow_down.svg",
-    "path": "/assets/images/common/icon_arrow_down.svg",
+    "name": "icon_add.svg",
+    "path": "/assets/images/common/icon_add.svg",
     "width": "20",
     "height": "20",
     "stroke": "black",
     "lastModified": "2025-06-04"
   },
   {
-    "name": "icon_checked.svg",
-    "path": "/assets/images/common/icon_checked.svg",
+    "name": "icon_arrow_down.svg",
+    "path": "/assets/images/common/icon_arrow_down.svg",
     "width": "20",
     "height": "20",
     "stroke": "black",
@@ -64,6 +80,14 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
+    "name": "icon_checked.svg",
+    "path": "/assets/images/common/icon_checked.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-06-04"
+  },
+  {
     "name": "icon_client.svg",
     "path": "/assets/images/common/icon_client.svg",
     "width": "20",
@@ -72,19 +96,19 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
-    "name": "icon_download.svg",
-    "path": "/assets/images/common/icon_download.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
     "name": "icon_download_white.svg",
     "path": "/assets/images/common/icon_download_white.svg",
     "width": "20",
     "height": "20",
     "stroke": "white",
+    "lastModified": "2025-06-04"
+  },
+  {
+    "name": "icon_download.svg",
+    "path": "/assets/images/common/icon_download.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
     "lastModified": "2025-06-04"
   },
   {
@@ -112,6 +136,14 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
+    "name": "icon_no_result.svg",
+    "path": "/assets/images/common/icon_no_result.svg",
+    "width": "56",
+    "height": "56",
+    "stroke": "#AAAAAA",
+    "lastModified": "2025-06-04"
+  },
+  {
     "name": "icon_noresult.svg",
     "path": "/assets/images/common/icon_noresult.svg",
     "width": "120",
@@ -133,14 +165,6 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_no_result.svg",
-    "path": "/assets/images/common/icon_no_result.svg",
-    "width": "56",
-    "height": "56",
-    "stroke": "#AAAAAA",
     "lastModified": "2025-06-04"
   },
   {
@@ -176,16 +200,16 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
-    "name": "icon_selectbox.svg",
-    "path": "/assets/images/common/icon_selectbox.svg",
+    "name": "icon_selectbox_up.svg",
+    "path": "/assets/images/common/icon_selectbox_up.svg",
     "width": "20",
     "height": "20",
     "stroke": "black",
     "lastModified": "2025-06-04"
   },
   {
-    "name": "icon_selectbox_up.svg",
-    "path": "/assets/images/common/icon_selectbox_up.svg",
+    "name": "icon_selectbox.svg",
+    "path": "/assets/images/common/icon_selectbox.svg",
     "width": "20",
     "height": "20",
     "stroke": "black",
