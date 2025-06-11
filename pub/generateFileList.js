@@ -11,7 +11,7 @@ const fileNames = {
     depth3: "",
     lastModified: "-",
     version: "1.2",
-    state: "진행",
+    state: "완료",
     remark: "수정/추가",
   },
   // 현황 통계
@@ -30,7 +30,7 @@ const fileNames = {
     depth3: "",
     lastModified: "-",
     version: "1.2",
-    state: "진행",
+    state: "완료",
     remark: "수정/추가",
   },
   "unhndldStats.html": {
@@ -48,7 +48,7 @@ const fileNames = {
     depth3: "",
     lastModified: "-",
     version: "1.2",
-    state: "진행",
+    state: "완료",
     remark: "신규",
   },
   // 고객 관리
@@ -67,7 +67,7 @@ const fileNames = {
     depth3: "",
     lastModified: "-",
     version: "1.2",
-    state: "진행",
+    state: "완료",
     remark: "수정/추가",
   },
   // 공지/건의 사항
@@ -150,7 +150,7 @@ const fileNames = {
     depth3: "사용자 권한 관리",
     lastModified: "-",
     version: "1.2",
-    state: "진행",
+    state: "완료",
     remark: "수정/추가",
   },
   "pageRoleMgmt.html": {
@@ -186,7 +186,7 @@ const fileNames = {
     depth3: "특별 고객 관리",
     lastModified: "-",
     version: "1.2",
-    state: "진행",
+    state: "완료",
     remark: "신규",
   },
   "logMgmt.html": {

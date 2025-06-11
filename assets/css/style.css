@@ -2840,7 +2840,16 @@ button:focus {
 
 
 /* 2025-05 신규 수정/추가 */
-/* btn-ico btn-notification */
+/* width */
+.w220 {
+  width: 22rem !important;
+}
+/* gap */
+.gap-2 {
+  gap: 0.8rem !important;
+}
+
+/* 아이콘 버튼 추가 */
 .btn-notification i {
   font-style: normal;
   color: var(--pink);
@@ -2853,8 +2862,6 @@ button:focus {
   height: 2rem;
   background: url("/assets/images/common/icon_notification.svg") no-repeat 0 0;
 }
-
-/* 아이콘 버튼 추가 */
 .btn-search-list:hover::before,
 .btn-search-list::before {
   content: "";
@@ -2880,41 +2887,6 @@ button:focus {
   background: url("/assets/images/common/icon_receipt.svg") no-repeat 0 0;
 }
 
-/* dataTable btn-small */
-.dataTable tbody tr td button.btn-small,
-.table-data .btn-small {
-  color: #1f1f1f;
-  text-decoration: none;
-  height: 2.8rem;
-  font-size: var(--font-basic);
-  font-weight: 500;
-  border-radius: calc(var(--border-radius) / 2);
-  padding: 0.4rem 1.2rem;
-}
-.dataTable tbody tr td button.btn-dark {
-  color: var(--white);
-}
-.dataTable tbody tr td button.btn-outline-secondary,
-.table-data .btn-outline-secondary {
-  border: var(--border-layout);
-}
-.dataTable tbody tr td button.btn-small:disabled,
-.table-data .btn-small:disabled {
-  color: var(--placeholder);
-  border: var(--border-layout);
-  background: var(--white);
-}
-
-/* sub-text-info */
-.sub-text-info {
-  margin-left: 1.6rem;
-  font-size: var(--font-large);
-  color: var(--black);
-}
-.sub-text-info span {
-  color: #737373;
-}
-
 /* form-box 토글버튼 */
 .toggle-box-right {
   margin: 2rem 0;
@@ -2922,7 +2894,6 @@ button:focus {
 .toggle-box-right .btn-toggle-arrow {
   margin-left: auto;
   padding: 1.6rem 3.3rem;
-  /* justify-content: flex-end; */
 }
 .toggle-box-right + .flex {
   margin-top: 0;
@@ -2949,13 +2920,61 @@ button:focus {
   transform: rotate(180deg);
 }
 
-.hash-group-column {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 0.8rem;
+/* dataTable dt-container */
+.dt-container .dt-trigger-group {
+  gap: 1.6rem;
+}
+.dt-container .dt-trigger-group .custom-radio:last-child {
+  margin: 0;
+}
+.dt-container .dt-length + .dt-trigger-group {
+  margin-left: 1.6rem;
+}
+/* dataTable, table-data btn-small */
+.dataTable tbody tr td button.btn-small,
+.table-data .btn-small {
+  color: #1f1f1f;
+  text-decoration: none;
+  height: 2.8rem;
+  font-size: var(--font-basic);
+  font-weight: 500;
+  border-radius: calc(var(--border-radius) / 2);
+  padding: 0.4rem 1.2rem;
+}
+.dataTable tbody tr td button.btn-dark {
+  color: var(--white);
+}
+.dataTable tbody tr td button.btn-outline-secondary,
+.table-data .btn-outline-secondary {
+  border: var(--border-layout);
+}
+.dataTable tbody tr td button.btn-small:disabled,
+.table-data .btn-small:disabled {
+  color: var(--placeholder);
+  border: var(--border-layout);
+  background: var(--white);
+}
+/* dataTable sub-text-info */
+.sub-text-info {
+  margin-left: 1.6rem;
+  font-size: var(--font-large);
+  color: var(--black);
+}
+.sub-text-info span {
+  color: #737373;
+}
+/* summary-table */
+.summary-table tbody tr.total-row td {
+  background-color: var(--white) !important;
+}
+.summary-table tbody tr td {
+  background-color: var(--secondary) !important;
 }
 
+/* modal 크기 추가 */
+.modal-dialog.modal-xxlg {
+  max-width: 108rem;
+}
 /* 모달 상단 버튼 영역 */
 .trigger-box {
   display: flex;
@@ -2966,16 +2985,14 @@ button:focus {
   margin-bottom: 2.4rem;
   border-radius: 0.8rem;
 }
-
-/* summary-table */
-.summary-table tbody tr.total-row td {
-  background-color: var(--white) !important;
+/* 모달 hash-group-column */
+.hash-group-column {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.8rem;
 }
-.summary-table tbody tr td {
-  background-color: var(--secondary) !important;
-}
-
-/* sms-symbol-list */
+/* 모달 sms-symbol-list */
 .sms-symbol-list {
   display: flex;
   flex-wrap: wrap;
@@ -2997,8 +3014,7 @@ button:focus {
 .sms-symbol-list .symbol-btn.selected {
   border: 0.1rem solid var(--black);
 }
-
-/* 컨택 메모 이력 */
+/* 모달 컨택 메모 이력 */
 .memo-history, 
 .memo-history li {
   display: flex;
@@ -3013,30 +3029,9 @@ button:focus {
 .memo-history > li strong {
   color: var(--black);
 }
-
-/* modal 크기 추가 */
-.modal-dialog.modal-xxlg {
-  max-width: 108rem;
-}
-
-/* width */
-.w220 {
-  width: 22rem !important;
-}
-
-/* gap */
-.gap-2 {
-  gap: 0.8rem !important;
-}
-
-/* dt-container */
-.dt-container .dt-trigger-group {
-  gap: 1.6rem;
-}
-.dt-container .dt-trigger-group .custom-radio:last-child {
-  margin: 0;
-}
-.dt-container .dt-length + .dt-trigger-group {
-  margin-left: 1.6rem;
-}
 /* // 2025-05 신규 수정/추가 */
+
+
+*:focus {
+  border: 2px solid red;
+}
