@@ -41,7 +41,8 @@
                     <tr>
                       <th>조회 기간</th>
                       <td>
-                        <div class="date-picker-group">
+                        <div class="date-picker-group" id="reportStats">
+                          <input type="text" class="formatSelector" value="month" hidden />
                           <div class="start-date1 input-group datepicker w-auto" data-target-input="nearest">
                             <input
                               id="startDt"
@@ -50,6 +51,7 @@
                               data-target=".start-date1"
                               placeholder="시작일"
                               readonly
+                              min-view="month"
                             />
                             <div class="input-group-append" data-target=".start-date1" data-toggle="datetimepicker">
                               <button class="input-group-text">

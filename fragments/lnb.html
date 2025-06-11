@@ -5,20 +5,15 @@
         <img src="/assets/images/temp/avatar.png" alt="회원 아바타 이미지" />
       </div>
       <div class="custom-box__info">
-        <p class="greetings" th:text="|${userName}님 안녕하세요!|"></p>
-        <p
-          class="connect"
-          th:text="|[ ${userRoleKo} ]으로 접속하셨습니다.|"
-        ></p>
+        <p class="greetings">홍길동님 안녕하세요!</p>
+        <p class="connect">[임직원 일반]으로 접속하셨습니다.</p>
       </div>
     </div>
 
     <nav class="nav-lnb">
       <ul>
         <li>
-          <a href="/web/todoList/todoList.html" class="depth1-link today"
-            >오늘의 할 일</a
-          >
+          <a href="/web/todoList/todoList.html" class="depth1-link today active">오늘의 할 일</a>
         </li>
         <li>
           <a href="#" class="depth1-link stats">현황 통계</a>
@@ -59,29 +54,20 @@
           <a href="#" class="depth1-link manager">관리자</a>
           <ul class="depth2">
             <li>
-              <a href="/web/userPermsMgmt/userPermsMgmt.html" class="navClick"
-                >권한 관리</a
-              >
+              <a href="/web/userPermsMgmt/userPermsMgmt.html" class="navClick">권한 관리</a>
             </li>
             <li>
-              <a href="/web/codeMgmt/codeMgmt.html" class="navClick"
-                >상담 관리</a
-              >
+              <a href="/web/codeMgmt/codeMgmt.html" class="navClick">상담 관리</a>
             </li>
             <li>
-              <a href="/web/logMgmt/logMgmt.html" class="navClick"
-                >접속/API 성공 관리</a
-              >
+              <a href="/web/logMgmt/logMgmt.html" class="navClick">접속/API 성공 관리</a>
             </li>
             <li>
-              <a href="/web/batchLog/batchLog.html" class="navClick"
-                >배치 로그</a
-              >
+              <a href="/web/batchLog/batchLog.html" class="navClick">배치 로그</a>
             </li>
           </ul>
         </li>
       </ul>
     </nav>
   </div>
-  <script th:inline="javascript"></script>
 </html>

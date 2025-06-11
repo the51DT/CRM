@@ -85,15 +85,36 @@
                     </th>
                     <th>번호</th>
                     <th>가입 번호</th>
-                    <th>서비스명</th>
+                    <th>서비스</th>
                     <th>조직 코드</th>
-                    <th>조직 코드명</th>
+                    <th>조직명</th>
                     <th>등록 사유</th>
                     <th>비고</th>
                     <th>조회</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td>
+                      <span class="custom-checkbox">
+                        <input id="userPerms_check" type="checkbox" />
+                        <label for="userPerms_check">
+                          <i class="icon"></i>
+                        </label>
+                      </span>
+                    </td>
+                    <td>1</td>
+                    <td>1234567890123</td>
+                    <td>홍길동</td>
+                    <td>HS001</td>
+                    <td>VIP고객지원팀</td>
+                    <td>난개통 지역 고객으로 지원센터 Care...</td>
+                    <td>난개통 지역으로 특수 배선 점검...</td>
+                    <td>
+                      <!-- 작은 버튼 임시 -->
+                      <button type="button" class="btn btn-outline-secondary btn-small" data-bs-toggle="modal" data-bs-target="#specialCustView">조회</button>
+                    </td>
+                  </tr>
                   <tr>
                     <td>
                       <span class="custom-checkbox">
@@ -466,18 +487,7 @@
           className: "btn btn-dark",
           attr: {
             id: "deleteSelectedBtn",
-          },
-          action: function () {
-            console.log("선택삭제");
-          },
-        },
-        {
-          extend: "",
-          text: "선택삭제",
-          className: "btn btn-dark",
-          attr: {
-            id: "deleteSelectedBtn",
-            disabled: "true"
+            disabled: "true",
           },
           action: function () {
             console.log("선택삭제");
@@ -553,5 +563,31 @@
         oneButton: true,
       });
     };
+
+    function updateDeleteSelectedBtn() {
+      const checkboxes = document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]');
+      const anyChecked = Array.from(checkboxes).some((cb) => cb.checked);
+      const deleteBtn = document.getElementById("deleteSelectedBtn");
+      if (deleteBtn) {
+        deleteBtn.disabled = !anyChecked || checkboxes.length === 0;
+      }
+      // select-all 체크박스 상태 동기화
+      const selectAll = document.getElementById("select-all");
+      if (selectAll) {
+        if (!anyChecked) {
+          selectAll.checked = false;
+        }
+      }
+    }
+    document.getElementById("select-all").addEventListener("change", function () {
+      const checked = this.checked;
+      document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (check) {
+        check.checked = checked;
+      });
+      updateDeleteSelectedBtn();
+    });
+    document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (checkbox) {
+      checkbox.addEventListener("change", updateDeleteSelectedBtn);
+    });
   </script>
 </html>

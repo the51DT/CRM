@@ -331,44 +331,85 @@ header#header h2 {
 }
 .nav-lnb > ul > li > a {
   position: relative;
-  display: block;
-  padding: 1rem 0.8rem 1rem 3.6rem;
+  display: flex;
+  padding: 1rem 0.8rem;
   font-size: var(--font-large);
   font-weight: var(--fontweight-bold);
-  background-size: 2rem 2rem;
-  background-position: 0.8rem 50%;
-  background-repeat: no-repeat;
 }
-.nav-lnb > ul > li > a:after {
+.nav-lnb > ul > li > a::before {
   content: "";
-  position: absolute;
-  top: 1rem;
-  right: 0.8rem;
-  z-index: 0;
+  margin-right: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+}
+.nav-lnb > ul > li > a::after {
+  content: "";
+  margin-left: auto;
   width: 2rem;
   height: 2rem;
   background: url("/assets/images/common/icon_arrow_down.svg") no-repeat 100% 50%;
 }
+.nav-lnb > ul > li > a.active::before {
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center center;
+  -webkit-mask-size: contain;
+  background-color: var(--pink);
+}
+
 .nav-lnb > ul > li > a.today:after {
   display: none;
 }
-.nav-lnb > ul > li > a.today {
-  background-image: url("/assets/images/common/icon_today.svg");
+.nav-lnb > ul > li > a.today::before {
+  background-image: url(/assets/images/common/icon_today.svg);
 }
-.nav-lnb > ul > li > a.stats {
+.nav-lnb > ul > li > a.active.today::before {
+  background-image: none;
+  mask-image: url(/assets/images/common/icon_today.svg);
+  -webkit-mask-image: url(/assets/images/common/icon_today.svg);
+}
+.nav-lnb > ul > li > a.stats::before {
   background-image: url("/assets/images/common/icon_stats.svg");
 }
-.nav-lnb > ul > li > a.client {
+.nav-lnb > ul > li > a.active.stats::before {
+  background-image: none;
+  mask-image: url(/assets/images/common/icon_stats.svg);
+  -webkit-mask-image: url(/assets/images/common/icon_stats.svg);
+}
+.nav-lnb > ul > li > a.client::before {
   background-image: url("/assets/images/common/icon_client.svg");
 }
-.nav-lnb > ul > li > a.actions {
+.nav-lnb > ul > li > a.active.client::before {
+  background-image: none;
+  mask-image: url(/assets/images/common/icon_client.svg);
+  -webkit-mask-image: url(/assets/images/common/icon_client.svg);
+}
+.nav-lnb > ul > li > a.actions::before {
   background-image: url("/assets/images/common/icon_actions.svg");
 }
-.nav-lnb > ul > li > a.notices {
+.nav-lnb > ul > li > a.active.actions::before {
+  background-image: none;
+  mask-image: url(/assets/images/common/icon_actions.svg);
+  -webkit-mask-image: url(/assets/images/common/icon_actions.svg);
+}
+.nav-lnb > ul > li > a.notices::before {
   background-image: url("/assets/images/common/icon_notices.svg");
 }
-.nav-lnb > ul > li > a.manager {
+.nav-lnb > ul > li > a.active.notices::before {
+  background-image: none;
+  mask-image: url(/assets/images/common/icon_notices.svg);
+  -webkit-mask-image: url(/assets/images/common/icon_notices.svg);
+}
+.nav-lnb > ul > li > a.manager::before {
   background-image: url("/assets/images/common/icon_manager.svg");
+}
+.nav-lnb > ul > li > a.active.manager::before {
+  background-image: none;
+  mask-image: url(/assets/images/common/icon_manager.svg);
+  -webkit-mask-image: url(/assets/images/common/icon_manager.svg);
 }
 .nav-lnb .depth2 {
   display: none;
@@ -1954,8 +1995,16 @@ button:focus {
   height: 5.6rem;
   color: #5a5a5a;
   border-radius: 0 0 2.4rem 2.4rem;
-  box-shadow: 0 10px 0 10px rgba(0, 0, 0, 1);
+  /* box-shadow: 0 10px 0 10px rgba(0, 0, 0, 1); */
   background: #f0f0f0;
+  transition: none !important;
+}
+.notice-style .btn:focus, 
+.notice-style .btn:active, 
+.notice-style .btn:focus-visible,
+.notice-style .btn:focus-within {
+  border: 0 !important;
+  outline: 0 !important;
 }
 .notice-style > * {
   margin: 0;
@@ -2850,6 +2899,9 @@ button:focus {
 }
 
 /* 아이콘 버튼 추가 */
+.btn-ico:disabled::before {
+  opacity: 0.3;
+}
 .btn-notification i {
   font-style: normal;
   color: var(--pink);
@@ -2984,6 +3036,9 @@ button:focus {
   background-color: var(--secondary);
   margin-bottom: 2.4rem;
   border-radius: 0.8rem;
+}
+.trigger-box .btn:disabled {
+  background-color: var(--white);
 }
 /* 모달 hash-group-column */
 .hash-group-column {

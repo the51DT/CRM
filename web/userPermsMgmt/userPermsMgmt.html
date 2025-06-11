@@ -157,6 +157,25 @@
                     <td>현장 관리자</td>
                     <td>2025-05-01 12:00</td>
                   </tr>
+                  <tr>
+                    <td>
+                      <span class="custom-checkbox">
+                        <input id="userPerms_check" type="checkbox" />
+                        <label for="userPerms_check">
+                          <i class="icon"></i>
+                        </label>
+                      </span>
+                    </td>
+                    <td>1</td>
+                    <td>홍길동</td>
+                    <td>
+                      <button type="button">lguplusmadangid</button>
+                    </td>
+                    <td>CS 팀장</td>
+                    <td>강남 홈서비스 고객만족 실행팀</td>
+                    <td>현장 관리자</td>
+                    <td>2025-05-01 12:00</td>
+                  </tr>
                 </tbody>
               </table>
             </section>
@@ -411,6 +430,10 @@
           extend: "",
           text: "선택삭제",
           className: "btn btn-dark",
+          attr: {
+            id: "deleteSelectedBtn",
+            disabled: "true",
+          },
           action: function () {
             console.log("선택삭제");
           },
@@ -426,6 +449,32 @@
         // 셀렉트 로딩
         UI.isSelectCustom();
       },
+    });
+
+    function updateDeleteSelectedBtn() {
+      const checkboxes = document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]');
+      const anyChecked = Array.from(checkboxes).some((cb) => cb.checked);
+      const deleteBtn = document.getElementById("deleteSelectedBtn");
+      if (deleteBtn) {
+        deleteBtn.disabled = !anyChecked || checkboxes.length === 0;
+      }
+      // select-all 체크박스 상태 동기화
+      const selectAll = document.getElementById("select-all");
+      if (selectAll) {
+        if (!anyChecked) {
+          selectAll.checked = false;
+        }
+      }
+    }
+    document.getElementById("select-all").addEventListener("change", function () {
+      const checked = this.checked;
+      document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (check) {
+        check.checked = checked;
+      });
+      updateDeleteSelectedBtn();
+    });
+    document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (checkbox) {
+      checkbox.addEventListener("change", updateDeleteSelectedBtn);
     });
   </script>
 </html>
