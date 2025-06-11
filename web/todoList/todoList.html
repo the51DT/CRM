@@ -34,7 +34,7 @@
                       aria-controls="collapseSearch"
                       id="GroupText"
                     >
-                      <span th:if="${userRole == 'Master' or userRole == 'AllManage'}">조직 조회을 선택해 주세요</span>
+                      <span th:if="${userRole == 'Master' or userRole == 'AllManage'}">조회 조직을 선택해 주세요</span>
                       <span th:if="${userRole == 'FieldManage' or userRole == 'User'}" th:text="${bizbrNm}"></span>
                     </button>
                     <div class="collapse layer-collapse" id="collapseSearch">
@@ -259,7 +259,7 @@
                       </div>
                       <table class="form-table">
                         <colgroup>
-                          <col style="width: 120px" />
+                          <col style="width: 140px" />
                           <col />
                         </colgroup>
                         <tbody>
@@ -651,7 +651,7 @@
                     <section class="row">
                       <table class="form-table">
                         <colgroup>
-                          <col style="width: 120px" />
+                          <col style="width: 140px" />
                           <col />
                         </colgroup>
                         <tbody>
