@@ -3030,8 +3030,3 @@ button:focus {
   color: var(--black);
 }
 /* // 2025-05 신규 수정/추가 */
-
-
-*:focus {
-  border: 2px solid red;
-}
