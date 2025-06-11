@@ -959,7 +959,7 @@
                             <th>서비스명</th>
                             <th>대리점명</th>
                             <th>담당기사</th>
-                            <th>요청일시</th>
+                            <th>요청 일시</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -1323,7 +1323,7 @@
         { data: "serviceName", title: "서비스명" },
         { data: "agencyName", title: "대리점명" },
         { data: "engineerName", title: "담당기사" },
-        { data: "requestTime", title: "요청일시" },
+        { data: "requestTime", title: "요청 일시" },
       ],
       data: tableData2,
     });
@@ -1376,16 +1376,16 @@
 
     document.querySelectorAll(".sms-symbol-list .symbol-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var textarea = document.getElementById("smsContentInput");
-        var symbol = btn.textContent;
+        const textarea = document.getElementById("smsContentInput");
+        const symbol = btn.textContent;
         if (document.selection) {
           textarea.focus();
-          var sel = document.selection.createRange();
+          let sel = document.selection.createRange();
           sel.text = symbol;
         } else if (textarea.selectionStart || textarea.selectionStart === 0) {
-          var start = textarea.selectionStart;
-          var end = textarea.selectionEnd;
-          var value = textarea.value;
+          const start = textarea.selectionStart;
+          const end = textarea.selectionEnd;
+          const value = textarea.value;
           textarea.value = value.substring(0, start) + symbol + value.substring(end);
           textarea.selectionStart = textarea.selectionEnd = start + symbol.length;
           textarea.focus();
@@ -1393,8 +1393,6 @@
           textarea.value += symbol;
           textarea.focus();
         }
-        var counter = textarea.parentElement.querySelector(".counter .current");
-        if (counter) counter.textContent = textarea.value.length;
       });
     });
   </script>
