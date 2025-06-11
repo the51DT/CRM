@@ -8,8 +8,8 @@ const svgList = [
     "lastModified": "2025-06-10"
   },
   {
-    "name": "Icon_search_list.svg",
-    "path": "/assets/images/common/Icon_search_list.svg",
+    "name": "icon_search_list.svg",
+    "path": "/assets/images/common/icon_search_list.svg",
     "width": "20",
     "height": "20",
     "stroke": "",

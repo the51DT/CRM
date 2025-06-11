@@ -116,28 +116,8 @@
             </section>
 
             <!-- 2025-05 신규 수정/추가 -->
-            <section class="row mt-6">
-              <div class="search-box transparent-bg-box gap-2">
-                <div class="col-auto d-flex align-items-center gap-2">
-                  <span class="list-count">총 2,245건</span>
-                  <select id="pageSizeSelect" class="uiscroll w100" aria-label="페이지당 표시 개수 선택">
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                  </select>
-                </div>
-                <div class="col-auto d-flex right gap-2">
-                  <button type="button" class="btn btn-ico btn-new-write" id="addUserBtn">신규등록</button>
-                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn">선택삭제</button>
-                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn" disabled>선택삭제</button>
-                </div>
-              </div>
-            </section>
-
-            <section class="row mt-4">
-              <table class="dataTable row-border hover">
-                <colgroup>
-                  <col style="width: 100px" />
-                </colgroup>
+            <section class="row">
+              <table id="pubTable1">
                 <thead>
                   <tr>
                     <th>
@@ -373,7 +353,9 @@
           </style>
           <script></script>
         </div>
+        <!-- // contents -->
       </div>
+      <!-- // container -->
     </div>
   </body>
   <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
@@ -402,6 +384,48 @@
           HTTP.send();
         }
       });
+    });
+
+    // 퍼블테스트
+    $("#pubTable1").DataTable({
+      autoWidth: false,
+      searching: false,
+      responsive: true,
+      ordering: false,
+      info: false,
+      recordsTotal: false,
+      language: {
+        lengthMenu: "총 _TOTAL_ 건 _MENU_",
+      },
+      dom: "<'dt-container'lB>rtp",
+      buttons: [
+        {
+          extend: "",
+          text: "신규등록",
+          className: "btn btn-ico btn-new-write",
+          action: function () {
+            console.log("신규등록");
+          },
+        },
+        {
+          extend: "",
+          text: "선택삭제",
+          className: "btn btn-dark",
+          action: function () {
+            console.log("선택삭제");
+          },
+        },
+      ],
+      initComplete: function () {
+        // dt-button 버튼 초기화
+        const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
+        dtButtons.forEach((button) => {
+          button.classList.remove("dt-button");
+        });
+
+        // 셀렉트 로딩
+        UI.isSelectCustom();
+      },
     });
   </script>
 </html>

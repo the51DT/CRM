@@ -52,31 +52,14 @@
                           <div class="error">가입 번호를 입력해 주세요.</div>
                         </div>
                       </td>
-                      <th>대리점 코드</th>
+                      <th>조직 코드</th>
                       <td>
                         <div class="input-form w300">
                           <div class="inner">
-                            <input type="text" name="agencyCode" placeholder="대리점 코드를 입력해 주세요" value="" onkeydown="" />
+                            <input type="text" name="orgCode" placeholder="조직 코드를 입력해 주세요" value="" onkeydown="" />
                           </div>
-                          <div class="error">대리점 코드를 입력해 주세요.</div>
+                          <div class="error">조직 코드를 입력해 주세요.</div>
                         </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>사용 여부</th>
-                      <td colspan="3" id="useYnCheck">
-                        <span class="custom-radio">
-                          <input id="useYnAll" name="useYn" type="radio" value="" checked />
-                          <label for="useYnAll" class="button">전체</label>
-                        </span>
-                        <span class="custom-radio">
-                          <input id="useYnY" name="useYn" type="radio" value="Y" />
-                          <label for="useYnY" class="button">Y</label>
-                        </span>
-                        <span class="custom-radio">
-                          <input id="useYnN" name="useYn" type="radio" value="N" />
-                          <label for="useYnN" class="button">N</label>
-                        </span>
                       </td>
                     </tr>
                   </tbody>
@@ -88,31 +71,8 @@
               </div>
             </section>
 
-            <section class="row mt-6">
-              <div class="search-box transparent-bg-box gap-2">
-                <div class="col-auto d-flex align-items-center gap-2">
-                  <span class="list-count">총 2,245건</span>
-                  <select id="pageSizeSelect" class="uiscroll w100" aria-label="페이지당 표시 개수 선택">
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                  </select>
-                </div>
-                <div class="col-auto d-flex right gap-2">
-                  <button type="button" class="btn btn-ico btn-download" id="downloadBtn">다운로드</button>
-                  <button type="button" class="btn btn-ico btn-new-write" id="addUserBtn" data-bs-toggle="modal" data-bs-target="#specialCustInsert">
-                    신규등록
-                  </button>
-                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn">선택삭제</button>
-                  <button type="button" class="btn btn-dark btn-sm" id="deleteSelectedBtn" disabled>선택삭제</button>
-                </div>
-              </div>
-            </section>
-
-            <section class="row mt-4">
-              <table class="dataTable row-border hover">
-                <colgroup>
-                  <col style="width: 100px" />
-                </colgroup>
+            <section class="row">
+              <table id="pubTable1">
                 <thead>
                   <tr>
                     <th>
@@ -125,7 +85,7 @@
                     </th>
                     <th>번호</th>
                     <th>가입 번호</th>
-                    <th>고객명</th>
+                    <th>서비스명</th>
                     <th>조직 코드</th>
                     <th>조직 코드명</th>
                     <th>등록 사유</th>
@@ -152,14 +112,13 @@
                     <td>난개통 지역으로 특수 배선 점검...</td>
                     <td>
                       <!-- 작은 버튼 임시 -->
-                      <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#specialCustView">조회</button>
+                      <button type="button" class="btn btn-outline-secondary btn-small" data-bs-toggle="modal" data-bs-target="#specialCustView">조회</button>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </section>
 
-            </div>
             <!-- 특별 고객 등록 모달 -->
             <div
               id="specialCustInsert"
@@ -434,7 +393,9 @@
             <!-- // 특별 고객 조회 모달 -->
           </div>
         </div>
+        <!-- // contents -->
       </div>
+      <!-- // container -->
     </div>
   </body>
   <script src="/assets/js/plugins/jquery-3.7.1.min.js"></script>
@@ -466,6 +427,75 @@
     });
 
     // 퍼블테스트
+    $("#pubTable1").DataTable({
+      autoWidth: false,
+      searching: false,
+      responsive: true,
+      ordering: false,
+      info: false,
+      recordsTotal: false,
+      language: {
+        lengthMenu: "총 _TOTAL_ 건 _MENU_",
+      },
+      dom: "<'dt-container'lB>rtp",
+      buttons: [
+        {
+          extend: "",
+          text: "다운로드",
+          className: "btn btn-ico btn-download",
+          action: function () {
+            console.log("다운로드");
+          },
+        },
+        {
+          extend: "",
+          text: "신규등록",
+          className: "btn btn-ico btn-new-write",
+          attr: {
+            id: "addUserBtn",
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#specialCustInsert",
+          },
+          action: function () {
+            console.log("신규등록");
+          },
+        },
+        {
+          extend: "",
+          text: "선택삭제",
+          className: "btn btn-dark",
+          attr: {
+            id: "deleteSelectedBtn",
+          },
+          action: function () {
+            console.log("선택삭제");
+          },
+        },
+        {
+          extend: "",
+          text: "선택삭제",
+          className: "btn btn-dark",
+          attr: {
+            id: "deleteSelectedBtn",
+            disabled: "true"
+          },
+          action: function () {
+            console.log("선택삭제");
+          },
+        },
+      ],
+      initComplete: function () {
+        // dt-button 버튼 초기화
+        const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
+        dtButtons.forEach((button) => {
+          button.classList.remove("dt-button");
+        });
+
+        // 셀렉트 로딩
+        UI.isSelectCustom();
+      },
+    });
+
     window.alertPubTest = () => {
       const orgCode = document.getElementById("orgCodeInput").value.trim();
       const checkCodeMsg = document.getElementById("orgCodeInput")?.closest("#checkCodeDuplicateMsg");

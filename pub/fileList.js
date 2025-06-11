@@ -5,7 +5,7 @@ const fileList = [
     "depth1": "오늘의 할 일",
     "depth2": "오늘의 할 일",
     "depth3": "",
-    "lastModified": "2025-06-09",
+    "lastModified": "2025-06-11",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -18,8 +18,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "careDtlStats.html",
@@ -27,7 +27,7 @@ const fileList = [
     "depth1": "현황 통계",
     "depth2": "Care 상세 현황",
     "depth3": "",
-    "lastModified": "2025-06-05",
+    "lastModified": "2025-06-11",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -40,8 +40,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "reportStats.html",
@@ -49,7 +49,7 @@ const fileList = [
     "depth1": "현황 통계",
     "depth2": "현황 레포트",
     "depth3": "",
-    "lastModified": "2025-06-05",
+    "lastModified": "2025-06-11",
     "version": "1.2",
     "state": "진행",
     "remark": "신규"
@@ -62,8 +62,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "custInfoMgmt.html",
@@ -71,7 +71,7 @@ const fileList = [
     "depth1": "고객 관리",
     "depth2": "고객 정보 관리",
     "depth3": "",
-    "lastModified": "2025-06-05",
+    "lastModified": "2025-06-11",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -84,8 +84,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "anncDetail.html",
@@ -95,8 +95,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "anncInsertForm.html",
@@ -106,8 +106,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "anncUpdateForm.html",
@@ -117,8 +117,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "propList.html",
@@ -128,8 +128,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "propDetail.html",
@@ -139,8 +139,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "propInsertForm.html",
@@ -150,8 +150,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "propUpdateForm.html",
@@ -161,8 +161,8 @@ const fileList = [
     "depth3": "",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "userPermsMgmt.html",
@@ -170,7 +170,7 @@ const fileList = [
     "depth1": "관리자",
     "depth2": "권한 관리",
     "depth3": "사용자 권한 관리",
-    "lastModified": "2025-06-05",
+    "lastModified": "2025-06-11",
     "version": "1.2",
     "state": "진행",
     "remark": "수정/추가"
@@ -183,8 +183,8 @@ const fileList = [
     "depth3": "메뉴별 권한 관리",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "codeMgmt.html",
@@ -194,8 +194,8 @@ const fileList = [
     "depth3": "고객 특이 사항 관리",
     "lastModified": "2025-06-05",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "vocLabMgmt.html",
@@ -205,8 +205,8 @@ const fileList = [
     "depth3": "VOC LAB 제외 처리",
     "lastModified": "2025-06-05",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "specialCustMgmt.html",
@@ -214,7 +214,7 @@ const fileList = [
     "depth1": "관리자",
     "depth2": "상담 관리",
     "depth3": "특별 고객 관리",
-    "lastModified": "2025-06-09",
+    "lastModified": "2025-06-11",
     "version": "1.2",
     "state": "진행",
     "remark": "신규"
@@ -227,8 +227,8 @@ const fileList = [
     "depth3": "화면 접근 로그",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "apiLogMgmt.html",
@@ -238,8 +238,8 @@ const fileList = [
     "depth3": "외부 API 로그",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "batchLog.html",
@@ -249,8 +249,8 @@ const fileList = [
     "depth3": "배치 로그",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   },
   {
     "name": "manualBatch.html",
@@ -260,7 +260,7 @@ const fileList = [
     "depth3": "배치 수동 실행",
     "lastModified": "2025-06-04",
     "version": "1.1",
-    "state": "완료",
-    "remark": ""
+    "state": "기존 작업",
+    "remark": "기존 작업"
   }
 ];

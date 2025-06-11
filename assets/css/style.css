@@ -1654,7 +1654,7 @@ button:focus {
 }
 .btn:disabled {
   color: var(--placeholder);
-  border: 1px solid var(--secondary);
+  border: var(--border-layout);
   background: var(--secondary);
 }
 .dataTable .btn {
@@ -2141,6 +2141,7 @@ button:focus {
   border-top: 1px solid #e1e1e1;
   border-bottom: 1px solid #e1e1e1;
   padding: 1rem 1.6rem;
+  background-color: var(--white);
 }
 .table-view {
   width: 100%;
@@ -2879,20 +2880,39 @@ button:focus {
   background: url("/assets/images/common/icon_receipt.svg") no-repeat 0 0;
 }
 
-/* search-box transparent-bg-box */
-.search-box.transparent-bg-box {
-  padding: 0;
-  background: transparent;
+/* dataTable btn-small */
+.dataTable tbody tr td button.btn-small,
+.table-data .btn-small {
+  color: #1f1f1f;
+  text-decoration: none;
+  height: 2.8rem;
+  font-size: var(--font-basic);
+  font-weight: 500;
+  border-radius: calc(var(--border-radius) / 2);
+  padding: 0.4rem 1.2rem;
 }
-.transparent-bg-box .col-auto {
-  margin-right: 1.6rem;
+.dataTable tbody tr td button.btn-dark {
+  color: var(--white);
+}
+.dataTable tbody tr td button.btn-outline-secondary,
+.table-data .btn-outline-secondary {
+  border: var(--border-layout);
+}
+.dataTable tbody tr td button.btn-small:disabled,
+.table-data .btn-small:disabled {
+  color: var(--placeholder);
+  border: var(--border-layout);
+  background: var(--white);
 }
 
-/* dataTable btn */
-.dataTable tbody tr td button.btn-sm {
-  text-decoration: none;
-  font-weight: var(--fontweight-normal);
-  border-radius: calc(var(--border-radius) / 2);
+/* sub-text-info */
+.sub-text-info {
+  margin-left: 1.6rem;
+  font-size: var(--font-large);
+  color: var(--black);
+}
+.sub-text-info span {
+  color: #737373;
 }
 
 /* form-box 토글버튼 */
@@ -2949,17 +2969,10 @@ button:focus {
 
 /* summary-table */
 .summary-table tbody tr.total-row td {
-  background-color: var(--whitey) !important;
+  background-color: var(--white) !important;
 }
 .summary-table tbody tr td {
   background-color: var(--secondary) !important;
-}
-
-/* 글 목록 개수 dt-length */
-.list-count {
-  color: #1f1f1f;
-  font-size: var(--font-large);
-  font-weight: var(--fontweight-bold);
 }
 
 /* sms-symbol-list */
@@ -3014,5 +3027,16 @@ button:focus {
 /* gap */
 .gap-2 {
   gap: 0.8rem !important;
+}
+
+/* dt-container */
+.dt-container .dt-trigger-group {
+  gap: 1.6rem;
+}
+.dt-container .dt-trigger-group .custom-radio:last-child {
+  margin: 0;
+}
+.dt-container .dt-length + .dt-trigger-group {
+  margin-left: 1.6rem;
 }
 /* // 2025-05 신규 수정/추가 */
