@@ -144,7 +144,7 @@
 
             <!-- 2025-05 신규 수정/추가 -->
             <section class="row">
-              <table id="pubTable1">
+              <table class="dataTable row-border hover" id="pubTable1">
                 <thead>
                   <tr>
                     <th>기준일</th>
@@ -177,9 +177,9 @@
                     <td>
                       <!-- 작은 버튼 임시 -->
                       <div class="col-auto d-flex justify-content-center gap-2">
-                        <button type="button" class="btn btn-outline-secondary btn-small">유선 CEM</button>
-                        <button type="button" class="btn btn-dark btn-small" disabled>컨택 등록</button>
-                        <button type="button" class="btn btn-dark btn-small" disabled>결과 등록</button>
+                        <button type="button" class="btn btn-outline-dark">유선 CEM</button>
+                        <button type="button" class="btn btn-dark" disabled>컨택 등록</button>
+                        <button type="button" class="btn btn-dark" disabled>결과 등록</button>
                       </div>
                     </td>
                   </tr>
@@ -198,9 +198,9 @@
                     <td>
                       <!-- 작은 버튼 임시 -->
                       <div class="col-auto d-flex justify-content-center gap-2">
-                        <button type="button" class="btn btn-outline-secondary btn-small">유선 CEM</button>
-                        <button type="button" class="btn btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#contactRegister">컨택 등록</button>
-                        <button type="button" class="btn btn-dark btn-small" data-bs-toggle="modal" data-bs-target="#resultRegister">결과 등록</button>
+                        <button type="button" class="btn btn-outline-dark">유선 CEM</button>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#contactRegister">컨택 등록</button>
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#resultRegister">결과 등록</button>
                       </div>
                     </td>
                   </tr>
@@ -219,11 +219,11 @@
                     <td>
                       <!-- 작은 버튼 임시 -->
                       <div class="col-auto d-flex justify-content-center gap-2">
-                        <button type="button" class="btn btn-outline-secondary btn-small">유선 CEM</button>
-                        <button type="button" class="btn btn-outline-secondary btn-small" data-bs-toggle="modal" data-bs-target="#contactView">
+                        <button type="button" class="btn btn-outline-dark">유선 CEM</button>
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#contactView">
                           컨택 조회
                         </button>
-                        <button type="button" class="btn btn-outline-secondary btn-small" data-bs-toggle="modal" data-bs-target="#resultView">결과 조회</button>
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#resultView">결과 조회</button>
                       </div>
                     </td>
                   </tr>
@@ -310,7 +310,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="col-auto px-3 visitHourInput">
+                                <div class="col-auto visitHourInput">
                                   <select class="w-auto uiscroll" aria-label="시간 선택">
                                     <option value="0">0시</option>
                                     <option value="1">1시</option>
@@ -432,7 +432,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="col-auto px-3 visitHourInput">
+                                <div class="col-auto visitHourInput">
                                   <select class="w-auto uiscroll" aria-label="시간 선택">
                                     <option value="0">0시</option>
                                     <option value="1">1시</option>
@@ -505,7 +505,7 @@
                         <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
                       </div>
                       <div class="col">
-                        <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
+                        <button type="button" class="btn btn-dark w100p updateBtn">확인</button>
                       </div>
                     </div>
                   </div>
@@ -659,7 +659,7 @@
                             <th>Care 활동</th>
                             <td>
                               <select class="w300 uiscroll" aria-label="서비스 선택">
-                                <option value="">care 활동을 선택해 주세요</option>
+                                <option value="">Care 활동을 선택해 주세요</option>
                                 <option value="">AI TASK</option>
                                 <option value="">상담톡</option>
                                 <option value="">클린콜</option>
@@ -702,7 +702,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="col-auto px-3 visitHourInput">
+                                <div class="col-auto visitHourInput">
                                   <select class="w-auto uiscroll" aria-label="시간 선택">
                                     <option value="0">0시</option>
                                     <option value="1">1시</option>
@@ -829,7 +829,7 @@
                         <button type="button" class="btn btn-outline-dark NonRole">임시저장</button>
                       </div>
                       <div class="col">
-                        <button type="button" class="btn btn-dark w100p updateBtn">등록</button>
+                        <button type="button" class="btn btn-dark w100p updateBtn">확인</button>
                       </div>
                     </div>
                   </div>
@@ -949,7 +949,7 @@
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="processHistoryLabel">중간 처리 이력</h1>
                     <section class="row">
-                      <table id="pubTable2">
+                      <table class="dataTable row-border hover" id="pubTable2">
                         <thead>
                           <tr>
                             <th>택배/매</th>

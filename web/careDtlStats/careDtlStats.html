@@ -23,11 +23,11 @@
               <div class="form-box">
                 <table class="form-table">
                   <colgroup>
-                    <col style="width: 140px" />
+                    <col style="width: 130px" />
                     <col style="width: auto" />
-                    <col style="width: 140px" />
+                    <col style="width: 120px" />
                     <col style="width: auto" />
-                    <col style="width: 140px" />
+                    <col style="width: 120px" />
                     <col style="width: auto" />
                   </colgroup>
                   <tbody>
@@ -395,7 +395,7 @@
             <!-- //2025-05 신규 수정/추가 -->
 
             <section class="row">
-              <table id="pubTable1">
+              <table class="dataTable row-border hover nowrap" id="pubTable1" style="table-layout: fixed;">
                 <thead>
                   <tr>
                     <th>기준일</th>
@@ -439,7 +439,7 @@
                     <td>N/A</td>
                     <td></td>
                     <td>상담 완료, 추가 조치 필요 없음</td>
-                    <td></td>
+                    <td>미처리사유...</td>
                   </tr>
                 </tbody>
               </table>
@@ -520,78 +520,78 @@
           HTTP.send();
         }
       });
-    });
 
-    // s : 퍼블 화면 테스트 스크립트
-    $("#pubTable1").DataTable({
-      autoWidth: false,
-      searching: false,
-      responsive: true,
-      ordering: false,
-      info: false,
-      recordsTotal: false,
-      language: {
-        lengthMenu: "총 _TOTAL_ 건 _MENU_",
-      },
-      dom: "<'dt-container'lB>rtp",
-      buttons: [
-        {
-          extend: "",
-          text: "다운로드",
-          className: "btn btn-ico btn-download",
-          attr: {
-            id: "downloadBtn",
-            "data-bs-toggle": "modal",
-            "data-bs-target": "#excelModal",
+      // s : 퍼블 화면 테스트 스크립트
+      // 상세보기 토글
+      function toggleDetail() {
+        const btn = document.getElementById("toggleDetailBtn");
+        const addOptions = document.getElementById("toggleOptions");
+        const isHidden = addOptions?.style.display === "none";
+        addOptions.style.display = isHidden ? "" : "none";
+        addOptions.setAttribute("aria-hidden", isHidden ? "false" : "true");
+        btn.textContent = isHidden ? "간단히보기" : "상세보기";
+        btn.setAttribute("aria-expanded", isHidden ? "true" : "false");
+      }
+
+      // dataTable 테스트
+      $("#pubTable1").DataTable({
+        ...dataTableOptions,
+        buttons: [
+          {
+            extend: "",
+            text: "다운로드",
+            className: "btn btn-ico btn-download",
+            attr: {
+              id: "downloadBtn",
+              "data-bs-toggle": "modal",
+              "data-bs-target": "#excelModal",
+            },
           },
+        ],
+        initComplete: function () {
+          // dt-button 버튼 초기화
+          const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
+          dtButtons.forEach((button) => {
+            button.classList.remove("dt-button");
+          });
+  
+          // 셀렉트 로딩
+          UI.isSelectCustom();
         },
-      ],
-      initComplete: function () {
-        // dt-button 버튼 초기화
-        const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
-        dtButtons.forEach((button) => {
-          button.classList.remove("dt-button");
-        });
-
-        // 셀렉트 로딩
-        UI.isSelectCustom();
-      },
-    });
-
-    function toggleDetail() {
-      const btn = document.getElementById("toggleDetailBtn");
-      const addOptions = document.getElementById("toggleOptions");
-      const isHidden = addOptions?.style.display === "none";
-      addOptions.style.display = isHidden ? "" : "none";
-      addOptions.setAttribute("aria-hidden", isHidden ? "false" : "true");
-      btn.textContent = isHidden ? "간단히보기" : "상세보기";
-      btn.setAttribute("aria-expanded", isHidden ? "true" : "false");
-    }
-
-    document.getElementById("divisionConfirmBtn").addEventListener("click", function () {
-      const collapse = bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseDiv"));
-      collapse.hide();
-    });
-
-    const lnbActiveTest = () => {
-      const lnbActive = lnb.querySelector(".depth1-link.stats");
-      if (lnbActive) {
-        const depth2 = lnbActive.nextElementSibling;
-        if (depth2 && depth2.classList.contains("depth2")) {
-          depth2.style.display = "block";
-          const secondLi = depth2.querySelectorAll("li > a")[1];
-          if (secondLi) {
-            secondLi.classList.add("active");
+      });
+      
+      // 기타...
+      const dtTables = document.querySelectorAll(".dataTable, .dt-scroll-head, .dt-scroll-headInner, .dt-scroll-body");
+      dtTables.forEach((el) => {
+        el.style.width = "100%"
+      });
+      document.getElementById("divisionConfirmBtn").addEventListener("click", function () {
+        const collapse = bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseDiv"));
+        collapse.hide();
+      });
+  
+      const lnbActiveTest = () => {
+        const lnbActive = lnb.querySelector(".depth1-link.stats");
+        if (lnbActive) {
+          const depth2 = lnbActive.nextElementSibling;
+          if (depth2 && depth2.classList.contains("depth2")) {
+            depth2.style.display = "block";
+            const secondLi = depth2.querySelectorAll("li > a")[1];
+            if (secondLi) {
+              secondLi.classList.add("active");
+            }
           }
         }
-      }
-      if (lnbActive) {
-        lnbActive.classList.add("active");
-      }
-    };
-    setTimeout(() => {
-      lnbActiveTest();
-    }, 500);
-    // e : 퍼블 화면 테스트 스크립트
+        if (lnbActive) {
+          lnbActive.classList.add("active");
+        }
+      };
+      setTimeout(() => {
+        lnbActiveTest();
+      }, 500);
+      // e : 퍼블 화면 테스트 스크립트
+
+    });
+
   </script>
 </html>

@@ -333,6 +333,19 @@
           HTTP.send();
         }
       });
+
+      // 퍼블 화면 테스트 스크립트
+      // $(".start-date1").datetimepicker({
+      //   format: "YYYY-MM",
+      //   viewMode: "months",
+      //   defaultDate: moment(),
+      //   locale: "ko",
+      // });
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, "0");
+      const formatted = `${yyyy}-${mm}`;
+      document.getElementById("startDt").value = formatted;
     });
 
     // s : 퍼블 화면 테스트 스크립트
