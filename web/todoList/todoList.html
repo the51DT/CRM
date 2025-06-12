@@ -249,9 +249,11 @@
                     <h1 class="modal-title" id="contactRegisterLabel">컨택 등록</h1>
                     <section class="row">
                       <div class="trigger-box">
-                        <button type="button" class="btn btn-ico btn-search-list" onclick="processHistoryModalOn()">중간 처리 이력</button>
-                        <button type="button" class="btn btn-ico btn-sms-send" onclick="smsSendModalOn()">SMS 발송</button>
-                        <button type="button" class="btn btn-ico btn-receipt" onclick="asPublishModalOn()">AS 발행</button>
+                        <button type="button" class="btn btn-ico btn-search-list" data-bs-toggle="modal" data-bs-target="#processHistory">
+                          중간 처리 이력
+                        </button>
+                        <button type="button" class="btn btn-ico btn-sms-send" data-bs-toggle="modal" data-bs-target="#smsSend">SMS 발송</button>
+                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish">AS 발행</button>
                       </div>
                       <table class="form-table">
                         <colgroup>
@@ -529,9 +531,11 @@
                     <h1 class="modal-title" id="contactViewLabel">컨택 조회</h1>
                     <section class="row">
                       <div class="trigger-box">
-                        <button type="button" class="btn btn-ico btn-search-list" onclick="processHistoryModalOn()">중간 처리 이력</button>
+                        <button type="button" class="btn btn-ico btn-search-list" data-bs-toggle="modal" data-bs-target="#processHistory">
+                          중간 처리 이력
+                        </button>
                         <button type="button" class="btn btn-ico btn-sms-send" onclick="alertPubTest2()">SMS 발송</button>
-                        <button type="button" class="btn btn-ico btn-receipt" disabled>AS 발행</button>
+                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish" disabled>AS 발행</button>
                       </div>
                       <table class="form-table">
                         <colgroup>
@@ -1397,64 +1401,45 @@
         });
       });
 
-      window.processHistoryModalOn = () => {
-        $("#processHistory").modal("show");
-      };
-      $("#processHistory").modal({
-        backdrop: false,
+      let lastProcessHistoryTrigger = null;
+      let lastSmsSendTrigger = null;
+      // 중간 처리 이력 버튼 이벤트
+      document.querySelectorAll('[data-bs-target="#processHistory"]').forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          lastProcessHistoryTrigger = btn;
+        });
       });
-      window.smsSendModalOn = () => {
-        $("#smsSend").modal("show");
-      };
-      $("#smsSend").modal({
-        backdrop: false,
+      // SMS 발송 버튼 이벤트
+      document.querySelectorAll('[data-bs-target="#smsSend"]').forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          lastSmsSendTrigger = btn;
+        });
       });
-      window.asPublishModalOn = () => {
-        $("#asPublish").modal("show");
+      // 모달 닫힐 때 이벤트
+      const processHistoryModal = document.getElementById("processHistory");
+      const smsSendModal = document.getElementById("smsSend");
+      const ShowParentModal = (id) => {
+        const parentModal = id.closest(".modal");
+        if (parentModal && parentModal.id) {
+          const modalEl = document.getElementById(parentModal.id);
+          if (modalEl) {
+            const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            modal.show();
+          }
+        }
       };
-      $("#asPublish").modal({
-        backdrop: false,
+      // 중간 처리 이력
+      processHistoryModal.addEventListener("hidden.bs.modal", function () {
+        if (lastProcessHistoryTrigger) {
+          ShowParentModal(lastProcessHistoryTrigger);
+        }
       });
-
-      // let lastProcessHistoryTrigger = null;
-      // let lastSmsSendTrigger = null;
-      // // 중간 처리 이력 버튼 이벤트
-      // document.querySelectorAll('[data-bs-target="#processHistory"]').forEach((btn) => {
-      //   btn.addEventListener("click", function (e) {
-      //     lastProcessHistoryTrigger = btn;
-      //   });
-      // });
-      // // SMS 발송 버튼 이벤트
-      // document.querySelectorAll('[data-bs-target="#smsSend"]').forEach((btn) => {
-      //   btn.addEventListener("click", function (e) {
-      //     lastSmsSendTrigger = btn;
-      //   });
-      // });
-      // // 모달 닫힐 때 이벤트
-      // const processHistoryModal = document.getElementById("processHistory");
-      // const smsSendModal = document.getElementById("smsSend");
-      // const ShowParentModal = (id) => {
-      //   const parentModal = id.closest(".modal");
-      //   if (parentModal && parentModal.id) {
-      //     const modalEl = document.getElementById(parentModal.id);
-      //     if (modalEl) {
-      //       const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-      //       modal.show();
-      //     }
-      //   }
-      // };
-      // // 중간 처리 이력
-      // processHistoryModal.addEventListener("hidden.bs.modal", function () {
-      //   if (lastProcessHistoryTrigger) {
-      //     ShowParentModal(lastProcessHistoryTrigger);
-      //   }
-      // });
-      // // SMS 발송
-      // smsSendModal.addEventListener("hidden.bs.modal", function () {
-      //   if (lastSmsSendTrigger) {
-      //     ShowParentModal(lastSmsSendTrigger);
-      //   }
-      // });
+      // SMS 발송
+      smsSendModal.addEventListener("hidden.bs.modal", function () {
+        if (lastSmsSendTrigger) {
+          ShowParentModal(lastSmsSendTrigger);
+        }
+      });
 
       const lnbActiveTest = () => {
         const lnbActive = lnb.querySelector(".depth1-link.today");
