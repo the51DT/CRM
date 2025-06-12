@@ -334,5 +334,27 @@
         }
       });
     });
+
+    // s : 퍼블 화면 테스트 스크립트
+    const lnbActiveTest = () => {
+      const lnbActive = lnb.querySelector(".depth1-link.stats");
+      if (lnbActive) {
+        const depth2 = lnbActive.nextElementSibling;
+        if (depth2 && depth2.classList.contains("depth2")) {
+          depth2.style.display = "block";
+          const secondLi = depth2.querySelectorAll("li > a")[3];
+          if (secondLi) {
+            secondLi.classList.add("active");
+          }
+        }
+      }
+      if (lnbActive) {
+        lnbActive.classList.add("active");
+      }
+    };
+    setTimeout(() => {
+      lnbActiveTest();
+    }, 500);
+    // e : 퍼블 화면 테스트 스크립트
   </script>
 </html>

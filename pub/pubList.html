@@ -92,6 +92,7 @@
                     <th scope="col">버전</th>
                     <th scope="col">최종수정</th>
                     <th scope="col">상태</th>
+                    <th scope="col">다운로드</th>
                     <th scope="col">비고</th>
                   </tr>
                 </thead>
@@ -141,6 +142,13 @@
                       ? `<span class="state-pub-wait">대기</span>`
                       : pattern.state === "진행"
                       ? `<span class="state-pub-ing">진행</span>`
+                      : "-"
+                  }
+                </td>
+                <td>
+                  ${
+                    pattern.state === "완료"
+                      ? `<a href="..${pattern.path}" download class="btn btn-ico btn-download btn-small" style="text-decoration: none;">다운로드</a>`
                       : "-"
                   }
                 </td>
