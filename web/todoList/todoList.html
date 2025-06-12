@@ -249,11 +249,9 @@
                     <h1 class="modal-title" id="contactRegisterLabel">컨택 등록</h1>
                     <section class="row">
                       <div class="trigger-box">
-                        <button type="button" class="btn btn-ico btn-search-list" onclick="processHistoryModalOn()">
-                          중간 처리 이력
-                        </button>
+                        <button type="button" class="btn btn-ico btn-search-list" onclick="processHistoryModalOn()">중간 처리 이력</button>
                         <button type="button" class="btn btn-ico btn-sms-send" onclick="smsSendModalOn()">SMS 발송</button>
-                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish">AS 발행</button>
+                        <button type="button" class="btn btn-ico btn-receipt" onclick="asPublishModalOn()">AS 발행</button>
                       </div>
                       <table class="form-table">
                         <colgroup>
@@ -531,11 +529,9 @@
                     <h1 class="modal-title" id="contactViewLabel">컨택 조회</h1>
                     <section class="row">
                       <div class="trigger-box">
-                        <button type="button" class="btn btn-ico btn-search-list" onclick="processHistoryModalOn()">
-                          중간 처리 이력
-                        </button>
+                        <button type="button" class="btn btn-ico btn-search-list" onclick="processHistoryModalOn()">중간 처리 이력</button>
                         <button type="button" class="btn btn-ico btn-sms-send" onclick="alertPubTest2()">SMS 발송</button>
-                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish" disabled>AS 발행</button>
+                        <button type="button" class="btn btn-ico btn-receipt" disabled>AS 발행</button>
                       </div>
                       <table class="form-table">
                         <colgroup>
@@ -1403,16 +1399,22 @@
 
       window.processHistoryModalOn = () => {
         $("#processHistory").modal("show");
-      }
+      };
       $("#processHistory").modal({
-        backdrop: false
-      })
+        backdrop: false,
+      });
       window.smsSendModalOn = () => {
         $("#smsSend").modal("show");
-      }
+      };
       $("#smsSend").modal({
-        backdrop: false
-      })
+        backdrop: false,
+      });
+      window.asPublishModalOn = () => {
+        $("#asPublish").modal("show");
+      };
+      $("#asPublish").modal({
+        backdrop: false,
+      });
 
       // let lastProcessHistoryTrigger = null;
       // let lastSmsSendTrigger = null;
