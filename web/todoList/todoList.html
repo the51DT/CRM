@@ -220,9 +220,7 @@
                       <!-- 작은 버튼 임시 -->
                       <div class="col-auto d-flex justify-content-center gap-2">
                         <button type="button" class="btn btn-outline-dark">유선 CEM</button>
-                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#contactView">
-                          컨택 조회
-                        </button>
+                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#contactView">컨택 조회</button>
                         <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#resultView">결과 조회</button>
                       </div>
                     </td>
@@ -949,7 +947,7 @@
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="processHistoryLabel">중간 처리 이력</h1>
                     <section class="row">
-                      <table class="dataTable row-border hover" id="pubTable2">
+                      <table class="dataTable row-border hover clickable-row" id="pubTable2">
                         <thead>
                           <tr>
                             <th>택배/매</th>
@@ -1186,7 +1184,7 @@
           HTTP.send();
         }
       });
-      
+
       // s : 퍼블 화면 테스트 스크립트
       $("#pubTable1").DataTable({
         autoWidth: false,
@@ -1218,10 +1216,10 @@
           dtButtons.forEach((button) => {
             button.classList.remove("dt-button");
           });
-  
+
           // 셀렉트 로딩
           UI.isSelectCustom();
-  
+
           // 추가 버튼 그룹
           const triggerGroupHTML = `
             <div class="dt-trigger-group d-flex">
@@ -1250,11 +1248,11 @@
               </div>
             </div>
           `;
-  
+
           // dt-container
           const dtContainer = document.querySelector(".dt-container .dt-buttons");
           dtContainer.insertAdjacentHTML("beforebegin", triggerGroupHTML);
-  
+
           // 라디오 클릭
           const radioButtons = document.querySelectorAll("input[name=todoStatusFilter]");
           radioButtons.forEach((radio) => {
@@ -1278,7 +1276,7 @@
               }
             });
           });
-  
+
           // 미처리현황 클릭
           const unprocessedStatusBtn = document.getElementById("unprocessedStatusBtn");
           unprocessedStatusBtn.addEventListener("click", () => {
@@ -1286,7 +1284,7 @@
           });
         },
       });
-  
+
       const singleRow = {
         deliveryType: "택배",
         diskNumber: "123456789",
@@ -1304,7 +1302,7 @@
         diskNumber: `${123456789 + i}`,
         engineerName: `홍길동${i + 1}`,
       }));
-  
+
       $("#pubTable2").DataTable({
         autoWidth: false,
         searching: false,
@@ -1327,8 +1325,14 @@
           { data: "requestTime", title: "요청 일시" },
         ],
         data: tableData2,
+        drawCallback: function () {
+          $("#pubTable2").on("click", "tbody tr", function () {
+            var rowData = $("#pubTable2").DataTable().row($(this)).data();
+            console.log(rowData);
+          });
+        },
       });
-  
+
       window.alertPubTest = () => {
         var btn = event.target;
         var parent = btn.closest(".d-flex");
@@ -1347,14 +1351,14 @@
           });
         }
       };
-  
+
       window.alertPubTest2 = () => {
         showAlert({
           image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
           message: "SMS은 최대 5회까지만<br>발송 가능합니다",
         });
       };
-  
+
       window.alertPubTest3 = () => {
         const receiverNumberInput = document.getElementById("receiverNumberInput").value;
         if (!receiverNumberInput) {
@@ -1374,7 +1378,7 @@
           }
         }
       };
-  
+
       document.querySelectorAll(".sms-symbol-list .symbol-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
           const textarea = document.getElementById("smsContentInput");
@@ -1396,7 +1400,7 @@
           }
         });
       });
-  
+
       let lastProcessHistoryTrigger = null;
       let lastSmsSendTrigger = null;
       // 중간 처리 이력 버튼 이벤트
@@ -1436,7 +1440,7 @@
           ShowParentModal(lastSmsSendTrigger);
         }
       });
-  
+
       const lnbActiveTest = () => {
         const lnbActive = lnb.querySelector(".depth1-link.today");
         if (lnbActive) {
@@ -1447,8 +1451,6 @@
         lnbActiveTest();
       }, 500);
       // e : 퍼블 화면 테스트 스크립트
-
     });
-
   </script>
 </html>

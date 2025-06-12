@@ -2986,6 +2986,9 @@ button:focus {
   margin-left: 1.6rem;
 }
 /* dataTable, table-data */
+.dataTable.clickable-row tbody tr {
+  cursor: pointer;
+}
 .dataTable tbody tr td button.btn-outline-dark,
 .dataTable tbody tr td button.btn-dark,
 .table-data .btn-outline-dark,
