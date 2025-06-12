@@ -1708,6 +1708,7 @@ button:focus {
   color: var(--placeholder);
   border: var(--border-layout);
   background: var(--secondary);
+  opacity: 1;
 }
 .dataTable .btn {
   padding: 0.4rem 1.1rem;
