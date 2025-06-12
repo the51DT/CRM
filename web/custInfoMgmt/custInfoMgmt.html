@@ -83,10 +83,6 @@
                       </div>
                     </td>
                   </tr>
-                  <tr>
-                    <th>상담 특이사항</th>
-                    <td id="prghSpclNote">고객 성격이 매우 급함</td>
-                  </tr>
                 </tbody>
               </table>
             </section>
@@ -157,39 +153,41 @@
           HTTP.send();
         }
       });
-    });
 
-    // s : 퍼블 화면 테스트 스크립트
-    $("#pubTable1").DataTable({
-      autoWidth: false,
-      searching: false,
-      responsive: true,
-      ordering: false,
-      info: false,
-      recordsTotal: false,
-      lengthChange: false,
-      paging: false,
-    });
-
-    const lnbActiveTest = () => {
-      const lnbActive = lnb.querySelector(".depth1-link.client");
-      if (lnbActive) {
-        const depth2 = lnbActive.nextElementSibling;
-        if (depth2 && depth2.classList.contains("depth2")) {
-          depth2.style.display = "block";
-          const secondLi = depth2.querySelectorAll("li > a")[0];
-          if (secondLi) {
-            secondLi.classList.add("active");
+      // s : 퍼블 화면 테스트 스크립트
+      $("#pubTable1").DataTable({
+        autoWidth: false,
+        searching: false,
+        responsive: true,
+        ordering: false,
+        info: false,
+        recordsTotal: false,
+        lengthChange: false,
+        paging: false,
+      });
+  
+      const lnbActiveTest = () => {
+        const lnbActive = lnb.querySelector(".depth1-link.client");
+        if (lnbActive) {
+          const depth2 = lnbActive.nextElementSibling;
+          if (depth2 && depth2.classList.contains("depth2")) {
+            depth2.style.display = "block";
+            const secondLi = depth2.querySelectorAll("li > a")[0];
+            if (secondLi) {
+              secondLi.classList.add("active");
+            }
           }
         }
-      }
-      if (lnbActive) {
-        lnbActive.classList.add("active");
-      }
-    };
-    setTimeout(() => {
-      lnbActiveTest();
-    }, 500);
-    // e : 퍼블 화면 테스트 스크립트
+        if (lnbActive) {
+          lnbActive.classList.add("active");
+        }
+      };
+      setTimeout(() => {
+        lnbActiveTest();
+      }, 500);
+      // e : 퍼블 화면 테스트 스크립트
+      
+    });
+
   </script>
 </html>

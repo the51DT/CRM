@@ -1186,267 +1186,269 @@
           HTTP.send();
         }
       });
-    });
-
-    // s : 퍼블 화면 테스트 스크립트
-    $("#pubTable1").DataTable({
-      autoWidth: false,
-      searching: false,
-      responsive: false,
-      ordering: false,
-      info: false,
-      recordsTotal: false,
-      language: {
-        lengthMenu: "총 _TOTAL_ 건 _MENU_",
-      },
-      dom: "<'dt-container'lB>rtp",
-      buttons: [
-        {
-          extend: "",
-          text: "다운로드",
-          className: "btn btn-ico btn-download",
-          attr: {
-            id: "downloadBtn",
-          },
-          action: function () {
-            console.log("다운로드");
-          },
+      
+      // s : 퍼블 화면 테스트 스크립트
+      $("#pubTable1").DataTable({
+        autoWidth: false,
+        searching: false,
+        responsive: false,
+        ordering: false,
+        info: false,
+        recordsTotal: false,
+        language: {
+          lengthMenu: "총 _TOTAL_ 건 _MENU_",
         },
-      ],
-      initComplete: function () {
-        // dt-button 버튼 초기화
-        const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
-        dtButtons.forEach((button) => {
-          button.classList.remove("dt-button");
-        });
-
-        // 셀렉트 로딩
-        UI.isSelectCustom();
-
-        // 추가 버튼 그룹
-        const triggerGroupHTML = `
-          <div class="dt-trigger-group d-flex">
-            <div class="col-auto d-flex">
-              <span class="custom-radio">
-                <input id="filterAll" name="todoStatusFilter" type="radio" value="all" checked />
-                <label for="filterAll" class="button">전체(420)</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterNotRegistered" name="todoStatusFilter" type="radio" value="notRegistered" />
-                <label for="filterNotRegistered" class="button">미등록(750)</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterContactRegistered" name="todoStatusFilter" type="radio" value="contactRegistered" />
-                <label for="filterContactRegistered" class="button">컨택 등록(55)</label>
-              </span>
-              <span class="custom-radio">
-                <input id="filterResultRegistered" name="todoStatusFilter" type="radio" value="resultRegistered" />
-                <label for="filterResultRegistered" class="button">결과 등록(78)</label>
-              </span>
-            </div>
-            <div class="col-auto">
-              <button type="button" class="btn btn-ico btn-notification" id="unprocessedStatusBtn">
-                <span>미처리현황 <i>25</i>건</span>
-              </button>
-            </div>
-          </div>
-        `;
-
-        // dt-container
-        const dtContainer = document.querySelector(".dt-container .dt-buttons");
-        dtContainer.insertAdjacentHTML("beforebegin", triggerGroupHTML);
-
-        // 라디오 클릭
-        const radioButtons = document.querySelectorAll("input[name=todoStatusFilter]");
-        radioButtons.forEach((radio) => {
-          radio.addEventListener("change", (e) => {
-            const val = e.target.value;
-            switch (val) {
-              case "all":
-                console.log("전체");
-                break;
-              case "notRegistered":
-                console.log("미등록");
-                break;
-              case "contactRegistered":
-                console.log("컨택등록");
-                break;
-              case "resultRegistered":
-                console.log("결과등록");
-                break;
-              default:
-                console.warn("Unknown filter:", val);
-            }
+        dom: "<'dt-container'lB>rtp",
+        buttons: [
+          {
+            extend: "",
+            text: "다운로드",
+            className: "btn btn-ico btn-download",
+            attr: {
+              id: "downloadBtn",
+            },
+            action: function () {
+              console.log("다운로드");
+            },
+          },
+        ],
+        initComplete: function () {
+          // dt-button 버튼 초기화
+          const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
+          dtButtons.forEach((button) => {
+            button.classList.remove("dt-button");
           });
-        });
-
-        // 미처리현황 클릭
-        const unprocessedStatusBtn = document.getElementById("unprocessedStatusBtn");
-        unprocessedStatusBtn.addEventListener("click", () => {
-          console.log("미처리현황");
-        });
-      },
-    });
-
-    const singleRow = {
-      deliveryType: "택배",
-      diskNumber: "123456789",
-      diskType: "가입자개통타스크",
-      status: "처리 중",
-      taskName: "상품 변경",
-      productName: "스마트기가_1G",
-      serviceName: "U+인터넷",
-      agencyName: "복구_개통-A지점",
-      engineerName: "홍길동",
-      requestTime: "2025-05-02 13:50",
-    };
-    const tableData2 = Array.from({ length: 50 }, (_, i) => ({
-      ...singleRow,
-      diskNumber: `${123456789 + i}`,
-      engineerName: `홍길동${i + 1}`,
-    }));
-
-    $("#pubTable2").DataTable({
-      autoWidth: false,
-      searching: false,
-      responsive: true,
-      ordering: false,
-      info: false,
-      recordsTotal: false,
-      lengthChange: false,
-      paging: false,
-      columns: [
-        { data: "deliveryType", title: "택배/매" },
-        { data: "diskNumber", title: "디스크 번호" },
-        { data: "diskType", title: "디스크 구분" },
-        { data: "status", title: "상태" },
-        { data: "taskName", title: "작업명" },
-        { data: "productName", title: "상품명" },
-        { data: "serviceName", title: "서비스명" },
-        { data: "agencyName", title: "대리점명" },
-        { data: "engineerName", title: "담당기사" },
-        { data: "requestTime", title: "요청 일시" },
-      ],
-      data: tableData2,
-    });
-
-    window.alertPubTest = () => {
-      var btn = event.target;
-      var parent = btn.closest(".d-flex");
-      var memoInput = parent ? parent.querySelector('[name="contactMemo"]') : null;
-      if (memoInput && memoInput.value.trim() === "") {
-        memoInput.focus();
-        showAlert({
-          image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
-          message: "컨택 메모를 입력해 주세요.",
-          oneButton: true,
-        });
-      } else {
-        showAlert({
-          image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
-          message: "컨택 메모를 저장하시겠습니까?",
-        });
-      }
-    };
-
-    window.alertPubTest2 = () => {
-      showAlert({
-        image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
-        message: "SMS은 최대 5회까지만<br>발송 가능합니다",
+  
+          // 셀렉트 로딩
+          UI.isSelectCustom();
+  
+          // 추가 버튼 그룹
+          const triggerGroupHTML = `
+            <div class="dt-trigger-group d-flex">
+              <div class="col-auto d-flex">
+                <span class="custom-radio">
+                  <input id="filterAll" name="todoStatusFilter" type="radio" value="all" checked />
+                  <label for="filterAll" class="button">전체(420)</label>
+                </span>
+                <span class="custom-radio">
+                  <input id="filterNotRegistered" name="todoStatusFilter" type="radio" value="notRegistered" />
+                  <label for="filterNotRegistered" class="button">미등록(750)</label>
+                </span>
+                <span class="custom-radio">
+                  <input id="filterContactRegistered" name="todoStatusFilter" type="radio" value="contactRegistered" />
+                  <label for="filterContactRegistered" class="button">컨택 등록(55)</label>
+                </span>
+                <span class="custom-radio">
+                  <input id="filterResultRegistered" name="todoStatusFilter" type="radio" value="resultRegistered" />
+                  <label for="filterResultRegistered" class="button">결과 등록(78)</label>
+                </span>
+              </div>
+              <div class="col-auto">
+                <button type="button" class="btn btn-ico btn-notification" id="unprocessedStatusBtn">
+                  <span>미처리현황 <i>25</i>건</span>
+                </button>
+              </div>
+            </div>
+          `;
+  
+          // dt-container
+          const dtContainer = document.querySelector(".dt-container .dt-buttons");
+          dtContainer.insertAdjacentHTML("beforebegin", triggerGroupHTML);
+  
+          // 라디오 클릭
+          const radioButtons = document.querySelectorAll("input[name=todoStatusFilter]");
+          radioButtons.forEach((radio) => {
+            radio.addEventListener("change", (e) => {
+              const val = e.target.value;
+              switch (val) {
+                case "all":
+                  console.log("전체");
+                  break;
+                case "notRegistered":
+                  console.log("미등록");
+                  break;
+                case "contactRegistered":
+                  console.log("컨택등록");
+                  break;
+                case "resultRegistered":
+                  console.log("결과등록");
+                  break;
+                default:
+                  console.warn("Unknown filter:", val);
+              }
+            });
+          });
+  
+          // 미처리현황 클릭
+          const unprocessedStatusBtn = document.getElementById("unprocessedStatusBtn");
+          unprocessedStatusBtn.addEventListener("click", () => {
+            console.log("미처리현황");
+          });
+        },
       });
-    };
-
-    window.alertPubTest3 = () => {
-      const receiverNumberInput = document.getElementById("receiverNumberInput").value;
-      if (!receiverNumberInput) {
-        showAlert({
-          image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
-          message: "수신 번호를<br>입력해 주세요",
-          oneButton: true,
-        });
-      } else if (receiverNumberInput) {
-        if (!/^\d+$/.test(receiverNumberInput) || (receiverNumberInput.length !== 10 && receiverNumberInput.length !== 11)) {
+  
+      const singleRow = {
+        deliveryType: "택배",
+        diskNumber: "123456789",
+        diskType: "가입자개통타스크",
+        status: "처리 중",
+        taskName: "상품 변경",
+        productName: "스마트기가_1G",
+        serviceName: "U+인터넷",
+        agencyName: "복구_개통-A지점",
+        engineerName: "홍길동",
+        requestTime: "2025-05-02 13:50",
+      };
+      const tableData2 = Array.from({ length: 50 }, (_, i) => ({
+        ...singleRow,
+        diskNumber: `${123456789 + i}`,
+        engineerName: `홍길동${i + 1}`,
+      }));
+  
+      $("#pubTable2").DataTable({
+        autoWidth: false,
+        searching: false,
+        responsive: true,
+        ordering: false,
+        info: false,
+        recordsTotal: false,
+        lengthChange: false,
+        paging: false,
+        columns: [
+          { data: "deliveryType", title: "택배/매" },
+          { data: "diskNumber", title: "디스크 번호" },
+          { data: "diskType", title: "디스크 구분" },
+          { data: "status", title: "상태" },
+          { data: "taskName", title: "작업명" },
+          { data: "productName", title: "상품명" },
+          { data: "serviceName", title: "서비스명" },
+          { data: "agencyName", title: "대리점명" },
+          { data: "engineerName", title: "담당기사" },
+          { data: "requestTime", title: "요청 일시" },
+        ],
+        data: tableData2,
+      });
+  
+      window.alertPubTest = () => {
+        var btn = event.target;
+        var parent = btn.closest(".d-flex");
+        var memoInput = parent ? parent.querySelector('[name="contactMemo"]') : null;
+        if (memoInput && memoInput.value.trim() === "") {
+          memoInput.focus();
           showAlert({
             image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
-            message: "수신 번호 확인 후<br>다시 입력해 주세요",
+            message: "컨택 메모를 입력해 주세요.",
             oneButton: true,
           });
-          return;
-        }
-      }
-    };
-
-    document.querySelectorAll(".sms-symbol-list .symbol-btn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const textarea = document.getElementById("smsContentInput");
-        const symbol = btn.textContent;
-        if (document.selection) {
-          textarea.focus();
-          let sel = document.selection.createRange();
-          sel.text = symbol;
-        } else if (textarea.selectionStart || textarea.selectionStart === 0) {
-          const start = textarea.selectionStart;
-          const end = textarea.selectionEnd;
-          const value = textarea.value;
-          textarea.value = value.substring(0, start) + symbol + value.substring(end);
-          textarea.selectionStart = textarea.selectionEnd = start + symbol.length;
-          textarea.focus();
         } else {
-          textarea.value += symbol;
-          textarea.focus();
+          showAlert({
+            image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
+            message: "컨택 메모를 저장하시겠습니까?",
+          });
+        }
+      };
+  
+      window.alertPubTest2 = () => {
+        showAlert({
+          image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
+          message: "SMS은 최대 5회까지만<br>발송 가능합니다",
+        });
+      };
+  
+      window.alertPubTest3 = () => {
+        const receiverNumberInput = document.getElementById("receiverNumberInput").value;
+        if (!receiverNumberInput) {
+          showAlert({
+            image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
+            message: "수신 번호를<br>입력해 주세요",
+            oneButton: true,
+          });
+        } else if (receiverNumberInput) {
+          if (!/^\d+$/.test(receiverNumberInput) || (receiverNumberInput.length !== 10 && receiverNumberInput.length !== 11)) {
+            showAlert({
+              image: "<img src='/assets/images/common/icon_info.svg' alt=''>",
+              message: "수신 번호 확인 후<br>다시 입력해 주세요",
+              oneButton: true,
+            });
+            return;
+          }
+        }
+      };
+  
+      document.querySelectorAll(".sms-symbol-list .symbol-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const textarea = document.getElementById("smsContentInput");
+          const symbol = btn.textContent;
+          if (document.selection) {
+            textarea.focus();
+            let sel = document.selection.createRange();
+            sel.text = symbol;
+          } else if (textarea.selectionStart || textarea.selectionStart === 0) {
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const value = textarea.value;
+            textarea.value = value.substring(0, start) + symbol + value.substring(end);
+            textarea.selectionStart = textarea.selectionEnd = start + symbol.length;
+            textarea.focus();
+          } else {
+            textarea.value += symbol;
+            textarea.focus();
+          }
+        });
+      });
+  
+      let lastProcessHistoryTrigger = null;
+      let lastSmsSendTrigger = null;
+      // 중간 처리 이력 버튼 이벤트
+      document.querySelectorAll('[data-bs-target="#processHistory"]').forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          lastProcessHistoryTrigger = btn;
+        });
+      });
+      // SMS 발송 버튼 이벤트
+      document.querySelectorAll('[data-bs-target="#smsSend"]').forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          lastSmsSendTrigger = btn;
+        });
+      });
+      // 모달 닫힐 때 이벤트
+      const processHistoryModal = document.getElementById("processHistory");
+      const smsSendModal = document.getElementById("smsSend");
+      const ShowParentModal = (id) => {
+        const parentModal = id.closest(".modal");
+        if (parentModal && parentModal.id) {
+          const modalEl = document.getElementById(parentModal.id);
+          if (modalEl) {
+            const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+            modal.show();
+          }
+        }
+      };
+      // 중간 처리 이력
+      processHistoryModal.addEventListener("hidden.bs.modal", function () {
+        if (lastProcessHistoryTrigger) {
+          ShowParentModal(lastProcessHistoryTrigger);
         }
       });
-    });
-
-    let lastProcessHistoryTrigger = null;
-    let lastSmsSendTrigger = null;
-    // 중간 처리 이력 버튼 이벤트
-    document.querySelectorAll('[data-bs-target="#processHistory"]').forEach((btn) => {
-      btn.addEventListener("click", function (e) {
-        lastProcessHistoryTrigger = btn;
-      });
-    });
-    // SMS 발송 버튼 이벤트
-    document.querySelectorAll('[data-bs-target="#smsSend"]').forEach((btn) => {
-      btn.addEventListener("click", function (e) {
-        lastSmsSendTrigger = btn;
-      });
-    });
-    // 모달 닫힐 때 이벤트
-    const processHistoryModal = document.getElementById("processHistory");
-    const smsSendModal = document.getElementById("smsSend");
-    const ShowParentModal = (id) => {
-      const parentModal = id.closest(".modal");
-      if (parentModal && parentModal.id) {
-        const modalEl = document.getElementById(parentModal.id);
-        if (modalEl) {
-          const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-          modal.show();
+      // SMS 발송
+      smsSendModal.addEventListener("hidden.bs.modal", function () {
+        if (lastSmsSendTrigger) {
+          ShowParentModal(lastSmsSendTrigger);
         }
-      }
-    };
-    // 중간 처리 이력
-    processHistoryModal.addEventListener("hidden.bs.modal", function () {
-      if (lastProcessHistoryTrigger) {
-        ShowParentModal(lastProcessHistoryTrigger);
-      }
-    });
-    // SMS 발송
-    smsSendModal.addEventListener("hidden.bs.modal", function () {
-      if (lastSmsSendTrigger) {
-        ShowParentModal(lastSmsSendTrigger);
-      }
+      });
+  
+      const lnbActiveTest = () => {
+        const lnbActive = lnb.querySelector(".depth1-link.today");
+        if (lnbActive) {
+          lnbActive.classList.add("active");
+        }
+      };
+      setTimeout(() => {
+        lnbActiveTest();
+      }, 500);
+      // e : 퍼블 화면 테스트 스크립트
+
     });
 
-    const lnbActiveTest = () => {
-      const lnbActive = lnb.querySelector(".depth1-link.today");
-      if (lnbActive) {
-        lnbActive.classList.add("active");
-      }
-    };
-    setTimeout(() => {
-      lnbActiveTest();
-    }, 500);
-    // e : 퍼블 화면 테스트 스크립트
   </script>
 </html>

@@ -2973,6 +2973,9 @@ button:focus {
 }
 
 /* dataTable dt-container */
+.dt-container h3 {
+  margin-bottom: -2rem;
+}
 .dt-container .dt-trigger-group {
   gap: 1.6rem;
 }

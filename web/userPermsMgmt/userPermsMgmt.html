@@ -403,100 +403,102 @@
           HTTP.send();
         }
       });
-    });
 
-    // s : 퍼블 화면 테스트 스크립트
-    $("#pubTable1").DataTable({
-      autoWidth: false,
-      searching: false,
-      responsive: true,
-      ordering: false,
-      info: false,
-      recordsTotal: false,
-      language: {
-        lengthMenu: "총 _TOTAL_ 건 _MENU_",
-      },
-      dom: "<'dt-container'lB>rtp",
-      buttons: [
-        {
-          extend: "",
-          text: "신규등록",
-          className: "btn btn-ico btn-new-write",
-          action: function () {
-            console.log("신규등록");
-          },
+      // s : 퍼블 화면 테스트 스크립트
+      $("#pubTable1").DataTable({
+        autoWidth: false,
+        searching: false,
+        responsive: true,
+        ordering: false,
+        info: false,
+        recordsTotal: false,
+        language: {
+          lengthMenu: "총 _TOTAL_ 건 _MENU_",
         },
-        {
-          extend: "",
-          text: "선택삭제",
-          className: "btn btn-dark",
-          attr: {
-            id: "deleteSelectedBtn",
-            disabled: "true",
+        dom: "<'dt-container'lB>rtp",
+        buttons: [
+          {
+            extend: "",
+            text: "신규등록",
+            className: "btn btn-ico btn-new-write",
+            action: function () {
+              console.log("신규등록");
+            },
           },
-          action: function () {
-            console.log("선택삭제");
+          {
+            extend: "",
+            text: "선택삭제",
+            className: "btn btn-dark",
+            attr: {
+              id: "deleteSelectedBtn",
+              disabled: "true",
+            },
+            action: function () {
+              console.log("선택삭제");
+            },
           },
+        ],
+        initComplete: function () {
+          // dt-button 버튼 초기화
+          const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
+          dtButtons.forEach((button) => {
+            button.classList.remove("dt-button");
+          });
+  
+          // 셀렉트 로딩
+          UI.isSelectCustom();
         },
-      ],
-      initComplete: function () {
-        // dt-button 버튼 초기화
-        const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
-        dtButtons.forEach((button) => {
-          button.classList.remove("dt-button");
-        });
-
-        // 셀렉트 로딩
-        UI.isSelectCustom();
-      },
-    });
-
-    function updateDeleteSelectedBtn() {
-      const checkboxes = document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]');
-      const anyChecked = Array.from(checkboxes).some((cb) => cb.checked);
-      const deleteBtn = document.getElementById("deleteSelectedBtn");
-      if (deleteBtn) {
-        deleteBtn.disabled = !anyChecked || checkboxes.length === 0;
-      }
-      // select-all 체크박스 상태 동기화
-      const selectAll = document.getElementById("select-all");
-      if (selectAll) {
-        if (!anyChecked) {
-          selectAll.checked = false;
-        }
-      }
-    }
-
-    document.getElementById("select-all").addEventListener("change", function () {
-      const checked = this.checked;
-      document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (check) {
-        check.checked = checked;
       });
-      updateDeleteSelectedBtn();
-    });
-    document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (checkbox) {
-      checkbox.addEventListener("change", updateDeleteSelectedBtn);
-    });
-
-    const lnbActiveTest = () => {
-      const lnbActive = lnb.querySelector(".depth1-link.manager");
-      if (lnbActive) {
-        const depth2 = lnbActive.nextElementSibling;
-        if (depth2 && depth2.classList.contains("depth2")) {
-          depth2.style.display = "block";
-          const secondLi = depth2.querySelectorAll("li > a")[0];
-          if (secondLi) {
-            secondLi.classList.add("active");
+  
+      function updateDeleteSelectedBtn() {
+        const checkboxes = document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]');
+        const anyChecked = Array.from(checkboxes).some((cb) => cb.checked);
+        const deleteBtn = document.getElementById("deleteSelectedBtn");
+        if (deleteBtn) {
+          deleteBtn.disabled = !anyChecked || checkboxes.length === 0;
+        }
+        // select-all 체크박스 상태 동기화
+        const selectAll = document.getElementById("select-all");
+        if (selectAll) {
+          if (!anyChecked) {
+            selectAll.checked = false;
           }
         }
       }
-      if (lnbActive) {
-        lnbActive.classList.add("active");
-      }
-    };
-    setTimeout(() => {
-      lnbActiveTest();
-    }, 500);
-    // e : 퍼블 화면 테스트 스크립트
+  
+      document.getElementById("select-all").addEventListener("change", function () {
+        const checked = this.checked;
+        document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (check) {
+          check.checked = checked;
+        });
+        updateDeleteSelectedBtn();
+      });
+      document.querySelectorAll('#pubTable1 tbody input[type="checkbox"]').forEach(function (checkbox) {
+        checkbox.addEventListener("change", updateDeleteSelectedBtn);
+      });
+  
+      const lnbActiveTest = () => {
+        const lnbActive = lnb.querySelector(".depth1-link.manager");
+        if (lnbActive) {
+          const depth2 = lnbActive.nextElementSibling;
+          if (depth2 && depth2.classList.contains("depth2")) {
+            depth2.style.display = "block";
+            const secondLi = depth2.querySelectorAll("li > a")[0];
+            if (secondLi) {
+              secondLi.classList.add("active");
+            }
+          }
+        }
+        if (lnbActive) {
+          lnbActive.classList.add("active");
+        }
+      };
+      setTimeout(() => {
+        lnbActiveTest();
+      }, 500);
+      // e : 퍼블 화면 테스트 스크립트
+      
+    });
+
   </script>
 </html>

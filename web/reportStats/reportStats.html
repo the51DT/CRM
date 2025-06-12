@@ -223,8 +223,8 @@
             </section>
 
             <section class="row">
-              <h3>협력사별 실적</h3>
-              <table class="dataTable row-border hover static-data summary-table">
+              <!-- <h3>협력사별 실적</h3> -->
+              <table class="dataTable row-border hover static-data summary-table" id="pubTable1">
                 <thead>
                   <tr>
                     <th rowspan="2">소속</th>
@@ -334,7 +334,43 @@
         }
       });
 
-      // 퍼블 화면 테스트 스크립트
+      // s : 퍼블 화면 테스트 스크립트
+      $("#pubTable1").DataTable({
+        ...dataTableOptions,
+        paging: false,
+        scrollX: false,
+        buttons: [
+          {
+            extend: "",
+            text: "다운로드",
+            className: "btn btn-ico btn-download",
+            attr: {
+              id: "downloadBtn",
+            },
+            action: function () {
+              console.log("다운로드");
+            },
+          },
+        ],
+        initComplete: function () {
+          // dt-button 버튼 초기화
+          const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
+          dtButtons.forEach((button) => {
+            button.classList.remove("dt-button");
+          });
+
+          // 셀렉트 로딩
+          UI.isSelectCustom();
+
+          // 추가 버튼 그룹
+          const titleHTML = `<h3>협력사별 실적</h3>`;
+
+          // dt-container
+          const dtContainer = document.querySelector(".dt-container .dt-buttons");
+          dtContainer.insertAdjacentHTML("beforebegin", titleHTML);
+        },
+      });
+
       // $(".start-date1").datetimepicker({
       //   format: "YYYY-MM",
       //   viewMode: "months",
@@ -346,28 +382,28 @@
       const mm = String(today.getMonth() + 1).padStart(2, "0");
       const formatted = `${yyyy}-${mm}`;
       document.getElementById("startDt").value = formatted;
-    });
 
-    // s : 퍼블 화면 테스트 스크립트
-    const lnbActiveTest = () => {
-      const lnbActive = lnb.querySelector(".depth1-link.stats");
-      if (lnbActive) {
-        const depth2 = lnbActive.nextElementSibling;
-        if (depth2 && depth2.classList.contains("depth2")) {
-          depth2.style.display = "block";
-          const secondLi = depth2.querySelectorAll("li > a")[3];
-          if (secondLi) {
-            secondLi.classList.add("active");
+      const lnbActiveTest = () => {
+        const lnbActive = lnb.querySelector(".depth1-link.stats");
+        if (lnbActive) {
+          const depth2 = lnbActive.nextElementSibling;
+          if (depth2 && depth2.classList.contains("depth2")) {
+            depth2.style.display = "block";
+            const secondLi = depth2.querySelectorAll("li > a")[3];
+            if (secondLi) {
+              secondLi.classList.add("active");
+            }
           }
         }
-      }
-      if (lnbActive) {
-        lnbActive.classList.add("active");
-      }
-    };
-    setTimeout(() => {
-      lnbActiveTest();
-    }, 500);
-    // e : 퍼블 화면 테스트 스크립트
+        if (lnbActive) {
+          lnbActive.classList.add("active");
+        }
+      };
+      setTimeout(() => {
+        lnbActiveTest();
+      }, 500);
+      // e : 퍼블 화면 테스트 스크립트
+
+    });
   </script>
 </html>
