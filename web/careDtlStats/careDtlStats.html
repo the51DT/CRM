@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <div data-include-path="/fragments/head.html"></div>
+  <head>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        fetch("/fragments/head.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.head.insertAdjacentHTML("beforeend", html);
+          });
+      });
+    </script>
+  </head>
   <body>
     <div id="root">
       <!-- header include -->
@@ -504,6 +514,7 @@
   <script src="/assets/js/common.js"></script>
   <script src="/js/common2.js"></script>
   <script src="/js/chart.umd.js"></script>
+  <script defer src="/pub/pubTest.js"></script>
   <script>
     window.addEventListener("load", function () {
       var allElements = document.getElementsByTagName("*");
@@ -569,26 +580,6 @@
         const collapse = bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseDiv"));
         collapse.hide();
       });
-  
-      const lnbActiveTest = () => {
-        const lnbActive = lnb.querySelector(".depth1-link.stats");
-        if (lnbActive) {
-          const depth2 = lnbActive.nextElementSibling;
-          if (depth2 && depth2.classList.contains("depth2")) {
-            depth2.style.display = "block";
-            const secondLi = depth2.querySelectorAll("li > a")[1];
-            if (secondLi) {
-              secondLi.classList.add("active");
-            }
-          }
-        }
-        if (lnbActive) {
-          lnbActive.classList.add("active");
-        }
-      };
-      setTimeout(() => {
-        lnbActiveTest();
-      }, 500);
       // e : 퍼블 화면 테스트 스크립트
 
     });

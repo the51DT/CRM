@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <div data-include-path="/fragments/head.html"></div>
+  <head>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        fetch("/fragments/head.html")
+          .then((res) => res.text())
+          .then((html) => {
+            document.head.insertAdjacentHTML("beforeend", html);
+          });
+      });
+    </script>
+  </head>
   <body>
     <div id="root">
       <!-- header include -->
@@ -21,17 +31,10 @@
             <div class="tabs">
               <ul class="nav nav-underline">
                 <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="/web/logMgmt/logMgmt.html"
-                    >화면 접근 로그</a
-                  >
+                  <a class="nav-link active" aria-current="page" href="/web/logMgmt/logMgmt.html">화면 접근 로그</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/web/apiLogMgmt/apiLogMgmt.html"
-                    >외부 API 로그</a
-                  >
+                  <a class="nav-link" href="/web/apiLogMgmt/apiLogMgmt.html">외부 API 로그</a>
                 </li>
               </ul>
             </div>
@@ -55,10 +58,7 @@
                                 <option value="month">월</option>
                               </select>
 
-                              <div
-                                class="start-date1 input-group datepicker w-auto"
-                                data-target-input="nearest"
-                              >
+                              <div class="start-date1 input-group datepicker w-auto" data-target-input="nearest">
                                 <input
                                   type="text"
                                   class="form-control datetimepicker-input"
@@ -67,24 +67,14 @@
                                   data-target=".start-date1"
                                   placeholder="시작일"
                                 />
-                                <div
-                                  class="input-group-append"
-                                  data-target=".start-date1"
-                                  data-toggle="datetimepicker"
-                                >
+                                <div class="input-group-append" data-target=".start-date1" data-toggle="datetimepicker">
                                   <button class="input-group-text">
-                                    <img
-                                      src="/assets/images/common/icon_datepicker.png"
-                                      alt="달력 이미지"
-                                    />
+                                    <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                   </button>
                                 </div>
                               </div>
 
-                              <div
-                                class="end-date1 input-group datepicker w-auto"
-                                data-target-input="nearest"
-                              >
+                              <div class="end-date1 input-group datepicker w-auto" data-target-input="nearest">
                                 <input
                                   type="text"
                                   class="form-control datetimepicker-input"
@@ -93,33 +83,22 @@
                                   name="endDt"
                                   placeholder="종료일"
                                 />
-                                <div
-                                  class="input-group-append"
-                                  data-target=".end-date1"
-                                  data-toggle="datetimepicker"
-                                >
+                                <div class="input-group-append" data-target=".end-date1" data-toggle="datetimepicker">
                                   <button class="input-group-text">
-                                    <img
-                                      src="/assets/images/common/icon_datepicker.png"
-                                      alt="달력 이미지"
-                                    />
+                                    <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                   </button>
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div class="col-auto datepicker-tip">
-                            일 최대 31일, 월 최대 12개월 까지 조회가 돼요
-                          </div>
+                          <div class="col-auto datepicker-tip">일 최대 31일, 월 최대 12개월 까지 조회가 돼요</div>
                         </div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="flex">
-                  <button type="button" class="btn btn-ico btn-inquiry">
-                    조회
-                  </button>
+                  <button type="button" class="btn btn-ico btn-inquiry">조회</button>
                 </div>
               </div>
             </section>
@@ -137,44 +116,19 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr
-                        th:each="log, iterStat : ${userMenuLog}"
-                        th:data-parent="${log.parentMenuName}"
-                        th:data-menu="${log.menuName}"
-                      >
+                      <tr th:each="log, iterStat : ${userMenuLog}" th:data-parent="${log.parentMenuName}" th:data-menu="${log.menuName}">
                         <td
                           th:text="${log.parentMenuName}"
                           th:classappend="${iterStat.index == 0 ? '' :
                               (log.parentMenuName.equals(userMenuLog[iterStat.index - 1].parentMenuName) ? 'row-merge' : 'border-b-none')}"
                         ></td>
-                        <td
-                          th:if="${log.menuName == '합계'}"
-                          th:text="${log.menuName}"
-                          th:classappend="sum"
-                        ></td>
-                        <td
-                          th:if="${log.menuName != '합계'}"
-                          th:text="${log.menuName}"
-                        ></td>
+                        <td th:if="${log.menuName == '합계'}" th:text="${log.menuName}" th:classappend="sum"></td>
+                        <td th:if="${log.menuName != '합계'}" th:text="${log.menuName}"></td>
                         <td>
-                          <button
-                            type="button"
-                            class="data-num"
-                            name="entryCount"
-                            th:text="${log.entryCount}"
-                          >
-                            0
-                          </button>
+                          <button type="button" class="data-num" name="entryCount" th:text="${log.entryCount}">0</button>
                         </td>
                         <td>
-                          <button
-                            type="button"
-                            class="data-num"
-                            name="downloadCount"
-                            th:text="${log.downloadCount}"
-                          >
-                            0
-                          </button>
+                          <button type="button" class="data-num" name="downloadCount" th:text="${log.downloadCount}">0</button>
                         </td>
                       </tr>
                     </tbody>
@@ -220,62 +174,30 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button
-                      type="button"
-                      class="btn-closed"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                      onclick="excelModalClosed();"
-                    ></button>
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close" onclick="excelModalClosed();"></button>
                   </div>
                   <div class="modal-body uiscroll">
-                    <h1 class="modal-title" id="excelModalLabel">
-                      엑셀 다운로드
-                    </h1>
+                    <h1 class="modal-title" id="excelModalLabel">엑셀 다운로드</h1>
 
                     <section class="row">
-                      <p class="excel-text">
-                        ‘미처리 현황’을 엑셀파일로 저장합니다.<br />다운로드
-                        사유를 선택하세요.
-                      </p>
+                      <p class="excel-text">‘미처리 현황’을 엑셀파일로 저장합니다.<br />다운로드 사유를 선택하세요.</p>
                       <div class="excel-select">
-                        <select
-                          class="uiscroll"
-                          aria-label="엑셀 다운로드 선택"
-                          id="excelDown"
-                          name="excelDown"
-                        >
-                          <option value="">
-                            다운로드 사유를 선택해 주세요
-                          </option>
-                          <option
-                            th:each="arraysts : ${excelDown}"
-                            th:value="${arraysts.codeName}"
-                          >
+                        <select class="uiscroll" aria-label="엑셀 다운로드 선택" id="excelDown" name="excelDown">
+                          <option value="">다운로드 사유를 선택해 주세요</option>
+                          <option th:each="arraysts : ${excelDown}" th:value="${arraysts.codeName}">
                             <th:block th:text="${arraysts.codeName}"></th:block>
                           </option>
                         </select>
                       </div>
                       <ul class="list-bullet">
                         <li>다운로드된 파일은 3개월 이내 폐기되어야 합니다.</li>
-                        <li>
-                          xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로
-                          저장하여 보안사항 준수 바랍니다.
-                        </li>
+                        <li>xlsb로 저장 시 보안 정책에 위배됩니다. 반드시 xlsx로 저장하여 보안사항 준수 바랍니다.</li>
                       </ul>
                     </section>
                   </div>
                   <div class="modal-footer">
                     <div class="d-grid">
-                      <button
-                        type="button"
-                        class="btn btn-dark"
-                        onclick="fnExcel();"
-                        id="excelButton"
-                        disabled
-                      >
-                        다운로드
-                      </button>
+                      <button type="button" class="btn btn-dark" onclick="fnExcel();" id="excelButton" disabled>다운로드</button>
                     </div>
                   </div>
                 </div>
@@ -298,9 +220,10 @@
   <script src="/assets/js/common.js"></script>
   <script src="/js/common2.js"></script>
   <script src="/js/chart.umd.js"></script>
+  <script defer src="/pub/pubTest.js"></script>
   <script>
-    window.addEventListener('load', function () {
-      var allElements = document.getElementsByTagName('*');
+    window.addEventListener("load", function () {
+      var allElements = document.getElementsByTagName("*");
       Array.prototype.forEach.call(allElements, function (el) {
         var includePath = el.dataset.includePath;
         if (includePath) {
@@ -310,7 +233,7 @@
               el.outerHTML = this.responseText;
             }
           };
-          HTTP.open('GET', includePath, true);
+          HTTP.open("GET", includePath, true);
           HTTP.send();
         }
       });
