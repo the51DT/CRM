@@ -449,7 +449,7 @@
                     <td>N/A</td>
                     <td></td>
                     <td>상담 완료, 추가 조치 필요 없음</td>
-                    <td>미처리사유...</td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
@@ -558,6 +558,18 @@
           UI.isSelectCustom();
         },
       });
+
+      // 기타...
+    const dtTables = document.querySelectorAll(".dataTable, .dt-scroll-head, .dt-scroll-headInner, .dt-scroll-body");
+    dtTables.forEach((el) => {
+      el.style.width = "100%"
+      console.log("aaa")
+    });
+    document.getElementById("divisionConfirmBtn").addEventListener("click", function () {
+      const collapse = bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseDiv"));
+      collapse.hide();
+    });
+    // e : 퍼블 화면 테스트 스크립트
       
     });
 
@@ -574,17 +586,6 @@
     }
 
     
-    
-    // 기타...
-    const dtTables = document.querySelectorAll(".dataTable, .dt-scroll-head, .dt-scroll-headInner, .dt-scroll-body");
-    dtTables.forEach((el) => {
-      el.style.width = "100%"
-    });
-    document.getElementById("divisionConfirmBtn").addEventListener("click", function () {
-      const collapse = bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseDiv"));
-      collapse.hide();
-    });
-    // e : 퍼블 화면 테스트 스크립트
 
   </script>
 </html>
