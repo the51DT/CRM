@@ -1222,6 +1222,11 @@
           },
         ],
         initComplete: function () {
+          // 건수 숨김
+          const dtLengthLabel = document.querySelector("#pubTable1_wrapper .dt-container .dt-length label");
+          if (dtLengthLabel) {
+            dtLengthLabel.style.display = "none";
+          }
           // dt-button 버튼 초기화
           const dtButtons = document.querySelectorAll(".dt-container .dt-buttons .btn");
           dtButtons.forEach((button) => {
