@@ -2128,8 +2128,11 @@ button:focus {
   /* gap: 0.8rem; */
   padding: 0;
 }
-.form-box .inline-flex > *:not(:first-child) {
+/* .form-box .inline-flex > *:not(:first-child) {
   margin: 0 0.8rem;
+} */
+.form-box .inline-flex > * + * {
+  margin-left: 0.8rem;
 }
 /* .form-box .inline-flex.file-upload-container {
   gap: 1.6rem;

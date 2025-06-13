@@ -80,7 +80,7 @@
                                 중분류
                               </button>
                             </div>
-                            <div class="col-auto" style="margin: 0;">
+                            <div class="col-auto">
                               <button
                                 type="button"
                                 class="btn btn-ico btn-div sm"
@@ -560,17 +560,15 @@
       });
 
       // 기타...
-    const dtTables = document.querySelectorAll(".dataTable, .dt-scroll-head, .dt-scroll-headInner, .dt-scroll-body");
-    dtTables.forEach((el) => {
-      el.style.width = "100%"
-      console.log("aaa")
-    });
-    document.getElementById("divisionConfirmBtn").addEventListener("click", function () {
-      const collapse = bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseDiv"));
-      collapse.hide();
-    });
-    // e : 퍼블 화면 테스트 스크립트
-      
+      const dtTables = document.querySelectorAll(".dataTable, .dt-scroll-head, .dt-scroll-headInner, .dt-scroll-body");
+      dtTables.forEach((el) => {
+        el.style.width = "100%";
+      });
+      document.getElementById("divisionConfirmBtn").addEventListener("click", function () {
+        const collapse = bootstrap.Collapse.getOrCreateInstance(document.getElementById("collapseDiv"));
+        collapse.hide();
+      });
+      // e : 퍼블 화면 테스트 스크립트
     });
 
     // s : 퍼블 화면 테스트 스크립트
@@ -584,8 +582,5 @@
       btn.textContent = isHidden ? "간단히 보기" : "상세 보기";
       btn.setAttribute("aria-expanded", isHidden ? "true" : "false");
     }
-
-    
-
   </script>
 </html>
