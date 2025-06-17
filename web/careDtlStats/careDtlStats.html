@@ -149,65 +149,75 @@
                     <tr>
                       <th>조회 기간</th>
                       <td colspan="5">
-                        <div class="datepicker-wrap">
-                          <button
-                            type="button"
-                            class="btn btn-datepicker"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseDate"
-                            aria-expanded="false"
-                            aria-controls="collapseDate"
-                          >
-                            <span class="start">2024-06-24</span>~<span class="end">2025-06-23</span>
-                          </button>
+                        <div class="inline-flex">
+                          <div class="col-auto">
+                            <select class="uiscroll" aria-label="조회 기간 선택">
+                              <option value="">기준일</option>
+                              <option value="">등록 기한</option>
+                            </select>
+                          </div>
+                          <div class="col-auto">
+                            <div class="datepicker-wrap">
+                              <button
+                                type="button"
+                                class="btn btn-datepicker"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseDate"
+                                aria-expanded="false"
+                                aria-controls="collapseDate"
+                              >
+                                <span class="start">2024-06-24</span>~<span class="end">2025-06-23</span>
+                              </button>
 
-                          <!-- 달력 레이어 -->
-                          <div id="collapseDate" class="collapse layer-datepicker">
-                            <div class="inner">
-                              <header>
-                                <button class="close">닫기</button>
-                              </header>
-                              <div class="body">
-                                <p class="sub">기간을 선택해 주세요</p>
-                                <div class="date-select">
-                                  <span class="custom-radio" data-range="7">
-                                    <input id="_uid_100" name="_uid_1" type="radio" />
-                                    <label for="_uid_100" class="button"> 최근 1주일 </label>
-                                  </span>
-                                  <span class="custom-radio" data-range="30">
-                                    <input id="_uid_101" name="_uid_1" type="radio" />
-                                    <label for="_uid_101" class="button"> 최근 30일 </label>
-                                  </span>
-                                  <span class="custom-radio" data-range="90">
-                                    <input id="_uid_102" name="_uid_1" type="radio" />
-                                    <label for="_uid_102" class="button"> 최근 90일 </label>
-                                  </span>
-                                  <span class="custom-radio" data-range="365">
-                                    <input id="_uid_103" name="_uid_1" type="radio" />
-                                    <label for="_uid_103" class="button"> 최근 1년 </label>
-                                  </span>
-                                  <span class="custom-radio">
-                                    <input id="_uid_104" name="_uid_1" type="radio" />
-                                    <label for="_uid_104" class="button"> 직접 입력 </label>
-                                  </span>
-                                </div>
-                                <div class="date-box">
-                                  <div class="start-date">
-                                    <p class="title">시작일 <em>2024-06-24</em></p>
-                                    <div class="datetimepicker" id="searchStartPicker"></div>
+                              <!-- 달력 레이어 -->
+                              <div id="collapseDate" class="collapse layer-datepicker">
+                                <div class="inner">
+                                  <header>
+                                    <button class="close">닫기</button>
+                                  </header>
+                                  <div class="body">
+                                    <p class="sub">기간을 선택해 주세요</p>
+                                    <div class="date-select">
+                                      <span class="custom-radio" data-range="7">
+                                        <input id="_uid_100" name="_uid_1" type="radio" />
+                                        <label for="_uid_100" class="button"> 최근 1주일 </label>
+                                      </span>
+                                      <span class="custom-radio" data-range="30">
+                                        <input id="_uid_101" name="_uid_1" type="radio" />
+                                        <label for="_uid_101" class="button"> 최근 30일 </label>
+                                      </span>
+                                      <span class="custom-radio" data-range="90">
+                                        <input id="_uid_102" name="_uid_1" type="radio" />
+                                        <label for="_uid_102" class="button"> 최근 90일 </label>
+                                      </span>
+                                      <span class="custom-radio" data-range="365">
+                                        <input id="_uid_103" name="_uid_1" type="radio" />
+                                        <label for="_uid_103" class="button"> 최근 1년 </label>
+                                      </span>
+                                      <span class="custom-radio">
+                                        <input id="_uid_104" name="_uid_1" type="radio" />
+                                        <label for="_uid_104" class="button"> 직접 입력 </label>
+                                      </span>
+                                    </div>
+                                    <div class="date-box">
+                                      <div class="start-date">
+                                        <p class="title">시작일 <em>2024-06-24</em></p>
+                                        <div class="datetimepicker" id="searchStartPicker"></div>
+                                      </div>
+                                      <div class="end-date">
+                                        <p class="title">종료일 <em>2025-06-23</em></p>
+                                        <div class="datetimepicker2" id="searchEndPicker"></div>
+                                      </div>
+                                    </div>
                                   </div>
-                                  <div class="end-date">
-                                    <p class="title">종료일 <em>2025-06-23</em></p>
-                                    <div class="datetimepicker2" id="searchEndPicker"></div>
-                                  </div>
+                                  <footer>
+                                    <button type="button" class="btn btn-dark picker">확인</button>
+                                  </footer>
                                 </div>
                               </div>
-                              <footer>
-                                <button type="button" class="btn btn-dark picker">확인</button>
-                              </footer>
+                              <!-- // 달력 레이어 -->
                             </div>
                           </div>
-                          <!-- // 달력 레이어 -->
                         </div>
                       </td>
                     </tr>
