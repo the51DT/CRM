@@ -24,142 +24,6 @@ const svgList = [
     "lastModified": "2025-06-10"
   },
   {
-    "name": "btn-input-close.svg",
-    "path": "/assets/images/common/btn-input-close.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "white",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_actions.svg",
-    "path": "/assets/images/common/icon_actions.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_add_file.svg",
-    "path": "/assets/images/common/icon_add_file.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_add.svg",
-    "path": "/assets/images/common/icon_add.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_arrow_down.svg",
-    "path": "/assets/images/common/icon_arrow_down.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_checked_disabled.svg",
-    "path": "/assets/images/common/icon_checked_disabled.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "#E1E1E1",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_checked_indeterminate.svg",
-    "path": "/assets/images/common/icon_checked_indeterminate.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "#E1E1E1",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_checked.svg",
-    "path": "/assets/images/common/icon_checked.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_client.svg",
-    "path": "/assets/images/common/icon_client.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "#111111",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_download_white.svg",
-    "path": "/assets/images/common/icon_download_white.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "white",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_download.svg",
-    "path": "/assets/images/common/icon_download.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_info.svg",
-    "path": "/assets/images/common/icon_info.svg",
-    "width": "48",
-    "height": "48",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_manager.svg",
-    "path": "/assets/images/common/icon_manager.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_new_write.svg",
-    "path": "/assets/images/common/icon_new_write.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_no_result.svg",
-    "path": "/assets/images/common/icon_no_result.svg",
-    "width": "56",
-    "height": "56",
-    "stroke": "#AAAAAA",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_noresult.svg",
-    "path": "/assets/images/common/icon_noresult.svg",
-    "width": "120",
-    "height": "120",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
-    "name": "icon_notices.svg",
-    "path": "/assets/images/common/icon_notices.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
-    "lastModified": "2025-06-04"
-  },
-  {
     "name": "Icon_notification.svg",
     "path": "/assets/images/common/Icon_notification.svg",
     "width": "20",
@@ -168,12 +32,148 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
+    "name": "btn-input-close.svg",
+    "path": "/assets/images/common/btn-input-close.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "white",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_actions.svg",
+    "path": "/assets/images/common/icon_actions.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_add_file.svg",
+    "path": "/assets/images/common/icon_add_file.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_add.svg",
+    "path": "/assets/images/common/icon_add.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_arrow_down.svg",
+    "path": "/assets/images/common/icon_arrow_down.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_checked_disabled.svg",
+    "path": "/assets/images/common/icon_checked_disabled.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "#E1E1E1",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_checked_indeterminate.svg",
+    "path": "/assets/images/common/icon_checked_indeterminate.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "#E1E1E1",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_checked.svg",
+    "path": "/assets/images/common/icon_checked.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_client.svg",
+    "path": "/assets/images/common/icon_client.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "#111111",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_download_white.svg",
+    "path": "/assets/images/common/icon_download_white.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "white",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_download.svg",
+    "path": "/assets/images/common/icon_download.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_info.svg",
+    "path": "/assets/images/common/icon_info.svg",
+    "width": "48",
+    "height": "48",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_manager.svg",
+    "path": "/assets/images/common/icon_manager.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_new_write.svg",
+    "path": "/assets/images/common/icon_new_write.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_no_result.svg",
+    "path": "/assets/images/common/icon_no_result.svg",
+    "width": "56",
+    "height": "56",
+    "stroke": "#AAAAAA",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_noresult.svg",
+    "path": "/assets/images/common/icon_noresult.svg",
+    "width": "120",
+    "height": "120",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
+    "name": "icon_notices.svg",
+    "path": "/assets/images/common/icon_notices.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-04-08"
+  },
+  {
     "name": "icon_radio.svg",
     "path": "/assets/images/common/icon_radio.svg",
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_refresh.svg",
@@ -181,7 +181,7 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_reset.svg",
@@ -189,7 +189,7 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_search.svg",
@@ -197,7 +197,7 @@ const svgList = [
     "width": "21",
     "height": "20",
     "stroke": "white",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_selectbox_up.svg",
@@ -205,7 +205,7 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_selectbox.svg",
@@ -213,7 +213,7 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_servie_unconnet.svg",
@@ -221,7 +221,7 @@ const svgList = [
     "width": "72",
     "height": "72",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_stats.svg",
@@ -229,7 +229,7 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_system_check.svg",
@@ -237,7 +237,7 @@ const svgList = [
     "width": "72",
     "height": "72",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_system_stop.svg",
@@ -245,7 +245,7 @@ const svgList = [
     "width": "72",
     "height": "72",
     "stroke": "",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_toast_info.svg",
@@ -253,7 +253,7 @@ const svgList = [
     "width": "21",
     "height": "20",
     "stroke": "white",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_today.svg",
@@ -261,7 +261,7 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_top.svg",
@@ -269,7 +269,7 @@ const svgList = [
     "width": "40",
     "height": "40",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_user_write.svg",
@@ -277,7 +277,7 @@ const svgList = [
     "width": "72",
     "height": "72",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "icon_write.svg",
@@ -285,7 +285,7 @@ const svgList = [
     "width": "20",
     "height": "20",
     "stroke": "black",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   },
   {
     "name": "loading.svg",
@@ -293,6 +293,6 @@ const svgList = [
     "width": "85",
     "height": "85",
     "stroke": "#737378",
-    "lastModified": "2025-06-04"
+    "lastModified": "2025-04-08"
   }
 ];
