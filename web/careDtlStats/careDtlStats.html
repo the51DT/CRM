@@ -151,9 +151,9 @@
                       <td colspan="5">
                         <div class="inline-flex">
                           <div class="col-auto">
-                            <select class="uiscroll" aria-label="조회 기간 선택">
-                              <option value="">기준일</option>
-                              <option value="">등록 기한</option>
+                            <select id="searchPeriodType" aria-label="조회 기간 선택">
+                              <option value="기준일">기준일</option>
+                              <option value="등록 기한">등록 기한</option>
                             </select>
                           </div>
                           <div class="col-auto">
@@ -224,8 +224,8 @@
                     <tr>
                       <th>발생 지표</th>
                       <td colspan="5">
-                        <select class="w300 uiscroll" aria-label="발생 지표 열기">
-                          <option value="">발생 지표를 선택해 주세요</option>
+                        <select class="w300" aria-label="발생 지표 열기">
+                          <option value="1">발생 지표를 선택해 주세요</option>
                           <option value="">-</option>
                         </select>
                       </td>
@@ -592,5 +592,40 @@
       btn.textContent = isHidden ? "간단히 보기" : "상세 보기";
       btn.setAttribute("aria-expanded", isHidden ? "true" : "false");
     }
+
+    // 달력테스트
+    $(function () {
+      const $startPicker = $("#searchStartPicker");
+      const $endPicker = $("#searchEndPicker");
+      function initPickers(startDate, endDate) {
+        $startPicker.datetimepicker("destroy");
+        $startPicker.datetimepicker({
+          format: "YYYY-MM-DD",
+          locale: "ko",
+          inline: true,
+          defaultDate: startDate,
+        });
+        $endPicker.datetimepicker("destroy");
+        $endPicker.datetimepicker({
+          format: "YYYY-MM-DD",
+          locale: "ko",
+          inline: true,
+          defaultDate: endDate,
+        });
+      }
+      $("#searchPeriodType").on("change", function () {
+        const selected = $(this).val();
+        if (selected === "기준일") {
+          const start = moment();
+          const end = moment().add(30, "days");
+          initPickers(start, end);
+        } else if (selected === "등록 기한") {
+          const start = moment().subtract(30, "days");
+          const end = moment();
+          initPickers(start, end);
+        }
+      });
+      $("#searchPeriodType").val("기준일").trigger("change");
+    });
   </script>
 </html>
