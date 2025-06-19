@@ -3115,4 +3115,41 @@ button:focus {
 .memo-history > li strong {
   color: var(--black);
 }
+// sms 발송
+.msg-wrap {
+  position: relative;
+}
+.msg-wrap textarea {
+  height: 10rem;
+  margin-top: 3.8rem;
+  border: none !important;
+}
+.msg-wrap textarea:focus,
+.msg-wrap textarea:focus-visible,
+.msg-wrap textarea:hover {
+  border: none !important;
+  border-color: transparent;
+}
+.msg-wrap .msg-type {
+  position: absolute;
+  top: 1rem;
+  left: 1.6rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.msg-type .badge {
+  display: none;
+  border-radius: 0.4rem;
+}
+.msg-type .badge-sms {
+  background-color: #29adc0;
+}
+.msg-type .badge-mms {
+  background-color: #da326e;
+}
+.msg-type .badge.active {
+  display: inline-flex;
+}
 /* // 2025-05 신규 수정/추가 */
