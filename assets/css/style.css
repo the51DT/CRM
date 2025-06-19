@@ -8,15 +8,13 @@
   font-family: "Pretendard JP";
   font-weight: 700;
   font-display: swap;
-  src: local("Pretendard JP Bold"), url("../fonts/static/PretendardJP-Bold.woff2") format("woff2"),
-    url("../fonts/static/PretendardJP-Bold.woff") format("woff");
+  src: local("Pretendard JP Bold"), url("../fonts/static/PretendardJP-Bold.woff2") format("woff2"), url("../fonts/static/PretendardJP-Bold.woff") format("woff");
 }
 @font-face {
   font-family: "Pretendard JP";
   font-weight: 500;
   font-display: swap;
-  src: local("Pretendard JP Medium"),
-    url("../fonts/static/PretendardJP-Medium.woff2") format("woff2"),
+  src: local("Pretendard JP Medium"), url("../fonts/static/PretendardJP-Medium.woff2") format("woff2"),
     url("../fonts/static/PretendardJP-Medium.woff") format("woff");
 }
 @font-face {
@@ -179,9 +177,8 @@
     Layout
 */
 body {
-  font-family: "Pretendard JP", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: "Pretendard JP", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   background: var(--gray);
   line-height: var(--line-height);
   letter-spacing: var(--letter-basic);
@@ -2014,8 +2011,8 @@ button:focus {
   background: #f0f0f0;
   transition: none !important;
 }
-.notice-style .btn:focus, 
-.notice-style .btn:active, 
+.notice-style .btn:focus,
+.notice-style .btn:active,
 .notice-style .btn:focus-visible,
 .notice-style .btn:focus-within {
   border: 0 !important;
@@ -2905,7 +2902,6 @@ button:focus {
   gap: 0 !important;
 }
 
-
 /* 2025-05 신규 수정/추가 */
 /* width */
 .w220 {
@@ -3101,7 +3097,7 @@ button:focus {
   border: 0.1rem solid var(--black);
 }
 /* 모달 컨택 메모 이력 */
-.memo-history, 
+.memo-history,
 .memo-history li {
   display: flex;
   flex-direction: column;
@@ -3120,15 +3116,8 @@ button:focus {
   position: relative;
 }
 .msg-wrap textarea {
-  height: 10rem;
-  margin-top: 3.8rem;
-  border: none !important;
-}
-.msg-wrap textarea:focus,
-.msg-wrap textarea:focus-visible,
-.msg-wrap textarea:hover {
-  border: none !important;
-  border-color: transparent;
+  height: 12rem;
+  padding-top: 3.8rem;
 }
 .msg-wrap .msg-type {
   position: absolute;

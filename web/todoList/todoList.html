@@ -1420,6 +1420,7 @@
         }
       };
 
+      // 특문
       document.querySelectorAll(".sms-symbol-list .symbol-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
           const textarea = document.getElementById("smsContentInput");
@@ -1439,6 +1440,7 @@
             textarea.value += symbol;
             textarea.focus();
           }
+          updateSmsMmsState()
         });
       });
 
@@ -1503,47 +1505,38 @@
       // e : 퍼블 화면 테스트 스크립트
     });
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const textarea = document.getElementById("smsContentInput");
-      const counter = document.querySelector(".counter .current");
-      const smsBadge = document.querySelector(".badge-sms");
-      const mmsBadge = document.querySelector(".badge-mms");
+    const textarea = document.getElementById("smsContentInput");
+    const counter = document.querySelector(".msg-wrap .counter .current");
+    const smsBadge = document.querySelector(".msg-wrap .badge-sms");
+    const mmsBadge = document.querySelector(".msg-wrap .badge-mms");
 
-      textarea.addEventListener("input", () => {
-        const value = textarea.value;
-        const byteLength = getByteLength(value);
-        counter.textContent = byteLength;
+    function updateSmsMmsState() {
+      const value = textarea.value;
+      const byteLength = new TextEncoder().encode(value).length;
+      counter.textContent = value.length;
 
-        if (byteLength > 80) {
-          mmsBadge.classList.add("active");
-          smsBadge.classList.remove("active");
-        } else {
-          smsBadge.classList.add("active");
-          mmsBadge.classList.remove("active");
-        }
-      });
+      console.log(value.length)
 
-      // 바이트 계산 함수 (UTF-8 기준)
-      function getByteLength(str) {
-        let byte = 0;
-        for (let i = 0; i < str.length; i++) {
-          const ch = str.charCodeAt(i);
-          if (ch <= 0x007f) byte += 1; // 영문자, 숫자, 특수문자
-          else if (ch <= 0x07ff) byte += 2;
-          else if (ch <= 0xffff) byte += 3; // 한글 포함
-          else byte += 4;
-        }
-        return byte;
+      if (byteLength > 80) {
+        mmsBadge.classList.add("active");
+        smsBadge.classList.remove("active");
+      } else {
+        smsBadge.classList.add("active");
+        mmsBadge.classList.remove("active");
       }
+    }
 
-      document.body.addEventListener("click", (e) => {
-        if (e.target.closest(".btn-clear")) {
-          textarea.value = "";
-          counter.textContent = "0";
-          smsBadge.classList.add("active");
-          mmsBadge.classList.remove("active");
-        }
-      });
+    textarea.addEventListener("input", () => {
+      updateSmsMmsState()
+    });
+
+    document.body.addEventListener("click", (e) => {
+      if (e.target.closest(".btn-clear")) {
+        textarea.value = "";
+        counter.textContent = "0";
+        smsBadge.classList.add("active");
+        mmsBadge.classList.remove("active");
+      }
     });
   </script>
 </html>
