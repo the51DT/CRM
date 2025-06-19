@@ -1146,7 +1146,7 @@
                   <div class="modal-footer">
                     <div class="d-flex gap-08">
                       <div class="col-auto">
-                        <button type="button" class="btn btn-outline-dark NonRole">취소</button>
+                        <button type="button" class="btn btn-outline-dark NonRole" onclick="resetSmsForm()" >초기화</button>
                       </div>
                       <div class="col">
                         <button type="button" class="btn btn-dark w100p updateBtn" onclick="alertPubTest3()">발송</button>
@@ -1502,41 +1502,57 @@
           ShowParentModal(lastSmsSendTrigger);
         }
       });
+
+      // SMS, MMS 구분
+      const textarea = document.getElementById("smsContentInput");
+      const counter = document.querySelector(".msg-wrap .counter .current");
+      const smsBadge = document.querySelector(".msg-wrap .badge-sms");
+      const mmsBadge = document.querySelector(".msg-wrap .badge-mms");
+  
+      function updateSmsMmsState() {
+        const value = textarea.value;
+        const byteLength = new TextEncoder().encode(value).length;
+        counter.textContent = value.length;
+        if (byteLength > 80) {
+          mmsBadge.classList.add("active");
+          smsBadge.classList.remove("active");
+        } else {
+          smsBadge.classList.add("active");
+          mmsBadge.classList.remove("active");
+        }
+      }
+  
+      textarea.addEventListener("input", () => {
+        updateSmsMmsState()
+      });
+  
+      document.body.addEventListener("click", (e) => {
+        if (e.target.closest(".btn-clear")) {
+          textarea.value = "";
+          counter.textContent = "0";
+          smsBadge.classList.add("active");
+          mmsBadge.classList.remove("active");
+        }
+      });
+
+      // SMS 발송 폼 초기화
+      function resetSmsForm() {
+        const smsModal = document.getElementById("smsSend");
+        smsModal.querySelectorAll("input, textarea").forEach(el => {
+          el.value = "";
+        });
+        const counter = smsModal.querySelector(".msg-wrap .counter .current");
+        if (counter) counter.textContent = "0";
+        const smsBadge = smsModal.querySelector(".msg-wrap .badge-sms");
+        const mmsBadge = smsModal.querySelector(".msg-wrap .badge-mms");
+        if (smsBadge && mmsBadge) {
+          smsBadge.classList.add("active");
+          mmsBadge.classList.remove("active");
+        }
+      }
+      window.resetSmsForm = resetSmsForm;
       // e : 퍼블 화면 테스트 스크립트
     });
 
-    const textarea = document.getElementById("smsContentInput");
-    const counter = document.querySelector(".msg-wrap .counter .current");
-    const smsBadge = document.querySelector(".msg-wrap .badge-sms");
-    const mmsBadge = document.querySelector(".msg-wrap .badge-mms");
-
-    function updateSmsMmsState() {
-      const value = textarea.value;
-      const byteLength = new TextEncoder().encode(value).length;
-      counter.textContent = value.length;
-
-      console.log(value.length)
-
-      if (byteLength > 80) {
-        mmsBadge.classList.add("active");
-        smsBadge.classList.remove("active");
-      } else {
-        smsBadge.classList.add("active");
-        mmsBadge.classList.remove("active");
-      }
-    }
-
-    textarea.addEventListener("input", () => {
-      updateSmsMmsState()
-    });
-
-    document.body.addEventListener("click", (e) => {
-      if (e.target.closest(".btn-clear")) {
-        textarea.value = "";
-        counter.textContent = "0";
-        smsBadge.classList.add("active");
-        mmsBadge.classList.remove("active");
-      }
-    });
   </script>
 </html>
