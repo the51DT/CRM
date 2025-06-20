@@ -5,7 +5,7 @@ const fileList = [
     "depth1": "오늘의 할 일",
     "depth2": "오늘의 할 일",
     "depth3": "",
-    "lastModified": "2025-06-19",
+    "lastModified": "2025-06-20",
     "version": "1.2",
     "state": "완료",
     "remark": "수정/추가"
@@ -71,7 +71,7 @@ const fileList = [
     "depth1": "고객 관리",
     "depth2": "고객 정보 관리",
     "depth3": "",
-    "lastModified": "2025-06-12",
+    "lastModified": "2025-06-20",
     "version": "1.2",
     "state": "완료",
     "remark": "수정/추가"
