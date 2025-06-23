@@ -1146,7 +1146,7 @@
                   <div class="modal-footer">
                     <div class="d-flex gap-08">
                       <div class="col-auto">
-                        <button type="button" class="btn btn-outline-dark NonRole" onclick="resetSmsForm()" >초기화</button>
+                        <button type="button" class="btn btn-outline-dark NonRole" onclick="resetSmsForm()">초기화</button>
                       </div>
                       <div class="col">
                         <button type="button" class="btn btn-dark w100p updateBtn" onclick="alertPubTest3()">발송</button>
@@ -1186,7 +1186,14 @@
                             <th>가입 번호</th>
                             <td>
                               <div class="input-form">
-                                <input type="text" id="subscriberNumberInput" name="subscriberNumber" placeholder="숫자만 입력해 주세요" value="123211258412" disabled />
+                                <input
+                                  type="text"
+                                  id="subscriberNumberInput"
+                                  name="subscriberNumber"
+                                  placeholder="숫자만 입력해 주세요"
+                                  value="123211258412"
+                                  disabled
+                                />
                               </div>
                             </td>
                           </tr>
@@ -1211,7 +1218,7 @@
                             <td>
                               <!-- error 경우 error 클래스 추가 -->
                               <div class="input-form">
-                                <textarea id="careDetailsInput" name="careDetails" placeholder="Care 상세 현황을 입력해 주세요" maxlength="500"></textarea>
+                                <textarea id="careDetailsInput" name="careDetails" placeholder="고객 메모를 입력해 주세요" maxlength="500"></textarea>
                                 <div class="counter"><span class="current">0</span>/500</div>
                               </div>
                             </td>
@@ -1222,16 +1229,16 @@
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
-                                    <div class="start-date1 input-group datepicker w-auto" data-target-input="nearest">
+                                    <div class="start-date4 input-group datepicker w-auto" data-target-input="nearest">
                                       <input
                                         type="text"
                                         class="form-control datetimepicker-input"
-                                        data-target=".start-date1"
+                                        data-target=".start-date4"
                                         placeholder="날짜"
-                                        id="lastContactDateInput"
-                                        name="lastContactDate"
+                                        id="visitHopeDateInput"
+                                        name="visitHopeDate"
                                       />
-                                      <div class="input-group-append" data-target=".start-date1" data-toggle="datetimepicker">
+                                      <div class="input-group-append" data-target=".start-date4" data-toggle="datetimepicker">
                                         <button class="input-group-text">
                                           <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                         </button>
@@ -1276,16 +1283,16 @@
                               <div class="row">
                                 <div class="col-auto">
                                   <div class="date-picker-group w200">
-                                    <div class="start-date2 input-group datepicker w-auto" data-target-input="nearest">
+                                    <div class="start-date5 input-group datepicker w-auto" data-target-input="nearest">
                                       <input
                                         type="text"
                                         class="form-control datetimepicker-input"
-                                        data-target=".start-date2"
+                                        data-target=".start-date5"
                                         placeholder="날짜"
-                                        id="visitPlanDateInput"
-                                        name="visitPlanDate"
+                                        id="faultOccurrenceDateInput"
+                                        name="faultOccurrenceDate"
                                       />
-                                      <div class="input-group-append" data-target=".start-date2" data-toggle="datetimepicker">
+                                      <div class="input-group-append" data-target=".start-date5" data-toggle="datetimepicker">
                                         <button class="input-group-text">
                                           <img src="/assets/images/common/icon_datepicker.png" alt="달력 이미지" />
                                         </button>
@@ -1591,7 +1598,7 @@
             textarea.value += symbol;
             textarea.focus();
           }
-          updateSmsMmsState()
+          updateSmsMmsState();
         });
       });
 
@@ -1614,44 +1621,79 @@
       //   backdrop: false,
       // });
 
-      let lastProcessHistoryTrigger = null;
-      let lastSmsSendTrigger = null;
-      // 중간 처리 이력 버튼 이벤트
-      document.querySelectorAll('[data-bs-target="#processHistory"]').forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          lastProcessHistoryTrigger = btn;
+      // let lastProcessHistoryTrigger = null;
+      // let lastSmsSendTrigger = null;
+      // let lastasPublisTrigger = null;
+      // // 중간 처리 이력 버튼 이벤트
+      // document.querySelectorAll('[data-bs-target="#processHistory"]').forEach((btn) => {
+      //   btn.addEventListener("click", function (e) {
+      //     lastProcessHistoryTrigger = btn;
+      //   });
+      // });
+      // // SMS 발송 버튼 이벤트
+      // document.querySelectorAll('[data-bs-target="#smsSend"]').forEach((btn) => {
+      //   btn.addEventListener("click", function (e) {
+      //     lastSmsSendTrigger = btn;
+      //   });
+      // });
+      // // as 발행
+      // document.querySelectorAll('[data-bs-target="#asPublish"]').forEach((btn) => {
+      //   btn.addEventListener("click", function (e) {
+      //     lastasPublisTrigger = btn;
+      //   });
+      // });
+      // // 모달 닫힐 때 이벤트
+      // const processHistoryModal = document.getElementById("processHistory");
+      // const smsSendModal = document.getElementById("smsSend");
+      // const asPublishModal = document.getElementById("asPublish");
+      // const ShowParentModal = (id) => {
+      //   const parentModal = id.closest(".modal");
+      //   if (parentModal && parentModal.id) {
+      //     const modalEl = document.getElementById(parentModal.id);
+      //     if (modalEl) {
+      //       const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+      //       modal.show();
+      //     }
+      //   }
+      // };
+      // // 중간 처리 이력
+      // processHistoryModal.addEventListener("hidden.bs.modal", function () {
+      //   if (lastProcessHistoryTrigger) {
+      //     ShowParentModal(lastProcessHistoryTrigger);
+      //   }
+      // });
+      // // SMS 발송
+      // smsSendModal.addEventListener("hidden.bs.modal", function () {
+      //   if (lastSmsSendTrigger) {
+      //     ShowParentModal(lastSmsSendTrigger);
+      //   }
+      // });
+      // // as 발행
+      // asPublishModal.addEventListener("hidden.bs.modal", function () {
+      //   if (lastasPublisTrigger) {
+      //     ShowParentModal(lastasPublisTrigger);
+      //   }
+      // });
+
+      // 트리거 저장
+      const lastTrigger = {};
+      // 버튼 클릭 시 트리거 저장
+      ["processHistory", "smsSend", "asPublish"].forEach((id) => {
+        document.querySelectorAll(`[data-bs-target="#${id}"]`).forEach((btn) => {
+          btn.addEventListener("click", () => {
+            lastTrigger[id] = btn;
+          });
         });
-      });
-      // SMS 발송 버튼 이벤트
-      document.querySelectorAll('[data-bs-target="#smsSend"]').forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          lastSmsSendTrigger = btn;
-        });
-      });
-      // 모달 닫힐 때 이벤트
-      const processHistoryModal = document.getElementById("processHistory");
-      const smsSendModal = document.getElementById("smsSend");
-      const ShowParentModal = (id) => {
-        const parentModal = id.closest(".modal");
-        if (parentModal && parentModal.id) {
-          const modalEl = document.getElementById(parentModal.id);
-          if (modalEl) {
-            const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-            modal.show();
+        const modal = document.getElementById(id);
+        modal.addEventListener("hidden.bs.modal", () => {
+          const trigger = lastTrigger[id];
+          if (trigger) {
+            const parentModal = trigger.closest(".modal");
+            if (parentModal) {
+              bootstrap.Modal.getOrCreateInstance(parentModal).show();
+            }
           }
-        }
-      };
-      // 중간 처리 이력
-      processHistoryModal.addEventListener("hidden.bs.modal", function () {
-        if (lastProcessHistoryTrigger) {
-          ShowParentModal(lastProcessHistoryTrigger);
-        }
-      });
-      // SMS 발송
-      smsSendModal.addEventListener("hidden.bs.modal", function () {
-        if (lastSmsSendTrigger) {
-          ShowParentModal(lastSmsSendTrigger);
-        }
+        });
       });
 
       // SMS, MMS 구분
@@ -1659,7 +1701,7 @@
       const counter = document.querySelector(".msg-wrap .counter .current");
       const smsBadge = document.querySelector(".msg-wrap .badge-sms");
       const mmsBadge = document.querySelector(".msg-wrap .badge-mms");
-  
+
       function updateSmsMmsState() {
         const value = textarea.value;
         const byteLength = new TextEncoder().encode(value).length;
@@ -1672,11 +1714,11 @@
           mmsBadge.classList.remove("active");
         }
       }
-  
+
       textarea.addEventListener("input", () => {
-        updateSmsMmsState()
+        updateSmsMmsState();
       });
-  
+
       document.body.addEventListener("click", (e) => {
         if (e.target.closest(".btn-clear")) {
           textarea.value = "";
@@ -1689,7 +1731,7 @@
       // SMS 발송 폼 초기화
       function resetSmsForm() {
         const smsModal = document.getElementById("smsSend");
-        smsModal.querySelectorAll("input, textarea").forEach(el => {
+        smsModal.querySelectorAll("input, textarea").forEach((el) => {
           el.value = "";
         });
         const counter = smsModal.querySelector(".msg-wrap .counter .current");
@@ -1704,6 +1746,5 @@
       window.resetSmsForm = resetSmsForm;
       // e : 퍼블 화면 테스트 스크립트
     });
-
   </script>
 </html>
