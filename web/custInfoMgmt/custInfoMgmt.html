@@ -58,8 +58,11 @@
                     <td id="searchEntrNo">
                       <div class="d-flex align-items-center gap-2">
                         <span>************8456</span>
-                        <!-- 작은 버튼 임시 -->
                         <button type="button" class="btn btn-outline-dark ml-2">유선 CEM 조회</button>
+                        <!-- 중간 처리 이력 있을 경우 활성 -->
+                        <!-- <button type="button" class="btn btn-outline-dark ml-2">중간 처리 이력</button> -->
+                        <!-- 중간 처리 이력 없을 경우 비활성 -->
+                        <button type="button" class="btn btn-outline-dark ml-2" disabled>중간 처리 이력</button>
                       </div>
                     </td>
                   </tr>
@@ -96,7 +99,7 @@
                 </tbody>
               </table>
             </section>
-            <section class="row">
+            <section class="row" style="display: none;">
               <h3>중간 처리 이력</h3>
               <table class="dataTable row-border hover" id="pubTable1">
                 <thead>
