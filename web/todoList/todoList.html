@@ -1752,36 +1752,30 @@
       window.resetSmsForm = resetSmsForm;
       // e : 퍼블 화면 테스트 스크립트
 
-      
-      // 모달일때 드롭다운 위치
-      document.querySelectorAll(".modal-content .custom-select-trigger").forEach(function (trigger) {
+      // 모달 내 드롭다운 위치 조정
+      const setWidgetPosition = (trigger, selector) => {
+        const modalContent = trigger.closest(".modal-content");
+        const modalContentHeight = modalContent.offsetHeight / 2;
+        const triggerRect = trigger.getBoundingClientRect();
+        if (triggerRect.top > modalContentHeight) {
+          setTimeout(() => {
+            const widget = trigger.parentElement.querySelector(selector);
+            if (widget) {
+              widget.style.inset = "auto auto calc(100% + 9px) 0";
+            }
+          }, 0);
+        }
+      };
+      // custom-select-trigger
+      document.querySelectorAll(".modal-content .custom-select-trigger").forEach((trigger) => {
         trigger.addEventListener("click", () => {
-          const modalContent = trigger.closest(".modal-content");
-          const modalContentHeight = modalContent.offsetHeight / 2;
-          const triggerRect = trigger.getBoundingClientRect();
-          if (triggerRect.top > modalContentHeight) {
-            setTimeout(() => {
-              const widget = trigger.parentElement.querySelector(".custom-options");
-              if (widget) {
-                widget.style.inset = "auto auto calc(100% + 9px) 0";
-              }
-            }, 0);
-          }
-        })
+          setWidgetPosition(trigger, ".custom-options");
+        });
       });
-      document.querySelectorAll(".modal-content .datepicker").forEach(function (picker) {
-        picker.addEventListener("click", () => {
-          const modalContent = picker.closest(".modal-content");
-          const modalContentHeight = modalContent.offsetHeight / 2;
-          const inputRect = picker.getBoundingClientRect();
-          if (inputRect.top > modalContentHeight) {
-            setTimeout(() => {
-              const widget = picker.querySelector(".bootstrap-datetimepicker-widget");
-              if (widget) {
-                widget.style.inset = "auto auto calc(100% + 9px) 0";
-              }
-            }, 0);
-          }
+      // datepicker
+      document.querySelectorAll(".modal-content .datepicker").forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          setWidgetPosition(trigger, ".bootstrap-datetimepicker-widget");
         });
       });
 
