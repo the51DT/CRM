@@ -71,7 +71,7 @@ const fileList = [
     "depth1": "고객 관리",
     "depth2": "고객 정보 관리",
     "depth3": "",
-    "lastModified": "2025-06-23",
+    "lastModified": "2025-06-24",
     "version": "1.2",
     "state": "완료",
     "remark": "수정/추가"
