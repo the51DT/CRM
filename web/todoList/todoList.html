@@ -1185,7 +1185,7 @@
                           <tr>
                             <th>가입 번호</th>
                             <td>
-                              <div class="input-form">
+                              <div class="input-form w220">
                                 <input
                                   type="text"
                                   id="subscriberNumberInput"
@@ -1200,7 +1200,7 @@
                           <tr>
                             <th>고객명</th>
                             <td>
-                              <div class="input-form">
+                              <div class="input-form w220">
                                 <input type="text" id="customerNameInput" name="customerName" placeholder="고객명을 입력해 주세요" value="" />
                               </div>
                             </td>
@@ -1208,7 +1208,7 @@
                           <tr>
                             <th>전화 번호</th>
                             <td>
-                              <div class="input-form">
+                              <div class="input-form w220">
                                 <input type="text" id="phoneNumberInput" name="phoneNumber" placeholder="숫자만 입력해 주세요" value="" />
                               </div>
                             </td>
@@ -1218,13 +1218,19 @@
                             <td>
                               <!-- error 경우 error 클래스 추가 -->
                               <div class="input-form">
-                                <textarea id="careDetailsInput" name="careDetails" placeholder="고객 메모를 입력해 주세요" maxlength="500"></textarea>
+                                <textarea
+                                  id="careDetailsInput"
+                                  name="careDetails"
+                                  placeholder="고객 메모를 입력해 주세요"
+                                  maxlength="500"
+                                  style="height: 100px"
+                                ></textarea>
                                 <div class="counter"><span class="current">0</span>/500</div>
                               </div>
                             </td>
                           </tr>
                           <tr>
-                            <th>방문희망 일자</th>
+                            <th>방문 희망 일시</th>
                             <td>
                               <div class="row">
                                 <div class="col-auto">
@@ -1278,7 +1284,7 @@
                             </td>
                           </tr>
                           <tr>
-                            <th>장애발생 일시</th>
+                            <th>장애 발생 일시</th>
                             <td>
                               <div class="row">
                                 <div class="col-auto">
@@ -1745,6 +1751,40 @@
       }
       window.resetSmsForm = resetSmsForm;
       // e : 퍼블 화면 테스트 스크립트
+
+      
+      // 모달일때 드롭다운 위치
+      document.querySelectorAll(".modal-content .custom-select-trigger").forEach(function (trigger) {
+        trigger.addEventListener("click", () => {
+          const modalContent = trigger.closest(".modal-content");
+          const modalContentHeight = modalContent.offsetHeight / 2;
+          const triggerRect = trigger.getBoundingClientRect();
+          if (triggerRect.top > modalContentHeight) {
+            setTimeout(() => {
+              const widget = trigger.parentElement.querySelector(".custom-options");
+              if (widget) {
+                widget.style.inset = "auto auto calc(100% + 9px) 0";
+              }
+            }, 0);
+          }
+        })
+      });
+      document.querySelectorAll(".modal-content .datepicker").forEach(function (picker) {
+        picker.addEventListener("click", () => {
+          const modalContent = picker.closest(".modal-content");
+          const modalContentHeight = modalContent.offsetHeight / 2;
+          const inputRect = picker.getBoundingClientRect();
+          if (inputRect.top > modalContentHeight) {
+            setTimeout(() => {
+              const widget = picker.querySelector(".bootstrap-datetimepicker-widget");
+              if (widget) {
+                widget.style.inset = "auto auto calc(100% + 9px) 0";
+              }
+            }, 0);
+          }
+        });
+      });
+
     });
   </script>
 </html>
