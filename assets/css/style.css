@@ -3141,4 +3141,7 @@ button:focus {
 .msg-type .badge.active {
   display: inline-flex;
 }
+.select-read-only .custom-select-trigger {
+  color: #5a5a5a !important;
+}
 /* // 2025-05 신규 수정/추가 */
