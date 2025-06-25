@@ -3141,7 +3141,27 @@ button:focus {
 .msg-type .badge.active {
   display: inline-flex;
 }
+
+/* select-read-only  */
 .select-read-only .custom-select-trigger {
   color: #5a5a5a !important;
+}
+
+/* 모달 modal-dialog-scrollable 스크롤 위치 수정 */
+.modal .modal-dialog.modal-dialog-scrollable {
+  height: 300px !important;
+}
+.modal .modal-dialog.modal-dialog-scrollable .modal-content {
+  padding-right: 2rem;
+}
+.modal .modal-dialog.modal-dialog-scrollable .modal-header,
+.modal .modal-dialog.modal-dialog-scrollable .modal-footer {
+  margin-right: 2rem;
+}
+.modal .modal-dialog.modal-dialog-scrollable .modal-footer.notice-style {
+  margin-right: -2rem !important;
+}
+.modal .modal-dialog.modal-dialog-scrollable .modal-body.uiscroll {
+  padding-right: 2rem;
 }
 /* // 2025-05 신규 수정/추가 */
