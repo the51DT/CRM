@@ -263,7 +263,7 @@
                           중간 처리 이력
                         </button>
                         <button type="button" class="btn btn-ico btn-sms-send" data-bs-toggle="modal" data-bs-target="#smsSend">SMS 발송</button>
-                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish">AS 발행</button>
+                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish">AS Task 발행</button>
                       </div>
                       <table class="form-table">
                         <colgroup>
@@ -500,11 +500,11 @@
                               <ul class="memo-history">
                                 <li>
                                   <span>2025-04-01 12:59</span>
-                                  <strong>AS 발행</strong>
+                                  <strong>AS Task 발행</strong>
                                 </li>
                                 <li>
                                   <span>2025-04-01 12:59</span>
-                                  <strong>AS 발행</strong>
+                                  <strong>AS Task 발행</strong>
                                 </li>
                               </ul>
                             </td>
@@ -551,7 +551,7 @@
                           중간 처리 이력
                         </button>
                         <button type="button" class="btn btn-ico btn-sms-send" onclick="alertPubTest2()">SMS 발송</button>
-                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish" disabled>AS 발행</button>
+                        <button type="button" class="btn btn-ico btn-receipt" data-bs-toggle="modal" data-bs-target="#asPublish" disabled>AS Task 발행</button>
                       </div>
                       <table class="form-table">
                         <colgroup>
@@ -622,11 +622,11 @@
                               <ul class="memo-history">
                                 <li>
                                   <span>2025-04-01 12:59</span>
-                                  <strong>AS 발행</strong>
+                                  <strong>AS Task 발행</strong>
                                 </li>
                                 <li>
                                   <span>2025-04-01 12:59</span>
-                                  <strong>AS 발행</strong>
+                                  <strong>AS Task 발행</strong>
                                 </li>
                               </ul>
                             </td>
@@ -1158,7 +1158,7 @@
             </div>
             <!-- // SMS 발송 모달 -->
 
-            <!-- AS 발행 모달 -->
+            <!-- AS Task 발행 모달 -->
             <div
               class="modal fade"
               id="asPublish"
@@ -1349,7 +1349,7 @@
                 </div>
               </div>
             </div>
-            <!-- // AS 발행 모달 -->
+            <!-- // AS Task 발행 모달 -->
           </div>
         </div>
         <!-- // contents -->
@@ -1642,7 +1642,7 @@
       //     lastSmsSendTrigger = btn;
       //   });
       // });
-      // // as 발행
+      // // AS Task 발행
       // document.querySelectorAll('[data-bs-target="#asPublish"]').forEach((btn) => {
       //   btn.addEventListener("click", function (e) {
       //     lastasPublisTrigger = btn;
@@ -1674,7 +1674,7 @@
       //     ShowParentModal(lastSmsSendTrigger);
       //   }
       // });
-      // // as 발행
+      // // AS Task 발행
       // asPublishModal.addEventListener("hidden.bs.modal", function () {
       //   if (lastasPublisTrigger) {
       //     ShowParentModal(lastasPublisTrigger);
