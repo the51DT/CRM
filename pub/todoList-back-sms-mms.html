@@ -1049,9 +1049,13 @@
                             <th>내용 입력</th>
                             <td>
                               <!-- error 경우 error 클래스 추가 -->
-                              <div class="input-form">
-                                <textarea id="smsContentInput" name="smsContent" placeholder="SMS 발송 내용을 입력해 주세요"></textarea>
-                                <div class="counter"><span class="current">0</span>/80</div>
+                              <div class="input-form msg-wrap">
+                                <div class="msg-type">
+                                  <button class="badge badge-sms active">SMS</button>
+                                  <button class="badge badge-mms">MMS</button>
+                                </div>
+                                <textarea id="smsContentInput" name="smsContent" placeholder="SMS 발송 내용을 입력해 주세요" maxlength="2000"></textarea>
+                                <div class="counter"><span class="current">0</span>/2,000</div>
                               </div>
                               <!-- 특수문자 입력 영역 -->
                               <div class="sms-symbol-list">
@@ -1700,17 +1704,21 @@
 
       // SMS, MMS 구분
       const textarea = document.getElementById("smsContentInput");
-      const counter = document.querySelector("#smsSend .counter .current");
+      const counter = document.querySelector(".msg-wrap .counter .current");
+      const smsBadge = document.querySelector(".msg-wrap .badge-sms");
+      const mmsBadge = document.querySelector(".msg-wrap .badge-mms");
 
       function updateSmsMmsState() {
         const value = textarea.value;
         const byteLength = new TextEncoder().encode(value).length;
-        counter.textContent = byteLength;
-        // if (byteLength > 80) {
-        //   smsContentInput.disabled = true;
-        // } else {
-        //   smsContentInput.disabled = false;
-        // }
+        counter.textContent = value.length;
+        if (byteLength > 80) {
+          mmsBadge.classList.add("active");
+          smsBadge.classList.remove("active");
+        } else {
+          smsBadge.classList.add("active");
+          mmsBadge.classList.remove("active");
+        }
       }
 
       textarea.addEventListener("input", () => {
@@ -1721,6 +1729,8 @@
         if (e.target.closest(".btn-clear")) {
           textarea.value = "";
           counter.textContent = "0";
+          smsBadge.classList.add("active");
+          mmsBadge.classList.remove("active");
         }
       });
 
@@ -1730,9 +1740,17 @@
         smsModal.querySelectorAll("input, textarea").forEach((el) => {
           el.value = "";
         });
+        const counter = smsModal.querySelector(".msg-wrap .counter .current");
         if (counter) counter.textContent = "0";
+        const smsBadge = smsModal.querySelector(".msg-wrap .badge-sms");
+        const mmsBadge = smsModal.querySelector(".msg-wrap .badge-mms");
+        if (smsBadge && mmsBadge) {
+          smsBadge.classList.add("active");
+          mmsBadge.classList.remove("active");
+        }
       }
       window.resetSmsForm = resetSmsForm;
+      // e : 퍼블 화면 테스트 스크립트
 
       // 모달 내 드롭다운 위치 조정
       const setWidgetPosition = (trigger, selector) => {
