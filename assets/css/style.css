@@ -3161,4 +3161,14 @@ button:focus {
 .modal .modal-dialog.modal-dialog-scrollable .modal-body.uiscroll {
   padding-right: 1.6rem;
 }
+.modal .table-scroll-y {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-right: -16px !important;
+  padding-right: 10px !important;
+}
+.modal .row .table-title { 
+  display: flex;
+  align-items: center;
+}
 /* // 2025-05 신규 수정/추가 */

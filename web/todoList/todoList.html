@@ -1021,6 +1021,210 @@
             </div>
             <!-- // 중간 처리 이력 모달 -->
 
+            <!-- 중간 처리 내역 모달 -->
+            <div
+              class="modal fade"
+              id="processHistoryDetail"
+              tabindex="-1"
+              aria-labelledby="processHistoryDetail"
+              aria-hidden="true"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+            >
+              <div class="modal-dialog modal-dialog-scrollable modal-xxlg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body uiscroll">
+                    <h1 class="modal-title" id="processHistoryDetail">중간 처리 내역</h1>
+                    <section class="row">
+                      <div class="table-title">
+                        <h2>동일 처리 타스크</h2>
+                        <span>총 5건</span>
+                      </div>
+                      <table class="dataTable row-border hover clickable-row" id="pubTable3">
+                        <colgroup>
+                          <col style="width: 100px" />
+                          <col style="width: 140px" />
+                          <col style="width: 140px" />
+                          <col style="width: 140px" />
+                          <col style="width: auto" />
+                          <col style="width: 100px" />
+                          <col style="width: 100px" />
+                          <col style="width: 100px" />
+                        </colgroup>
+
+                        <thead>
+                          <tr>
+                            <th>타스크 구분</th>
+                            <th>타스크 번호</th>
+                            <th>가입 번호</th>
+                            <th>가입신청 번호</th>
+                            <th>상품명</th>
+                            <th>서비스명</th>
+                            <th>신청 구분</th>
+                            <th>타스크 상태</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>개통</td>
+                            <td>5352346353</td>
+                            <td>548962548632</td>
+                            <td>548962548632</td>
+                            <td>프리미엄 VOD</td>
+                            <td>U+인터넷</td>
+                            <td>변경</td>
+                            <td>완료</td>
+                          </tr>
+                          <tr>
+                            <td>개통</td>
+                            <td>5352346353</td>
+                            <td>548962548632</td>
+                            <td>548962548632</td>
+                            <td>우리집돌봄이Pet</td>
+                            <td>U+인터넷</td>
+                            <td>변경</td>
+                            <td>완료</td>
+                          </tr>
+                          <tr>
+                            <td>개통</td>
+                            <td>5352346353</td>
+                            <td>548962548632</td>
+                            <td>548962548632</td>
+                            <td>일이삼사오육칠팔구십일이...</td>
+                            <td>U+인터넷</td>
+                            <td>변경</td>
+                            <td>완료</td>
+                          </tr>
+                          <tr>
+                            <td>개통</td>
+                            <td>5352346353</td>
+                            <td>548962548632</td>
+                            <td>548962548632</td>
+                            <td>상품명 노출</td>
+                            <td>U+인터넷</td>
+                            <td>변경</td>
+                            <td>완료</td>
+                          </tr>
+                          <tr>
+                            <td>개통</td>
+                            <td>5352346353</td>
+                            <td>548962548632</td>
+                            <td>548962548632</td>
+                            <td>상품명 노출</td>
+                            <td>U+인터넷</td>
+                            <td>변경</td>
+                            <td>완료</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                    <section class="row table-scroll-y">
+                      <div class="table-title">
+                        <h2>중간 처리 이력</h2>
+                        <span>총 8건</span>
+                      </div>
+                      <table class="dataTable row-border hover clickable-row" id="pubTable4">
+                        <thead>
+                          <tr>
+                            <th>번호</th>
+                            <th>VOC</th>
+                            <th>처리 유형</th>
+                            <th>처리 일시</th>
+                            <th>처리 내역</th>
+                            <th>처리 부서</th>
+                            <th>처리자</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>8</td>
+                            <td>브이오씨</td>
+                            <td>AS/개통 완료 알림 톡</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>CCTV 설치 위치 : 거실</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                          <tr>
+                            <td>7</td>
+                            <td>브이오씨</td>
+                            <td>최종 개통 완료 처리</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>AS/개통 완료 고객 알림 톡</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>브이오씨</td>
+                            <td>개통 테스트 생성</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>일이삼사오육칠팔구십일이삼사오육칠팔...</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>브이오씨</td>
+                            <td>개통 테스트 생성</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>개통 테스트 생성</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>브이오씨</td>
+                            <td>AS/개통 완료 알림 톡</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>CCTV 설치 위치 : 거실</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>브이오씨</td>
+                            <td>최종 개통 완료 처리</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>AS/개통 완료 고객 알림 톡</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>브이오씨</td>
+                            <td>개통 테스트 생성</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>일이삼사오육칠팔구십일이삼사오육칠팔...</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>브이오씨</td>
+                            <td>개통 테스트 생성</td>
+                            <td>2025-07-26 13:45:13</td>
+                            <td>개통 테스트 생성</td>
+                            <td>TOSS</td>
+                            <td>홍길동</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </section>
+                  </div>
+                  <div class="modal-footer notice-style">
+                    <div class="d-grid">
+                      <button type="button" class="btn" id="">확인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- // 중간 처리 내역 모달 -->
+
             <!-- SMS 발송 모달 -->
             <div
               class="modal fade"
@@ -1679,6 +1883,7 @@
 
       // 트리거 저장
       const lastTrigger = {};
+      const modalRestoreBlockList = ["processHistoryDetail"];
       // 버튼 클릭 시 트리거 저장
       ["processHistory", "smsSend", "asPublish"].forEach((id) => {
         document.querySelectorAll(`[data-bs-target="#${id}"]`).forEach((btn) => {
@@ -1689,13 +1894,28 @@
         const modal = document.getElementById(id);
         modal.addEventListener("hidden.bs.modal", () => {
           const trigger = lastTrigger[id];
-          if (trigger) {
+          const isNextModalPlanned = modalRestoreBlockList.some((modalId) => {
+            const modalEl = document.getElementById(modalId);
+            return modalEl && modalEl.classList.contains("show");
+          });
+
+          if (trigger && !isNextModalPlanned) {
             const parentModal = trigger.closest(".modal");
             if (parentModal) {
               bootstrap.Modal.getOrCreateInstance(parentModal).show();
             }
           }
         });
+      });
+
+      // processHistoryDetail이 닫히면 processHistory 다시 열기
+      const processHistoryDetailModal = document.getElementById("processHistoryDetail");
+      const processHistoryModal = document.getElementById("processHistory");
+
+      processHistoryDetailModal.addEventListener("hidden.bs.modal", function () {
+        if (processHistoryModal) {
+          bootstrap.Modal.getOrCreateInstance(processHistoryModal).show();
+        }
       });
 
       // SMS, MMS 구분
@@ -1761,6 +1981,66 @@
         });
       });
 
+      // 신규 페이지 중간 처리 내역
+      function processHistoryClickEvent() {
+        const rows = document.querySelectorAll("#processHistory table tbody tr");
+        rows.forEach(function (row) {
+          row.setAttribute("data-bs-toggle", "modal");
+          row.setAttribute("data-bs-target", "#processHistoryDetail");
+          // row.addEventListener("click", function () {
+          //   console.log("클릭된 row:", this.textContent);
+          // });
+        });
+      }
+      processHistoryClickEvent();
+
+      // pubTable4 초기화
+      const table4 = $("#pubTable4").DataTable({
+        autoWidth: false,
+        searching: false,
+        responsive: true,
+        ordering: false,
+        info: false,
+        recordsTotal: false,
+        lengthChange: false,
+        paging: false,
+        columns: [
+          { data: "no", title: "번호" },
+          { data: "voc", title: "VOC" },
+          { data: "type", title: "처리 유형" },
+          { data: "date", title: "처리 일시" },
+          { data: "desc", title: "처리 내역" },
+          { data: "department", title: "처리 부서" },
+          { data: "handler", title: "처리자" },
+        ],
+      });
+
+      // 랜덤 더미 데이터 생성 함수
+      function getRandomPubTable4Data(count = 8) {
+        const types = ["개통 테스트 생성", "최종 개통 완료 처리", "AS/개통 완료 알림 톡"];
+        const descs = ["개통 테스트 생성", "AS/개통 완료 고객 알림 톡", "CCTV 설치 위치 : 거실", "일이삼사오육칠팔구십일이삼사오육칠팔..."];
+
+        return Array.from({ length: count }, (_, i) => ({
+          no: count - i,
+          voc: "브이오씨",
+          type: types[Math.floor(Math.random() * types.length)],
+          date: "2025-07-26 13:45:13",
+          desc: descs[Math.floor(Math.random() * descs.length)],
+          department: "TOSS",
+          handler: "홍길동",
+        }));
+      }
+      // pubTable3에 이벤트 바인딩
+      function pubTable3ClickEvent() {
+        const rows = document.querySelectorAll("#pubTable3 tbody tr");
+        rows.forEach(function (row) {
+          row.addEventListener("click", function () {
+            const randomData = getRandomPubTable4Data();
+            table4.clear().rows.add(randomData).draw();
+          });
+        });
+      }
+      pubTable3ClickEvent();
     });
   </script>
 </html>
