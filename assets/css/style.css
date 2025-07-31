@@ -3161,14 +3161,31 @@ button:focus {
 .modal .modal-dialog.modal-dialog-scrollable .modal-body.uiscroll {
   padding-right: 1.6rem;
 }
-.modal .table-scroll-y {
-  max-height: 200px;
-  overflow-y: auto;
+.modal .table-scroll-wrap {
+  margin-top: 6rem !important;
   margin-right: -16px !important;
+}
+.modal .table-scroll-y {
+  max-height: 205px;
+  overflow-y: auto;
   padding-right: 10px !important;
 }
-.modal .row .table-title { 
+.modal .row .table-title {
   display: flex;
   align-items: center;
+  gap: 1.6rem;
+  margin-bottom: 1.4rem;
+}
+.modal .row .table-title h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+.modal .row .table-title span {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.modal .clickable-row tr.active td {
+  background-color: #ecd5db;
 }
 /* // 2025-05 신규 수정/추가 */
