@@ -3166,9 +3166,13 @@ button:focus {
   margin-right: -16px !important;
 }
 .modal .table-scroll-y {
-  max-height: 205px;
+  max-height: 200px;
   overflow-y: auto;
   padding-right: 10px !important;
+}
+.modal .table-scroll-y thead {
+  position: sticky;
+  top: 0;
 }
 .modal .row .table-title {
   display: flex;
