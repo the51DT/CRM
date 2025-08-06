@@ -1038,87 +1038,139 @@
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="processHistoryDetail">중간 처리 내역</h1>
-                    <section class="row table-task-wrap">
+                    <section class="row table-scroll-wrap table-task-wrap">
                       <div class="table-title">
                         <h2>동일 처리 타스크</h2>
-                        <span>총 5건</span>
+                        <span>총 10건</span>
                       </div>
-                      <table class="dataTable row-border hover clickable-row" id="onlyOneActiveTable">
-                        <colgroup>
-                          <col style="width: 100px" />
-                          <col style="width: 140px" />
-                          <col style="width: 140px" />
-                          <col style="width: 140px" />
-                          <col style="width: auto" />
-                          <col style="width: 100px" />
-                          <col style="width: 100px" />
-                          <col style="width: 100px" />
-                        </colgroup>
-                        <thead>
-                          <tr>
-                            <th>타스크 구분</th>
-                            <th>타스크 번호</th>
-                            <th>가입 번호</th>
-                            <th>가입신청 번호</th>
-                            <th>상품명</th>
-                            <th>서비스명</th>
-                            <th>신청 구분</th>
-                            <th>타스크 상태</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="active">
-                            <td>개통</td>
-                            <td>5352346353</td>
-                            <td>548962548632</td>
-                            <td>548962548632</td>
-                            <td>프리미엄 VOD</td>
-                            <td>U+인터넷</td>
-                            <td>변경</td>
-                            <td>완료</td>
-                          </tr>
-                          <tr>
-                            <td>개통</td>
-                            <td>5352346353</td>
-                            <td>548962548632</td>
-                            <td>548962548632</td>
-                            <td>우리집돌봄이Pet</td>
-                            <td>U+인터넷</td>
-                            <td>변경</td>
-                            <td>완료</td>
-                          </tr>
-                          <tr>
-                            <td>개통</td>
-                            <td>5352346353</td>
-                            <td>548962548632</td>
-                            <td>548962548632</td>
-                            <td>일이삼사오육칠팔구십일이...</td>
-                            <td>U+인터넷</td>
-                            <td>변경</td>
-                            <td>완료</td>
-                          </tr>
-                          <tr>
-                            <td>개통</td>
-                            <td>5352346353</td>
-                            <td>548962548632</td>
-                            <td>548962548632</td>
-                            <td>상품명 노출</td>
-                            <td>U+인터넷</td>
-                            <td>변경</td>
-                            <td>완료</td>
-                          </tr>
-                          <tr>
-                            <td>개통</td>
-                            <td>5352346353</td>
-                            <td>548962548632</td>
-                            <td>548962548632</td>
-                            <td>상품명 노출</td>
-                            <td>U+인터넷</td>
-                            <td>변경</td>
-                            <td>완료</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                      <div class="table-scroll-y" style="max-height: 246px">
+                        <table class="dataTable row-border hover clickable-row" id="onlyOneActiveTable">
+                          <colgroup>
+                            <col style="width: 100px" />
+                            <col style="width: 140px" />
+                            <col style="width: 140px" />
+                            <col style="width: 140px" />
+                            <col style="width: auto" />
+                            <col style="width: 100px" />
+                            <col style="width: 100px" />
+                            <col style="width: 100px" />
+                          </colgroup>
+                          <thead>
+                            <tr>
+                              <th>타스크 구분</th>
+                              <th>타스크 번호</th>
+                              <th>가입 번호</th>
+                              <th>가입신청 번호</th>
+                              <th>상품명</th>
+                              <th>서비스명</th>
+                              <th>신청 구분</th>
+                              <th>타스크 상태</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="active">
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>프리미엄 VOD</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>우리집돌봄이Pet</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>일이삼사오육칠팔구십일...</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>상품명 노출</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>상품명 노출</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>상품명 노출</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>상품명 노출</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>상품명 노출</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>상품명 노출</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                            <tr>
+                              <td>개통</td>
+                              <td>5352346353</td>
+                              <td>548962548632</td>
+                              <td>548962548632</td>
+                              <td>상품명 노출</td>
+                              <td>U+인터넷</td>
+                              <td>변경</td>
+                              <td>완료</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                     <section class="row table-scroll-wrap">
                       <div class="table-title">
@@ -1126,11 +1178,10 @@
                         <span>총 20건</span>
                       </div>
                       <div class="table-scroll-y">
-                        <table class="dataTable row-border hover clickable-row" id="pubTable4">
+                        <table class="dataTable row-border hover clickable-row" id="processingHistoryTable">
                           <thead>
                             <tr>
                               <th>번호</th>
-                              <th>VOC</th>
                               <th>처리 유형</th>
                               <th>처리 일시</th>
                               <th>처리 내역</th>
@@ -1141,16 +1192,14 @@
                           <tbody>
                             <tr>
                               <td>20</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
-                              <td>CCTV 설치 위치 : 거실</td>
+                              <td>일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십...</td>
                               <td>TOSS</td>
                               <td>홍길동</td>
                             </tr>
                             <tr>
                               <td>19</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1159,7 +1208,6 @@
                             </tr>
                             <tr>
                               <td>18</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1168,7 +1216,6 @@
                             </tr>
                             <tr>
                               <td>17</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1177,7 +1224,6 @@
                             </tr>
                             <tr>
                               <td>16</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1186,7 +1232,6 @@
                             </tr>
                             <tr>
                               <td>15</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1195,7 +1240,6 @@
                             </tr>
                             <tr>
                               <td>14</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1204,7 +1248,6 @@
                             </tr>
                             <tr>
                               <td>13</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1213,7 +1256,6 @@
                             </tr>
                             <tr>
                               <td>12</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1222,7 +1264,6 @@
                             </tr>
                             <tr>
                               <td>11</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1231,7 +1272,6 @@
                             </tr>
                             <tr>
                               <td>10</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1240,7 +1280,6 @@
                             </tr>
                             <tr>
                               <td>9</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1249,7 +1288,6 @@
                             </tr>
                             <tr>
                               <td>8</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1258,7 +1296,6 @@
                             </tr>
                             <tr>
                               <td>8</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1267,7 +1304,6 @@
                             </tr>
                             <tr>
                               <td>7</td>
-                              <td>브이오씨</td>
                               <td>최종 개통 완료 처리</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>AS/개통 완료 고객 알림 톡</td>
@@ -1276,7 +1312,6 @@
                             </tr>
                             <tr>
                               <td>6</td>
-                              <td>브이오씨</td>
                               <td>개통 테스트 생성</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>일이삼사오육칠팔구십일이삼사오육칠팔...</td>
@@ -1285,7 +1320,6 @@
                             </tr>
                             <tr>
                               <td>5</td>
-                              <td>브이오씨</td>
                               <td>개통 테스트 생성</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>개통 테스트 생성</td>
@@ -1294,7 +1328,6 @@
                             </tr>
                             <tr>
                               <td>4</td>
-                              <td>브이오씨</td>
                               <td>AS/개통 완료 알림 톡</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>CCTV 설치 위치 : 거실</td>
@@ -1303,7 +1336,6 @@
                             </tr>
                             <tr>
                               <td>3</td>
-                              <td>브이오씨</td>
                               <td>최종 개통 완료 처리</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>AS/개통 완료 고객 알림 톡</td>
@@ -1312,7 +1344,6 @@
                             </tr>
                             <tr>
                               <td>2</td>
-                              <td>브이오씨</td>
                               <td>개통 테스트 생성</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>일이삼사오육칠팔구십일이삼사오육칠팔...</td>
@@ -1321,7 +1352,6 @@
                             </tr>
                             <tr>
                               <td>1</td>
-                              <td>브이오씨</td>
                               <td>개통 테스트 생성</td>
                               <td>2025-07-26 13:45:13</td>
                               <td>개통 테스트 생성</td>
@@ -2105,27 +2135,52 @@
         rows.forEach(function (row) {
           row.setAttribute("data-bs-toggle", "modal");
           row.setAttribute("data-bs-target", "#processHistoryDetail");
-          row.addEventListener("click", function() {
-            console.log(row)
+          row.addEventListener("click", function () {
             initTableScrollHeight();
           });
         });
       }
       processHistoryClickEvent();
+
       // initTableScrollHeight
       function initTableScrollHeight() {
-        const tableTask = document.querySelector(".table-task-wrap")
-        const tableScroll = document.querySelector(".table-scroll-y")
-        const tbody = tableScroll.querySelector("table tbody")
-        const space = 50 + 60 + 100 + 160;
-        setTimeout(() => {
-          const modalBody = tableScroll.closest(".modal-body").clientHeight
-          const taskHeight = tableTask.clientHeight
-          const theight = tbody.clientHeight
-          tableScroll.style.maxHeight = `calc(100vh - ${space}px - ${taskHeight}px)`
-        }, 200);
+        const windowHeight = window.innerHeight;
+        // 윈도우 높이 780 이하에서는 모달 바디 스크롤만
+        if (windowHeight < 780) {
+          const tableScrollWraps = document.querySelectorAll(".table-scroll-wrap");
+          tableScrollWraps.forEach((item) => {
+            const table = item.querySelector(".table-scroll-y");
+            table.style.maxHeight = "";
+            table.classList.remove("table-scroll-y");
+            item.classList.remove("table-scroll-wrap");
+          });
+        } else {
+          const tableTask = document.getElementById("onlyOneActiveTable").closest(".table-scroll-y");
+          const tableScroll = document.getElementById("processingHistoryTable").closest(".table-scroll-y");
+          const tbody = tableScroll.querySelector("table tbody");
+          const space = 420;
+          setTimeout(() => {
+            const modalBody = tableScroll.closest(".modal-body").clientHeight;
+            const taskHeight = tableTask.clientHeight;
+            const theight = tbody.clientHeight;
+            tableScroll.style.maxHeight = `calc(100vh - ${space}px - ${taskHeight}px)`;
+          }, 200);
+        }
+        // 윈도우 크기 체크
+        window.addEventListener("resize", () => {
+          const height = window.innerHeight;
+          const tableScrollWraps = document.querySelectorAll(".table-scroll-wrap");
+          tableScrollWraps.forEach((item) => {
+            const table = item.querySelector(".table-scroll-y");
+            if (height < 780) {
+              table?.style.maxHeight = "";
+              table?.classList.remove("table-scroll-y");
+              item.classList.remove("table-scroll-wrap");
+            }
+          });
+        });
       }
-      initTableScrollHeight();
+
       // onlyOneActiveTable
       function onlyOneActiveTableClickEvent() {
         const rows = document.querySelectorAll("#onlyOneActiveTable tbody tr");
@@ -2134,15 +2189,15 @@
             rows.forEach((r) => r.classList.remove("active"));
             row.classList.add("active");
             // 테스트용
-            const randomData = getRandomPubTable4Data();
-            table4.clear().rows.add(randomData).draw();
+            const randomData = getRandomPubTableData();
+            processingHistoryTable.clear().rows.add(randomData).draw();
           });
         });
       }
       onlyOneActiveTableClickEvent();
 
-      // pubTable4  테스트 코드
-      const table4 = $("#pubTable4").DataTable({
+      // processingHistoryTable  테스트 코드
+      const processingHistoryTable = $("#processingHistoryTable").DataTable({
         autoWidth: false,
         searching: false,
         responsive: true,
@@ -2153,7 +2208,6 @@
         paging: false,
         columns: [
           { data: "no", title: "번호" },
-          { data: "voc", title: "VOC" },
           { data: "type", title: "처리 유형" },
           { data: "date", title: "처리 일시" },
           { data: "desc", title: "처리 내역" },
@@ -2161,12 +2215,16 @@
           { data: "handler", title: "처리자" },
         ],
       });
-      function getRandomPubTable4Data(count = 23) {
+      function getRandomPubTableData(count = 25) {
         const types = ["개통 테스트 생성", "최종 개통 완료 처리", "AS/개통 완료 알림 톡"];
-        const descs = ["개통 테스트 생성", "AS/개통 완료 고객 알림 톡", "CCTV 설치 위치 : 거실", "일이삼사오육칠팔구십일이삼사오육칠팔..."];
+        const descs = [
+          "개통 테스트 생성",
+          "AS/개통 완료 고객 알림 톡",
+          "CCTV 설치 위치 : 거실",
+          "일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십...",
+        ];
         return Array.from({ length: count }, (_, i) => ({
           no: count - i,
-          voc: "브이오씨",
           type: types[Math.floor(Math.random() * types.length)],
           date: "2025-07-26 13:45:13",
           desc: descs[Math.floor(Math.random() * descs.length)],
