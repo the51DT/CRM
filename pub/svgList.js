@@ -32,6 +32,14 @@ const svgList = [
     "lastModified": "2025-06-04"
   },
   {
+    "name": "icon_selectbox_up.svg",
+    "path": "/assets/images/common/icon_selectbox_up.svg",
+    "width": "20",
+    "height": "20",
+    "stroke": "black",
+    "lastModified": "2025-06-04"
+  },
+  {
     "name": "btn-input-close.svg",
     "path": "/assets/images/common/btn-input-close.svg",
     "width": "20",
@@ -197,14 +205,6 @@ const svgList = [
     "width": "21",
     "height": "20",
     "stroke": "white",
-    "lastModified": "2025-04-08"
-  },
-  {
-    "name": "icon_selectbox_up.svg",
-    "path": "/assets/images/common/icon_selectbox_up.svg",
-    "width": "20",
-    "height": "20",
-    "stroke": "black",
     "lastModified": "2025-04-08"
   },
   {
