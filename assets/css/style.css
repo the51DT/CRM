@@ -3166,7 +3166,7 @@ button:focus {
   margin-right: -16px !important;
 }
 .modal .table-scroll-y {
-  max-height: 200px;
+  max-height: 246px;
   overflow-y: auto;
   padding-right: 10px !important;
 }

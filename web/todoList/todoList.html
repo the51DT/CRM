@@ -1038,12 +1038,12 @@
                   </div>
                   <div class="modal-body uiscroll">
                     <h1 class="modal-title" id="processHistoryDetail">중간 처리 내역</h1>
-                    <section class="row table-scroll-wrap table-task-wrap">
+                    <section class="row table-scroll-wrap table-task-wrap table-wrap">
                       <div class="table-title">
                         <h2>동일 처리 타스크</h2>
                         <span>총 10건</span>
                       </div>
-                      <div class="table-scroll-y" style="max-height: 246px">
+                      <div class="table-body table-scroll-y">
                         <table class="dataTable row-border hover clickable-row" id="onlyOneActiveTable">
                           <colgroup>
                             <col style="width: 100px" />
@@ -1172,12 +1172,12 @@
                         </table>
                       </div>
                     </section>
-                    <section class="row table-scroll-wrap">
+                    <section class="row table-scroll-wrap table-wrap">
                       <div class="table-title">
                         <h2>중간 처리 이력</h2>
                         <span>총 20건</span>
                       </div>
-                      <div class="table-scroll-y">
+                      <div class="table-body table-scroll-y">
                         <table class="dataTable row-border hover clickable-row" id="processingHistoryTable">
                           <thead>
                             <tr>
@@ -2169,13 +2169,15 @@
         // 윈도우 크기 체크
         window.addEventListener("resize", () => {
           const height = window.innerHeight;
-          const tableScrollWraps = document.querySelectorAll(".table-scroll-wrap");
+          const tableScrollWraps = document.querySelectorAll(".table-wrap");
           tableScrollWraps.forEach((item) => {
-            const table = item.querySelector(".table-scroll-y");
+            const table = item.querySelector(".table-body");
             if (height < 780 && table) {
-              table.style.maxHeight = "";
               table.classList.remove("table-scroll-y");
               item.classList.remove("table-scroll-wrap");
+            } else {
+              table.classList.add("table-scroll-y");
+              item.classList.add("table-scroll-wrap");
             }
           });
         });
