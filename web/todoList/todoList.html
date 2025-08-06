@@ -2172,9 +2172,9 @@
           const tableScrollWraps = document.querySelectorAll(".table-scroll-wrap");
           tableScrollWraps.forEach((item) => {
             const table = item.querySelector(".table-scroll-y");
-            if (height < 780) {
-              table?.style.maxHeight = "";
-              table?.classList.remove("table-scroll-y");
+            if (height < 780 && table) {
+              table.style.maxHeight = "";
+              table.classList.remove("table-scroll-y");
               item.classList.remove("table-scroll-wrap");
             }
           });
