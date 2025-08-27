@@ -976,13 +976,13 @@
                   <div class="modal-header">
                     <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body uiscroll">
+                  <div class="modal-body uiscroll uiscroll-row">
                     <h1 class="modal-title" id="processHistoryLabel">중간 처리 이력</h1>
                     <section class="row">
-                      <table class="dataTable row-border hover clickable-row" id="pubTable2">
+                      <table class="dataTable row-border hover clickable-row wide-gap" id="pubTable2">
                         <thead>
                           <tr>
-                            <th>택배/매</th>
+                            <!-- <th>택배/매</th> -->
                             <th>타스크 번호</th>
                             <th>타스크 구분</th>
                             <th>상태</th>
@@ -996,12 +996,12 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td>택배</td>
+                            <!-- <td>택배</td> -->
                             <td>123456789</td>
                             <td>가입자개통타스크</td>
                             <td>처리 중</td>
                             <td>상품 변경</td>
-                            <td>스마트기가_1G</td>
+                            <td class="align-start">스마트기가_1G</td>
                             <td>U+인터넷</td>
                             <td>복구_개통-A지점</td>
                             <td>홍길동</td>
@@ -1840,11 +1840,11 @@
 
       const singleRow = {
         deliveryType: "택배",
-        diskNumber: "123456789",
-        diskType: "가입자개통타스크",
-        status: "처리 중",
+        diskNumber: "9999999999",
+        diskType: "일이삼사오육칠팔구십",
+        status: "일이삼사오육칠팔",
         taskName: "상품 변경",
-        productName: "스마트기가_1G",
+        productName: "와이파이기본_기가안심슬림_500M_주택FTTH",
         serviceName: "U+인터넷",
         agencyName: "복구_개통-A지점",
         engineerName: "홍길동",
@@ -1852,7 +1852,7 @@
       };
       const tableData2 = Array.from({ length: 50 }, (_, i) => ({
         ...singleRow,
-        diskNumber: `${123456789 + i}`,
+        diskNumber: `${9999999999 + i}`,
         engineerName: `홍길동${i + 1}`,
       }));
 
@@ -1865,8 +1865,20 @@
         recordsTotal: false,
         lengthChange: false,
         paging: false,
+        // scrollX: true,
+        scrollCollapse: true,
+        columnDefs: [
+          {
+            targets: [0, 1, 2, 3, 5, 6, 7, 8], // 상품명 텍스트 정렬
+            className: 'nowrap'
+          },
+          {
+            targets: [4], // 상품명 텍스트 정렬
+            className: 'align-start'
+          }
+        ],
         columns: [
-          { data: "deliveryType", title: "택배/매" },
+          // { data: "deliveryType", title: "택배/매" },
           { data: "diskNumber", title: "타스크 번호" },
           { data: "diskType", title: "타스크 구분" },
           { data: "status", title: "상태" },
@@ -1878,6 +1890,10 @@
           { data: "requestTime", title: "요청 일시" },
         ],
         data: tableData2,
+        initComplete: function() {
+          const cols = this.api().table().node().querySelectorAll('colgroup col');
+          if (cols[4]) cols[4].style.minWidth = '240px';
+        },
         drawCallback: function () {
           $("#pubTable2").on("click", "tbody tr", function () {
             var rowData = $("#pubTable2").DataTable().row($(this)).data();

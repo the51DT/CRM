@@ -167,6 +167,65 @@
   background: linear-gradient(45deg, #555, #333); /* 호버 시의 스크롤바 배경 */
 }
 
+.uiscroll-row::-webkit-scrollbar,
+.uiscroll-row ::-webkit-scrollbar {
+  height: 0.6rem;
+}
+
+/* scroll ui */
+/* 가로 스크롤바 스타일 */
+.uiscroll-both::-webkit-scrollbar,
+.uiscroll-both ::-webkit-scrollbar {
+ height: 1.6rem;
+ width: 1.6rem;
+}
+
+.uiscroll-both::-webkit-scrollbar-track:horizontal,
+.uiscroll-both ::-webkit-scrollbar-track:horizontal {
+ background: none;
+}
+
+.uiscroll-both::-webkit-scrollbar-thumb:horizontal,
+.uiscroll-both ::-webkit-scrollbar-thumb:horizontal,
+.dt-container .dt-scroll-body::-webkit-scrollbar-thumb:horizontal {
+ background: linear-gradient(45deg, #aaa, #aaa);
+ background-clip: padding-box;
+ border-top: 1rem solid transparent;
+}
+
+.uiscroll-both::-webkit-scrollbar-thumb:horizontal:hover,
+.uiscroll-both ::-webkit-scrollbar-thumb:horizontal:hover {
+ background: linear-gradient(45deg, #555, #333);
+ background-clip: padding-box;
+ border-top: 1rem solid transparent;
+}
+
+/* 세로 스크롤바 스타일 */
+.uiscroll-both::-webkit-scrollbar:vertical,
+.uiscroll-both ::-webkit-scrollbar:vertical {
+ width: 1.6rem;
+}
+
+.uiscroll-both::-webkit-scrollbar-track:vertical,
+.uiscroll-both ::-webkit-scrollbar-track:vertical {
+ background: none;
+}
+
+.uiscroll-both::-webkit-scrollbar-thumb:vertical,
+.uiscroll-both ::-webkit-scrollbar-thumb:vertical {
+ background: linear-gradient(45deg, #aaa, #aaa);
+ background-clip: padding-box;
+ border-left: 1rem solid transparent;
+}
+
+.uiscroll-both::-webkit-scrollbar-thumb:vertical:hover,
+.uiscroll-both ::-webkit-scrollbar-thumb:vertical:hover {
+ background: linear-gradient(45deg, #555, #333);
+ background-clip: padding-box;
+ border-left: 1rem solid transparent;
+}
+
+
 .dt-container .dt-scroll-body::-webkit-scrollbar,
 .dt-container .dt-scroll-body ::-webkit-scrollbar {
   width: 0.8rem;
@@ -496,6 +555,12 @@ table.dataTable > tbody > tr > td {
   text-align: center;
   background: var(--white);
 }
+table.dataTable.wide-gap > tbody > tr > th,
+table.dataTable.wide-gap > tbody > tr > td {
+  padding: 1rem 2.4rem;
+}
+
+
 table.dataTable > tbody > tr > td a {
   text-decoration: underline;
 }
@@ -530,6 +595,11 @@ table.dataTable > tbody > tr > td.sum {
 table.dataTable > tbody > tr > td.align-start {
   text-align: left;
 }
+
+.nowrap {
+  white-space: nowrap;
+}
+
 table.dataTable > tbody > tr .secret {
   background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.14286 8V6.66667C7.14286 5.19391 8.42204 4 10 4C11.578 4 12.8571 5.19391 12.8571 6.66667V8M7.28571 16H12.7143C13.5144 16 13.9144 16 14.22 15.8547C14.4888 15.7268 14.7073 15.5229 14.8443 15.272C15 14.9868 15 14.6134 15 13.8667V10.1333C15 9.3866 15 9.01323 14.8443 8.72801C14.7073 8.47713 14.4888 8.27316 14.22 8.14532C13.9144 8 13.5144 8 12.7143 8H7.28571C6.48564 8 6.0856 8 5.78001 8.14532C5.51121 8.27316 5.29267 8.47713 5.1557 8.72801C5 9.01323 5 9.3866 5 10.1333V13.8667C5 14.6134 5 14.9868 5.1557 15.272C5.29267 15.5229 5.51121 15.7268 5.78001 15.8547C6.0856 16 6.48564 16 7.28571 16Z' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E%0A");
   background-position: 100% 50%;
@@ -3033,6 +3103,7 @@ button:focus {
   border: var(--border-layout);
   background: var(--white);
 }
+
 /* dataTable sub-text-info */
 .sub-text-info {
   margin-left: 1.6rem;
@@ -3161,6 +3232,7 @@ button:focus {
 .modal .modal-dialog.modal-dialog-scrollable .modal-body.uiscroll {
   padding-right: 1.6rem;
 }
+
 .modal .table-scroll-wrap {
   margin-top: 6rem !important;
   margin-right: -16px !important;
