@@ -3182,7 +3182,7 @@ button:focus {
 .memo-history > li strong {
   color: var(--black);
 }
-// sms 발송
+/* // sms 발송 */
 .msg-wrap {
   position: relative;
 }

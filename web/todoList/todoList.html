@@ -976,7 +976,7 @@
                   <div class="modal-header">
                     <button type="button" class="btn-closed" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-body uiscroll uiscroll-row">
+                  <div class="modal-body uiscroll uiscroll-row"><!-- 25.08.27 수정 : class 추가 (uiscroll-row) -->
                     <h1 class="modal-title" id="processHistoryLabel">중간 처리 이력</h1>
                     <section class="row">
                       <table class="dataTable row-border hover clickable-row wide-gap" id="pubTable2">
@@ -1856,6 +1856,7 @@
         engineerName: `홍길동${i + 1}`,
       }));
 
+      // <!-- 25.08.27 수정 -->
       $("#pubTable2").DataTable({
         autoWidth: false,
         searching: false,
@@ -1865,7 +1866,7 @@
         recordsTotal: false,
         lengthChange: false,
         paging: false,
-        // scrollX: true,
+        // scrollX: true, 
         scrollCollapse: true,
         columnDefs: [
           {
